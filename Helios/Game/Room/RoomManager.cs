@@ -110,8 +110,8 @@ namespace Helios.Game
         /// </summary>
         public static List<Room> SortRooms(List<Room> list)
         {
-            return list.OrderByDescending(x => x.Data.Rating)
-                        .ThenByDescending(x => x.Data.UsersNow).ToList();
+            return list.OrderByDescending(x => x.Data.UsersNow)
+                        .ThenByDescending(x => x.Data.Rating).ToList();
         }
 
         #endregion
