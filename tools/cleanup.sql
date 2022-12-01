@@ -1,0 +1,13 @@
+DELETE FROM `messenger_category`;
+DELETE FROM `messenger_friend`;
+DELETE FROM `messenger_request`;
+DELETE FROM `site_articles`;
+DELETE FROM `tags`;
+DELETE FROM `room` WHERE id > 1000;
+DELETE FROM `user`;
+DELETE FROM `user_effects`;
+DELETE FROM `user_settings`;
+DELETE FROM `user_seasonal_currencies`;
+DELETE FROM `user_subscriptions`;
+DELETE FROM `item`;
+DELETE FROM `authentication_ticket`;

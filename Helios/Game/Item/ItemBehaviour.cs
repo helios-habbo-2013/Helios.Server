@@ -1,0 +1,36 @@
+﻿namespace Helios.Game
+{
+    public enum ItemBehaviour
+    {
+        SOLID,
+        SOLID_SINGLE_TILE,
+        IS_STACKABLE,
+        IS_WALKABLE,
+        CAN_NOT_STACK_ON_TOP,
+        REQUIRES_TOUCHING_FOR_INTERACTION,
+        DICE,
+        DOOR_TELEPORTER,
+        REQUIRES_RIGHTS_FOR_INTERACTION,
+        ROLLER,
+        REDEEMABLE,
+        SOUND_MACHINE,
+        SOUND_MACHINE_SAMPLE_SET,
+        JUKEBOX,
+        WALL_ITEM,
+        WHEEL_OF_FORTUNE,
+        PHOTO,
+        PLACE_ROLLER_ON_TOP,
+        INVISIBLE,
+        EFFECT,
+        SONG_DISK,
+        PRIVATE_FURNITURE,
+        NO_HEAD_TURN,
+        ECO_BOX,
+        PET_WATER_BOWL,
+        PET_FOOD,
+        PET_CAT_FOOD,
+        PET_DOG_FOOD,
+        PET_CROC_FOOD,
+        STICKY_POLE
+    }
+}
