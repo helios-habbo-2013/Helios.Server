@@ -74,5 +74,7 @@
         public static readonly short PopularTagsMessageEvent = 3733;
         public static readonly short SearchFlatsMessageEvent = 47;
         public static readonly short SearchFlatTagsMessageEvent = 2952;
+        public static readonly short CheckChangeNameMessageEvent = 2026;
+        public static readonly short ConfirmChangeNameMessageEvent = 2451;
     }
 }

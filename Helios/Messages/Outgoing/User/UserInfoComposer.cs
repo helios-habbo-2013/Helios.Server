@@ -25,7 +25,7 @@ namespace Helios.Messages.Outgoing
             m_Data.Add(player.Settings.DailyPetRespectPoints);
             m_Data.Add(true);
             m_Data.Add(player.Details.PreviousLastOnline.ToString("MM-dd-yyyy HH:mm:ss"));
-            m_Data.Add(false);
+            m_Data.Add(true);
             m_Data.Add(false);
         }
     }

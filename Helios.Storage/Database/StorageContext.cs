@@ -57,7 +57,7 @@ namespace Helios.Storage.Database
         {
             optionsBuilder
                 //.UseLazyLoadingProxies()
-                .UseMySQL("server=localhost;database=kurkku;user=root;password=123");
+                .UseMySQL("server=localhost;database=helios;user=root;password=123");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

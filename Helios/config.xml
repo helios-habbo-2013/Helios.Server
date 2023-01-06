@@ -3,7 +3,7 @@
       <hostname>localhost</hostname>
       <username>root</username>
       <password>123</password>
-      <database>kurkku</database>
+      <database>helios</database>
       <port>3306</port>
       <min_connections>5</min_connections>
       <max_connections>10</max_connections>
