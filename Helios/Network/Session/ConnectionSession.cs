@@ -60,7 +60,8 @@ namespace Helios.Network.Session
 
             try
             {
-                Channel.WriteAndFlushAsync(composer);
+                Channel.WriteAndFlushAsync(composer)
+                    .RunSynchronously();
             }
             catch { }
         }
