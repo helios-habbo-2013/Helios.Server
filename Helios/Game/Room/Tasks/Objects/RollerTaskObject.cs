@@ -81,10 +81,7 @@ namespace Helios.Game
                     }
                 }
             }
-        }
 
-        public override void OnTickComplete()
-        {
             if (RollingItems.Any() || RollingEntity != null)
             {
                 var entity = RollingEntity;
