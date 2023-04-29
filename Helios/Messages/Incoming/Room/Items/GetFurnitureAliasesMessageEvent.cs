@@ -6,9 +6,9 @@ namespace Helios.Messages.Incoming
 {
     class GetFurnitureAliasesMessageEvent : IMessageEvent
     {
-        public void Handle(Player player, Request request)
+        public void Handle(Avatar avatar, Request request)
         {
-            player.Send(new FurnitureAliasesComposer());
+            avatar.Send(new FurnitureAliasesComposer());
         }
     }
 }

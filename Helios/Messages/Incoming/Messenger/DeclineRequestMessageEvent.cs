@@ -6,7 +6,7 @@ namespace Helios.Messages.Incoming
 {
     public class DeclineRequestMessageEvent : IMessageEvent
     {
-        public void Handle(Player player, Request request)
+        public void Handle(Avatar avatar, Request request)
         {
             bool mode = request.ReadBoolean();
             int amount = request.ReadInt();
@@ -15,19 +15,19 @@ namespace Helios.Messages.Incoming
             {
                 for (int i = 0; i < amount; i++)
                 {
-                    int userId = request.ReadInt();
+                    int AvatarId = request.ReadInt();
 
-                    if (!player.Messenger.HasRequest(userId))
+                    if (!avatar.Messenger.HasRequest(AvatarId))
                         continue;
 
-                    MessengerDao.DeleteRequests(player.Details.Id, userId);
-                    player.Messenger.RemoveRequest(userId);
+                    MessengerDao.DeleteRequests(avatar.Details.Id, AvatarId);
+                    avatar.Messenger.RemoveRequest(AvatarId);
                 }
             } 
             else
             {
-                player.Messenger.Requests.Clear();
-                MessengerDao.DeleteAllRequests(player.Details.Id);
+                avatar.Messenger.Requests.Clear();
+                MessengerDao.DeleteAllRequests(avatar.Details.Id);
             }
         }
     }

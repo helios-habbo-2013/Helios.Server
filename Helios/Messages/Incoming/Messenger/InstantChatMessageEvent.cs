@@ -9,25 +9,25 @@ namespace Helios.Messages.Incoming
 {
     class InstantChatMessageEvent : IMessageEvent
     {
-        public void Handle(Player player, Request request)
+        public void Handle(Avatar avatar, Request request)
         {
-            int userId = request.ReadInt();
+            int AvatarId = request.ReadInt();
 
             try
             {
-                if (!player.Messenger.HasFriend(userId))
+                if (!avatar.Messenger.HasFriend(AvatarId))
                 {
-                    player.Send(new InstantChatErrorComposer(InstantChatError.NotFriend, userId));
+                    avatar.Send(new InstantChatErrorComposer(InstantChatError.NotFriend, AvatarId));
                     return;
                 }
 
-                var friend = player.Messenger.GetFriend(userId);
+                var friend = avatar.Messenger.GetFriend(AvatarId);
                 var chatMessage = request.ReadString().FilterInput(false);
 
                 var chatMessageData = new MessengerChatData
                 {
-                    UserId = player.Details.Id,
-                    FriendId = userId,
+                    AvatarId = avatar.Details.Id,
+                    FriendId = AvatarId,
                     Message = chatMessage,
                     IsRead = friend.IsOnline
                 };
@@ -36,15 +36,15 @@ namespace Helios.Messages.Incoming
 
                 if (!friend.IsOnline)
                 {
-                    player.Send(new InstantChatErrorComposer(InstantChatError.FriendOffline, userId));
+                    avatar.Send(new InstantChatErrorComposer(InstantChatError.FriendOffline, AvatarId));
                     return;
                 }
 
-                friend.Player.Send(new InstantChatComposer(player.Details.Id, chatMessage));
+                friend.Avatar.Send(new InstantChatComposer(avatar.Details.Id, chatMessage));
             }
             catch
             {
-                player.Send(new InstantChatErrorComposer(InstantChatError.SendingFailed, userId));
+                avatar.Send(new InstantChatErrorComposer(InstantChatError.SendingFailed, AvatarId));
             }
         }
     }

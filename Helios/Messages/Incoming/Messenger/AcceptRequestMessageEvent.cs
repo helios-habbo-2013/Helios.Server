@@ -7,53 +7,53 @@ namespace Helios.Messages.Incoming
 {
     public class AcceptRequestsMessageEvent : IMessageEvent
     {
-        public void Handle(Player player, Request request)
+        public void Handle(Avatar avatar, Request request)
         {
             int friendsAccepted = request.ReadInt();
-            var messenger = player.Messenger;
+            var messenger = avatar.Messenger;
 
             for (int i = 0; i < friendsAccepted; i++) 
             {
-                int userId = request.ReadInt();
+                int AvatarId = request.ReadInt();
 
-                if (!messenger.HasRequest(userId))
+                if (!messenger.HasRequest(AvatarId))
                     continue;
 
                 if (messenger.Friends.Count >= messenger.MaxFriendsAllowed)
                     continue;
 
-                var playerData = PlayerManager.Instance.GetDataById(userId);
+                var avatarData = AvatarManager.Instance.GetDataById(AvatarId);
 
-                if (playerData == null)
+                if (avatarData == null)
                     continue;
 
-                var targetMessenger = Messenger.GetMessengerData(userId);
-                var targetFriend = new MessengerUser(playerData);
+                var targetMessenger = Messenger.GetMessengerData(AvatarId);
+                var targetFriend = new MessengerUser(avatarData);
 
                 targetMessenger.Friends.Add(messenger.MessengerUser);
                 messenger.Friends.Add(targetFriend);
 
-                targetMessenger.RemoveRequest(player.Details.Id);
-                messenger.RemoveRequest(userId);
+                targetMessenger.RemoveRequest(avatar.Details.Id);
+                messenger.RemoveRequest(AvatarId);
 
-                var targetPlayer = PlayerManager.Instance.GetPlayerById(userId);
+                var targetAvatar = AvatarManager.Instance.GetAvatarById(AvatarId);
 
-                if (targetPlayer != null) 
+                if (targetAvatar != null) 
                 {
-                    targetPlayer.Messenger.QueueUpdate(MessengerUpdateType.AddFriend, messenger.MessengerUser);
-                    targetPlayer.Messenger.ForceUpdate();
+                    targetAvatar.Messenger.QueueUpdate(MessengerUpdateType.AddFriend, messenger.MessengerUser);
+                    targetAvatar.Messenger.ForceUpdate();
                 }
 
-                MessengerDao.DeleteRequests(player.Details.Id, userId);
+                MessengerDao.DeleteRequests(avatar.Details.Id, AvatarId);
                 MessengerDao.SaveFriend(new MessengerFriendData
                 {
-                    FriendId = userId,
-                    UserId = player.Details.Id
+                    FriendId = AvatarId,
+                    AvatarId = avatar.Details.Id
                 });
                 MessengerDao.SaveFriend(new MessengerFriendData
                 {
-                    UserId = userId,
-                    FriendId = player.Details.Id
+                    AvatarId = AvatarId,
+                    FriendId = avatar.Details.Id
                 });
 
                 messenger.QueueUpdate(MessengerUpdateType.AddFriend, targetFriend);

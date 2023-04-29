@@ -44,7 +44,7 @@ namespace Helios.Game
             {
                 queuedItems = new List<ITaskObject>();
                 queuedItems.AddRange(room.ItemManager.Items.Values.Where(x => x.Interactor.TaskObject != null).Select(x => x.Interactor.TaskObject).ToList());
-                queuedItems.AddRange(room.EntityManager.GetEntities<Player>().Where(x => x.RoomEntity.TaskObject != null).Select(x => x.RoomEntity.TaskObject).ToList());
+                queuedItems.AddRange(room.EntityManager.GetEntities<Avatar>().Where(x => x.RoomEntity.TaskObject != null).Select(x => x.RoomEntity.TaskObject).ToList());
 
                 foreach (var taskObject in queuedItems)
                 {

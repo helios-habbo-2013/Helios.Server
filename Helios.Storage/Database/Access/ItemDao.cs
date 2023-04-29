@@ -22,13 +22,13 @@ namespace Helios.Storage.Database.Access
         /// <summary>
         /// Get list of all item data for user inventory
         /// </summary>
-        public static List<ItemData> GetUserItems(int userId)
+        public static List<ItemData> GetUserItems(int AvatarId)
         {
             using (var context = new StorageContext())
             {
                 return context.ItemData
                     .Include(x => x.OwnerData)
-                    .Where(x => x.OwnerId == userId).ToList();
+                    .Where(x => x.OwnerId == AvatarId).ToList();
             }
         }
 

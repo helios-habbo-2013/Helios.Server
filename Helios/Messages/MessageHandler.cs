@@ -106,27 +106,27 @@ namespace Helios.Messages
         /// <summary>
         /// Handler for incoming message
         /// </summary>
-        /// <param name="player"></param>
+        /// <param name="avatar"></param>
         /// <param name="request"></param>
-        public void HandleMesage(Player player, Request request)
+        public void HandleMesage(Avatar avatar, Request request)
         {
             try
             {
                 if (Events.ContainsKey(request.Header))
                 {
-                    player.Log.Debug($"RECEIVED {Events[request.Header][0].GetType().Name}: {request.Header} / {request.MessageBody}");
+                    avatar.Log.Debug($"RECEIVED {Events[request.Header][0].GetType().Name}: {request.Header} / {request.MessageBody}");
 
                     foreach (IMessageEvent handler in Events[request.Header])
                     {
                         if (Events[request.Header].Count > 1)
                         {
                             var copyBuffer = request.Buffer.Copy();
-                            handler.Handle(player, new Request(request.Length, request.Header, copyBuffer));
+                            handler.Handle(avatar, new Request(request.Length, request.Header, copyBuffer));
                             copyBuffer.Release();
                         }
                         else
                         {
-                            handler.Handle(player, request);
+                            handler.Handle(avatar, request);
                         }
                     }
 
@@ -134,7 +134,7 @@ namespace Helios.Messages
                 } 
                 else
                 {
-                    player.Log.Debug($"Unknown: {request.Header} / {request.MessageBody}");
+                    avatar.Log.Debug($"Unknown: {request.Header} / {request.MessageBody}");
                 }
             }
             catch (Exception ex)

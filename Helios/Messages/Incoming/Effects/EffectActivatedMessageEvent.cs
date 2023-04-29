@@ -9,19 +9,19 @@ namespace Helios.Messages.Incoming
 {
     class EffectActivatedMessageEvent : IMessageEvent
     {
-        public void Handle(Player player, Request request)
+        public void Handle(Avatar avatar, Request request)
         {
             int effectId = request.ReadInt();
 
-            if (!player.EffectManager.Effects.ContainsKey(effectId))
+            if (!avatar.EffectManager.Effects.ContainsKey(effectId))
                 return;
 
-            var effect = player.EffectManager.Effects[effectId];
+            var effect = avatar.EffectManager.Effects[effectId];
 
             if (!effect.TryActivate())
                 return;
 
-            player.Send(new EffectActivatedMessageComposer(effect));
+            avatar.Send(new EffectActivatedMessageComposer(effect));
         }
     }
 }

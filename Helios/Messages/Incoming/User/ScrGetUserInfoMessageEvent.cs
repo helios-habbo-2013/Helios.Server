@@ -6,9 +6,9 @@ namespace Helios.Messages.Incoming
 {
     class ScrGetUserInfoMessageEvent : IMessageEvent
     {
-        public void Handle(Player player, Request request)
+        public void Handle(Avatar avatar, Request request)
         {
-            player.Send(new ScrSendUserInfoComposer(player.Subscription.Data));
+            avatar.Send(new ScrSendUserInfoComposer(avatar.Subscription.Data));
         }
     }
 }

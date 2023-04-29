@@ -57,9 +57,9 @@ namespace Helios.Game
         }
 
         /// <summary>
-        /// Get the player for this messenger instance
+        /// Get the avatar for this messenger instance
         /// </summary>
-        public Player Player { get; set; }
+        public Avatar Avatar { get; set; }
 
         /// <summary>
         /// Get whether friend requests are enabled
@@ -67,41 +67,41 @@ namespace Helios.Game
         public bool FriendRequestsEnabled { get; set; }
 
         /// <summary>
-        /// Get the player as messenger user
+        /// Get the avatar as messenger user
         /// </summary>
-        public MessengerUser MessengerUser => new MessengerUser (Player.Details);
+        public MessengerUser MessengerUser => new MessengerUser (Avatar.Details);
 
         #endregion
 
         #region Constructors
 
-        public Messenger(Player player)
+        public Messenger(Avatar avatar)
         {
-            Player = player;
-            subscription = player.Subscription.Data;
-            FriendRequestsEnabled = player.Settings.FriendRequestsEnabled;
-            LoadMessengerData(player.Details.Id);
+            Avatar = avatar;
+            subscription = avatar.Subscription.Data;
+            FriendRequestsEnabled = avatar.Settings.FriendRequestsEnabled;
+            LoadMessengerData(avatar.Details.Id);
         }
 
-        public Messenger(int userId)
+        public Messenger(int AvatarId)
         {
-            subscription = SubscriptionDao.GetSubscription(userId);
-            FriendRequestsEnabled = MessengerDao.GetAcceptsFriendRequests(userId);
-            LoadMessengerData(userId);
+            subscription = SubscriptionDao.GetSubscription(AvatarId);
+            FriendRequestsEnabled = MessengerDao.GetAcceptsFriendRequests(AvatarId);
+            LoadMessengerData(AvatarId);
         }
 
         #endregion
 
         #region Static methods
 
-        public static Messenger GetMessengerData(int userId)
+        public static Messenger GetMessengerData(int AvatarId)
         {
-            var player = PlayerManager.Instance.GetPlayerById(userId);
+            var avatar = AvatarManager.Instance.GetAvatarById(AvatarId);
 
-            if (player != null)
-                return player.Messenger;
+            if (avatar != null)
+                return avatar.Messenger;
 
-            return new Messenger(userId);
+            return new Messenger(AvatarId);
         }
 
         #endregion
@@ -111,11 +111,11 @@ namespace Helios.Game
         /// <summary>
         /// Load messenger data by given useer id
         /// </summary>
-        private void LoadMessengerData(int userId)
+        private void LoadMessengerData(int AvatarId)
         {
-            Friends = MessengerDao.GetFriends(userId).Select(data => new MessengerUser(data.FriendData)).ToList();
-            Requests = MessengerDao.GetRequests(userId).Select(data => new MessengerUser(data.FriendData)).ToList();
-            Categories = MessengerDao.GetCategories(userId);
+            Friends = MessengerDao.GetFriends(AvatarId).Select(data => new MessengerUser(data.FriendData)).ToList();
+            Requests = MessengerDao.GetRequests(AvatarId).Select(data => new MessengerUser(data.FriendData)).ToList();
+            Categories = MessengerDao.GetCategories(AvatarId);
             Queue = new ConcurrentQueue<MessengerUpdate>();
         }
 
@@ -141,10 +141,10 @@ namespace Helios.Game
             var onlineFriends = GetOnlineFriends();
 
             foreach (var friend in onlineFriends)
-                friend.Player.Messenger.QueueUpdate(MessengerUpdateType.UpdateFriend, MessengerUser);
+                friend.Avatar.Messenger.QueueUpdate(MessengerUpdateType.UpdateFriend, MessengerUser);
 
             foreach (var friend in onlineFriends)
-                friend.Player.Messenger.ForceUpdate();
+                friend.Avatar.Messenger.ForceUpdate();
         }
 
         /// <summary>
@@ -155,7 +155,7 @@ namespace Helios.Game
             List<MessengerUpdate> messengerUpdates = Queue.Dequeue();
 
             if (messengerUpdates.Count > 0)
-                Player.Send(new UpdateMessengerComposer(Categories, messengerUpdates));
+                Avatar.Send(new UpdateMessengerComposer(Categories, messengerUpdates));
         }
 
         /// <summary>
@@ -163,7 +163,7 @@ namespace Helios.Game
         /// </summary>
         public void RemoveFriend(int id)
         {
-            Friends.RemoveAll(x => x.PlayerData.Id == id);
+            Friends.RemoveAll(x => x.AvatarData.Id == id);
         }
 
         /// <summary>
@@ -171,7 +171,7 @@ namespace Helios.Game
         /// </summary>
         public void RemoveRequest(int id)
         {
-            Requests.RemoveAll(x => x.PlayerData.Id == id);
+            Requests.RemoveAll(x => x.AvatarData.Id == id);
         }
 
         /// <summary>
@@ -180,17 +180,17 @@ namespace Helios.Game
         public List<MessengerUser> GetOnlineFriends() => 
             Friends.Where(friend => friend.IsOnline).ToList();
              
-        public bool HasFriend(int userId) => 
-            Friends.Count(friend => friend.PlayerData.Id == userId) > 0;
+        public bool HasFriend(int AvatarId) => 
+            Friends.Count(friend => friend.AvatarData.Id == AvatarId) > 0;
 
-        public MessengerUser GetFriend(int userId) =>
-            Friends.FirstOrDefault(friend => friend.PlayerData.Id == userId);
+        public MessengerUser GetFriend(int AvatarId) =>
+            Friends.FirstOrDefault(friend => friend.AvatarData.Id == AvatarId);
 
-        public bool HasRequest(int userId) =>
-            Requests.Count(requester => requester.PlayerData.Id == userId) > 0;
+        public bool HasRequest(int AvatarId) =>
+            Requests.Count(requester => requester.AvatarData.Id == AvatarId) > 0;
 
-        public MessengerUser GetRequest(int userId) =>
-            Requests.FirstOrDefault(friend => friend.PlayerData.Id == userId);
+        public MessengerUser GetRequest(int AvatarId) =>
+            Requests.FirstOrDefault(friend => friend.AvatarData.Id == AvatarId);
 
         #endregion
     }

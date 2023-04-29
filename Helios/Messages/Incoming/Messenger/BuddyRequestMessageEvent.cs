@@ -9,45 +9,45 @@ namespace Helios.Messages.Incoming
 {
     class BuddyRequestMessageEvent : IMessageEvent
     {
-        public void Handle(Player player, Request request)
+        public void Handle(Avatar avatar, Request request)
         {
-            int userId = PlayerDao.GetIdByName(request.ReadString());
+            int AvatarId = AvatarDao.GetIdByName(request.ReadString());
 
-            if (userId < 1)
+            if (AvatarId < 1)
                 return;
 
-            var targetMessenger = Messenger.GetMessengerData(userId);
-            var targetPlayer = PlayerManager.Instance.GetPlayerById(userId);
+            var targetMessenger = Messenger.GetMessengerData(AvatarId);
+            var targetAvatar = AvatarManager.Instance.GetAvatarById(AvatarId);
 
             if (targetMessenger == null || 
-                targetMessenger.HasFriend(player.Details.Id) || 
-                targetMessenger.HasRequest(player.Details.Id))
+                targetMessenger.HasFriend(avatar.Details.Id) || 
+                targetMessenger.HasRequest(avatar.Details.Id))
                 return;
 
             if (!targetMessenger.FriendRequestsEnabled)
             {
-                player.Send(new MessengerRequestErrorComposer(MessengerRequestError.FriendRequestsDisabled));
+                avatar.Send(new MessengerRequestErrorComposer(MessengerRequestError.FriendRequestsDisabled));
                 return;
             }
 
-            if (player.Messenger.Friends.Count >= player.Messenger.MaxFriendsAllowed)
+            if (avatar.Messenger.Friends.Count >= avatar.Messenger.MaxFriendsAllowed)
             {
-                player.Send(new MessengerRequestErrorComposer(MessengerRequestError.FriendListFull));
+                avatar.Send(new MessengerRequestErrorComposer(MessengerRequestError.FriendListFull));
                 return;
             }
 
             var messengerRequest = new MessengerRequestData
             {
-                FriendId = player.Details.Id,
-                UserId = userId
+                FriendId = avatar.Details.Id,
+                AvatarId = AvatarId
             };
 
             MessengerDao.SaveRequest(messengerRequest);
 
-            targetMessenger.Requests.Add(player.Messenger.MessengerUser);
+            targetMessenger.Requests.Add(avatar.Messenger.MessengerUser);
 
-            if (targetPlayer != null)
-                targetPlayer.Send(new MessengerRequestComposer(player.Details));
+            if (targetAvatar != null)
+                targetAvatar.Send(new MessengerRequestComposer(avatar.Details));
         }
     }
 }

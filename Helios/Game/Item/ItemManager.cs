@@ -82,11 +82,11 @@ namespace Helios.Game
 
             if (room == null)
             {
-                var player = PlayerManager.Instance.GetPlayerById(itemData.RoomId);
+                var avatar = AvatarManager.Instance.GetAvatarById(itemData.RoomId);
 
-                if (player != null)
+                if (avatar != null)
                 {
-                    return player.Inventory.GetItem(itemData.Id.ToString());
+                    return avatar.Inventory.GetItem(itemData.Id.ToString());
                 }
             }
             else

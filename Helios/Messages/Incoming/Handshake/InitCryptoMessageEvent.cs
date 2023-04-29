@@ -6,15 +6,15 @@ namespace Helios.Messages.Incoming
 {
     class InitCryptoMessageEvent : IMessageEvent
     {
-        public void Handle(Player player, Request request)
+        public void Handle(Avatar avatar, Request request)
         {
-            if (player.Authenticated)
+            if (avatar.Authenticated)
             {
-                player.Connection.Close();
+                avatar.Connection.Close();
                 return;
             }
 
-            player.Send(new InitCryptoComposer("1e9d1203d2203d3dd9ddcb192ccf0a01"));
+            avatar.Send(new InitCryptoComposer("1e9d1203d2203d3dd9ddcb192ccf0a01"));
         }
     }
 }

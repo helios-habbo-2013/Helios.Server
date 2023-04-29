@@ -10,7 +10,7 @@ namespace Helios.Messages.Outgoing
 {
     public class FloorItemsComposer : IMessageComposer
     {
-        private List<PlayerData> owners;
+        private List<AvatarData> owners;
         private List<Item> floorItems;
 
         public FloorItemsComposer(ConcurrentDictionary<int, Item> items)
@@ -23,10 +23,10 @@ namespace Helios.Messages.Outgoing
         {
             m_Data.Add(owners.Count);
 
-            foreach (PlayerData playerData in owners)
+            foreach (AvatarData avatarData in owners)
             {
-                m_Data.Add(playerData.Id);
-                m_Data.Add(playerData.Name);
+                m_Data.Add(avatarData.Id);
+                m_Data.Add(avatarData.Name);
             }
 
             m_Data.Add(floorItems.Count);

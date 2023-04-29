@@ -1,6 +1,6 @@
 ﻿namespace Helios.Game
 {
-    public class RoomPlayer : RoomEntity
+    public class RoomAvatar : RoomEntity
     {
         #region Fields
 
@@ -8,16 +8,16 @@
 
         #region Properties
 
-        public Player Player { get; private set; }
+        public Avatar Avatar { get; private set; }
 
         #endregion
 
         #region Constructors
 
-        public RoomPlayer(Player player) : base((IEntity)player)
+        public RoomAvatar(Avatar avatar) : base((IEntity)avatar)
         {
-            Player = player;
-            TaskObject = new PlayerTaskObject(player);
+            Avatar = avatar;
+            TaskObject = new AvatarTaskObject(avatar);
         }
 
         #endregion

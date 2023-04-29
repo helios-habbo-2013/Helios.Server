@@ -37,7 +37,7 @@ namespace Helios.Storage.Database.Data
 
         #region Constraints
 
-        public virtual PlayerData OwnerData { get; set; }
+        public virtual AvatarData OwnerData { get; set; }
         public virtual NavigatorCategoryData Category { get; set; }
         public virtual List<TagData> Tags { get; set; }
         public virtual PublicItemData PublicItem { get; set; }

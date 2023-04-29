@@ -9,8 +9,8 @@ groups:
     - room.ban
     - room.rights
     - room.addstaffpicks
-    - player.ban
-    - player.mute
+    - avatar.ban
+    - avatar.mute
     inherits:
     - default
   root:

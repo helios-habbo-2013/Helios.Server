@@ -12,16 +12,16 @@ namespace Helios.Game
     {
         #region Properties
 
-        private Player player;
+        private Avatar avatar;
         public ConcurrentDictionary<int, Effect> Effects { get; set; }
 
         #endregion
 
         #region Constructor
 
-        public EffectManager(Player player)
+        public EffectManager(Avatar avatar)
         {
-            this.player = player;
+            this.avatar = avatar;
         }
 
         #endregion
@@ -32,13 +32,13 @@ namespace Helios.Game
         {
             Effects = new ConcurrentDictionary<int, Effect>();
 
-            foreach (var effectData in EffectDao.GetUserEffects(player.EntityData.Id))
+            foreach (var effectData in EffectDao.GetUserEffects(avatar.EntityData.Id))
             {
                 Effect effect = new Effect(effectData);
                 Effects.TryAdd(effect.Id, effect);
             }
 
-            player.Send(new EffectsMessageComposer(new List<Effect>(Effects.Values)));
+            avatar.Send(new EffectsMessageComposer(new List<Effect>(Effects.Values)));
         }
 
         /// <summary>
@@ -48,7 +48,7 @@ namespace Helios.Game
         {
             var effect = new Effect(effectData);
 
-            player.Send(new EffectAddedMessageComposer(effect));
+            avatar.Send(new EffectAddedMessageComposer(effect));
             Effects.TryAdd(effect.Id, effect);
         }
 

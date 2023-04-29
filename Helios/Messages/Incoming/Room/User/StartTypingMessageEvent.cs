@@ -6,13 +6,13 @@ namespace Helios.Messages.Incoming
 {
     public class StartTypingMessageEvent : IMessageEvent
     {
-        public void Handle(Player player, Request request)
+        public void Handle(Avatar avatar, Request request)
         {
-            if (player.RoomUser.Room == null)
+            if (avatar.RoomUser.Room == null)
                 return;
 
-            player.RoomUser.TimerManager.StartSpeechBubbleTimer();
-            player.Send(new TypingStatusComposer(player.RoomUser.InstanceId, true));
+            avatar.RoomUser.TimerManager.StartSpeechBubbleTimer();
+            avatar.Send(new TypingStatusComposer(avatar.RoomUser.InstanceId, true));
         }
     }
 }

@@ -25,7 +25,7 @@ namespace Helios.Game
         /// <summary>
         /// Add item to map handler
         /// </summary>
-        internal void AddItem(Item item, Position position = null, string wallPosition = null, Player player = null)
+        internal void AddItem(Item item, Position position = null, string wallPosition = null, Avatar avatar = null)
         {
             item.Data.RoomId = room.Data.Id;
 
@@ -56,7 +56,7 @@ namespace Helios.Game
                 item.UpdateEntities();
             }
 
-            item.Interactor.OnPlace(player);
+            item.Interactor.OnPlace(avatar);
             item.Save();
 
             room.ItemManager.AddItem(item);
@@ -170,7 +170,7 @@ namespace Helios.Game
         /// <summary>
         /// Remove item handler
         /// </summary>
-        public void RemoveItem(Item item, Player player)
+        public void RemoveItem(Item item, Avatar avatar)
         {
             RoomTile tile = item.Position.GetTile(room);
 
@@ -196,7 +196,7 @@ namespace Helios.Game
                 item.ApplyPosition();
             }
 
-            item.Interactor.OnPickup(player);
+            item.Interactor.OnPickup(avatar);
 
             item.Data.RoomId = 0;
             item.Save();

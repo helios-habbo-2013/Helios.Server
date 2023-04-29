@@ -6,14 +6,14 @@ namespace Helios.Messages.Incoming
 {
     class UserInfoMessageEvent : IMessageEvent
     {
-        public void Handle(Player player, Request request)
+        public void Handle(Avatar avatar, Request request)
         {
-            if (!player.Authenticated)
+            if (!avatar.Authenticated)
                 return;
 
-            player.Send(new UserInfoComposer(player));
-            player.Send(new WelcomeUserComposer());
-            player.Send(new AllowancesComposer());
+            avatar.Send(new UserInfoComposer(avatar));
+            avatar.Send(new WelcomeUserComposer());
+            avatar.Send(new AllowancesComposer());
         }
     }
 }

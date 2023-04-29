@@ -7,13 +7,13 @@ namespace Helios.Messages.Incoming
 {
     public class SearchFlatsMessageEvent : IMessageEvent
     {
-        public void Handle(Player player, Request request)
+        public void Handle(Avatar avatar, Request request)
         {
             var roomList = RoomManager.SortRooms(
                 RoomManager.Instance.ReplaceQueryRooms(RoomDao.SearchRooms(request.ReadString()))
             );
 
-            player.Send(new FlatListComposer(2, roomList, null));
+            avatar.Send(new FlatListComposer(2, roomList, null));
         }
     }
 }

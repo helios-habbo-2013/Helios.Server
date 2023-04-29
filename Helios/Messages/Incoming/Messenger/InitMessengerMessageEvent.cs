@@ -7,26 +7,26 @@ namespace Helios.Messages.Incoming
 {
     class InitMessengerMessageEvent : IMessageEvent
     {
-        public void Handle(Player player, Request request)
+        public void Handle(Avatar avatar, Request request)
         {
-            player.Send(new InitMessengerComposer(
+            avatar.Send(new InitMessengerComposer(
                 ValueManager.Instance.GetInt("max.friends.normal"),
                 ValueManager.Instance.GetInt("max.friends.hc"),
                 ValueManager.Instance.GetInt("max.friends.vip"),
-                player.Messenger.Categories, 
-                player.Messenger.Friends
+                avatar.Messenger.Categories, 
+                avatar.Messenger.Friends
             ));
 
-            player.Send(new MessengerRequestsComposer(player.Messenger.Requests));
+            avatar.Send(new MessengerRequestsComposer(avatar.Messenger.Requests));
 
-            var unreadMessages = MessengerDao.GetUneadMessages(player.Details.Id);
+            var unreadMessages = MessengerDao.GetUneadMessages(avatar.Details.Id);
 
             if (unreadMessages.Count > 0)
             {
                 foreach (var unreadMessage in unreadMessages)
-                    player.Send(new InstantChatComposer(unreadMessage.UserId, unreadMessage.Message));
+                    avatar.Send(new InstantChatComposer(unreadMessage.AvatarId, unreadMessage.Message));
 
-                MessengerDao.SetReadMessages(player.Details.Id);
+                MessengerDao.SetReadMessages(avatar.Details.Id);
             }
         }
     }

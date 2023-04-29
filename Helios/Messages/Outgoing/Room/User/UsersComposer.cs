@@ -19,26 +19,26 @@ namespace Helios.Messages.Outgoing
 
             foreach (var entity in entities)
             {
-                if (entity is Player player)
+                if (entity is Avatar avatar)
                 {
-                    m_Data.Add(player.Details.Id);
-                    m_Data.Add(player.Details.Name);
-                    m_Data.Add(player.Details.Motto);
-                    m_Data.Add(player.Details.Figure);
-                    m_Data.Add(player.RoomUser.InstanceId);
-                    m_Data.Add(player.RoomUser.Position.X);
-                    m_Data.Add(player.RoomUser.Position.Y);
-                    m_Data.Add(player.RoomUser.Position.Z.ToClientValue());
-                    m_Data.Add(player.RoomUser.Position.BodyRotation);
+                    m_Data.Add(avatar.Details.Id);
+                    m_Data.Add(avatar.Details.Name);
+                    m_Data.Add(avatar.Details.Motto);
+                    m_Data.Add(avatar.Details.Figure);
+                    m_Data.Add(avatar.RoomUser.InstanceId);
+                    m_Data.Add(avatar.RoomUser.Position.X);
+                    m_Data.Add(avatar.RoomUser.Position.Y);
+                    m_Data.Add(avatar.RoomUser.Position.Z.ToClientValue());
+                    m_Data.Add(avatar.RoomUser.Position.BodyRotation);
                     m_Data.Add(1);
-                    m_Data.Add(player.Details.Sex.ToLower());
+                    m_Data.Add(avatar.Details.Sex.ToLower());
 
                     // TODO: Group shit for later
                     m_Data.Add(-1);
                     m_Data.Add(-1);
                     m_Data.Add(0);
 
-                    m_Data.Add(player.Details.AchievementPoints);
+                    m_Data.Add(avatar.Details.AchievementPoints);
                 }
             }
         }

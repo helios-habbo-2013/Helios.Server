@@ -57,29 +57,29 @@ namespace Helios.Game
         {
             SilentlyEntityRoom(entity, entryPosition);
 
-            if (!(entity is Player player))
+            if (!(entity is Avatar avatar))
                 return;
 
-            player.Send(new RoomReadyComposer(room.Model.Data.Model, room.Data.Id));
+            avatar.Send(new RoomReadyComposer(room.Model.Data.Model, room.Data.Id));
 
             if (room.Data.Wallpaper != "0")
-                player.Send(new RoomPropertyComposer("wallpaper", Convert.ToString(room.Data.Wallpaper)));
+                avatar.Send(new RoomPropertyComposer("wallpaper", Convert.ToString(room.Data.Wallpaper)));
 
             if (room.Data.Floor != "0")
-                player.Send(new RoomPropertyComposer("floor", Convert.ToString(room.Data.Floor)));
+                avatar.Send(new RoomPropertyComposer("floor", Convert.ToString(room.Data.Floor)));
 
-            player.Send(new RoomPropertyComposer("landscape", Convert.ToString(room.Data.Landscape)));
+            avatar.Send(new RoomPropertyComposer("landscape", Convert.ToString(room.Data.Landscape)));
             
             if (!room.Data.IsPublicRoom)
             {
-                if (room.IsOwner(player.Details.Id))
+                if (room.IsOwner(avatar.Details.Id))
                 {
-                    player.Send(new YouAreOwnerMessageEvent());
-                    player.Send(new YouAreControllerComposer(4));
+                    avatar.Send(new YouAreOwnerMessageEvent());
+                    avatar.Send(new YouAreControllerComposer(4));
                 }
-                else if (room.HasRights(player.Details.Id, false))
+                else if (room.HasRights(avatar.Details.Id, false))
                 {
-                    player.Send(new YouAreControllerComposer(1));
+                    avatar.Send(new YouAreControllerComposer(1));
                 }
             }
         }
@@ -137,17 +137,17 @@ namespace Helios.Game
                 entity.RoomEntity.AuthenticateTeleporterId = null;
             }
 
-            if (entity is Player player)
+            if (entity is Avatar avatar)
             {
                 // We're in room, yayyy >:)
-                player.Messenger.SendStatus();
+                avatar.Messenger.SendStatus();
 
                 room.Data.UsersNow++;
                 RoomDao.SetVisitorCount(room.Data.Id, room.Data.UsersNow);
             }
             else
             {
-                // For 'Player' to show, see GetRoomEntryDataMessageComposer.cs line 21
+                // For 'Avatar' to show, see GetRoomEntryDataMessageComposer.cs line 21
                 room.Send(new UsersComposer(List.Create(entity)));
             }
         }
@@ -193,15 +193,15 @@ namespace Helios.Game
 
             entity.RoomEntity.Reset();
 
-            if (entity is Player player)
+            if (entity is Avatar avatar)
             {
                 room.Data.UsersNow--;
                 RoomDao.SetVisitorCount(room.Data.Id, room.Data.UsersNow);
 
                 if (hotelView)
-                    player.Send(new CloseConnectionComposer());
+                    avatar.Send(new CloseConnectionComposer());
                 
-                player.Messenger.SendStatus();
+                avatar.Messenger.SendStatus();
             }
 
             room.TryDispose();

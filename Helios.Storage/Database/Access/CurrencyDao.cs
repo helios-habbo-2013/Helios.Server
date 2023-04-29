@@ -10,24 +10,24 @@ namespace Helios.Storage.Database.Access
         /// <summary>
         /// Get currency data for user, if doesn't exist, create rows in database for each currency
         /// </summary>
-        public static List<CurrencyData> GetCurrencies(int userId)
+        public static List<CurrencyData> GetCurrencies(int AvatarId)
         {
             List<CurrencyData> currencyList = new List<CurrencyData>();
 
             using (var context = new StorageContext())
             {
-                currencyList = context.CurrencyData.Where(x => x.UserId == userId).ToList();
+                currencyList = context.CurrencyData.Where(x => x.AvatarId == AvatarId).ToList();
 
                 if (!currencyList.Any())
                 {
                     currencyList = new List<CurrencyData>();
-                    currencyList.Add(new CurrencyData { UserId = userId, SeasonalType = SeasonalCurrencyType.PUMPKINS, Balance = 0 });
-                    currencyList.Add(new CurrencyData { UserId = userId, SeasonalType = SeasonalCurrencyType.PEANUTS, Balance = 0 });
-                    currencyList.Add(new CurrencyData { UserId = userId, SeasonalType = SeasonalCurrencyType.STARS, Balance = 0 });
-                    currencyList.Add(new CurrencyData { UserId = userId, SeasonalType = SeasonalCurrencyType.CLOUDS, Balance = 0 });
-                    currencyList.Add(new CurrencyData { UserId = userId, SeasonalType = SeasonalCurrencyType.DIAMONDS, Balance = 0 });
-                    currencyList.Add(new CurrencyData { UserId = userId, SeasonalType = SeasonalCurrencyType.DUCKETS, Balance = 0 });
-                    currencyList.Add(new CurrencyData { UserId = userId, SeasonalType = SeasonalCurrencyType.LOYALTY_POINTS, Balance = 0 });
+                    currencyList.Add(new CurrencyData { AvatarId = AvatarId, SeasonalType = SeasonalCurrencyType.PUMPKINS, Balance = 0 });
+                    currencyList.Add(new CurrencyData { AvatarId = AvatarId, SeasonalType = SeasonalCurrencyType.PEANUTS, Balance = 0 });
+                    currencyList.Add(new CurrencyData { AvatarId = AvatarId, SeasonalType = SeasonalCurrencyType.STARS, Balance = 0 });
+                    currencyList.Add(new CurrencyData { AvatarId = AvatarId, SeasonalType = SeasonalCurrencyType.CLOUDS, Balance = 0 });
+                    currencyList.Add(new CurrencyData { AvatarId = AvatarId, SeasonalType = SeasonalCurrencyType.DIAMONDS, Balance = 0 });
+                    currencyList.Add(new CurrencyData { AvatarId = AvatarId, SeasonalType = SeasonalCurrencyType.DUCKETS, Balance = 0 });
+                    currencyList.Add(new CurrencyData { AvatarId = AvatarId, SeasonalType = SeasonalCurrencyType.LOYALTY_POINTS, Balance = 0 });
 
                     context.AddRange(currencyList);
                     context.SaveChanges();
@@ -39,19 +39,19 @@ namespace Helios.Storage.Database.Access
                     CurrencyData currencyDataAlias = null;
 
                     currencyList = session.QueryOver(() => currencyDataAlias)
-                        .Where(() => currencyDataAlias.UserId == userId)
+                        .Where(() => currencyDataAlias.AvatarId == AvatarId)
                         .List() as List<CurrencyData>;
 
                     if (!currencyList.Any())
                     {
                         currencyList = new List<CurrencyData>();
-                        currencyList.Add(new CurrencyData { UserId = userId, SeasonalType = SeasonalCurrencyType.PUMPKINS, Balance = 0 });
-                        currencyList.Add(new CurrencyData { UserId = userId, SeasonalType = SeasonalCurrencyType.PEANUTS, Balance = 0 });
-                        currencyList.Add(new CurrencyData { UserId = userId, SeasonalType = SeasonalCurrencyType.STARS, Balance = 0 });
-                        currencyList.Add(new CurrencyData { UserId = userId, SeasonalType = SeasonalCurrencyType.CLOUDS, Balance = 0 });
-                        currencyList.Add(new CurrencyData { UserId = userId, SeasonalType = SeasonalCurrencyType.DIAMONDS, Balance = 0 });
-                        currencyList.Add(new CurrencyData { UserId = userId, SeasonalType = SeasonalCurrencyType.DUCKETS, Balance = 0 });
-                        currencyList.Add(new CurrencyData { UserId = userId, SeasonalType = SeasonalCurrencyType.LOYALTY_POINTS, Balance = 0 });
+                        currencyList.Add(new CurrencyData { AvatarId = AvatarId, SeasonalType = SeasonalCurrencyType.PUMPKINS, Balance = 0 });
+                        currencyList.Add(new CurrencyData { AvatarId = AvatarId, SeasonalType = SeasonalCurrencyType.PEANUTS, Balance = 0 });
+                        currencyList.Add(new CurrencyData { AvatarId = AvatarId, SeasonalType = SeasonalCurrencyType.STARS, Balance = 0 });
+                        currencyList.Add(new CurrencyData { AvatarId = AvatarId, SeasonalType = SeasonalCurrencyType.CLOUDS, Balance = 0 });
+                        currencyList.Add(new CurrencyData { AvatarId = AvatarId, SeasonalType = SeasonalCurrencyType.DIAMONDS, Balance = 0 });
+                        currencyList.Add(new CurrencyData { AvatarId = AvatarId, SeasonalType = SeasonalCurrencyType.DUCKETS, Balance = 0 });
+                        currencyList.Add(new CurrencyData { AvatarId = AvatarId, SeasonalType = SeasonalCurrencyType.LOYALTY_POINTS, Balance = 0 });
 
                         using (var transaction = session.BeginTransaction())
                         {
@@ -79,18 +79,18 @@ namespace Helios.Storage.Database.Access
         /// <summary>
         /// Get singular currency for user straight from database
         /// </summary>
-        public static CurrencyData GetCurrency(int userId, SeasonalCurrencyType seasonalCurrencyType)
+        public static CurrencyData GetCurrency(int AvatarId, SeasonalCurrencyType seasonalCurrencyType)
         {
             using (var context = new StorageContext())
             {
-                return context.CurrencyData.SingleOrDefault(x => x.UserId == userId && x.SeasonalType == seasonalCurrencyType);
+                return context.CurrencyData.SingleOrDefault(x => x.AvatarId == AvatarId && x.SeasonalType == seasonalCurrencyType);
 
             }
                 /*using (var session = SessionFactoryBuilder.Instance.SessionFactory.OpenSession())
                 {
                     CurrencyData currencyDataAlias = null;
 
-                    return session.QueryOver(() => currencyDataAlias).Where(() => currencyDataAlias.UserId == userId && currencyDataAlias.SeasonalType == seasonalCurrencyType).SingleOrDefault();
+                    return session.QueryOver(() => currencyDataAlias).Where(() => currencyDataAlias.AvatarId == AvatarId && currencyDataAlias.SeasonalType == seasonalCurrencyType).SingleOrDefault();
                 }*/
         }
 
@@ -128,21 +128,21 @@ namespace Helios.Storage.Database.Access
         /// <summary>
         /// Retrives adjusts the credits to change from database and saves it again, then returns it
         /// </summary>
-        public static int SaveCredits(int userId, int creditsChanged)
+        public static int SaveCredits(int AvatarId, int creditsChanged)
         {
             using (var context = new StorageContext())
             {
-                var playerData = context.PlayerData.FirstOrDefault(x => x.Id == userId);
-                playerData.Credits += creditsChanged;
+                var avatarData = context.AvatarData.FirstOrDefault(x => x.Id == AvatarId);
+                avatarData.Credits += creditsChanged;
 
-                context.PlayerData.Update(playerData);
+                context.AvatarData.Update(avatarData);
                 context.SaveChanges();
 
-                return context.PlayerData.FirstOrDefault(x => x.Id == userId).Credits;
+                return context.AvatarData.FirstOrDefault(x => x.Id == AvatarId).Credits;
                 /*using (var session = SessionFactoryBuilder.Instance.SessionFactory.OpenSession())
                 {
-                    session.Query<PlayerData>().Where(x => x.Id == userId).Update(x => new PlayerData { Credits = x.Credits + creditsChanged });
-                    return session.QueryOver<PlayerData>().Where(x => x.Id == userId).Select(x => x.Credits).SingleOrDefault<int>();
+                    session.Query<AvatarData>().Where(x => x.Id == AvatarId).Update(x => new AvatarData { Credits = x.Credits + creditsChanged });
+                    return session.QueryOver<AvatarData>().Where(x => x.Id == AvatarId).Select(x => x.Credits).SingleOrDefault<int>();
                 }*/
 
             }

@@ -9,14 +9,14 @@ namespace Helios.Messages.Incoming
 {
     class GetStickieMessageEvent : IMessageEvent
     {
-        public void Handle(Player player, Request request)
+        public void Handle(Avatar avatar, Request request)
         {
             int itemId = request.ReadInt();
 
-            if (player.RoomUser.Room == null)
+            if (avatar.RoomUser.Room == null)
                 return;
 
-            Room room = player.RoomUser.Room;
+            Room room = avatar.RoomUser.Room;
 
             if (room == null)
                 return;
@@ -28,7 +28,7 @@ namespace Helios.Messages.Incoming
 
             StickieExtraData stickieData = (StickieExtraData)item.Interactor.GetJsonObject();
 
-            player.Send(new StickieComposer(item.Id, stickieData));
+            avatar.Send(new StickieComposer(item.Id, stickieData));
         }
     }
 }

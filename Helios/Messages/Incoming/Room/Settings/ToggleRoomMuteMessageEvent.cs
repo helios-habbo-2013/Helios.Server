@@ -7,9 +7,9 @@ namespace Helios.Messages.Incoming
 {
     class ToggleRoomMuteMessageEvent : IMessageEvent
     {
-        public void Handle(Player player, Request request)
+        public void Handle(Avatar avatar, Request request)
         {     
-            var room = player.RoomUser.Room;
+            var room = avatar.RoomUser.Room;
             
             if (room == null)
                 return;
@@ -17,7 +17,7 @@ namespace Helios.Messages.Incoming
 
             room.Data.IsMuted = !room.Data.IsMuted;
 
-            player.Send(new RoomMuteSettingsComposer(room.Data.IsMuted));
+            avatar.Send(new RoomMuteSettingsComposer(room.Data.IsMuted));
             RoomDao.SaveRoom(room.Data);
         }
     }

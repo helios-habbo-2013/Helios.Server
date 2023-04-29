@@ -10,10 +10,10 @@ namespace Helios.Messages.Incoming
 {
     class PurchaseItemMessageEvent : IMessageEvent
     {
-        public void Handle(Player player, Request request)
+        public void Handle(Avatar avatar, Request request)
         {
             int pageId = request.ReadInt();
-            var cataloguePage = CatalogueManager.Instance.GetPage(pageId, player.Details.Rank, player.IsSubscribed);
+            var cataloguePage = CatalogueManager.Instance.GetPage(pageId, avatar.Details.Rank, avatar.IsSubscribed);
 
             if (cataloguePage == null)
                 return;
@@ -24,7 +24,7 @@ namespace Helios.Messages.Incoming
             if (catalogueItem == null)
             {
                 if (SubscriptionManager.Instance.IsSubscriptionItem(pageId, itemId))
-                    SubscriptionManager.Instance.PurchaseClub(player, pageId, itemId);
+                    SubscriptionManager.Instance.PurchaseClub(avatar, pageId, itemId);
 
                 return;
             }
@@ -65,34 +65,34 @@ namespace Helios.Messages.Incoming
             int priceSeasonal = catalogueItem.Data.PriceSeasonal * (amount - totalDiscountedItems);
 
             // Continue standard purchase
-            if (priceCoins > player.Details.Credits)
+            if (priceCoins > avatar.Details.Credits)
             {
-                player.Send(new NoCreditsComposer(true, false));
+                avatar.Send(new NoCreditsComposer(true, false));
                 return;
             }
 
-            if (priceSeasonal > player.Currency.GetBalance(catalogueItem.Data.SeasonalType))
+            if (priceSeasonal > avatar.Currency.GetBalance(catalogueItem.Data.SeasonalType))
             {
-                player.Send(new NoCreditsComposer(false, true, catalogueItem.Data.SeasonalType));
+                avatar.Send(new NoCreditsComposer(false, true, catalogueItem.Data.SeasonalType));
                 return;
             }
 
             // Update credits of user
             if (priceCoins > 0)
             {
-                player.Currency.ModifyCredits(-priceCoins);
-                player.Currency.UpdateCredits();
+                avatar.Currency.ModifyCredits(-priceCoins);
+                avatar.Currency.UpdateCredits();
             }
 
             // Update seasonal currency
             if (priceSeasonal > 0)
             {
-                player.Currency.AddBalance(catalogueItem.Data.SeasonalType, -priceSeasonal);
-                player.Currency.UpdateCurrency(catalogueItem.Data.SeasonalType, false);
-                player.Currency.SaveCurrencies();
+                avatar.Currency.AddBalance(catalogueItem.Data.SeasonalType, -priceSeasonal);
+                avatar.Currency.UpdateCurrency(catalogueItem.Data.SeasonalType, false);
+                avatar.Currency.SaveCurrencies();
             }
 
-            CatalogueManager.Instance.Purchase(player.Details.Id, catalogueItem.Data.Id, amount, extraData, DateUtil.GetUnixTimestamp());
+            CatalogueManager.Instance.Purchase(avatar.Details.Id, catalogueItem.Data.Id, amount, extraData, DateUtil.GetUnixTimestamp());
         }
     }
 }

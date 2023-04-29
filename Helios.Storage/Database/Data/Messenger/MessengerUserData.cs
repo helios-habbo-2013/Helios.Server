@@ -2,9 +2,9 @@
 {
     public class MessengerUserData
     {
-        public virtual int UserId { get; set; }
+        public virtual int AvatarId { get; set; }
         public virtual int FriendId { get; set; }
-        public virtual PlayerData FriendData { get; set; }
+        public virtual AvatarData FriendData { get; set; }
 
         public override bool Equals(object obj)
         {
@@ -17,7 +17,7 @@
                 return false;
 
             if (FriendId == t.FriendId &&
-                UserId == t.UserId)
+                AvatarId == t.AvatarId)
                 return true;
 
             return false;

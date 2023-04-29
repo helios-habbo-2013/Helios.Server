@@ -11,24 +11,24 @@ namespace Helios.Messages.Incoming
 {
     class DeleteStickieMessageEvent : IMessageEvent
     {
-        public void Handle(Player player, Request request)
+        public void Handle(Avatar avatar, Request request)
         {
             int itemId = request.ReadInt();
 
-            if (player.RoomUser.Room == null)
+            if (avatar.RoomUser.Room == null)
                 return;
 
-            Room room = player.RoomUser.Room;
+            Room room = avatar.RoomUser.Room;
 
             if (room == null)
                 return;
 
             Item item = room.ItemManager.GetItem(itemId);
 
-            if (item == null && item.Data.OwnerId != player.Details.Id && !room.IsOwner(player.Details.Id)) // TODO: Staff check
+            if (item == null && item.Data.OwnerId != avatar.Details.Id && !room.IsOwner(avatar.Details.Id)) // TODO: Staff check
                 return;
 
-            room.FurnitureManager.RemoveItem(item, player);
+            room.FurnitureManager.RemoveItem(item, avatar);
 
             ItemDao.DeleteItem(item.Data);
         }

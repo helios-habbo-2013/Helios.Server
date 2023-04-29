@@ -11,9 +11,9 @@ using System.Text;
 
 namespace Helios.Game
 {
-    public class PlayerTaskObject : ITaskObject
+    public class AvatarTaskObject : ITaskObject
     {
-        private class PlayerAttribute
+        private class AvatarAttribute
         {
             public const string TYPING_STATUS = "TYPING_STATUS";
             public const string EFFECT_EXPIRY = "EFFECT_EXPIRY";
@@ -27,7 +27,7 @@ namespace Helios.Game
 
         #region Constructor
 
-        public PlayerTaskObject(IEntity entity) : base(entity) { }
+        public AvatarTaskObject(IEntity entity) : base(entity) { }
 
         #endregion
 
@@ -42,11 +42,11 @@ namespace Helios.Game
         public override void OnTick() { }
         public override void OnTickComplete()
         {
-            if (!EventQueue.ContainsKey(PlayerAttribute.TYPING_STATUS))
-                QueueEvent(PlayerAttribute.TYPING_STATUS, 1.0, ProcessTypingStatus, null);
+            if (!EventQueue.ContainsKey(AvatarAttribute.TYPING_STATUS))
+                QueueEvent(AvatarAttribute.TYPING_STATUS, 1.0, ProcessTypingStatus, null);
 
-            if (!EventQueue.ContainsKey(PlayerAttribute.EFFECT_EXPIRY))
-                QueueEvent(PlayerAttribute.EFFECT_EXPIRY, 1.0, ProcessEffectExpiry, null);
+            if (!EventQueue.ContainsKey(AvatarAttribute.EFFECT_EXPIRY))
+                QueueEvent(AvatarAttribute.EFFECT_EXPIRY, 1.0, ProcessEffectExpiry, null);
 
             TicksTimer = RoomTaskManager.GetProcessTime(0.5);
         }
@@ -56,12 +56,12 @@ namespace Helios.Game
         /// </summary>
         public void ProcessTypingStatus(QueuedEvent queuedEvent)
         {
-            if (Entity is Player player)
+            if (Entity is Avatar avatar)
             {
-                if (player.RoomUser.TimerManager.SpeechBubbleDate != -1 && DateUtil.GetUnixTimestamp() > player.RoomUser.TimerManager.SpeechBubbleDate)
+                if (avatar.RoomUser.TimerManager.SpeechBubbleDate != -1 && DateUtil.GetUnixTimestamp() > avatar.RoomUser.TimerManager.SpeechBubbleDate)
                 {
-                    player.RoomUser.TimerManager.ResetSpeechBubbleTimer();
-                    player.RoomUser.Room.Send(new TypingStatusComposer(player.RoomUser.InstanceId, false));
+                    avatar.RoomUser.TimerManager.ResetSpeechBubbleTimer();
+                    avatar.RoomUser.Room.Send(new TypingStatusComposer(avatar.RoomUser.InstanceId, false));
                 }
             }
         }
@@ -72,9 +72,9 @@ namespace Helios.Game
         /// </summary>
         public void ProcessEffectExpiry(QueuedEvent queuedEvent)
         {
-            if (Entity is Player player)
+            if (Entity is Avatar avatar)
             {
-                foreach (var effect in player.EffectManager.Effects.Where(x => x.Value.Data.IsActivated && x.Value.Data.ExpiresAt != null && DateTime.Now > x.Value.Data.ExpiresAt).ToList())
+                foreach (var effect in avatar.EffectManager.Effects.Where(x => x.Value.Data.IsActivated && x.Value.Data.ExpiresAt != null && DateTime.Now > x.Value.Data.ExpiresAt).ToList())
                 {
                     if (effect.Value.Data.Quantity > 0)
                         effect.Value.Data.Quantity--;
@@ -83,7 +83,7 @@ namespace Helios.Game
 
                     if (effect.Value.Data.Quantity == 0)
                     {
-                        player.EffectManager.Effects.Remove(effect.Value.Id);
+                        avatar.EffectManager.Effects.Remove(effect.Value.Id);
                         EffectDao.DeleteEffect(effect.Value.Data);
                     }
                     else
@@ -91,10 +91,10 @@ namespace Helios.Game
                         EffectDao.UpdateEffect(effect.Value.Data);
                     }
 
-                    player.Send(new EffectExpiredMessageComposer(effect.Value.Id));
+                    avatar.Send(new EffectExpiredMessageComposer(effect.Value.Id));
 
-                    if (player.RoomEntity.EffectId == effect.Value.Id)
-                        player.RoomEntity.UseEffect(0);
+                    if (avatar.RoomEntity.EffectId == effect.Value.Id)
+                        avatar.RoomEntity.UseEffect(0);
                 }
             }
         }

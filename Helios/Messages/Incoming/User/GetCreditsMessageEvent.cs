@@ -5,10 +5,10 @@ namespace Helios.Messages.Incoming
 {
     class GetCreditsMessageEvent : IMessageEvent
     {
-        public void Handle(Player player, Request request)
+        public void Handle(Avatar avatar, Request request)
         {
-            player.Currency.UpdateCredits();
-            player.Currency.UpdateCurrencies();
+            avatar.Currency.UpdateCredits();
+            avatar.Currency.UpdateCurrencies();
         }
     }
 }

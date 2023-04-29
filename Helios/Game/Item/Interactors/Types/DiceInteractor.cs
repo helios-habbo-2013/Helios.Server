@@ -36,7 +36,7 @@ namespace Helios.Game
         #endregion
 
         /// <summary>
-        /// Find closest sourrounding avaliable tile for player
+        /// Find closest sourrounding avaliable tile for avatar
         /// </summary>
         public override bool OnWalkRequest(IEntity entity, Position goal)
         {

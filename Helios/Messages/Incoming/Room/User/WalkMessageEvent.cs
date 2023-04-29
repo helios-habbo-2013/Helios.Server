@@ -5,15 +5,15 @@ namespace Helios.Messages.Incoming
 {
     class WalkMessageEvent : IMessageEvent
     {
-        public void Handle(Player player, Request request)
+        public void Handle(Avatar avatar, Request request)
         {
-            if (!player.RoomUser.WalkingAllowed)
+            if (!avatar.RoomUser.WalkingAllowed)
                 return;
 
             int x = request.ReadInt();
             int y = request.ReadInt();
 
-            player.RoomUser.Move(x, y);
+            avatar.RoomUser.Move(x, y);
         }
     }
 }

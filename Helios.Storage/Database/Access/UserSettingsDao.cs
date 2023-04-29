@@ -7,31 +7,31 @@ namespace Helios.Storage.Database.Access
     public class UserSettingsDao
     {
         /// <summary>
-        /// Create player statistics
+        /// Create avatar statistics
         /// </summary>
-        public static void CreateOrUpdate(out PlayerSettingsData settingsData, int userId)
+        public static void CreateOrUpdate(out AvatarSettingsData settingsData, int AvatarId)
         {
-            settingsData = new PlayerSettingsData
+            settingsData = new AvatarSettingsData
             {
-                UserId = userId
+                AvatarId = AvatarId
             };
 
             using (var context = new StorageContext())
             {
-                if (!context.PlayerSettingsData.Any(x => x.UserId == userId))
+                if (!context.AvatarSettingsData.Any(x => x.AvatarId == AvatarId))
                 {
-                    context.PlayerSettingsData.Add(settingsData);
+                    context.AvatarSettingsData.Add(settingsData);
                     context.SaveChanges();
                 } 
                 else
                 {
-                    settingsData = context.PlayerSettingsData.SingleOrDefault(x => x.UserId == userId);
+                    settingsData = context.AvatarSettingsData.SingleOrDefault(x => x.AvatarId == AvatarId);
                 }
             }
 
             //using (var session = SessionFactoryBuilder.Instance.SessionFactory.OpenSession())
             //{
-            //    bool rowExists = session.QueryOver<PlayerSettingsData>().Where(x => x.UserId == userId).RowCount() > 0;
+            //    bool rowExists = session.QueryOver<AvatarSettingsData>().Where(x => x.AvatarId == AvatarId).RowCount() > 0;
 
             //    if (!rowExists)
             //    {
@@ -50,19 +50,19 @@ namespace Helios.Storage.Database.Access
             //    } 
             //    else
             //    {
-            //        settingsData = session.QueryOver<PlayerSettingsData>().Where(x => x.UserId == userId).SingleOrDefault();
+            //        settingsData = session.QueryOver<AvatarSettingsData>().Where(x => x.AvatarId == AvatarId).SingleOrDefault();
             //    }
             //}
         }
 
         /// <summary>
-        /// Save player statistics
+        /// Save avatar statistics
         /// </summary>
-        public static void Update(PlayerSettingsData settingsData)
+        public static void Update(AvatarSettingsData settingsData)
         {
             using (var context = new StorageContext())
             {
-                context.PlayerSettingsData.Update(settingsData);
+                context.AvatarSettingsData.Update(settingsData);
                 context.SaveChanges();
             }
         }

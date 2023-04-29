@@ -8,17 +8,17 @@ namespace Helios.Messages.Incoming
 {
     class EffectSelectedMessageEvent : IMessageEvent
     {
-        public void Handle(Player player, Request request)
+        public void Handle(Avatar avatar, Request request)
         {
             int effectId = request.ReadInt();
 
             if (effectId < 0)
                 effectId = 0;
 
-            if (effectId != 0 && !player.EffectManager.Effects.ContainsKey(effectId))
+            if (effectId != 0 && !avatar.EffectManager.Effects.ContainsKey(effectId))
                 return;
 
-            player.RoomEntity.UseEffect(effectId);
+            avatar.RoomEntity.UseEffect(effectId);
         }
     }
 }

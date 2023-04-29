@@ -57,17 +57,17 @@ namespace Helios.Game
         /// <summary>
         /// Get if the user has rights
         /// </summary>
-        public bool HasRights(int userId, bool checkOwner = true)
+        public bool HasRights(int AvatarId, bool checkOwner = true)
         {
             if (checkOwner)
-                if (Data.OwnerId == userId)
+                if (Data.OwnerId == AvatarId)
                     return true;
 
-            var player = PlayerManager.Instance.GetPlayerById(userId);
+            var avatar = AvatarManager.Instance.GetAvatarById(AvatarId);
 
-            if (player != null)
+            if (avatar != null)
             {
-                if (player.UserGroup.HasPermission("room.rights"))
+                if (avatar.UserGroup.HasPermission("room.rights"))
                     return true;
             }
 
@@ -77,16 +77,16 @@ namespace Helios.Game
         /// <summary>
         /// Get if the user is owner
         /// </summary>
-        public bool IsOwner(int userId)
+        public bool IsOwner(int AvatarId)
         {
-            if (Data.OwnerId == userId)
+            if (Data.OwnerId == AvatarId)
                 return true;
 
-            var player = PlayerManager.Instance.GetPlayerById(userId);
+            var avatar = AvatarManager.Instance.GetAvatarById(AvatarId);
 
-            if (player != null)
+            if (avatar != null)
             {
-                if (player.UserGroup.HasPermission("room.owner"))
+                if (avatar.UserGroup.HasPermission("room.owner"))
                     return true;
             }
 
@@ -95,13 +95,13 @@ namespace Helios.Game
 
 
         /// <summary>
-        /// Try and dispose, only if it has 0 players active.
+        /// Try and dispose, only if it has 0 avatars active.
         /// </summary>
         public void TryDispose()
         {
-            var playerList = EntityManager.GetEntities<Player>();
+            var avatarList = EntityManager.GetEntities<Avatar>();
 
-            if (playerList.Any())
+            if (avatarList.Any())
                 return;
 
             TaskManager.StopTasks();
@@ -111,15 +111,15 @@ namespace Helios.Game
         }
 
         /// <summary>
-        /// Send packet to entire player list in room
+        /// Send packet to entire avatar list in room
         /// </summary>
-        public void Send(IMessageComposer composer, List<Player> specificUsers = null)
+        public void Send(IMessageComposer composer, List<Avatar> specificUsers = null)
         {
             if (specificUsers == null)
-                specificUsers = EntityManager.GetEntities<Player>();
+                specificUsers = EntityManager.GetEntities<Avatar>();
 
-            foreach (var player in specificUsers)
-                player.Send(composer);
+            foreach (var avatar in specificUsers)
+                avatar.Send(composer);
         }
 
         /// <summary>
@@ -128,14 +128,14 @@ namespace Helios.Game
         /// <param name="entity"></param>
         public void Forward(IEntity entity)
         {
-            if (!(entity is Player))
+            if (!(entity is Avatar))
             {
                 return;
             }
 
-            var player = (Player)entity;
+            var avatar = (Avatar)entity;
             
-            player.Send(new RoomForwardComposer(Data.Id, Data.IsPublicRoom));
+            avatar.Send(new RoomForwardComposer(Data.Id, Data.IsPublicRoom));
         }
 
         #endregion

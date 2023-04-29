@@ -6,7 +6,7 @@ namespace Helios.Messages.Incoming
 {
     class OpenFlatConnectionMessageEvent : IMessageEvent
     {
-        public void Handle(Player player, Request request)
+        public void Handle(Avatar avatar, Request request)
         {
             int roomId = request.ReadInt();
             string password = request.ReadString();
@@ -19,7 +19,7 @@ namespace Helios.Messages.Incoming
 
             if (room != null)
             {
-                player.Send(new OpenConnectionComposer(roomId, room.Data.CategoryId));
+                avatar.Send(new OpenConnectionComposer(roomId, room.Data.CategoryId));
             }
         }
     }

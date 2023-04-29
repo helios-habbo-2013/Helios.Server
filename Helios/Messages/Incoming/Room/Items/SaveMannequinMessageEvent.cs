@@ -9,21 +9,21 @@ namespace Helios.Messages.Outgoing
 {
     class SaveMannequinMessageEvent : IMessageEvent
     {
-        public void Handle(Player player, Request request)
+        public void Handle(Avatar avatar, Request request)
         {
-            if (player.RoomUser.Room == null)
+            if (avatar.RoomUser.Room == null)
                 return;
 
-            Room room = player.RoomUser.Room;
+            Room room = avatar.RoomUser.Room;
             Item item = room.ItemManager.GetItem(request.ReadInt());
 
             if (item == null || item.Definition.InteractorType != InteractorType.MANNEQUIN)
                 return;
 
-            if (string.IsNullOrEmpty(player.Details.Figure))
+            if (string.IsNullOrEmpty(avatar.Details.Figure))
                 return;
 
-            if (!room.IsOwner(player.Details.Id))
+            if (!room.IsOwner(avatar.Details.Id))
                 return;
 
             string mannequinName = request.ReadString().FilterInput(true);
@@ -33,8 +33,8 @@ namespace Helios.Messages.Outgoing
 
             item.Interactor.SetJsonObject(new MannequinExtraData()
             {
-                Figure = player.Details.Figure,
-                Gender = player.Details.Sex,
+                Figure = avatar.Details.Figure,
+                Gender = avatar.Details.Sex,
                 OutfitName = mannequinName
             });
 

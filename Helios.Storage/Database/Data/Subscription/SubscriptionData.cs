@@ -5,7 +5,7 @@ namespace Helios.Storage.Database.Data
 {
     public class SubscriptionData
     {
-        public virtual int UserId { get; set; }
+        public virtual int AvatarId { get; set; }
         public virtual DateTime SubscribedDate { get; set; }
         public virtual DateTime ExpireDate { get; set; }
         public virtual int GiftsRedeemable { get; set; }

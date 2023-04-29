@@ -1,9 +1,9 @@
 ﻿
 namespace Helios.Storage.Database.Data
 {
-    public class PlayerSettingsData 
+    public class AvatarSettingsData 
     {
-        public virtual int UserId { get; set; }
+        public virtual int AvatarId { get; set; }
         public virtual int Respect { get; set; }
         public virtual int DailyRespectPoints { get; set; }
         public virtual int DailyPetRespectPoints { get; set; }
@@ -13,7 +13,7 @@ namespace Helios.Storage.Database.Data
 
         #region Constraints
 
-        public virtual PlayerData PlayerData { get; set; }
+        public virtual AvatarData AvatarData { get; set; }
 
         #endregion
     }

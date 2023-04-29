@@ -64,21 +64,21 @@ namespace Helios.Game
         /// <summary>
         /// Chat message handling
         /// </summary>
-        public void Talk(ChatMessageType chatMessageType, string chatMsg, int colourId = 0, List<Player> recieveMessages = null)
+        public void Talk(ChatMessageType chatMessageType, string chatMsg, int colourId = 0, List<Avatar> recieveMessages = null)
         {
             if (recieveMessages == null)
-                recieveMessages = Room.EntityManager.GetEntities<Player>();
+                recieveMessages = Room.EntityManager.GetEntities<Avatar>();
 
             // Send talk message to room
-            foreach (Player player in recieveMessages)
+            foreach (Avatar avatar in recieveMessages)
             {
                 switch (chatMessageType)
                 {
                     case ChatMessageType.SHOUT:
-                        player.Send(new ShoutMessageComposer(InstanceId, chatMsg, colourId, GetChatGesture(chatMsg)));
+                        avatar.Send(new ShoutMessageComposer(InstanceId, chatMsg, colourId, GetChatGesture(chatMsg)));
                         break;
                     case ChatMessageType.CHAT:
-                        player.Send(new ChatMessageComposer(InstanceId, chatMsg, colourId, GetChatGesture(chatMsg)));
+                        avatar.Send(new ChatMessageComposer(InstanceId, chatMsg, colourId, GetChatGesture(chatMsg)));
                         break;
                 }
             }

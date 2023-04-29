@@ -4,7 +4,7 @@ namespace Helios.Storage.Database.Data
 {
     public class EffectData
     {
-        public virtual int UserId { get; set; }
+        public virtual int AvatarId { get; set; }
         public virtual int EffectId { get; set; }
         public virtual DateTime? ExpiresAt { get; set; }
         public virtual int Quantity { get; set; }
@@ -20,7 +20,7 @@ namespace Helios.Storage.Database.Data
             if (t == null)
                 return false;
 
-            if (UserId == t.UserId && EffectId == t.EffectId)
+            if (AvatarId == t.AvatarId && EffectId == t.EffectId)
                 return true;
 
             return false;

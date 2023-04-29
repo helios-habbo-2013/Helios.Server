@@ -11,17 +11,17 @@ namespace Helios.Messages.Incoming
 {
     class ApplyDecorationMessageEvent : IMessageEvent
     {
-        public void Handle(Player player, Request request)
+        public void Handle(Avatar avatar, Request request)
         {
-            if (player.RoomUser.Room == null)
+            if (avatar.RoomUser.Room == null)
                 return;
 
-            Room room = player.RoomUser.Room;
+            Room room = avatar.RoomUser.Room;
 
-            if (room == null || !room.IsOwner(player.Details.Id))
+            if (room == null || !room.IsOwner(avatar.Details.Id))
                 return;
 
-            Item item = player.Inventory.GetItem(request.ReadInt());
+            Item item = avatar.Inventory.GetItem(request.ReadInt());
 
             if (item == null || item.Definition.InteractorType != InteractorType.DECORATION)
                 return;
@@ -42,8 +42,8 @@ namespace Helios.Messages.Incoming
                     break;
             }
 
-            player.Inventory.RemoveItem(item);
-            player.Send(new FurniListRemoveComposer(item.Id));
+            avatar.Inventory.RemoveItem(item);
+            avatar.Send(new FurniListRemoveComposer(item.Id));
 
             RoomDao.SaveRoom(room.Data);
             ItemDao.DeleteItem(item.Data);

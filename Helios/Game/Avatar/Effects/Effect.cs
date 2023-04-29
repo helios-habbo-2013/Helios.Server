@@ -10,7 +10,7 @@ namespace Helios.Game
 
         public int Id => Data.EffectId;
         public EffectData Data { get; set; }
-        private Player player { get; }
+        private Avatar avatar { get; }
         public int Duration => CatalogueManager.Instance.GetEffectSetting(Id).Duration;
         public bool IsCostume => CatalogueManager.Instance.GetEffectSetting(Id).IsCostume;
 
@@ -34,7 +34,7 @@ namespace Helios.Game
 
         public Effect(EffectData effectData)
         {
-            this.player = player;
+            this.avatar = avatar;
             this.Data = effectData;
         }
 

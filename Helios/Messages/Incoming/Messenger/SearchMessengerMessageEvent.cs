@@ -11,17 +11,17 @@ namespace Helios.Messages.Incoming
 {
     class SearchMessengerMessageEvent : IMessageEvent
     {
-        public void Handle(Player player, Request request)
+        public void Handle(Avatar avatar, Request request)
         {
-            List<PlayerData> resultSet = MessengerDao.SearchMessenger(request.ReadString().FilterInput(), player.Details.Id);
+            List<AvatarData> resultSet = MessengerDao.SearchMessenger(request.ReadString().FilterInput(), avatar.Details.Id);
 
-            var friends = resultSet.Where(data => player.Messenger.HasFriend(data.Id))
+            var friends = resultSet.Where(data => avatar.Messenger.HasFriend(data.Id))
                 .Select(data => new MessengerUser(data)).ToList();
 
-            var users = resultSet.Where(data => !player.Messenger.HasFriend(data.Id))
+            var users = resultSet.Where(data => !avatar.Messenger.HasFriend(data.Id))
                 .Select(data => new MessengerUser(data)).ToList();
 
-            player.Send(new SearchMessengerComposer(friends, users));
+            avatar.Send(new SearchMessengerComposer(friends, users));
         }
     }
 }

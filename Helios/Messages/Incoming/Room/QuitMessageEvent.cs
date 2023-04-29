@@ -5,15 +5,15 @@ namespace Helios.Messages.Incoming
 {
     class QuitMessageEvent : IMessageEvent
     {
-        public void Handle(Player player, Request request)
+        public void Handle(Avatar avatar, Request request)
         {
-            if (player.RoomUser.Room == null)
+            if (avatar.RoomUser.Room == null)
                 return;
 
-            player.RoomUser.AuthenticateRoomId = -1;
-            player.RoomUser.AuthenticateTeleporterId = null;
+            avatar.RoomUser.AuthenticateRoomId = -1;
+            avatar.RoomUser.AuthenticateTeleporterId = null;
 
-            player.RoomUser.Room.EntityManager.LeaveRoom(player, true);
+            avatar.RoomUser.Room.EntityManager.LeaveRoom(avatar, true);
         }
     }
 }

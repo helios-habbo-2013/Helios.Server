@@ -10,14 +10,14 @@ namespace Helios.Messages.Incoming
 {
     class GetMoodlightConfigEvent : IMessageEvent
     {
-        public void Handle(Player player, Request request)
+        public void Handle(Avatar avatar, Request request)
         {
-            if (player.RoomUser.Room == null)
+            if (avatar.RoomUser.Room == null)
                 return;
 
-            Room room = player.RoomUser.Room;
+            Room room = avatar.RoomUser.Room;
 
-            if (room == null || !room.IsOwner(player.Details.Id))
+            if (room == null || !room.IsOwner(avatar.Details.Id))
                 return;
 
             Item moodlight = room.ItemManager.Items.Values.SingleOrDefault(x => x.Definition.InteractorType == InteractorType.ROOMDIMMER);
@@ -26,7 +26,7 @@ namespace Helios.Messages.Incoming
                 return;
 
             MoodlightExtraData moodlightData = (MoodlightExtraData)moodlight.Interactor.GetJsonObject();
-            player.Send(new MoodlightConfigComposer(moodlightData));
+            avatar.Send(new MoodlightConfigComposer(moodlightData));
         }
     }
 }

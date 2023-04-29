@@ -10,7 +10,7 @@ namespace Helios.Messages.Incoming
 {
     public class CreateRoomMessageEvent : IMessageEvent
     {
-        public void Handle(Player player, Request request)
+        public void Handle(Avatar avatar, Request request)
         {
             //  CreateRoomMessageEvent: 9 / [0][4]test[0][7]model_t
             string name = request.ReadString().FilterInput(true);
@@ -35,21 +35,21 @@ namespace Helios.Messages.Incoming
                     modelType != "l" &&
                     modelType != "m" &&
                     modelType != "n" &&
-                    !player.IsSubscribed)
+                    !avatar.IsSubscribed)
             {
                 return; // Fuck off, scripter.
             }
 
             RoomData roomData = new RoomData
             {
-                OwnerId = player.Details.Id,
+                OwnerId = avatar.Details.Id,
                 Name = name,
                 ModelId = roomModel.Data.Id,
                 Description = string.Empty
             };
 
             RoomDao.NewRoom(roomData);
-            player.Send(new FlatCreatedComposer(roomData.Id, roomData.Name));
+            avatar.Send(new FlatCreatedComposer(roomData.Id, roomData.Name));
         }
     }
 }

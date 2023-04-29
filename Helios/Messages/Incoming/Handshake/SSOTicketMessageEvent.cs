@@ -5,18 +5,18 @@ namespace Helios.Messages.Incoming
 {
     class SSOTicketMessageEvent : IMessageEvent
     {
-        public void Handle(Player player, Request request)
+        public void Handle(Avatar avatar, Request request)
         {
-            if (player.Authenticated)
+            if (avatar.Authenticated)
             {
-                player.Connection.Close();
+                avatar.Connection.Close();
                 return;
             }
 
             var ssoTicket = request.ReadString();
 
-            if (!player.TryLogin(ssoTicket))
-                player.Connection.Disconnect();
+            if (!avatar.TryLogin(ssoTicket))
+                avatar.Connection.Disconnect();
         }
     }
 }

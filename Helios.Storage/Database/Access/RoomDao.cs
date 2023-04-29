@@ -12,13 +12,13 @@ namespace Helios.Storage.Database.Access
             //using (var session = SessionFactoryBuilder.Instance.SessionFactory.OpenSession())
             //{
             //    RoomData roomDataAlias = null;
-            //    PlayerData playerDataAlias = null;
+            //    AvatarData avatarDataAlias = null;
             //    return session.QueryOver<RoomData>(() => roomDataAlias)
-            //        .JoinQueryOver<PlayerData>(() => roomDataAlias.OwnerData, () => playerDataAlias)
-            //            .Where(() => playerDataAlias.Id == roomDataAlias.OwnerId)
+            //        .JoinQueryOver<AvatarData>(() => roomDataAlias.OwnerData, () => avatarDataAlias)
+            //            .Where(() => avatarDataAlias.Id == roomDataAlias.OwnerId)
             //        .Where(
             //            Restrictions.On(() => roomDataAlias.Name).IsInsensitiveLike(query, MatchMode.Anywhere) ||
-            //            Restrictions.On(() => playerDataAlias.Name).IsInsensitiveLike(query, MatchMode.Anywhere))
+            //            Restrictions.On(() => avatarDataAlias.Name).IsInsensitiveLike(query, MatchMode.Anywhere))
             //        .OrderBy(() => roomDataAlias.UsersNow).Desc
             //        .OrderBy(() => roomDataAlias.Rating).Desc
             //        .Take(roomLimit)
@@ -51,11 +51,11 @@ namespace Helios.Storage.Database.Access
             //{
             //    RoomData roomDataAlias = null;
             //    TagData tagAlias = null;
-            //    PlayerData ownerAlias = null;
+            //    AvatarData ownerAlias = null;
 
             //    return session.QueryOver<RoomData>(() => roomDataAlias)
             //        .JoinQueryOver<TagData>(() => roomDataAlias.Tags, () => tagAlias)
-            //        .JoinQueryOver<PlayerData>(() => roomDataAlias.OwnerData, () => ownerAlias)
+            //        .JoinQueryOver<AvatarData>(() => roomDataAlias.OwnerData, () => ownerAlias)
             //        .Where(() => 
             //            tagAlias.Text == tag &&
             //            ownerAlias.Name != null)
@@ -89,11 +89,11 @@ namespace Helios.Storage.Database.Access
             //using (var session = SessionFactoryBuilder.Instance.SessionFactory.OpenSession())
             //{
             //    RoomData roomDataAlias = null;
-            //    PlayerData playerDataAlias = null;
+            //    AvatarData avatarDataAlias = null;
 
             //    return session.QueryOver<RoomData>(() => roomDataAlias)
-            //        .JoinQueryOver<PlayerData>(() => roomDataAlias.OwnerData, () => playerDataAlias)
-            //            .Where(() => playerDataAlias.Id == roomDataAlias.OwnerId)
+            //        .JoinQueryOver<AvatarData>(() => roomDataAlias.OwnerData, () => avatarDataAlias)
+            //            .Where(() => avatarDataAlias.Id == roomDataAlias.OwnerId)
             //        .OrderBy(() => roomDataAlias.UsersNow).Desc
             //        .OrderBy(() => roomDataAlias.Rating).Desc
             //        .Take(resultsLimit)
@@ -118,14 +118,14 @@ namespace Helios.Storage.Database.Access
         /// <summary>
         /// Get the list of users' own rooms
         /// </summary>
-        public static List<RoomData> GetUserRooms(int userId)
+        public static List<RoomData> GetUserRooms(int AvatarId)
         {
             //using (var session = SessionFactoryBuilder.Instance.SessionFactory.OpenSession())
             //{
             //    RoomData roomDataAlias = null;
 
             //    return session.QueryOver<RoomData>(() => roomDataAlias)
-            //        .Where(() => roomDataAlias.OwnerId == userId)
+            //        .Where(() => roomDataAlias.OwnerId == AvatarId)
             //        .OrderBy(() => roomDataAlias.UsersNow).Desc
             //        .OrderBy(() => roomDataAlias.Rating).Desc
             //        .List() as List<RoomData>;
@@ -137,7 +137,7 @@ namespace Helios.Storage.Database.Access
                     .Include(x => x.OwnerData)
                     .Include(x => x.Category)
                     .Include(x => x.Tags)
-                    .Where(x => x.OwnerId == userId)
+                    .Where(x => x.OwnerId == AvatarId)
                     .OrderByDescending(x => x.UsersNow)
                     .OrderByDescending(x => x.Rating)
                     .ToList();
@@ -165,16 +165,16 @@ namespace Helios.Storage.Database.Access
         /// <summary>
         /// Count the rooms the user has.
         /// </summary>
-        public static int CountUserRooms(int userId)
+        public static int CountUserRooms(int AvatarId)
         {
             //using (var session = SessionFactoryBuilder.Instance.SessionFactory.OpenSession())
             //{
-            //    return session.QueryOver<RoomData>().Where(x => x.OwnerId == userId).RowCount();
+            //    return session.QueryOver<RoomData>().Where(x => x.OwnerId == AvatarId).RowCount();
             //}
 
             using (var context = new StorageContext())
             {
-                return context.RoomData.Count(x => x.OwnerId == userId);
+                return context.RoomData.Count(x => x.OwnerId == AvatarId);
             }
         }
 

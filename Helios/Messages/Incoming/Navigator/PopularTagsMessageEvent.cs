@@ -7,9 +7,9 @@ namespace Helios.Messages.Incoming
 {
     public class PopularTagsMessageEvent : IMessageEvent
     {
-        public void Handle(Player player, Request request)
+        public void Handle(Avatar avatar, Request request)
         {
-            player.Send(new PopularTagsComposer(TagDao.GetPopularTags()));
+            avatar.Send(new PopularTagsComposer(TagDao.GetPopularTags()));
         }
     }
 }

@@ -6,7 +6,7 @@ namespace Helios.Messages.Incoming
 {
     class LoadPublicRoomMessageEvent : IMessageEvent
     {
-        public void Handle(Player player, Request request)
+        public void Handle(Avatar avatar, Request request)
         {
             request.ReadBoolean();
             var room = RoomManager.Instance.GetRoom(request.ReadInt());
@@ -17,9 +17,9 @@ namespace Helios.Messages.Incoming
             if (!room.Data.IsPublicRoom)
                 return;
 
-            player.Send(new OpenConnectionComposer(room.Data.Id, room.Data.CategoryId));
+            avatar.Send(new OpenConnectionComposer(room.Data.Id, room.Data.CategoryId));
 
-            room.EntityManager.EnterRoom(player);
+            room.EntityManager.EnterRoom(avatar);
         }
     }
 }

@@ -19,9 +19,9 @@ namespace Helios.Messages.Outgoing
 
             foreach (var request in requests)
             {
-                m_Data.Add(request.PlayerData.Id);
-                m_Data.Add(request.PlayerData.Name);
-                m_Data.Add(request.PlayerData.Figure);
+                m_Data.Add(request.AvatarData.Id);
+                m_Data.Add(request.AvatarData.Name);
+                m_Data.Add(request.AvatarData.Figure);
             }
         }
     }

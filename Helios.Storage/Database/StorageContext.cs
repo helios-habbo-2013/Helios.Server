@@ -16,7 +16,7 @@ namespace Helios.Storage.Database
 
         private static readonly StorageContext m_SessionFactoryBuilder = new StorageContext();
 
-        public DbSet<PlayerData> PlayerData { get; set; }
+        public DbSet<AvatarData> AvatarData { get; set; }
         public DbSet<AuthenicationTicketData> AuthenicationTicketData { get; set; }
         public DbSet<SettingsData> SettingsData { get; set; }
         public DbSet<ItemData> ItemData { get; set; }
@@ -24,7 +24,7 @@ namespace Helios.Storage.Database
         public DbSet<MessengerFriendData> MessengerFriendData { get; set; }
         public DbSet<MessengerRequestData> MessengerRequestData { get; set; }
         public DbSet<MessengerCategoryData> MessengerCategoryData { get; set; }
-        public DbSet<PlayerSettingsData> PlayerSettingsData { get; set; }
+        public DbSet<AvatarSettingsData> AvatarSettingsData { get; set; }
         public DbSet<CataloguePageData> CataloguePageData { get; set; }
         public DbSet<CatalogueItemData> CatalogueItemData { get; set; }
         public DbSet<CatalogueDiscountData> CatalogueDiscountData { get; set; }
@@ -64,9 +64,9 @@ namespace Helios.Storage.Database
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<PlayerData>(entity =>
+            modelBuilder.Entity<AvatarData>(entity =>
             {
-                entity.ToTable("user");
+                entity.ToTable("avatar");
                 entity.HasKey(x => x.Id);
                 entity.Property(x => x.Id).HasColumnName("id");
                 entity.Property(x => x.Name).HasColumnName("username");
@@ -75,7 +75,7 @@ namespace Helios.Storage.Database
                 entity.Property(x => x.Rank).HasColumnName("rank").HasDefaultValue();
                 entity.Property(x => x.Credits).HasColumnName("credits").HasDefaultValue();
                 entity.Property(x => x.Motto).HasColumnName("motto").HasDefaultValue();
-                entity.Property(x => x.JoinDate).HasColumnName("join_date").HasDefaultValue();
+                entity.Property(x => x.CreatedDate).HasColumnName("created_date").HasDefaultValue();
                 entity.Property(x => x.LastOnline).HasColumnName("last_online").HasDefaultValue();
 
                 entity.Ignore(x => x.AchievementPoints);
@@ -86,17 +86,17 @@ namespace Helios.Storage.Database
             modelBuilder.Entity<AuthenicationTicketData>(entity =>
             {
                 entity.ToTable("authentication_ticket");
-                entity.HasKey(x => new { x.Ticket, x.UserId });
+                entity.HasKey(x => new { x.Ticket, x.AvatarId });
 
-                entity.Property(x => x.UserId).HasColumnName("user_id");
+                entity.Property(x => x.AvatarId).HasColumnName("avatar_id");
                 entity.Property(x => x.Ticket).HasColumnName("sso_ticket");
                 entity.Property(x => x.ExpireDate).HasColumnName("expires_at");
             });
 
             modelBuilder.Entity<AuthenicationTicketData>()
-                .HasOne(e => e.PlayerData)
+                .HasOne(e => e.AvatarData)
                 .WithMany(c => c.Tickets)
-                .HasForeignKey(x => x.UserId);
+                .HasForeignKey(x => x.AvatarId);
 
             modelBuilder.Entity<SettingsData>(entity =>
             {
@@ -112,7 +112,7 @@ namespace Helios.Storage.Database
                 entity.HasKey(x => x.Id);
                 entity.Property(x => x.Id).HasColumnName("id");
                 entity.Property(x => x.OrderId).HasColumnName("order_id");
-                entity.Property(x => x.OwnerId).HasColumnName("user_id");
+                entity.Property(x => x.OwnerId).HasColumnName("avatar_id");
                 entity.Property(x => x.RoomId).HasColumnName("room_id").HasDefaultValue();
                 entity.Property(x => x.DefinitionId).HasColumnName("definition_id");
                 entity.Property(x => x.X).HasColumnName("x").HasDefaultValue();
@@ -151,9 +151,9 @@ namespace Helios.Storage.Database
             modelBuilder.Entity<MessengerFriendData>(entity =>
             {
                 entity.ToTable("messenger_friend");
-                entity.HasKey(x => new { x.UserId, x.FriendId });
+                entity.HasKey(x => new { x.AvatarId, x.FriendId });
 
-                entity.Property(x => x.UserId).HasColumnName("user_id");
+                entity.Property(x => x.AvatarId).HasColumnName("avatar_id");
                 entity.Property(x => x.FriendId).HasColumnName("friend_id");
 
                 entity.HasOne(e => e.FriendData)
@@ -165,9 +165,9 @@ namespace Helios.Storage.Database
             modelBuilder.Entity<MessengerRequestData>(entity =>
             {
                 entity.ToTable("messenger_request");
-                entity.HasKey(x => new { x.UserId, x.FriendId });
+                entity.HasKey(x => new { x.AvatarId, x.FriendId });
 
-                entity.Property(x => x.UserId).HasColumnName("user_id");
+                entity.Property(x => x.AvatarId).HasColumnName("avatar_id");
                 entity.Property(x => x.FriendId).HasColumnName("friend_id");
 
                 entity.HasOne(e => e.FriendData)
@@ -178,18 +178,18 @@ namespace Helios.Storage.Database
             modelBuilder.Entity<MessengerCategoryData>(entity =>
             {
                 entity.ToTable("messenger_category");
-                entity.HasKey(x => new { x.UserId, x.Label });
+                entity.HasKey(x => new { x.AvatarId, x.Label });
 
-                entity.Property(x => x.UserId).HasColumnName("user_id");
+                entity.Property(x => x.AvatarId).HasColumnName("avatar_id");
                 entity.Property(x => x.Label).HasColumnName("label");
             });
 
             modelBuilder.Entity<MessengerChatData>(entity =>
             {
                 entity.ToTable("messenger_chat_history");
-                entity.HasKey(x => new { x.UserId, x.FriendId, x.Message });
+                entity.HasKey(x => new { x.AvatarId, x.FriendId, x.Message });
 
-                entity.Property(x => x.UserId).HasColumnName("user_id");
+                entity.Property(x => x.AvatarId).HasColumnName("avatar_id");
                 entity.Property(x => x.FriendId).HasColumnName("friend_id");
                 entity.Property(x => x.Message).HasColumnName("message");
                 entity.Property(x => x.IsRead).HasColumnName("has_read").HasDefaultValue();
@@ -197,11 +197,11 @@ namespace Helios.Storage.Database
             });
 
 
-            modelBuilder.Entity<PlayerSettingsData>(entity =>
+            modelBuilder.Entity<AvatarSettingsData>(entity =>
             {
-                entity.ToTable("user_settings");
-                entity.HasKey(x => x.UserId);
-                entity.Property(x => x.UserId).HasColumnName("user_id");
+                entity.ToTable("avatar_settings");
+                entity.HasKey(x => x.AvatarId);
+                entity.Property(x => x.AvatarId).HasColumnName("avatar_id");
                 entity.Property(x => x.Respect).HasColumnName("respect_points").HasDefaultValue();
                 entity.Property(x => x.DailyRespectPoints).HasColumnName("daily_respect_points").HasDefaultValue();
                 entity.Property(x => x.DailyPetRespectPoints).HasColumnName("daily_respect_pet_points").HasDefaultValue();
@@ -209,9 +209,9 @@ namespace Helios.Storage.Database
                 entity.Property(x => x.FollowingEnabled).HasColumnName("following_enabled").HasDefaultValue();
                 entity.Property(x => x.OnlineTime).HasColumnName("online_time").HasDefaultValue();
 
-                entity.HasOne(x => x.PlayerData)
+                entity.HasOne(x => x.AvatarData)
                     .WithOne(x => x.Settings)
-                    .HasForeignKey<PlayerSettingsData>(x => x.UserId);
+                    .HasForeignKey<AvatarSettingsData>(x => x.AvatarId);
 
             });
 
@@ -393,8 +393,8 @@ namespace Helios.Storage.Database
             modelBuilder.Entity<TagData>(entity =>
             {
                 entity.ToTable("tags");
-                entity.HasKey(x => new { x.UserId, x.RoomId, x.Text });
-                entity.Property(x => x.UserId).HasColumnName("user_id").HasDefaultValue();
+                entity.HasKey(x => new { x.AvatarId, x.RoomId, x.Text });
+                entity.Property(x => x.AvatarId).HasColumnName("avatar_id").HasDefaultValue();
                 entity.Property(x => x.RoomId).HasColumnName("room_id").HasDefaultValue();
                 entity.Property(x => x.Text).HasColumnName("text").HasDefaultValue();
 
@@ -419,9 +419,9 @@ namespace Helios.Storage.Database
 
             modelBuilder.Entity<CurrencyData>(entity =>
             {
-                entity.ToTable("user_seasonal_currencies");
-                entity.HasKey(x => new { x.UserId, x.SeasonalType });
-                entity.Property(x => x.UserId).HasColumnName("user_id");
+                entity.ToTable("avatar_seasonal_currencies");
+                entity.HasKey(x => new { x.AvatarId, x.SeasonalType });
+                entity.Property(x => x.AvatarId).HasColumnName("avatar_id");
                 entity.Property(x => x.SeasonalType).HasColumnName("seasonal_type")
                 .HasConversion(
                     v => v.ToString(),
@@ -432,9 +432,9 @@ namespace Helios.Storage.Database
 
             modelBuilder.Entity<SubscriptionData>(entity =>
             {
-                entity.ToTable("user_subscriptions");
-                entity.HasKey(x => x.UserId);
-                entity.Property(x => x.UserId).HasColumnName("user_id");
+                entity.ToTable("avatar_subscriptions");
+                entity.HasKey(x => x.AvatarId);
+                entity.Property(x => x.AvatarId).HasColumnName("avatar_id");
                 entity.Property(x => x.SubscribedDate).HasColumnName("subscribed_at");
                 entity.Property(x => x.ExpireDate).HasColumnName("expire_at");
                 entity.Property(x => x.GiftDate).HasColumnName("gift_at");

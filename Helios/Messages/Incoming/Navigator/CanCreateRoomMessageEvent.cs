@@ -7,15 +7,15 @@ namespace Helios.Messages.Incoming
 {
     public class CanCreateRoomMessageEvent : IMessageEvent
     {
-        public void Handle(Player player, Request request)
+        public void Handle(Avatar avatar, Request request)
         {
             int maxRoomsAllowed = ValueManager.Instance.GetInt("max.rooms.allowed");
 
-            if (player.IsSubscribed)
+            if (avatar.IsSubscribed)
                 maxRoomsAllowed = ValueManager.Instance.GetInt("max.rooms.allowed.subscribed");
 
-            player.Send(new CanCreateRoomComposer(
-                maxRoomsAllowed >= RoomDao.CountUserRooms(player.Details.Id),
+            avatar.Send(new CanCreateRoomComposer(
+                maxRoomsAllowed >= RoomDao.CountUserRooms(avatar.Details.Id),
                 maxRoomsAllowed)
             );
         }

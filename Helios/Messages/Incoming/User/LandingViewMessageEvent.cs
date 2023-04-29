@@ -6,20 +6,20 @@ namespace Helios.Messages.Incoming
 {
     class LandingViewMessageEvent : IMessageEvent
     {
-        public void Handle(Player player, Request request)
+        public void Handle(Avatar avatar, Request request)
         {
             string first = request.ReadString();
 
             if (string.IsNullOrEmpty(first))
             {
-                player.Send(new LandingViewComposer("", ""));
+                avatar.Send(new LandingViewComposer("", ""));
                 return;
             }
 
             string value = first.Split(',')[1];
 
-            //player.Connection.Send(new LandingViewComposer(value, value.Split(';')[0]));
-            //player.Connection.Send(new LandingViewComposer("2012-11-09 19:00,hstarsa;2012-11-30 12:00,", "hstarsa"));
+            //avatar.Connection.Send(new LandingViewComposer(value, value.Split(';')[0]));
+            //avatar.Connection.Send(new LandingViewComposer("2012-11-09 19:00,hstarsa;2012-11-30 12:00,", "hstarsa"));
         }
     }
 }

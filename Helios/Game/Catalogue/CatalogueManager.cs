@@ -46,7 +46,7 @@ namespace Helios.Game
         /// <summary>
         /// Handle item purchase
         /// </summary>
-        public void Purchase(int userId, int itemId, int amount, string extraData, long datePurchase, bool isClubGift = false)
+        public void Purchase(int AvatarId, int itemId, int amount, string extraData, long datePurchase, bool isClubGift = false)
         {
             CatalogueItem catalogueItem = Items.FirstOrDefault(x => x.Data.Id == itemId);
 
@@ -55,7 +55,7 @@ namespace Helios.Game
 
             if (catalogueItem.Definition != null && catalogueItem.Definition.HasBehaviour(ItemBehaviour.EFFECT))
             {
-                PurchaseEffect(userId, catalogueItem, amount);
+                PurchaseEffect(AvatarId, catalogueItem, amount);
                 return;
             }
 
@@ -65,7 +65,7 @@ namespace Helios.Game
             {
                 foreach (var cataloguePackage in catalogueItem.Packages)
                 {
-                    var dataList = GenerateItemData(userId, cataloguePackage, extraData, datePurchase);
+                    var dataList = GenerateItemData(AvatarId, cataloguePackage, extraData, datePurchase);
 
                     if (!dataList.Any())
                         continue;
@@ -80,36 +80,36 @@ namespace Helios.Game
             // Convert item data to item instance
             List<Item> items = purchaseQueue.Select(x => new Item(x)).ToList();
 
-            var player = PlayerManager.Instance.GetPlayerById(userId);
+            var avatar = AvatarManager.Instance.GetAvatarById(AvatarId);
 
-            if (player == null)
+            if (avatar == null)
                 return;
 
             foreach (var item in items)
-                player.Inventory.AddItem(item);
+                avatar.Inventory.AddItem(item);
 
             if (isClubGift)
-                player.Send(new ClubGiftReceivedComposer(catalogueItem));
+                avatar.Send(new ClubGiftReceivedComposer(catalogueItem));
             else
-                player.Send(new PurchaseOKComposer(catalogueItem));
+                avatar.Send(new PurchaseOKComposer(catalogueItem));
 
-            player.Send(new FurniListNotificationComposer(items));
-            player.Send(new FurniListUpdateComposer());
+            avatar.Send(new FurniListNotificationComposer(items));
+            avatar.Send(new FurniListUpdateComposer());
         }
 
         /// <summary>
         /// Purchase effect handler
         /// </summary>
-        private void PurchaseEffect(int userId, CatalogueItem catalogueItem, int amount)
+        private void PurchaseEffect(int AvatarId, CatalogueItem catalogueItem, int amount)
         {
             List<EffectData> purchaseEffectsQueue = new List<EffectData>();
-            var existingEffects = EffectDao.GetUserEffects(userId);
+            var existingEffects = EffectDao.GetUserEffects(AvatarId);
 
             for (int i = 0; i < amount; i++)
             {
                 foreach (var cataloguePackage in catalogueItem.Packages)
                 {
-                    var dataList = GenerateEffectData(userId, cataloguePackage, existingEffects);
+                    var dataList = GenerateEffectData(AvatarId, cataloguePackage, existingEffects);
 
                     if (!dataList.Any())
                         continue;
@@ -121,19 +121,19 @@ namespace Helios.Game
             // Bulk create items
             EffectDao.SaveEffects(purchaseEffectsQueue);
 
-            var player = PlayerManager.Instance.GetPlayerById(userId);
+            var avatar = AvatarManager.Instance.GetAvatarById(AvatarId);
 
-            if (player == null)
+            if (avatar == null)
                 return;
 
-            player.Send(new PurchaseOKComposer(catalogueItem));
-            purchaseEffectsQueue.ForEach(player.EffectManager.AddEffect);
+            avatar.Send(new PurchaseOKComposer(catalogueItem));
+            purchaseEffectsQueue.ForEach(avatar.EffectManager.AddEffect);
         }
 
         /// <summary>
         /// Generate effects queue data.
         /// </summary>
-        private List<EffectData> GenerateEffectData(int userId, CataloguePackage cataloguePackage, List<EffectData> existingEffects)
+        private List<EffectData> GenerateEffectData(int AvatarId, CataloguePackage cataloguePackage, List<EffectData> existingEffects)
         {
             var effects = new List<EffectData>();
             var itemsToGenerate = cataloguePackage.Data.Amount;
@@ -149,7 +149,7 @@ namespace Helios.Game
                 else
                 {
                     itemData = new EffectData();
-                    itemData.UserId = userId;
+                    itemData.AvatarId = AvatarId;
                     itemData.EffectId = cataloguePackage.Definition.Data.SpriteId;
                 }
 
@@ -162,7 +162,7 @@ namespace Helios.Game
         /// <summary>
         /// Generate item data for purchasing item
         /// </summary>
-        private List<ItemData> GenerateItemData(int userId, CataloguePackage cataloguePackage, string userInputMessage, long datePurchase)
+        private List<ItemData> GenerateItemData(int AvatarId, CataloguePackage cataloguePackage, string userInputMessage, long datePurchase)
         {
             var definition = cataloguePackage.Definition;
 
@@ -180,7 +180,7 @@ namespace Helios.Game
                     {
                         serializeable = new TrophyExtraData
                         {
-                            UserId = userId,
+                            AvatarId = AvatarId,
                             Message = userInputMessage,
                             Date = datePurchase
                         };
@@ -217,11 +217,11 @@ namespace Helios.Game
             if (definition.InteractorType == InteractorType.TELEPORTER)
             {
                 ItemData firstTeleporter = new ItemData();
-                firstTeleporter.OwnerId = userId;
+                firstTeleporter.OwnerId = AvatarId;
                 firstTeleporter.DefinitionId = cataloguePackage.Definition.Data.Id;
 
                 ItemData secondTeleporter = new ItemData();
-                secondTeleporter.OwnerId = userId;
+                secondTeleporter.OwnerId = AvatarId;
                 secondTeleporter.DefinitionId = cataloguePackage.Definition.Data.Id;
 
                 firstTeleporter.ExtraData = JsonConvert.SerializeObject(new TeleporterExtraData
@@ -242,7 +242,7 @@ namespace Helios.Game
                 for (int i = 0; i < itemsToGenerate; i++)
                 {
                     ItemData itemData = new ItemData();
-                    itemData.OwnerId = userId;
+                    itemData.OwnerId = AvatarId;
                     itemData.DefinitionId = cataloguePackage.Definition.Data.Id;
                     itemData.ExtraData = extraData;
                     items.Add(itemData);

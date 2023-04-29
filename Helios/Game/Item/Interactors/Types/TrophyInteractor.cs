@@ -30,7 +30,7 @@ namespace Helios.Game
                 var trophyData = (TrophyExtraData)GetJsonObject();
 
                 StringBuilder builder = new StringBuilder();
-                builder.Append(PlayerManager.Instance.GetName(trophyData.UserId));
+                builder.Append(AvatarManager.Instance.GetName(trophyData.AvatarId));
                 builder.Append((char)9);
                 builder.Append(trophyData.Date.ToDateTime().ToString("dd-MM-yyyy"));
                 builder.Append((char)9);

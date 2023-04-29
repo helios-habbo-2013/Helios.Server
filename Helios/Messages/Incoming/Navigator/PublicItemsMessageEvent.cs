@@ -7,9 +7,9 @@ namespace Helios.Messages.Incoming
 {
     class PublicItemsMessageEvent : IMessageEvent
     {
-        public void Handle(Player player, Request request)
+        public void Handle(Avatar avatar, Request request)
         {
-            player.Send(new PublicItemsComposer(NavigatorDao.GetPublicItems()));
+            avatar.Send(new PublicItemsComposer(NavigatorDao.GetPublicItems()));
         }
     }
 }

@@ -6,9 +6,9 @@ namespace Helios.Messages.Incoming
 {
     class ConfirmChangeNameMessageEvent : IMessageEvent
     {
-        public void Handle(Player player, Request request)
+        public void Handle(Avatar avatar, Request request)
         {
-            player.Send(new ChangeNameUpdateComposer());
+            avatar.Send(new ChangeNameUpdateComposer());
         }
     }
 }

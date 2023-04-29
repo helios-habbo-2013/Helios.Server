@@ -9,16 +9,16 @@ namespace Helios.Messages.Incoming
 {
     class InventoryMessageEvent : IMessageEvent
     {
-        public void Handle(Player player, Request request)
+        public void Handle(Avatar avatar, Request request)
         {
-            var inventoryItems = new List<Item>(player.Inventory.Items.Values);
+            var inventoryItems = new List<Item>(avatar.Inventory.Items.Values);
 
             int itemsPerPage = ValueManager.Instance.GetInt("inventory.items.per.page");
             int pages = inventoryItems.CountPages(itemsPerPage);
 
             for (int i = 0; i < pages; i++)
             {
-                player.Send(new InventoryMessageComposer(pages, i, inventoryItems.GetPage(i, itemsPerPage)));
+                avatar.Send(new InventoryMessageComposer(pages, i, inventoryItems.GetPage(i, itemsPerPage)));
             }
         }
     }

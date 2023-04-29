@@ -6,9 +6,9 @@ namespace Helios.Messages.Incoming.Catalogue
 {
     class CatalogueClubMessageEvent : IMessageEvent
     {
-        public void Handle(Player player, Request request)
+        public void Handle(Avatar avatar, Request request)
         {
-            player.Send(new CatalogueClubMessageComposer(SubscriptionManager.Instance.Subscriptions));
+            avatar.Send(new CatalogueClubMessageComposer(SubscriptionManager.Instance.Subscriptions));
         }
     }
 }

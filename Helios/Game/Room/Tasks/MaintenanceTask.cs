@@ -52,12 +52,12 @@ namespace Helios.Game
         /// <param name="entity">the entity to process</param>
         private void ProcessEntity(IEntity entity)
         {
-            if (entity is Player player)
+            if (entity is Avatar avatar)
             {
-                if (player.RoomUser.TimerManager.SpeechBubbleDate != -1 && DateUtil.GetUnixTimestamp() > player.RoomUser.TimerManager.SpeechBubbleDate)
+                if (avatar.RoomUser.TimerManager.SpeechBubbleDate != -1 && DateUtil.GetUnixTimestamp() > avatar.RoomUser.TimerManager.SpeechBubbleDate)
                 {
-                    player.RoomUser.TimerManager.ResetSpeechBubbleTimer();
-                    player.RoomUser.Room.Send(new TypingStatusComposer(player.RoomUser.InstanceId, false));
+                    avatar.RoomUser.TimerManager.ResetSpeechBubbleTimer();
+                    avatar.RoomUser.Room.Send(new TypingStatusComposer(avatar.RoomUser.InstanceId, false));
                 }
             }
         }

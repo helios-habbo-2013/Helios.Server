@@ -4,7 +4,7 @@ namespace Helios.Storage.Database.Data
 {
     public class MessengerChatData
     {
-        public virtual int UserId { get; set; }
+        public virtual int AvatarId { get; set; }
         public virtual int FriendId { get; set; }
         public virtual string Message { get; set; }
         public virtual bool IsRead { get; set; }
@@ -21,7 +21,7 @@ namespace Helios.Storage.Database.Data
                 return false;
 
             if (FriendId == t.FriendId &&
-                UserId == t.UserId)
+                AvatarId == t.AvatarId)
                 return true;
 
             return false;

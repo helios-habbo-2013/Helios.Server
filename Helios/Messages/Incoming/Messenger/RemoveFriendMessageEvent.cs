@@ -6,43 +6,43 @@ namespace Helios.Messages.Incoming
 {
     class RemoveFriendMessageEvent : IMessageEvent
     {
-        public void Handle(Player player, Request request)
+        public void Handle(Avatar avatar, Request request)
         {
             int friendsToDelete = request.ReadInt();
-            var messenger = player.Messenger;
+            var messenger = avatar.Messenger;
 
             for (int i = 0; i < friendsToDelete; i++)
             {
-                int userId = request.ReadInt();
+                int AvatarId = request.ReadInt();
 
-                if (!messenger.HasFriend(userId))
+                if (!messenger.HasFriend(AvatarId))
                     continue;
 
                 if (messenger.Friends.Count >= messenger.MaxFriendsAllowed)
                     continue;
 
-                var playerData = PlayerManager.Instance.GetDataById(userId);
+                var avatarData = AvatarManager.Instance.GetDataById(AvatarId);
 
-                if (playerData == null)
+                if (avatarData == null)
                     continue;
 
-                var targetMessenger = Messenger.GetMessengerData(userId);
+                var targetMessenger = Messenger.GetMessengerData(AvatarId);
 
-                targetMessenger.RemoveFriend(player.Details.Id);
-                messenger.RemoveFriend(userId);
+                targetMessenger.RemoveFriend(avatar.Details.Id);
+                messenger.RemoveFriend(AvatarId);
 
-                var targetPlayer = PlayerManager.Instance.GetPlayerById(userId);
+                var targetAvatar = AvatarManager.Instance.GetAvatarById(AvatarId);
 
-                if (targetPlayer != null)
+                if (targetAvatar != null)
                 {
-                    targetPlayer.Messenger.QueueUpdate(MessengerUpdateType.RemoveFriend, messenger.MessengerUser);
-                    targetPlayer.Messenger.ForceUpdate();
+                    targetAvatar.Messenger.QueueUpdate(MessengerUpdateType.RemoveFriend, messenger.MessengerUser);
+                    targetAvatar.Messenger.ForceUpdate();
                 }
 
-                MessengerDao.DeleteRequests(player.Details.Id, userId);
-                MessengerDao.DeleteFriends(player.Details.Id, userId);
+                MessengerDao.DeleteRequests(avatar.Details.Id, AvatarId);
+                MessengerDao.DeleteFriends(avatar.Details.Id, AvatarId);
 
-                messenger.QueueUpdate(MessengerUpdateType.RemoveFriend, new MessengerUser(playerData));
+                messenger.QueueUpdate(MessengerUpdateType.RemoveFriend, new MessengerUser(avatarData));
             }
 
             messenger.ForceUpdate();

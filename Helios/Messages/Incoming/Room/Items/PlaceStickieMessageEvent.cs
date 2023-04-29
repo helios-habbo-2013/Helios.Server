@@ -9,19 +9,19 @@ namespace Helios.Messages.Incoming
 {
     class PlaceStickieMessageEvent : IMessageEvent
     {
-        public void Handle(Player player, Request request)
+        public void Handle(Avatar avatar, Request request)
         {
             int itemId = request.ReadInt();
 
-            if (player.RoomUser.Room == null)
+            if (avatar.RoomUser.Room == null)
                 return;
 
-            Room room = player.RoomUser.Room;
+            Room room = avatar.RoomUser.Room;
 
-            if (room == null || !room.HasRights(player.Details.Id))
+            if (room == null || !room.HasRights(avatar.Details.Id))
                 return;
 
-            Item item = player.Inventory.GetItem(itemId);
+            Item item = avatar.Inventory.GetItem(itemId);
 
             if (item == null)
                 return;
@@ -29,8 +29,8 @@ namespace Helios.Messages.Incoming
             string wallPosition = request.ReadString();
             room.FurnitureManager.AddItem(item, wallPosition: wallPosition);
 
-            player.Inventory.RemoveItem(item);
-            player.Send(new FurniListRemoveComposer(item.Id));
+            avatar.Inventory.RemoveItem(item);
+            avatar.Send(new FurniListRemoveComposer(item.Id));
         }
     }
 }

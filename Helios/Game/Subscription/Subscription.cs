@@ -9,7 +9,7 @@ namespace Helios.Game
     {
         #region Fields
 
-        private Player player;
+        private Avatar avatar;
 
         #endregion
 
@@ -21,14 +21,14 @@ namespace Helios.Game
 
         #region Constructors
 
-        public Subscription(Player player)
+        public Subscription(Avatar avatar)
         {
-            this.player = player;
+            this.avatar = avatar;
         }
 
         public void Load()
         {
-            this.Data = SubscriptionDao.GetSubscription(player.Details.Id);
+            this.Data = SubscriptionDao.GetSubscription(avatar.Details.Id);
         }
 
         #endregion
@@ -42,7 +42,7 @@ namespace Helios.Game
         {
             DateTime startTime;
 
-            if (player.IsSubscribed)
+            if (avatar.IsSubscribed)
                 startTime = Data.ExpireDate;
             else
                 startTime = DateTime.Now;
@@ -65,7 +65,7 @@ namespace Helios.Game
                 {
                     SubscribedDate = DateTime.Now,
                     ExpireDate = startTime.AddMonths(months),
-                    UserId = player.Details.Id,
+                    AvatarId = avatar.Details.Id,
                     GiftDate = nextGiftDate
                 };
 
@@ -74,7 +74,7 @@ namespace Helios.Game
             else
             {
                 Data.ExpireDate = startTime.AddMonths(months);
-                SubscriptionDao.SaveSubscriptionExpiry(player.Details.Id, Data.ExpireDate);
+                SubscriptionDao.SaveSubscriptionExpiry(avatar.Details.Id, Data.ExpireDate);
             }
 
             Update();
@@ -85,8 +85,8 @@ namespace Helios.Game
         /// </summary>
         public void Update()
         {
-            player.Send(new UserRightsMessageComposer(player.IsSubscribed ? 2 : 0, 1));
-            player.Send(new ScrSendUserInfoComposer(player.Subscription.Data));
+            avatar.Send(new UserRightsMessageComposer(avatar.IsSubscribed ? 2 : 0, 1));
+            avatar.Send(new ScrSendUserInfoComposer(avatar.Subscription.Data));
         }
 
         /// <summary>
@@ -102,12 +102,12 @@ namespace Helios.Game
         /// </summary>
         public void CountMemberDays()
         {
-            if (player.IsSubscribed)
+            if (avatar.IsSubscribed)
             {
                 Data.SubscriptionAge += (long)DateTime.Now.Subtract(Data.SubscriptionAgeLastUpdated).TotalSeconds;
                 Data.SubscriptionAgeLastUpdated = DateTime.Now;
 
-                SubscriptionDao.SaveSubscriptionAge(player.Details.Id, Data.SubscriptionAge, Data.SubscriptionAgeLastUpdated);
+                SubscriptionDao.SaveSubscriptionAge(avatar.Details.Id, Data.SubscriptionAge, Data.SubscriptionAgeLastUpdated);
             }
         }
 

@@ -10,14 +10,14 @@ namespace Helios.Messages.Incoming
 {
     class UpdateStickieMessageEvent : IMessageEvent
     {
-        public void Handle(Player player, Request request)
+        public void Handle(Avatar avatar, Request request)
         {
             int itemId = request.ReadInt();
 
-            if (player.RoomUser.Room == null)
+            if (avatar.RoomUser.Room == null)
                 return;
 
-            Room room = player.RoomUser.Room;
+            Room room = avatar.RoomUser.Room;
 
             if (room == null) // TODO: Fix for staff
                 return;
@@ -33,7 +33,7 @@ namespace Helios.Messages.Incoming
             string text = request.ReadString().FilterInput(false);
 
             if (colour != stickieData.Colour || !stickieData.Message.StartsWith(text))
-                if (!room.HasRights(player.Details.Id))
+                if (!room.HasRights(avatar.Details.Id))
                     return; // TODO: Staff check
 
             item.Interactor.SetJsonObject(new StickieExtraData

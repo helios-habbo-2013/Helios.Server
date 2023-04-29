@@ -16,31 +16,31 @@ namespace Helios.Network.Session
         #region Properties
 
         /// <summary>
-        /// Gets the player channel.
+        /// Gets the avatar channel.
         /// </summary>
         public IChannel Channel { get; private set; }
 
         /// <summary>
-        /// Get the ip address of the player connected.
+        /// Get the ip address of the avatar connected.
         /// </summary>
         public string IpAddress => Channel.RemoteAddress.ToString().Split(':')[3].Replace("]", "");
 
         /// <summary>
-        /// Get player instance
+        /// Get avatar instance
         /// </summary>
-        public Player Player { get; private set; }
+        public Avatar Avatar { get; private set; }
         #endregion
 
         #region Constructors
 
         /// <summary>
-        /// Constructor for player.
+        /// Constructor for avatar.
         /// </summary>
         /// <param name="channel">the channel</param>
         public ConnectionSession(IChannel channel)
         {
             Channel = channel;
-            Player = new Player(this);
+            Avatar = new Avatar(this);
         }
 
         #endregion
@@ -83,7 +83,7 @@ namespace Helios.Network.Session
                 return;
 
             m_Disconnected = true;
-            Player.Disconnect();
+            Avatar.Disconnect();
         }
 
         #endregion

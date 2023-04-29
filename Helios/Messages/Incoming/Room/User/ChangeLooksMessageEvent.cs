@@ -11,10 +11,10 @@ namespace Helios.Messages.Incoming
 {
     class ChangeLooksMessageEvent : IMessageEvent
     {
-        public void Handle(Player player, Request request)
+        public void Handle(Avatar avatar, Request request)
         {
             // sh-300-64.ea-1402-62.cc-260-62.ca-1806-73.ha-1008-62.lg-270-64.hd-180-1
-            Room room = player.RoomEntity.Room;
+            Room room = avatar.RoomEntity.Room;
 
             if (room == null)
                 return;
@@ -25,13 +25,13 @@ namespace Helios.Messages.Incoming
             if (sex != "M" && sex != "F")
                 return;
 
-            player.Details.Figure = figure;
-            player.Details.Sex = sex;
+            avatar.Details.Figure = figure;
+            avatar.Details.Sex = sex;
 
-            PlayerDao.Update(player.Details);
+            AvatarDao.Update(avatar.Details);
 
-            player.Send(new UserChangeMessageComposer(-1, player.Details.Figure, player.Details.Sex, player.Details.Motto, player.Details.AchievementPoints));
-            room.Send(new UserChangeMessageComposer(player.RoomEntity.InstanceId, player.Details.Figure, player.Details.Sex, player.Details.Motto, player.Details.AchievementPoints));
+            avatar.Send(new UserChangeMessageComposer(-1, avatar.Details.Figure, avatar.Details.Sex, avatar.Details.Motto, avatar.Details.AchievementPoints));
+            room.Send(new UserChangeMessageComposer(avatar.RoomEntity.InstanceId, avatar.Details.Figure, avatar.Details.Sex, avatar.Details.Motto, avatar.Details.AchievementPoints));
         }
     }
 }

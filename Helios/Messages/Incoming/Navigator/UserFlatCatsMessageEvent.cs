@@ -6,9 +6,9 @@ namespace Helios.Messages.Incoming
 {
     public class UserFlatCatsMessageEvent : IMessageEvent
     {
-        public void Handle(Player player, Request request)
+        public void Handle(Avatar avatar, Request request)
         {
-            player.Send(new UserFlatCatsComposer(NavigatorManager.Instance.GetCategories(player.Details.Rank)));
+            avatar.Send(new UserFlatCatsComposer(NavigatorManager.Instance.GetCategories(avatar.Details.Rank)));
         }
     }
 }

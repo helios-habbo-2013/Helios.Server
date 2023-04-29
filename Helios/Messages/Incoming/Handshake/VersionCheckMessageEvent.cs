@@ -5,20 +5,20 @@ namespace Helios.Messages.Incoming
 {
     class VersionCheckMessageEvent : IMessageEvent
     {
-        public void Handle(Player player, Request request)
+        public void Handle(Avatar avatar, Request request)
         {
-            if (player.Authenticated)
+            if (avatar.Authenticated)
             {
-                player.Connection.Close();
+                avatar.Connection.Close();
                 return;
             }
 
             var clientVersion = request.ReadString();
 
             if (clientVersion == Helios.ClientVersion)
-                player.Log.Debug($"Received version: {clientVersion}");
+                avatar.Log.Debug($"Received version: {clientVersion}");
             else
-                player.Connection.Close();
+                avatar.Connection.Close();
         }
     }
 }

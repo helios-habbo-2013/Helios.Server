@@ -6,32 +6,32 @@ namespace Helios.Messages.Incoming
 {
     class FollowFriendMessageEvent : IMessageEvent
     {
-        public void Handle(Player player, Request request)
+        public void Handle(Avatar avatar, Request request)
         {
             int friendId = request.ReadInt();
 
-            if (!player.Messenger.HasFriend(friendId))
+            if (!avatar.Messenger.HasFriend(friendId))
             {
-                player.Send(new FollowBuddyErrorComposer(FollowBuddyError.NotFriend));
+                avatar.Send(new FollowBuddyErrorComposer(FollowBuddyError.NotFriend));
                 return;
             }
 
-            var friend = player.Messenger.GetFriend(friendId);
+            var friend = avatar.Messenger.GetFriend(friendId);
 
             if (!friend.IsOnline)
             {
-                player.Send(new FollowBuddyErrorComposer(FollowBuddyError.Offline));
+                avatar.Send(new FollowBuddyErrorComposer(FollowBuddyError.Offline));
                 return;
             }
 
             if (!friend.InRoom)
             {
-                player.Send(new FollowBuddyErrorComposer(FollowBuddyError.HotelView));
+                avatar.Send(new FollowBuddyErrorComposer(FollowBuddyError.HotelView));
                 return;
             }
 
-            Room room = friend.Player.RoomUser.Room;
-            player.Send(new RoomForwardComposer(room.Data.Id, room.Data.IsPublicRoom));
+            Room room = friend.Avatar.RoomUser.Room;
+            avatar.Send(new RoomForwardComposer(room.Data.Id, room.Data.IsPublicRoom));
         }
     }
 }

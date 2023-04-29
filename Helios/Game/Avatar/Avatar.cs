@@ -9,13 +9,13 @@ using System.Reflection;
 
 namespace Helios.Game
 {
-    public class Player : IEntity
+    public class Avatar : IEntity
     {
         #region Fields
 
-        private ILog log = LogManager.GetLogger(typeof(Player));
-        private PlayerData playerData;
-        private PlayerSettingsData settings;
+        private ILog log = LogManager.GetLogger(typeof(Avatar));
+        private AvatarData avatarData;
+        private AvatarSettingsData settings;
 
         #endregion
 
@@ -29,7 +29,7 @@ namespace Helios.Game
         /// <summary>
         /// Get entity data
         /// </summary>
-        public IEntityData EntityData => (IEntityData)playerData;
+        public IEntityData EntityData => (IEntityData)avatarData;
 
         #endregion
 
@@ -72,17 +72,17 @@ namespace Helios.Game
         /// <summary>
         /// Get entity data
         /// </summary>
-        public PlayerData Details => playerData;
+        public AvatarData Details => avatarData;
 
         /// <summary>
-        /// Get player settings
+        /// Get avatar settings
         /// </summary>
-        public PlayerSettingsData Settings => settings;
+        public AvatarSettingsData Settings => settings;
 
         /// <summary>
-        /// Get room player
+        /// Get room avatar
         /// </summary>
-        public RoomPlayer RoomUser => (RoomPlayer)RoomEntity;
+        public RoomAvatar RoomUser => (RoomAvatar)RoomEntity;
 
         /// <summary>
         /// Get currency manager for user
@@ -100,12 +100,12 @@ namespace Helios.Game
         public EffectManager EffectManager { get; set; }
 
         /// <summary>
-        /// Whether the player has logged in or not
+        /// Whether the avatar has logged in or not
         /// </summary>
         public bool Authenticated { get; private set; }
 
         /// <summary>
-        /// The time when player connected
+        /// The time when avatar connected
         /// </summary>
         public DateTime AuthenticationTime { get; private set; }
 
@@ -119,13 +119,13 @@ namespace Helios.Game
         #region Constructors
 
         /// <summary>
-        /// Constructor for player.
+        /// Constructor for avatar.
         /// </summary>
         /// <param name="channel">the channel</param>
-        public Player(ConnectionSession connectionSession)
+        public Avatar(ConnectionSession connectionSession)
         {
             Connection = connectionSession;
-            RoomEntity = new RoomPlayer(this);
+            RoomEntity = new RoomAvatar(this);
             log = LogManager.GetLogger(Assembly.GetExecutingAssembly(), $"Connection {connectionSession.Channel.Id}");
         }
 
@@ -140,21 +140,21 @@ namespace Helios.Game
         /// <returns></returns>
         public bool TryLogin(string ssoTicket)
         {
-            PlayerDao.Login(out playerData, ssoTicket);
+            AvatarDao.Login(out avatarData, ssoTicket);
 
-            if (playerData == null)
+            if (avatarData == null)
                 return false;
 
-            log = LogManager.GetLogger(Assembly.GetExecutingAssembly(), $"Player {playerData.Name}");
-            log.Debug($"Player {playerData.Name} has logged in");
+            log = LogManager.GetLogger(Assembly.GetExecutingAssembly(), $"Avatar {avatarData.Name}");
+            log.Debug($"Avatar {avatarData.Name} has logged in");
 
-            UserSettingsDao.CreateOrUpdate(out settings, playerData.Id);
+            UserSettingsDao.CreateOrUpdate(out settings, avatarData.Id);
 
-            playerData.PreviousLastOnline = playerData.LastOnline;
-            playerData.LastOnline = DateTime.Now;
+            avatarData.PreviousLastOnline = avatarData.LastOnline;
+            avatarData.LastOnline = DateTime.Now;
 
-            PlayerDao.Update(playerData);
-            PlayerManager.Instance.AddPlayer(this);
+            AvatarDao.Update(avatarData);
+            AvatarManager.Instance.AddAvatar(this);
 
             Subscription = new Subscription(this);
             Subscription.Load();
@@ -178,7 +178,7 @@ namespace Helios.Game
 
             Send(new AuthenticationOKComposer());
             Send(new AvailabilityStatusComposer());
-            Send(new UserRightsMessageComposer(IsSubscribed ? 2 : 0, UserGroup.HasPermission("room.addstaffpicks") ? 7 : playerData.Rank));
+            Send(new UserRightsMessageComposer(IsSubscribed ? 2 : 0, UserGroup.HasPermission("room.addstaffpicks") ? 7 : avatarData.Rank));
 
             return true;
         }
@@ -202,13 +202,13 @@ namespace Helios.Game
             if (RoomEntity.Room != null)
                 RoomEntity.Room.EntityManager.LeaveRoom(this);
 
-            PlayerManager.Instance.RemovePlayer(this);
+            AvatarManager.Instance.RemoveAvatar(this);
 
             Messenger.SendStatus();
             Subscription.CountMemberDays();
 
-            playerData.LastOnline = DateTime.Now;
-            PlayerDao.Update(playerData);
+            avatarData.LastOnline = DateTime.Now;
+            AvatarDao.Update(avatarData);
 
             long timeInSeconds = (long)(DateTime.Now - AuthenticationTime).TotalSeconds;
             settings.OnlineTime += timeInSeconds;

@@ -61,7 +61,7 @@ namespace Helios.Game
         /// <summary>
         /// Handler for purchasing club
         /// </summary>
-        public void PurchaseClub(Player player, int pageId, int itemId)
+        public void PurchaseClub(Avatar avatar, int pageId, int itemId)
         {
             var subscriptionData = Subscriptions.Where(x => x.Id == itemId && x.PageId == pageId).FirstOrDefault();
 
@@ -73,34 +73,34 @@ namespace Helios.Game
             int priceSeasonal = subscriptionData.PriceSeasonal;
 
             // Continue standard purchase
-            if (priceCoins > player.Details.Credits)
+            if (priceCoins > avatar.Details.Credits)
             {
-                player.Send(new NoCreditsComposer(true, false));
+                avatar.Send(new NoCreditsComposer(true, false));
                 return;
             }
 
-            if (priceSeasonal > player.Currency.GetBalance(subscriptionData.SeasonalType))
+            if (priceSeasonal > avatar.Currency.GetBalance(subscriptionData.SeasonalType))
             {
-                player.Send(new NoCreditsComposer(false, true, subscriptionData.SeasonalType));
+                avatar.Send(new NoCreditsComposer(false, true, subscriptionData.SeasonalType));
                 return;
             }
 
             // Update credits of user
             if (priceCoins > 0)
             {
-                player.Currency.ModifyCredits(-priceCoins);
-                player.Currency.UpdateCredits();
+                avatar.Currency.ModifyCredits(-priceCoins);
+                avatar.Currency.UpdateCredits();
             }
 
             // Update seasonal currency
             if (priceSeasonal > 0)
             {
-                player.Currency.AddBalance(subscriptionData.SeasonalType, -priceSeasonal);
-                player.Currency.UpdateCurrency(subscriptionData.SeasonalType, false);
-                player.Currency.SaveCurrencies();
+                avatar.Currency.AddBalance(subscriptionData.SeasonalType, -priceSeasonal);
+                avatar.Currency.UpdateCurrency(subscriptionData.SeasonalType, false);
+                avatar.Currency.SaveCurrencies();
             }
 
-            player.Subscription.AddMonths(subscriptionData.Months);
+            avatar.Subscription.AddMonths(subscriptionData.Months);
         }
 
         #endregion

@@ -6,7 +6,7 @@ namespace Helios.Messages.Incoming
 {
     public class ChatMessageMessageEvent : IMessageEvent
     {
-        public void Handle(Player player, Request request)
+        public void Handle(Avatar avatar, Request request)
         {
             string message = request.ReadString().FilterInput(true);
             int colourId = request.ReadInt();
@@ -22,7 +22,7 @@ namespace Helios.Messages.Incoming
                 return;
             }*/
 
-            player.RoomUser.Talk(ChatMessageType.CHAT, message, colourId);
+            avatar.RoomUser.Talk(ChatMessageType.CHAT, message, colourId);
 
         }
     }

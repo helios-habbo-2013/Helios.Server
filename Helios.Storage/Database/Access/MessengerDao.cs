@@ -11,24 +11,24 @@ namespace Helios.Storage.Database.Access
         /// Search messenger for names starting with the query
         /// </summary>
         /// <returns></returns>
-        public static List<PlayerData> SearchMessenger(string query, int ignoreUserId, int searchResultLimit = 30)
+        public static List<AvatarData> SearchMessenger(string query, int ignoreAvatarId, int searchResultLimit = 30)
         {
             /*using (var session = SessionFactoryBuilder.Instance.SessionFactory.OpenSession())
             {
-                PlayerData playerDataAlias = null;
+                AvatarData avatarDataAlias = null;
 
-                return session.QueryOver<PlayerData>(() => playerDataAlias)
-                    //.Where(Restrictions.On<PlayerData>(x => x.Name).IsInsensitiveLike(query, MatchMode.Start))
-                    .WhereRestrictionOn(() => playerDataAlias.Name).IsLike(query, MatchMode.Start)
-                    .And(() => playerDataAlias.Id != ignoreUserId)
+                return session.QueryOver<AvatarData>(() => avatarDataAlias)
+                    //.Where(Restrictions.On<AvatarData>(x => x.Name).IsInsensitiveLike(query, MatchMode.Start))
+                    .WhereRestrictionOn(() => avatarDataAlias.Name).IsLike(query, MatchMode.Start)
+                    .And(() => avatarDataAlias.Id != ignoreAvatarId)
                     .Take(searchResultLimit)
-                    .List() as List<PlayerData>;
+                    .List() as List<AvatarData>;
             }*/
 
             using (var context = new StorageContext())
             {
-                return context.PlayerData.Where(x => x.Name.ToLower().StartsWith(query.ToLower())
-                    && x.Id != ignoreUserId)
+                return context.AvatarData.Where(x => x.Name.ToLower().StartsWith(query.ToLower())
+                    && x.Id != ignoreAvatarId)
                     .Take(searchResultLimit).ToList();
             }
         }
@@ -36,22 +36,22 @@ namespace Helios.Storage.Database.Access
         /// <summary>
         /// Get the requests for the user
         /// </summary>
-        public static List<MessengerRequestData> GetRequests(int userId)
+        public static List<MessengerRequestData> GetRequests(int AvatarId)
         {
             /*using (var session = SessionFactoryBuilder.Instance.SessionFactory.OpenSession())
             {
                 MessengerRequestData messengerRequestAlias = null;
-                PlayerData playerDataAlias = null;
+                AvatarData avatarDataAlias = null;
 
                 return session.QueryOver(() => messengerRequestAlias)
-                    .JoinQueryOver(() => messengerRequestAlias.FriendData, () => playerDataAlias)
-                    .Where(() => messengerRequestAlias.UserId == userId)
+                    .JoinQueryOver(() => messengerRequestAlias.FriendData, () => avatarDataAlias)
+                    .Where(() => messengerRequestAlias.AvatarId == AvatarId)
                     .List() as List<MessengerRequestData>;
             }*/
 
             using (var context = new StorageContext())
             {
-                return context.MessengerRequestData.Where(x => x.UserId == userId)
+                return context.MessengerRequestData.Where(x => x.AvatarId == AvatarId)
                     .Include(x => x.FriendData)
                     .ToList();
             }
@@ -60,22 +60,22 @@ namespace Helios.Storage.Database.Access
         /// <summary>
         /// Get the friends for the user
         /// </summary>
-        public static List<MessengerFriendData> GetFriends(int userId)
+        public static List<MessengerFriendData> GetFriends(int AvatarId)
         {
             /*using (var session = SessionFactoryBuilder.Instance.SessionFactory.OpenSession())
             {
                 MessengerFriendData messengerFriendAlias = null;
-                PlayerData playerDataAlias = null;
+                AvatarData avatarDataAlias = null;
 
                 return session.QueryOver(() => messengerFriendAlias)
-                    .JoinQueryOver(() => messengerFriendAlias.FriendData, () => playerDataAlias)
-                    .Where(() => messengerFriendAlias.UserId == userId)
+                    .JoinQueryOver(() => messengerFriendAlias.FriendData, () => avatarDataAlias)
+                    .Where(() => messengerFriendAlias.AvatarId == AvatarId)
                     .List() as List<MessengerFriendData>;
             }*/
 
             using (var context = new StorageContext())
             {
-                return context.MessengerFriendData.Where(x => x.UserId == userId)
+                return context.MessengerFriendData.Where(x => x.AvatarId == AvatarId)
                     .Include(x => x.FriendData)
                     .ToList();
             }
@@ -84,36 +84,36 @@ namespace Helios.Storage.Database.Access
         /// <summary>
         /// Get the messenger categories for the user
         /// </summary>
-        public static List<MessengerCategoryData> GetCategories(int userId)
+        public static List<MessengerCategoryData> GetCategories(int AvatarId)
         {
             //using (var session = SessionFactoryBuilder.Instance.SessionFactory.OpenSession())
             //{
             //    MessengerCategoryData messengerCategoryAlias = null;
 
             //    return session.QueryOver(() => messengerCategoryAlias)
-            //        .Where(() => messengerCategoryAlias.UserId == userId)
+            //        .Where(() => messengerCategoryAlias.AvatarId == AvatarId)
             //        .List() as List<MessengerCategoryData>;
             //}
 
             using (var context = new StorageContext())
             {
-                return context.MessengerCategoryData.Where(x => x.UserId == userId).ToList();
+                return context.MessengerCategoryData.Where(x => x.AvatarId == AvatarId).ToList();
             }
         }
 
         /// <summary>
         /// Get if the user supports friend requests
         /// </summary>
-        public static bool GetAcceptsFriendRequests(int userId)
+        public static bool GetAcceptsFriendRequests(int AvatarId)
         {
             //using (var session = SessionFactoryBuilder.Instance.SessionFactory.OpenSession())
             //{
-            //    PlayerSettingsData settingsAlias = null;
-            //    PlayerData playerDataAlias = null;
+            //    AvatarSettingsData settingsAlias = null;
+            //    AvatarData avatarDataAlias = null;
 
             //    return session.QueryOver(() => settingsAlias)
-            //        .JoinEntityAlias(() => playerDataAlias, () => settingsAlias.UserId == playerDataAlias.Id)
-            //        .Where(() => playerDataAlias.Id == userId && settingsAlias.FriendRequestsEnabled)
+            //        .JoinEntityAlias(() => avatarDataAlias, () => settingsAlias.AvatarId == avatarDataAlias.Id)
+            //        .Where(() => avatarDataAlias.Id == AvatarId && settingsAlias.FriendRequestsEnabled)
             //        .List().Count > 0;
             //}
 
@@ -130,13 +130,13 @@ namespace Helios.Storage.Database.Access
         /// <summary>
         /// Deletes friend requests
         /// </summary>
-        public static void DeleteRequests(int userId, int friendId)
+        public static void DeleteRequests(int AvatarId, int friendId)
         {
             //    using (var session = SessionFactoryBuilder.Instance.SessionFactory.OpenSession())
             //    {
             //        session.Query<MessengerRequestData>().Where(x => 
-            //            (x.FriendId == friendId && x.UserId == userId) || 
-            //            (x.FriendId == userId && x.UserId == friendId))
+            //            (x.FriendId == friendId && x.AvatarId == AvatarId) || 
+            //            (x.FriendId == AvatarId && x.AvatarId == friendId))
             //        .Delete();
             //    }
 
@@ -144,8 +144,8 @@ namespace Helios.Storage.Database.Access
             {
                 context.MessengerRequestData.RemoveRange(
                     context.MessengerRequestData.Where(x =>
-                        (x.FriendId == friendId && x.UserId == userId) || 
-                        (x.FriendId == userId && x.UserId == friendId))
+                        (x.FriendId == friendId && x.AvatarId == AvatarId) || 
+                        (x.FriendId == AvatarId && x.AvatarId == friendId))
                     );
             }
         }
@@ -153,12 +153,12 @@ namespace Helios.Storage.Database.Access
         /// <summary>
         /// Delete all requests by user id
         /// </summary>
-        public static void DeleteAllRequests(int userId)
+        public static void DeleteAllRequests(int AvatarId)
         {
             //using (var session = SessionFactoryBuilder.Instance.SessionFactory.OpenSession())
             //{
             //    session.Query<MessengerRequestData>().Where(x =>
-            //        (x.FriendId == userId || x.UserId == userId))
+            //        (x.FriendId == AvatarId || x.AvatarId == AvatarId))
             //    .Delete();
             //}
 
@@ -166,7 +166,7 @@ namespace Helios.Storage.Database.Access
             {
                 context.MessengerRequestData.RemoveRange(
                     context.MessengerRequestData.Where(x =>
-                        (x.FriendId == userId || x.UserId == userId))
+                        (x.FriendId == AvatarId || x.AvatarId == AvatarId))
                     );
             }
         }
@@ -174,13 +174,13 @@ namespace Helios.Storage.Database.Access
         /// <summary>
         /// Deletes friends
         /// </summary>
-        public static void DeleteFriends(int userId, int friendId)
+        public static void DeleteFriends(int AvatarId, int friendId)
         {
             //using (var session = SessionFactoryBuilder.Instance.SessionFactory.OpenSession())
             //{
             //    session.Query<MessengerFriendData>().Where(x =>
-            //        (x.FriendId == friendId && x.UserId == userId) ||
-            //        (x.FriendId == userId && x.UserId == friendId))
+            //        (x.FriendId == friendId && x.AvatarId == AvatarId) ||
+            //        (x.FriendId == AvatarId && x.AvatarId == friendId))
             //    .Delete();
             //}
 
@@ -188,8 +188,8 @@ namespace Helios.Storage.Database.Access
             {
                 context.MessengerFriendData.RemoveRange(
                     context.MessengerFriendData.Where(x =>
-                       (x.FriendId == friendId && x.UserId == userId) ||
-                       (x.FriendId == userId && x.UserId == friendId))
+                       (x.FriendId == friendId && x.AvatarId == AvatarId) ||
+                       (x.FriendId == AvatarId && x.AvatarId == friendId))
                     );
             }
         }
@@ -281,17 +281,17 @@ namespace Helios.Storage.Database.Access
         /// <summary>
         /// Deletes friend requests
         /// </summary>
-        public static void SetReadMessages(int userId)
+        public static void SetReadMessages(int AvatarId)
         {
             //using (var session = SessionFactoryBuilder.Instance.SessionFactory.OpenSession())
             //{
-            //    session.Query<MessengerChatData>().Where(x => x.FriendId == userId && !x.IsRead).Update(x => new MessengerChatData { IsRead = true });
+            //    session.Query<MessengerChatData>().Where(x => x.FriendId == AvatarId && !x.IsRead).Update(x => new MessengerChatData { IsRead = true });
             //}
 
             using (var context = new StorageContext())
             {
                 context.MessengerChatData
-                    .Where(x => x.FriendId == userId && !x.IsRead)
+                    .Where(x => x.FriendId == AvatarId && !x.IsRead)
                     .ToList()
                     .ForEach(x =>
                     {
@@ -305,16 +305,16 @@ namespace Helios.Storage.Database.Access
         /// <summary>
         /// Deletes friend requests
         /// </summary>
-        public static List<MessengerChatData> GetUneadMessages(int userId)
+        public static List<MessengerChatData> GetUneadMessages(int AvatarId)
         {
             //using (var session = SessionFactoryBuilder.Instance.SessionFactory.OpenSession())
             //{
-            //    return session.QueryOver<MessengerChatData>().Where(x => x.FriendId == userId && !x.IsRead).List() as List<MessengerChatData>;
+            //    return session.QueryOver<MessengerChatData>().Where(x => x.FriendId == AvatarId && !x.IsRead).List() as List<MessengerChatData>;
             //}
 
             using (var context = new StorageContext())
             {
-                return context.MessengerChatData.Where(x => x.FriendId == userId && !x.IsRead).ToList();
+                return context.MessengerChatData.Where(x => x.FriendId == AvatarId && !x.IsRead).ToList();
             }
         }
     }

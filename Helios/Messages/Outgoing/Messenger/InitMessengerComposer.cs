@@ -43,16 +43,16 @@ namespace Helios.Messages.Outgoing
             m_Data.Add(friends.Count);
             foreach (var friend in friends)
             {
-                m_Data.Add(friend.PlayerData.Id);
-                m_Data.Add(friend.PlayerData.Name);
+                m_Data.Add(friend.AvatarData.Id);
+                m_Data.Add(friend.AvatarData.Name);
                 m_Data.Add(1);
                 m_Data.Add(friend.IsOnline);
-                m_Data.Add(friend.Player != null ? (friend.Player.Settings.FollowingEnabled && friend.InRoom) : false);
-                m_Data.Add(friend.IsOnline ? friend.PlayerData.Figure : "");
+                m_Data.Add(friend.Avatar != null ? (friend.Avatar.Settings.FollowingEnabled && friend.InRoom) : false);
+                m_Data.Add(friend.IsOnline ? friend.AvatarData.Figure : "");
                 m_Data.Add(0); // category id
-                m_Data.Add(friend.PlayerData.Motto); // motto
-                m_Data.Add(friend.PlayerData.RealName); // real name
-                m_Data.Add(friend.PlayerData.LastOnline.ToString("MM-dd-yyyy HH:mm:ss")); // unknown??
+                m_Data.Add(friend.AvatarData.Motto); // motto
+                m_Data.Add(friend.AvatarData.RealName); // real name
+                m_Data.Add(friend.AvatarData.LastOnline.ToString("MM-dd-yyyy HH:mm:ss")); // unknown??
                 m_Data.Add(false);
                 m_Data.Add(false);
                 m_Data.Add(false); // is using pocket habbo

@@ -5,7 +5,7 @@ namespace Helios.Messages.Incoming
 {
     class GoToFlatMessageEvent : IMessageEvent
     {
-        public void Handle(Player player, Request request)
+        public void Handle(Avatar avatar, Request request)
         {
             int roomId = request.ReadInt();
 
@@ -14,7 +14,7 @@ namespace Helios.Messages.Incoming
             if (room == null)
                 return;
 
-            room.EntityManager.EnterRoom(player);
+            room.EntityManager.EnterRoom(avatar);
         }
     }
 }

@@ -2,7 +2,7 @@
 {
     public class CurrencyData
     {
-        public virtual int UserId { get; set; }
+        public virtual int AvatarId { get; set; }
         public virtual SeasonalCurrencyType SeasonalType { get; set; }
         public virtual int Balance { get; set; }
 
@@ -16,7 +16,7 @@
             if (t == null)
                 return false;
 
-            if (UserId == t.UserId && SeasonalType == t.SeasonalType)
+            if (AvatarId == t.AvatarId && SeasonalType == t.SeasonalType)
                 return true;
 
             return false;

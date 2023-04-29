@@ -6,9 +6,9 @@ namespace Helios.Messages.Incoming
 {
     class OpenCatalogueMessageEvent : IMessageEvent
     {
-        public void Handle(Player player, Request request)
+        public void Handle(Avatar avatar, Request request)
         {
-            player.Send(new CataloguePagesComposer(player.Details.Rank, player.IsSubscribed));
+            avatar.Send(new CataloguePagesComposer(avatar.Details.Rank, avatar.IsSubscribed));
         }
     }
 }

@@ -68,7 +68,7 @@ namespace Helios.Network
             if (msg is Request)
             {
                 Request request = (Request)msg;
-                MessageHandler.Instance.HandleMesage(connectionSession.Player, request);
+                MessageHandler.Instance.HandleMesage(connectionSession.Avatar, request);
             }
 
             base.ChannelRead(ctx, msg);

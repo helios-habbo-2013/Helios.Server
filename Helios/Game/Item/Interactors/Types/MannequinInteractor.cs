@@ -67,7 +67,7 @@ namespace Helios.Game
 
         public override void OnInteract(IEntity entity, int requestData)
         {
-            if (!(entity is Player))
+            if (!(entity is Avatar))
                 return;
 
             var room = entity.RoomEntity.Room;
@@ -75,20 +75,20 @@ namespace Helios.Game
             if (room == null)
                 return;
 
-            var player = (Player)entity;
+            var avatar = (Avatar)entity;
             var mannequinData = (MannequinExtraData)GetJsonObject();
 
-            var strippedFigureData = ExcludedFigureParts(player.Details.Figure);
+            var strippedFigureData = ExcludedFigureParts(avatar.Details.Figure);
             var newFigureData = GenerateMannequinFigure(mannequinData.Figure);
             var newFigure = string.Concat(strippedFigureData, ".", newFigureData);
 
-            player.Details.Figure = newFigure;
-            player.Details.Sex = mannequinData.Gender.ToLower();
+            avatar.Details.Figure = newFigure;
+            avatar.Details.Sex = mannequinData.Gender.ToLower();
 
-            PlayerDao.Update(player.Details);
+            AvatarDao.Update(avatar.Details);
 
-            player.Send(new UserChangeMessageComposer(-1, player.Details.Figure, player.Details.Sex, player.Details.Motto, player.Details.AchievementPoints));
-            room.Send(new UserChangeMessageComposer(player.RoomEntity.InstanceId, player.Details.Figure, player.Details.Sex, player.Details.Motto, player.Details.AchievementPoints));
+            avatar.Send(new UserChangeMessageComposer(-1, avatar.Details.Figure, avatar.Details.Sex, avatar.Details.Motto, avatar.Details.AchievementPoints));
+            room.Send(new UserChangeMessageComposer(avatar.RoomEntity.InstanceId, avatar.Details.Figure, avatar.Details.Sex, avatar.Details.Motto, avatar.Details.AchievementPoints));
         }
 
 

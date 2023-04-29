@@ -8,7 +8,7 @@ namespace Helios.Messages.Outgoing
 {
     public class WallItemsComposer : IMessageComposer
     {
-        private List<PlayerData> owners;
+        private List<AvatarData> owners;
         private List<Item> wallItems;
 
         public WallItemsComposer(ConcurrentDictionary<int, Item> items)
@@ -21,10 +21,10 @@ namespace Helios.Messages.Outgoing
         {
             m_Data.Add(owners.Count);
 
-            foreach (PlayerData playerData in owners)
+            foreach (AvatarData avatarData in owners)
             {
-                m_Data.Add(playerData.Id);
-                m_Data.Add(playerData.Name);
+                m_Data.Add(avatarData.Id);
+                m_Data.Add(avatarData.Name);
             }
 
             m_Data.Add(wallItems.Count);

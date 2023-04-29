@@ -6,12 +6,12 @@ namespace Helios.Messages.Incoming.Catalogue
 {
     class CatalogueClubGiftsMessageEvent : IMessageEvent
     {
-        public void Handle(Player player, Request request)
+        public void Handle(Avatar avatar, Request request)
         {
-            player.Subscription.Refresh();
-            player.Subscription.CountMemberDays();
+            avatar.Subscription.Refresh();
+            avatar.Subscription.CountMemberDays();
 
-            player.Send(new CatalogueClubGiftsMessageComposer(player.IsSubscribed ? player.Subscription : null, SubscriptionManager.Instance.Gifts));
+            avatar.Send(new CatalogueClubGiftsMessageComposer(avatar.IsSubscribed ? avatar.Subscription : null, SubscriptionManager.Instance.Gifts));
         }
     }
 }

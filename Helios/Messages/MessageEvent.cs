@@ -5,6 +5,6 @@ namespace Helios.Messages
 {
     public interface IMessageEvent
     {
-        void Handle(Player player, Request request);
+        void Handle(Avatar avatar, Request request);
     }
 }

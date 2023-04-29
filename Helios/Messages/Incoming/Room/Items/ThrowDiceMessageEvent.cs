@@ -8,14 +8,14 @@ namespace Helios.Messages
 {
     class ThrowDiceMessageEvent : IMessageEvent
     {
-        public void Handle(Player player, Request request)
+        public void Handle(Avatar avatar, Request request)
         {
             int itemId = request.ReadInt();
 
-            if (player.RoomUser.Room == null)
+            if (avatar.RoomUser.Room == null)
                 return;
 
-            Room room = player.RoomUser.Room;
+            Room room = avatar.RoomUser.Room;
 
             if (room == null)
                 return;
@@ -27,11 +27,11 @@ namespace Helios.Messages
 
             if (item.Definition.HasBehaviour(ItemBehaviour.REQUIRES_RIGHTS_FOR_INTERACTION))
             {
-                if (!room.HasRights(player.Details.Id))
+                if (!room.HasRights(avatar.Details.Id))
                     return;
             }
 
-            item.Interactor.OnInteract(player);
+            item.Interactor.OnInteract(avatar);
         }
     }
 }

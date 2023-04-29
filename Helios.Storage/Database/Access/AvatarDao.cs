@@ -6,105 +6,105 @@ using System.Linq;
 
 namespace Helios.Storage.Database.Access
 {
-    public class PlayerDao
+    public class AvatarDao
     {
         /// <summary>
         /// Login user with SSO ticket
         /// </summary>
-        public static bool Login(out PlayerData loginData, string ssoTicket)
+        public static bool Login(out AvatarData loginData, string ssoTicket)
         {
-            PlayerData playerData = null;
+            AvatarData avatarData = null;
 
             using (var context = new StorageContext())
             {
-                var row = context.AuthenicationTicketData.Include(x => x.PlayerData).Where(x =>
-                       (x.PlayerData != null && x.Ticket == ssoTicket) &&
+                var row = context.AuthenicationTicketData.Include(x => x.AvatarData).Where(x =>
+                       (x.AvatarData != null && x.Ticket == ssoTicket) &&
                        (x.ExpireDate == null || x.ExpireDate > DateTime.Now))
                    .Take(1)
                    .SingleOrDefault();
 
                 if (row != null)
-                    playerData = row.PlayerData;
+                    avatarData = row.AvatarData;
             }
 
-            loginData = playerData;
+            loginData = avatarData;
             return false;
 
-            //PlayerData playerData = null;
+            //AvatarData avatarData = null;
             //using (var session = SessionFactoryBuilder.Instance.SessionFactory.OpenSession())
             //{
             //    AuthenicationTicketData ticketAlias = null;
-            //    PlayerData playerDataAlias = null;
+            //    AvatarData avatarDataAlias = null;
             //    var row = session.QueryOver(() => ticketAlias)
-            //        .JoinQueryOver(() => ticketAlias.PlayerData, () => playerDataAlias)
+            //        .JoinQueryOver(() => ticketAlias.AvatarData, () => avatarDataAlias)
             //        .Where(() =>
-            //            (ticketAlias.PlayerData != null && ticketAlias.Ticket == ssoTicket) &&
-            //            (ticketAlias.UserId == playerDataAlias.Id) &&
+            //            (ticketAlias.AvatarData != null && ticketAlias.Ticket == ssoTicket) &&
+            //            (ticketAlias.AvatarId == avatarDataAlias.Id) &&
             //            (ticketAlias.ExpireDate == null || ticketAlias.ExpireDate > DateTime.Now))
             //        .Take(1)
             //    .SingleOrDefault();
 
             //    if (row != null)
-            //        playerData = row.PlayerData;
+            //        avatarData = row.AvatarData;
             //}
-            //loginData = playerData;
+            //loginData = avatarData;
             // return false;
         }
 
         /// <summary>
-        /// Save player data
+        /// Save avatar data
         /// </summary>
-        /// <param name="playerData">the player data to save</param>
-        public static void Update(PlayerData playerData)
+        /// <param name="avatarData">the avatar data to save</param>
+        public static void Update(AvatarData avatarData)
         {
             using (var context = new StorageContext())
             {
-                context.Attach(playerData).Property(x => x.Credits).IsModified = false; // don't override credits amount
+                context.Attach(avatarData).Property(x => x.Credits).IsModified = false; // don't override credits amount
                 context.SaveChanges();
             }
         }
 
         /// <summary>
-        /// Get player by username
+        /// Get avatar by username
         /// </summary>
-        public static PlayerData GetByName(string name)
+        public static AvatarData GetByName(string name)
         {
             using (var context = new StorageContext())
             {
-                return context.PlayerData.FirstOrDefault(x => x.Name == name);
+                return context.AvatarData.FirstOrDefault(x => x.Name == name);
             }
         }
 
         /// <summary>
-        /// Get player by id
+        /// Get avatar by id
         /// </summary>
-        public static PlayerData GetById(int id)
+        public static AvatarData GetById(int id)
         {
             using (var context = new StorageContext())
             {
-                return context.PlayerData.FirstOrDefault(x => x.Id == id);
+                return context.AvatarData.FirstOrDefault(x => x.Id == id);
             }
         }
 
         /// <summary>
-        /// Get player name by id
+        /// Get avatar name by id
         /// </summary>
         public static string GetNameById(int id)
         {
             using (var context = new StorageContext())
             {
-                return context.PlayerData.Where(x => x.Id == id).Select(x => x.Name).SingleOrDefault();
+                return context.AvatarData.Where(x => x.Id == id).Select(x => x.Name).SingleOrDefault();
             }
         }
 
         /// <summary>
-        /// Get player id by name
+        /// Get avatar id by name
         /// </summary>
         public static int GetIdByName(string name)
         {
             using (var context = new StorageContext())
             {
-                return context.PlayerData.Where(x => x.Name == name).Select(x => x.Id).SingleOrDefault();
+                return context.AvatarData.Where(x => x.Name == name).Select(x => x.Id).SingleOrDefault();
             }
         }
     }

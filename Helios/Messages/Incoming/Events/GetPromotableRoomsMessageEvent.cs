@@ -7,10 +7,10 @@ namespace Helios.Messages.Incoming
 {
     class GetPromotableRoomsMessageEvent : IMessageEvent
     {
-        public void Handle(Player player, Request request)
+        public void Handle(Avatar avatar, Request request)
         {
-            var roomList = RoomManager.Instance.ReplaceQueryRooms(RoomDao.GetUserRooms(player.Details.Id));
-            player.Send(new PromotableRoomsMessageComposer(roomList));
+            var roomList = RoomManager.Instance.ReplaceQueryRooms(RoomDao.GetUserRooms(avatar.Details.Id));
+            avatar.Send(new PromotableRoomsMessageComposer(roomList));
         }
     }
 }

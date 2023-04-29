@@ -36,22 +36,22 @@ namespace Helios.Messages.Outgoing
                 {
                     case MessengerUpdateType.RemoveFriend:
                         {
-                            m_Data.Add(messengerUpdate.Friend.PlayerData.Id);
+                            m_Data.Add(messengerUpdate.Friend.AvatarData.Id);
                             break;
                         }
                     case MessengerUpdateType.AddFriend:
                     case MessengerUpdateType.UpdateFriend:
                         {
-                            m_Data.Add(messengerUpdate.Friend.PlayerData.Id);
-                            m_Data.Add(messengerUpdate.Friend.PlayerData.Name);
+                            m_Data.Add(messengerUpdate.Friend.AvatarData.Id);
+                            m_Data.Add(messengerUpdate.Friend.AvatarData.Name);
                             m_Data.Add(1);
                             m_Data.Add(messengerUpdate.Friend.IsOnline);
                             m_Data.Add(messengerUpdate.Friend.InRoom);
-                            m_Data.Add(messengerUpdate.Friend.IsOnline ? messengerUpdate.Friend.PlayerData.Figure : "");
+                            m_Data.Add(messengerUpdate.Friend.IsOnline ? messengerUpdate.Friend.AvatarData.Figure : "");
                             m_Data.Add(0); // category id
-                            m_Data.Add(messengerUpdate.Friend.PlayerData.Motto); // motto
-                            m_Data.Add(messengerUpdate.Friend.PlayerData.RealName); // real name
-                            m_Data.Add(messengerUpdate.Friend.PlayerData.LastOnline.ToString("MM-dd-yyyy HH:mm:ss")); // unknown??
+                            m_Data.Add(messengerUpdate.Friend.AvatarData.Motto); // motto
+                            m_Data.Add(messengerUpdate.Friend.AvatarData.RealName); // real name
+                            m_Data.Add(messengerUpdate.Friend.AvatarData.LastOnline.ToString("MM-dd-yyyy HH:mm:ss")); // unknown??
                             m_Data.Add(false);
                             m_Data.Add(false);
                             m_Data.Add(false);

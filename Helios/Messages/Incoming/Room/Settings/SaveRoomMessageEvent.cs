@@ -11,11 +11,11 @@ namespace Helios.Messages.Incoming
 {
     public class SaveRoomMessageEvent : IMessageEvent
     {
-        public void Handle(Player player, Request request)
+        public void Handle(Avatar avatar, Request request)
         {
-            var room = player.RoomUser.Room;
+            var room = avatar.RoomUser.Room;
 
-            if (room == null || !room.IsOwner(player.Details.Id))
+            if (room == null || !room.IsOwner(avatar.Details.Id))
                 return;
 
             int roomId = request.ReadInt();

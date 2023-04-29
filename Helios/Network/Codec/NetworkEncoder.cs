@@ -43,13 +43,13 @@ namespace Helios.Network.Codec
                 buffer.SetInt(0, buffer.WriterIndex - 4);
 
                 if (connection != null)
-                    connection.Player.Log.Debug($"SENT {composer.GetType().Name}: " + response.Header + " / " + response.MessageBody);
+                    connection.Avatar.Log.Debug($"SENT {composer.GetType().Name}: " + response.Header + " / " + response.MessageBody);
 
                 output.Add(buffer);
             }
             catch (Exception ex)
             {
-                connection.Player.Log.Error("Error occurred: ", ex);
+                connection.Avatar.Log.Error("Error occurred: ", ex);
             }
         }
     }

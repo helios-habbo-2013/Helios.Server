@@ -9,21 +9,21 @@ namespace Helios.Messages.Incoming
 {
     class MoveFloorItemMessageEvent : IMessageEvent
     {
-        public void Handle(Player player, Request request)
+        public void Handle(Avatar avatar, Request request)
         {
             int itemId = request.ReadInt();
 
-            if (player.RoomUser.Room == null)
+            if (avatar.RoomUser.Room == null)
                 return;
 
-            Room room = player.RoomUser.Room;
+            Room room = avatar.RoomUser.Room;
 
             if (room == null)
                 return;
 
             Item item = room.ItemManager.GetItem(itemId);
 
-            if (item == null || item.Data.OwnerId != player.Details.Id) // TODO: Staff check
+            if (item == null || item.Data.OwnerId != avatar.Details.Id) // TODO: Staff check
                 return;
 
 

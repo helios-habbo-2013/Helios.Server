@@ -6,7 +6,7 @@ namespace Helios.Messages.Incoming
 {
     class GetGuestRoomMessageEvent : IMessageEvent
     {
-        public void Handle(Player player, Request request)
+        public void Handle(Avatar avatar, Request request)
         {
             var room = RoomManager.Instance.GetRoom(request.ReadInt());
 
@@ -16,7 +16,7 @@ namespace Helios.Messages.Incoming
             bool isLoading = request.ReadIntAsBool();
             bool checkEntry = request.ReadIntAsBool();
 
-            player.Send(new RoomInfoComposer(room.Data, isLoading, checkEntry));
+            avatar.Send(new RoomInfoComposer(room.Data, isLoading, checkEntry));
         }
     }
 }

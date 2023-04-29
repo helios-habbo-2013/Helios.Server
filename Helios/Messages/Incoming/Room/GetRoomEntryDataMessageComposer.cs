@@ -7,41 +7,41 @@ namespace Helios.Messages.Incoming
 {
     class GetRoomEntryDataMessageEvent : IMessageEvent
     {
-        public void Handle(Player player, Request request)
+        public void Handle(Avatar avatar, Request request)
         {
-            if (player.RoomUser.Room == null)
+            if (avatar.RoomUser.Room == null)
                 return;
 
-            Room room = player.RoomUser.Room;
+            Room room = avatar.RoomUser.Room;
             RoomModel roomModel = room.Model;
 
-            player.Send(new HeightMapComposer(roomModel.Heightmap));
-            player.Send(new FloorHeightMapComposer(roomModel.Heightmap));
-            player.Send(new RoomVisualizationSettingsComposer(room.Data.FloorThickness, room.Data.WallThickness, room.Data.IsHidingWall));
-            player.Send(new RoomEntryInfoComposer(room.Data, room.IsOwner(player.Details.Id)));
+            avatar.Send(new HeightMapComposer(roomModel.Heightmap));
+            avatar.Send(new FloorHeightMapComposer(roomModel.Heightmap));
+            avatar.Send(new RoomVisualizationSettingsComposer(room.Data.FloorThickness, room.Data.WallThickness, room.Data.IsHidingWall));
+            avatar.Send(new RoomEntryInfoComposer(room.Data, room.IsOwner(avatar.Details.Id)));
 
-            room.Send(new UsersComposer(List.Create<IEntity>(player)));
-            room.Send(new UsersStatusComposer(List.Create<IEntity>(player)));
+            room.Send(new UsersComposer(List.Create<IEntity>(avatar)));
+            room.Send(new UsersStatusComposer(List.Create<IEntity>(avatar)));
 
-            player.Send(new UsersComposer(room.EntityManager.GetEntities<IEntity>()));
-            player.Send(new UsersStatusComposer(room.EntityManager.GetEntities<IEntity>()));
+            avatar.Send(new UsersComposer(room.EntityManager.GetEntities<IEntity>()));
+            avatar.Send(new UsersStatusComposer(room.EntityManager.GetEntities<IEntity>()));
 
-            player.Send(new RoomInfoComposer(room.Data, true, false)); // false, true));
+            avatar.Send(new RoomInfoComposer(room.Data, true, false)); // false, true));
 
-            player.Send(new FloorItemsComposer(room.ItemManager.Items));
-            player.Send(new WallItemsComposer(room.ItemManager.Items));
+            avatar.Send(new FloorItemsComposer(room.ItemManager.Items));
+            avatar.Send(new WallItemsComposer(room.ItemManager.Items));
 
             foreach (var entity in room.Entities.Values)
             {
                 if (entity.RoomEntity.IsDancing)
-                    player.Send(new DanceMessageComposer(entity.RoomEntity.InstanceId, entity.RoomEntity.DanceId));
+                    avatar.Send(new DanceMessageComposer(entity.RoomEntity.InstanceId, entity.RoomEntity.DanceId));
 
                 if (entity.RoomEntity.HasEffect)
-                    player.Send(new EffectMessageComposer(entity.RoomEntity.InstanceId, entity.RoomEntity.EffectId));
+                    avatar.Send(new EffectMessageComposer(entity.RoomEntity.InstanceId, entity.RoomEntity.EffectId));
             }
 
-            if (player.RoomEntity.EffectId > 0)
-                player.RoomEntity.UseEffect(player.RoomEntity.EffectId);
+            if (avatar.RoomEntity.EffectId > 0)
+                avatar.RoomEntity.UseEffect(avatar.RoomEntity.EffectId);
         }
     }
 }

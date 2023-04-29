@@ -10,21 +10,21 @@ namespace Helios.Game
     {
         #region Properties
 
-        private Player player;
+        private Avatar avatar;
         public Dictionary<SeasonalCurrencyType, int> Currencies;
 
         #endregion
 
         #region Constructor
 
-        public CurrencyManager(Player player)
+        public CurrencyManager(Avatar avatar)
         {
-            this.player = player;
+            this.avatar = avatar;
         }
 
         public void Load()
         {
-            this.Currencies = CurrencyDao.GetCurrencies(player.Details.Id).ToDictionary(x => x.SeasonalType, x => x.Balance < 0 ? 0 : x.Balance);
+            this.Currencies = CurrencyDao.GetCurrencies(avatar.Details.Id).ToDictionary(x => x.SeasonalType, x => x.Balance < 0 ? 0 : x.Balance);
         }
 
         #endregion
@@ -52,7 +52,7 @@ namespace Helios.Game
         /// </summary>
         public void AddBalance(SeasonalCurrencyType currencyType, int newBalance)
         {
-            Currencies[currencyType] = CurrencyDao.GetCurrency(player.Details.Id, currencyType).Balance + newBalance;
+            Currencies[currencyType] = CurrencyDao.GetCurrency(avatar.Details.Id, currencyType).Balance + newBalance;
         }
 
         /// <summary>
@@ -60,7 +60,7 @@ namespace Helios.Game
         /// </summary>
         public void ModifyCredits(int creditsChanged)
         {
-            player.Details.Credits = CurrencyDao.SaveCredits(player.Details.Id, creditsChanged);
+            avatar.Details.Credits = CurrencyDao.SaveCredits(avatar.Details.Id, creditsChanged);
         }
 
         /// <summary>
@@ -68,7 +68,7 @@ namespace Helios.Game
         /// </summary>
         public void UpdateCredits()
         {
-            player.Send(new CreditsBalanceComposer(player.Details.Credits));
+            avatar.Send(new CreditsBalanceComposer(avatar.Details.Credits));
         }
 
         /// <summary>
@@ -76,7 +76,7 @@ namespace Helios.Game
         /// </summary>
         public void UpdateCurrencies()
         {
-            player.Send(new ActivityPointsComposer(Currencies));
+            avatar.Send(new ActivityPointsComposer(Currencies));
         }
 
         /// <summary>
@@ -85,7 +85,7 @@ namespace Helios.Game
         public void UpdateCurrency(SeasonalCurrencyType seasonalCurrency, bool notify = true)
         {
             if (Currencies.TryGetValue(seasonalCurrency, out var balance))
-                player.Send(new ActivityPointsNotificationComposer(seasonalCurrency, balance, notify));
+                avatar.Send(new ActivityPointsNotificationComposer(seasonalCurrency, balance, notify));
         }
 
         /// <summary>
@@ -94,7 +94,7 @@ namespace Helios.Game
         public void SaveCurrencies()
         {
             List<CurrencyData> currencyList = Currencies
-                .Select(kvp => new CurrencyData { UserId = player.Details.Id, SeasonalType = kvp.Key, Balance = kvp.Value })
+                .Select(kvp => new CurrencyData { AvatarId = avatar.Details.Id, SeasonalType = kvp.Key, Balance = kvp.Value })
                 .ToList();
 
             CurrencyDao.SaveCurrencies(currencyList);

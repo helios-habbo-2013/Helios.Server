@@ -4,18 +4,18 @@ namespace Helios.Messages.Outgoing.Messenger
 {
     class MessengerRequestComposer : IMessageComposer
     {
-        private PlayerData m_PlayerData;
+        private AvatarData m_AvatarData;
 
-        public MessengerRequestComposer(PlayerData playerData)
+        public MessengerRequestComposer(AvatarData avatarData)
         {
-            m_PlayerData = playerData;
+            m_AvatarData = avatarData;
         }
 
         public override void Write()
         {
-            m_Data.Add(m_PlayerData.Id);
-            m_Data.Add(m_PlayerData.Name);
-            m_Data.Add(m_PlayerData.Figure);
+            m_Data.Add(m_AvatarData.Id);
+            m_Data.Add(m_AvatarData.Name);
+            m_Data.Add(m_AvatarData.Figure);
         }
     }
 }

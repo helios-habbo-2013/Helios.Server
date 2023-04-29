@@ -2,7 +2,7 @@
 {
     public class MessengerCategoryData
     {
-        public virtual int UserId { get; set; }
+        public virtual int AvatarId { get; set; }
         public virtual string Label { get; set; }
     }
 }

@@ -6,18 +6,18 @@ namespace Helios.Messages.Incoming
 {
     public class DanceMessageEvent : IMessageEvent
     {
-        public void Handle(Player player, Request request)
+        public void Handle(Avatar avatar, Request request)
         {
-            if (player.RoomUser.Room == null)
+            if (avatar.RoomUser.Room == null)
                 return;
 
-            if (player.RoomUser.IsSitting)
+            if (avatar.RoomUser.IsSitting)
                 return;
 
             int danceId = request.ReadInt();
 
-            player.RoomUser.DanceId = danceId;
-            player.RoomUser.Room.Send(new DanceMessageComposer(player.RoomEntity.InstanceId, danceId));
+            avatar.RoomUser.DanceId = danceId;
+            avatar.RoomUser.Room.Send(new DanceMessageComposer(avatar.RoomEntity.InstanceId, danceId));
         }
     }
 }

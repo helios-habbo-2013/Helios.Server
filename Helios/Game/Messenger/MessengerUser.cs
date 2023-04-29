@@ -6,30 +6,30 @@ namespace Helios.Game
     {
         #region Properties
 
-        public PlayerData PlayerData
+        public AvatarData AvatarData
         {
             get; set;
         }
 
-        public Player Player
+        public Avatar Avatar
         {
-            get { return PlayerManager.Instance.GetPlayerById(PlayerData.Id); }
+            get { return AvatarManager.Instance.GetAvatarById(AvatarData.Id); }
         }
 
         public bool IsOnline
         {
-            get { return Player != null; }
+            get { return Avatar != null; }
         }
 
-        public bool InRoom => (Player != null ? Player.RoomUser.Room != null : false);
+        public bool InRoom => (Avatar != null ? Avatar.RoomUser.Room != null : false);
 
         #endregion
 
         #region Constructors
 
-        public MessengerUser(PlayerData friendData)
+        public MessengerUser(AvatarData friendData)
         {
-            this.PlayerData = friendData;
+            this.AvatarData = friendData;
         }
 
         #endregion
@@ -43,10 +43,10 @@ namespace Helios.Game
 
             var t = obj as MessengerUser;
 
-            if (t == null || t.PlayerData == null || this.PlayerData == null)
+            if (t == null || t.AvatarData == null || this.AvatarData == null)
                 return false;
 
-            if (t.PlayerData.Id == this.PlayerData.Id)
+            if (t.AvatarData.Id == this.AvatarData.Id)
                 return true;
 
             return false;

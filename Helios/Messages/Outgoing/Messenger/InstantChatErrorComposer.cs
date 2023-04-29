@@ -3,19 +3,19 @@
     public class InstantChatErrorComposer : IMessageComposer
     {
         private InstantChatError instantChatError;
-        private int userId;
+        private int AvatarId;
         private string message = string.Empty;
 
-        public InstantChatErrorComposer(InstantChatError instantChatError, int userId)
+        public InstantChatErrorComposer(InstantChatError instantChatError, int AvatarId)
         {
             this.instantChatError = instantChatError;
-            this.userId = userId;
+            this.AvatarId = AvatarId;
         }
 
         public override void Write()
         {
             m_Data.Add((int)instantChatError);
-            m_Data.Add(userId);
+            m_Data.Add(AvatarId);
             m_Data.Add(message);
         }
     }
