@@ -12,8 +12,8 @@ namespace Helios.Game
         #region Properties
 
         public double TaskProcessTime { get { return 2; } }
-        public List<RollingData> RollingItems { get; set; }
-        public IEntity RollingEntity { get; set; }
+        //public List<RollingData> RollingItems { get; set; }
+        //public IEntity RollingEntity { get; set; }
 
         #endregion
 
@@ -31,7 +31,7 @@ namespace Helios.Game
 
         #region Public methods
 
-        public override void OnTick()
+        public override void OnTickComplete()
         {
             var itemsRolling = new Dictionary<Item, Tuple<Item, Position>>();
             var entitiesRolling = new Dictionary<IEntity, Tuple<Item, Position>>();
@@ -41,8 +41,8 @@ namespace Helios.Game
 
             var rollerTile = Item.CurrentTile;
 
-            RollingItems = new List<RollingData>();
-            RollingEntity = null;
+            var rollingItems = new List<RollingData>();
+            IEntity rollingEntity = null;
 
             // Process items on rollers
             foreach (Item item in rollerTile.GetTileItems())
@@ -58,7 +58,7 @@ namespace Helios.Game
                 if (nextPosition != null)
                 {
                     itemsRolling.Add(item, Tuple.Create(Item, nextPosition));
-                    RollingItems.Add(item.RollingData);
+                    rollingItems.Add(item.RollingData);
                 }
 
             }
@@ -70,25 +70,22 @@ namespace Helios.Game
             {
                 var entity = rollerEntities.Values.Select(x => x).FirstOrDefault();
 
-                if (!entitiesRolling.ContainsKey(entity) || entity.RoomEntity.IsRolling)
+                if (!entitiesRolling.ContainsKey(entity) && !entity.RoomEntity.IsRolling)
                 {
                     RoomTaskManager.RollerEntityTask.TryGetRollingData(entity, Item, Item.Room, out var nextPosition);
 
                     if (nextPosition != null)
                     {
                         entitiesRolling.Add(entity, Tuple.Create(Item, nextPosition));
-                        RollingEntity = entity;
+                        rollingEntity = entity;
                     }
                 }
             }
 
-            if (RollingItems.Any() || RollingEntity != null)
+            if (rollingItems.Any() || rollingEntity != null)
             {
-                var entity = RollingEntity;
-                var rollingItems = new List<RollingData>(RollingItems);
-
-                if (entity != null)
-                    RoomTaskManager.RollerEntityTask.DoRoll(entity, entity.RoomEntity.RollingData.Roller, Item.Room, entity.RoomEntity.RollingData.FromPosition, entity.RoomEntity.RollingData.NextPosition);
+                if (rollingEntity != null)
+                    RoomTaskManager.RollerEntityTask.DoRoll(rollingEntity, rollingEntity.RoomEntity.RollingData.Roller, Item.Room, rollingEntity.RoomEntity.RollingData.FromPosition, rollingEntity.RoomEntity.RollingData.NextPosition);
 
                 // Perform roll animation for item
                 foreach (var item in rollingItems)
@@ -101,9 +98,9 @@ namespace Helios.Game
                 }
 
                 // Send roller packet
-                if (RollingItems.Count > 0 || RollingEntity != null)
+                if (rollingItems.Count > 0 || rollingEntity != null)
                 {
-                    Item.Room?.Send(new SlideObjectBundleComposer(Item, rollingItems.Where(x => !x.RollingItem.IsRollingBlocked).ToList(), entity?.RoomEntity?.RollingData));
+                    Item.Room?.Send(new SlideObjectBundleComposer(Item, rollingItems.Where(x => !x.RollingItem.IsRollingBlocked).ToList(), rollingEntity?.RoomEntity?.RollingData));
 
                     // Delay after rolling finished
                     int delay = (int)(double)(TaskProcessTime * 0.4 * 1000);
@@ -115,12 +112,12 @@ namespace Helios.Game
                             rollingData.RollingItem.RollingData = null;
                         }
 
-                        if (entity != null)
+                        if (rollingEntity != null)
                         {
-                            if (entity.RoomEntity.RollingData != null)
+                            if (rollingEntity.RoomEntity.RollingData != null)
                             {
-                                entity.RoomEntity.InteractItem();//getRoomUser().invokeItem(null, true);
-                                entity.RoomEntity.RollingData = null;
+                                rollingEntity.RoomEntity.InteractItem();//getRoomUser().invokeItem(null, true);
+                                rollingEntity.RoomEntity.RollingData = null;
                             }
                         }
                     });

@@ -56,49 +56,46 @@ namespace Helios.Game
         /// </summary>
         public void ProcessTypingStatus(QueuedEvent queuedEvent)
         {
-            if (!(Entity is Player))
-                return;
-
-            var player = (Player)Entity;
-
-            if (player.RoomUser.TimerManager.SpeechBubbleDate != -1 && DateUtil.GetUnixTimestamp() > player.RoomUser.TimerManager.SpeechBubbleDate)
+            if (Entity is Player player)
             {
-                player.RoomUser.TimerManager.ResetSpeechBubbleTimer();
-                player.RoomUser.Room.Send(new TypingStatusComposer(player.RoomUser.InstanceId, false));
+                if (player.RoomUser.TimerManager.SpeechBubbleDate != -1 && DateUtil.GetUnixTimestamp() > player.RoomUser.TimerManager.SpeechBubbleDate)
+                {
+                    player.RoomUser.TimerManager.ResetSpeechBubbleTimer();
+                    player.RoomUser.Room.Send(new TypingStatusComposer(player.RoomUser.InstanceId, false));
+                }
             }
         }
+
 
         /// <summary>
         /// Process effect expiry
         /// </summary>
         public void ProcessEffectExpiry(QueuedEvent queuedEvent)
         {
-            if (!(Entity is Player))
-                return;
-
-            var player = (Player)Entity;
-
-            foreach (var effect in player.EffectManager.Effects.Where(x => x.Value.Data.IsActivated && x.Value.Data.ExpiresAt != null && DateTime.Now > x.Value.Data.ExpiresAt).ToList())
+            if (Entity is Player player)
             {
-                if (effect.Value.Data.Quantity > 0)
-                    effect.Value.Data.Quantity--;
-
-                effect.Value.Data.ExpiresAt = null;
-
-                if (effect.Value.Data.Quantity == 0)
+                foreach (var effect in player.EffectManager.Effects.Where(x => x.Value.Data.IsActivated && x.Value.Data.ExpiresAt != null && DateTime.Now > x.Value.Data.ExpiresAt).ToList())
                 {
-                    player.EffectManager.Effects.Remove(effect.Value.Id);
-                    EffectDao.DeleteEffect(effect.Value.Data);
-                }
-                else
-                {
-                    EffectDao.UpdateEffect(effect.Value.Data);
-                }
+                    if (effect.Value.Data.Quantity > 0)
+                        effect.Value.Data.Quantity--;
 
-                player.Send(new EffectExpiredMessageComposer(effect.Value.Id));
+                    effect.Value.Data.ExpiresAt = null;
 
-                if (player.RoomEntity.EffectId == effect.Value.Id)
-                    player.RoomEntity.UseEffect(0);
+                    if (effect.Value.Data.Quantity == 0)
+                    {
+                        player.EffectManager.Effects.Remove(effect.Value.Id);
+                        EffectDao.DeleteEffect(effect.Value.Data);
+                    }
+                    else
+                    {
+                        EffectDao.UpdateEffect(effect.Value.Data);
+                    }
+
+                    player.Send(new EffectExpiredMessageComposer(effect.Value.Id));
+
+                    if (player.RoomEntity.EffectId == effect.Value.Id)
+                        player.RoomEntity.UseEffect(0);
+                }
             }
         }
 
