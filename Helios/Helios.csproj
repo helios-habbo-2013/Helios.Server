@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Helios.Storage\Helios.Storage.csproj" />
+    <ProjectReference Include="..\..\Helios.Storage\Helios.Storage\Helios.Storage.csproj" />
   </ItemGroup>
 
   <ItemGroup>

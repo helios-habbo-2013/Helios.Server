@@ -5,7 +5,7 @@ VisualStudioVersion = 17.3.32922.545
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Helios", "Helios\Helios.csproj", "{9B4ED829-E4E3-44BC-A518-344745EFD48B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Helios.Storage", "Helios.Storage\Helios.Storage.csproj", "{B981244B-BDB9-4A5B-9C08-59D2069FF174}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Helios.Storage", "..\Helios.Storage\Helios.Storage\Helios.Storage.csproj", "{F14D9B22-7833-4FD2-83EC-6880233C789A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{9B4ED829-E4E3-44BC-A518-344745EFD48B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9B4ED829-E4E3-44BC-A518-344745EFD48B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9B4ED829-E4E3-44BC-A518-344745EFD48B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B981244B-BDB9-4A5B-9C08-59D2069FF174}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B981244B-BDB9-4A5B-9C08-59D2069FF174}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B981244B-BDB9-4A5B-9C08-59D2069FF174}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B981244B-BDB9-4A5B-9C08-59D2069FF174}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F14D9B22-7833-4FD2-83EC-6880233C789A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F14D9B22-7833-4FD2-83EC-6880233C789A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F14D9B22-7833-4FD2-83EC-6880233C789A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F14D9B22-7833-4FD2-83EC-6880233C789A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
