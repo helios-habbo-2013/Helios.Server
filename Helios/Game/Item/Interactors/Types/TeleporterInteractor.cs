@@ -46,7 +46,7 @@ namespace Helios.Game
             roomUser.WalkingAllowed = false;
 
             // Broken link, make user walk in then walk out
-            if (string.IsNullOrEmpty(pairId) || targetTeleporterData == null || RoomManager.Instance.GetRoom(targetTeleporterData.RoomId) == null)
+            if (string.IsNullOrEmpty(pairId) || targetTeleporterData == null || targetTeleporterData.RoomId == null || RoomManager.Instance.GetRoom(targetTeleporterData.RoomId.Value) == null)
             {
                 Task.Delay(1000).ContinueWith(t =>
                 {

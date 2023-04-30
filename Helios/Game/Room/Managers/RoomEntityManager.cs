@@ -99,7 +99,7 @@ namespace Helios.Game
             entity.RoomEntity.Room = room;
             entity.RoomEntity.InstanceId = GenerateInstanceId();
             entity.RoomEntity.Position = (entryPosition ?? room.Model.Door);
-            entity.RoomEntity.AuthenticateRoomId = -1;
+            entity.RoomEntity.AuthenticateRoomId = null;
 
             room.Entities.TryAdd(entity.RoomEntity.InstanceId, entity);
 

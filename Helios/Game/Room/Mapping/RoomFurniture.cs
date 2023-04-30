@@ -198,7 +198,7 @@ namespace Helios.Game
 
             item.Interactor.OnPickup(avatar);
 
-            item.Data.RoomId = 0;
+            item.Data.RoomId = null;
             item.Save();
 
             room.ItemManager.RemoveItem(item);

@@ -151,9 +151,13 @@ namespace Helios.Game
             UserSettingsDao.CreateOrUpdate(out settings, avatarData.Id);
 
             avatarData.PreviousLastOnline = avatarData.LastOnline;
-            avatarData.LastOnline = DateTime.Now;
 
+            avatarData.LastOnline = DateTime.Now;
             AvatarDao.Update(avatarData);
+
+            avatarData.User.LastOnline = DateTime.Now;
+            UserDao.Update(avatarData.User);
+
             AvatarManager.Instance.AddAvatar(this);
 
             Subscription = new Subscription(this);
@@ -209,6 +213,10 @@ namespace Helios.Game
 
             avatarData.LastOnline = DateTime.Now;
             AvatarDao.Update(avatarData);
+
+            avatarData.User.LastOnline = DateTime.Now;
+            UserDao.Update(avatarData.User);
+            // AvatarDao.Update(avatarData);
 
             long timeInSeconds = (long)(DateTime.Now - AuthenticationTime).TotalSeconds;
             settings.OnlineTime += timeInSeconds;

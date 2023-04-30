@@ -23,7 +23,7 @@ namespace Helios.Game
         public Item CurrentItem => CurrentTile?.HighestItem;
         public RoomTimerManager TimerManager { get; set; }
         public string AuthenticateTeleporterId { get; set; }
-        public int AuthenticateRoomId { get; set; }
+        public int? AuthenticateRoomId { get; set; }
         public bool WalkingAllowed { get; internal set; }
         public bool IsRolling { get { return RollingData != null; } }
         public virtual ITaskObject TaskObject { get; set; }

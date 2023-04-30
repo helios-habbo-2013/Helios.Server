@@ -14,7 +14,7 @@ namespace Helios.Game
         public ItemData Data { get; }
         public RollingData RollingData { get; set; }
         public ItemDefinition Definition => ItemManager.Instance.GetDefinition(Data.DefinitionId);
-        public Room Room => RoomManager.Instance.GetRoom(Data.RoomId);
+        public Room Room => RoomManager.Instance.GetRoom(Data.RoomId.GetValueOrDefault());
         public RoomTile CurrentTile => Position != null ? (Position.GetTile(Room) ?? null) : null;
         public Interactor Interactor { get; }
         public Position Position { get; set; }

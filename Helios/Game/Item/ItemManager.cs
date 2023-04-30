@@ -75,28 +75,30 @@ namespace Helios.Game
             if (itemData == null)
                 itemData = ItemDao.GetItem(itemId);
 
-            if (itemData == null)
+            if (itemData == null || itemData.RoomId == null)
                 return null;
 
-            var room = RoomManager.Instance.GetRoom(itemData.RoomId);
-
-            if (room == null)
+            if (itemData.RoomId is int roomId)
             {
-                var avatar = AvatarManager.Instance.GetAvatarById(itemData.RoomId);
+                var room = RoomManager.Instance.GetRoom(roomId);
 
-                if (avatar != null)
+                if (room == null)
                 {
-                    return avatar.Inventory.GetItem(itemData.Id.ToString());
+                    var avatar = AvatarManager.Instance.GetAvatarById(roomId);
+
+                    if (avatar != null)
+                    {
+                        return avatar.Inventory.GetItem(itemData.Id.ToString());
+                    }
+                }
+                else
+                {
+                    if (room.ItemManager.Items == null)
+                        room.ItemManager.Load();
+
+                    return room.ItemManager.GetItem(itemData.Id.ToString());
                 }
             }
-            else
-            {
-                if (room.ItemManager.Items == null)
-                    room.ItemManager.Load();
-
-                return room.ItemManager.GetItem(itemData.Id.ToString());
-            }
-
 
             return null;
         }

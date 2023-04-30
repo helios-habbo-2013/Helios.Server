@@ -10,7 +10,7 @@ namespace Helios.Messages.Incoming
             if (avatar.RoomUser.Room == null)
                 return;
 
-            avatar.RoomUser.AuthenticateRoomId = -1;
+            avatar.RoomUser.AuthenticateRoomId = null;
             avatar.RoomUser.AuthenticateTeleporterId = null;
 
             avatar.RoomUser.Room.EntityManager.LeaveRoom(avatar, true);

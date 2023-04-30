@@ -29,7 +29,7 @@ namespace Helios.Game
 
         public void Load()
         {
-            Items = new ConcurrentDictionary<int, Item>(ItemDao.GetUserItems(avatar.Details.Id).Select(x => new Item(x)).ToDictionary(x => x.Id, x => x));
+            Items = new ConcurrentDictionary<int, Item>(ItemDao.GetInventoryItems(avatar.Details.Id).Select(x => new Item(x)).ToDictionary(x => x.Id, x => x));
         }
 
         #endregion
