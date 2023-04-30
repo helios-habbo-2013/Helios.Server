@@ -14,6 +14,7 @@ namespace Helios.Game
         public double TaskProcessTime { get { return 2; } }
         //public List<RollingData> RollingItems { get; set; }
         //public IEntity RollingEntity { get; set; }
+        private RollerEntry _rollerEntry { get; set; }
 
         #endregion
 
@@ -31,36 +32,53 @@ namespace Helios.Game
 
         #region Public methods
 
-        public override void OnTickComplete()
+        public override void OnTick()
         {
-            var itemsRolling = new Dictionary<Item, Tuple<Item, Position>>();
-            var entitiesRolling = new Dictionary<IEntity, Tuple<Item, Position>>();
+            _rollerEntry = new RollerEntry(this.Item);
 
-            if (Item.CurrentTile == null)
+            var roller = this.Item;
+
+            if (roller.CurrentTile == null)
+            {
                 return;
+            }
 
-            var rollerTile = Item.CurrentTile;
-
-            var rollingItems = new List<RollingData>();
-            IEntity rollingEntity = null;
+            var rollerTile = roller.CurrentTile;
 
             // Process items on rollers
-            foreach (Item item in rollerTile.GetTileItems())
+            foreach (var item in rollerTile.GetTileItems())
             {
+                if (!item.Position.Equals(rollerTile.Position)) // Only roll items placed on the roller
+                {
+                    continue;
+                }
+
                 if (item.Definition.HasBehaviour(ItemBehaviour.ROLLER))
+                {
                     continue;
+                }
 
-                if (itemsRolling.ContainsKey(item) || item.IsRolling)
+                if (item.IsRolling || _rollerEntry.RollingItems.Any(x => x.Item == item))
+                {
                     continue;
+                }
 
-                RoomTaskManager.RollerItemTask.TryGetRollingData(item, Item, Item.Room, out var nextPosition);
+                RoomTaskManager.RollerItemTask.TryGetRollingData(item, roller, this.Item.Room, out Position nextPosition);
 
                 if (nextPosition != null)
                 {
-                    itemsRolling.Add(item, Tuple.Create(Item, nextPosition));
-                    rollingItems.Add(item.RollingData);
-                }
+                    //itemsRolling[item] = new Tuple<Item, Position>(roller, nextPosition);
 
+                    item.RollingData = new RollingData
+                    {
+                        Item = item,
+                        Roller = roller,
+                        FromPosition = item.Position.Copy(),
+                        NextPosition = nextPosition.Copy()
+                    };
+
+                    _rollerEntry.RollingItems.Add(item.RollingData);
+                }
             }
 
             // Process entities on rollers
@@ -68,60 +86,84 @@ namespace Helios.Game
 
             if (rollerEntities != null && rollerEntities.Count > 0)
             {
-                var entity = rollerEntities.Values.Select(x => x).FirstOrDefault();
+                var entity = rollerEntities.Values.FirstOrDefault();
 
-                if (!entitiesRolling.ContainsKey(entity) && !entity.RoomEntity.IsRolling)
+                if (!entity.RoomEntity.IsRolling && _rollerEntry.RollingEntity == null)
                 {
-                    RoomTaskManager.RollerEntityTask.TryGetRollingData(entity, Item, Item.Room, out var nextPosition);
+                    RoomTaskManager.RollerEntityTask.TryGetRollingData(entity, roller, this.Item.Room, out Position nextPosition);
 
                     if (nextPosition != null)
                     {
-                        entitiesRolling.Add(entity, Tuple.Create(Item, nextPosition));
-                        rollingEntity = entity;
+                        entity.RoomEntity.RollingData = new RollingData
+                        {
+                            Entity = entity,
+                            Roller = roller,
+                            FromPosition = entity.RoomEntity.Position.Copy(),
+                            NextPosition = nextPosition.Copy()
+                        };
+
+                        // entitiesRolling[entity] = new Tuple<Item, Position>(roller, nextPosition);
+                        _rollerEntry.RollingEntity = entity.RoomEntity.RollingData;
                     }
                 }
             }
 
-            if (rollingItems.Any() || rollingEntity != null)
+            // Perform roll animation for entity
+            if (_rollerEntry.RollingEntity?.Entity is IEntity rollingEntity)
             {
-                if (rollingEntity != null)
-                    RoomTaskManager.RollerEntityTask.DoRoll(rollingEntity, rollingEntity.RoomEntity.RollingData.Roller, Item.Room, rollingEntity.RoomEntity.RollingData.FromPosition, rollingEntity.RoomEntity.RollingData.NextPosition);
+                RoomTaskManager.RollerEntityTask.DoRoll(rollingEntity, this.Item, this.Item.Room, rollingEntity.RoomEntity.Position, rollingEntity.RoomEntity.RollingData.NextPosition);
+            }
 
-                // Perform roll animation for item
-                foreach (var item in rollingItems)
+            // Perform roll animation for item
+            foreach (var kvp in _rollerEntry.RollingItems)
+            {
+                var rollingItem = kvp.Item;
+
+                if (!rollingItem.IsRollingBlocked)
                 {
-                    if (item.RollingItem.IsRollingBlocked)
-                        continue;
-
-                    RoomTaskManager.RollerItemTask.DoRoll(item.RollingItem, item.Roller, Item.Room, item.FromPosition, item.NextPosition);
-                    item.RollingItem.Save();
+                    RoomTaskManager.RollerItemTask.DoRoll(rollingItem, this.Item, this.Item.Room, rollingItem.Position, rollingItem.RollingData.NextPosition);
                 }
 
-                // Send roller packet
-                if (rollingItems.Count > 0 || rollingEntity != null)
-                {
-                    Item.Room?.Send(new SlideObjectBundleComposer(Item, rollingItems.Where(x => !x.RollingItem.IsRollingBlocked).ToList(), rollingEntity?.RoomEntity?.RollingData));
+                rollingItem.Save();
+            }
+        }
 
-                    // Delay after rolling finished
-                    int delay = (int)(double)(TaskProcessTime * 0.4 * 1000);
-                    Task.Delay(delay).ContinueWith(t =>
+        public override void OnTickComplete()
+        {
+            var rollingItems = _rollerEntry.RollingItems;
+            var rollingEntity = _rollerEntry.RollingEntity;
+
+            rollingItems.RemoveAll(item => item.Item.IsRollingBlocked);
+
+            this.Item.Room.Send(new SlideObjectBundleComposer(_rollerEntry.Roller, rollingItems, rollingEntity));
+
+            //var itemsRolling = new Dictionary<Item, Tuple<Item, Position>>();
+            //var itemsRolling = new List<RollingData>();
+
+            // var entitiesRolling = new Dictionary<IEntity, Tuple<Item, Position>>();
+
+            if (rollingItems.Count > 0 || rollingEntity != null)
+            {
+                // Delay after rolling finished
+                int delay = (int)(double)(TaskProcessTime * 0.4 * 1000);
+
+                Task.Delay(delay).ContinueWith(t =>
+                {
+                    foreach (RollingData rollingData in rollingItems)
                     {
-                        foreach (RollingData rollingData in rollingItems)
-                        {
-                            rollingData.RollingItem.IsRollingBlocked = false;
-                            rollingData.RollingItem.RollingData = null;
-                        }
+                        rollingData.Item.IsRollingBlocked = false;
+                        rollingData.Item.RollingData = null;
+                    }
 
-                        if (rollingEntity != null)
+                    if (rollingEntity?.Entity is IEntity e)
+                    {
+                        if (e?.RoomEntity?.RollingData != null)
                         {
-                            if (rollingEntity.RoomEntity.RollingData != null)
-                            {
-                                rollingEntity.RoomEntity.InteractItem();//getRoomUser().invokeItem(null, true);
-                                rollingEntity.RoomEntity.RollingData = null;
-                            }
+                            e.RoomEntity.InteractItem();//getRoomUser().invokeItem(null, true);
+                            e.RoomEntity.RollingData = null;
                         }
-                    });
-                }
+                    }
+                });
             }
 
             TicksTimer = RoomTaskManager.GetProcessTime(TaskProcessTime);

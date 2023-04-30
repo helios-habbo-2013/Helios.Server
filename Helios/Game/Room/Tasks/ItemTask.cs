@@ -52,8 +52,6 @@ namespace Helios.Game
                     {
                         if (taskObject.CanTick())
                         {
-                            taskObject.OnTick();
-
                             if (!tickedItems.Contains(taskObject))
                                 tickedItems.Enqueue(taskObject);
                         }
@@ -62,6 +60,9 @@ namespace Helios.Game
                     if (taskObject.EventQueue.Count > 0)
                         taskObject.TryTickState();
                 }
+
+                foreach (var taskObject in tickedItems)
+                    taskObject.OnTick();
 
                 foreach (var taskObject in tickedItems.Dequeue())
                     taskObject.OnTickComplete();

@@ -45,12 +45,9 @@ namespace Helios.Game
                 }
 
                 // Don't roll if an entity is going to walk into the furniture
-                if (e.RoomEntity.Next != null)
+                if (e.RoomEntity?.Next == front)
                 {
-                    if (e.RoomEntity.Next == front)
-                    {
-                        return;
-                    }
+                    return;
                 }
 
                 // Ignore people who are walking
@@ -191,13 +188,6 @@ namespace Helios.Game
             }*/
 
             nextPosition = new Position(front.X, front.Y, nextHeight);
-            item.RollingData = new RollingData
-            {
-                RollingItem = item,
-                Roller = roller,
-                FromPosition = item.Position.Copy(),
-                NextPosition = nextPosition.Copy()
-            };
         }
 
         public void DoRoll(Item item, Item roller, Room room, Position fromPosition, Position nextPosition)

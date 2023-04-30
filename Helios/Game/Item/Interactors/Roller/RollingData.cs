@@ -30,8 +30,8 @@ namespace Helios.Game
         #region Properties
 
         public Item Roller { get; set; }
-        public IEntity RollingEntity { get; set; }
-        public Item RollingItem { get; set; }
+        public IEntity Entity { get; set; }
+        public Item Item { get; set; }
         public Position FromPosition { get; set; }
         public Position NextPosition { get; set; }
         public double DisplayHeight { get; set; }

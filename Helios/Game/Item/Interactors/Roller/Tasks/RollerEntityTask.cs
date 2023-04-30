@@ -161,13 +161,6 @@ namespace Helios.Game
             }
 
             nextPosition = new Position(front.X, front.Y, nextHeight);
-            entity.RoomEntity.RollingData = new RollingData
-            {
-                RollingEntity = entity,
-                Roller = roller,
-                FromPosition = entity.RoomEntity.Position.Copy(),
-                NextPosition = nextPosition.Copy()
-            };
         }
 
         public void DoRoll(IEntity entity, Item roller, Room room, Position fromPosition, Position nextPosition)

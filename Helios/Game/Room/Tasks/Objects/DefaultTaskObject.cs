@@ -14,8 +14,6 @@ namespace Helios.Game
         #endregion
 
         #region Public methods
-
-        public override void OnTick() { }
         public override void OnTickComplete() { }
 
         #endregion

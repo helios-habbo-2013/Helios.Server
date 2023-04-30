@@ -31,19 +31,19 @@ namespace Helios.Messages.Outgoing
 
             foreach (var item in rollingItems)
             {
-                m_Data.Add(item.RollingItem.Id);
+                m_Data.Add(item.Item.Id);
                 m_Data.Add(item.FromPosition.Z.ToClientValue());
                 m_Data.Add(item.NextPosition.Z.ToClientValue());
             }
 
-            bool hasEntity = rollingEntity != null && rollingEntity.RollingEntity.RoomEntity.Room != null;
+            bool hasEntity = rollingEntity != null && rollingEntity.Entity.RoomEntity.Room != null;
 
             m_Data.Add(roller.Id);
             m_Data.Add(hasEntity ? 2 : 0);
 
             if (hasEntity)
             {
-                m_Data.Add(rollingEntity.RollingEntity.RoomEntity.InstanceId);
+                m_Data.Add(rollingEntity.Entity.RoomEntity.InstanceId);
                 m_Data.Add(rollingEntity.FromPosition.Z.ToClientValue());
                 m_Data.Add(rollingEntity.DisplayHeight.ToClientValue());
             }

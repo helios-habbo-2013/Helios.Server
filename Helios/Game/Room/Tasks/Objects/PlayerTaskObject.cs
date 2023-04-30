@@ -39,7 +39,6 @@ namespace Helios.Game
 
         #region Public methods
 
-        public override void OnTick() { }
         public override void OnTickComplete()
         {
             if (!EventQueue.ContainsKey(AvatarAttribute.TYPING_STATUS))

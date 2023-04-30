@@ -106,7 +106,6 @@ namespace Helios.Game
             ItemDao.SaveItem(Data);
         }
 
-
         public void UpdateState(string state = "")
         {
             switch (Definition.InteractorType)
