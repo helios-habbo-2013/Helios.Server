@@ -135,15 +135,15 @@ namespace Helios.Game
 
             rollingItems.RemoveAll(item => item.Item.IsRollingBlocked);
 
-            this.Item.Room.Send(new SlideObjectBundleComposer(_rollerEntry.Roller, rollingItems, rollingEntity));
-
-            //var itemsRolling = new Dictionary<Item, Tuple<Item, Position>>();
-            //var itemsRolling = new List<RollingData>();
-
-            // var entitiesRolling = new Dictionary<IEntity, Tuple<Item, Position>>();
-
             if (rollingItems.Count > 0 || rollingEntity != null)
             {
+                this.Item.Room.Send(new SlideObjectBundleComposer(_rollerEntry.Roller, rollingItems, rollingEntity));
+
+                //var itemsRolling = new Dictionary<Item, Tuple<Item, Position>>();
+                //var itemsRolling = new List<RollingData>();
+
+                // var entitiesRolling = new Dictionary<IEntity, Tuple<Item, Position>>();
+
                 // Delay after rolling finished
                 int delay = (int)(double)(TaskProcessTime * 0.4 * 1000);
 
