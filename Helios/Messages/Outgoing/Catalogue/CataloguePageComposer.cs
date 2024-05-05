@@ -13,28 +13,28 @@ namespace Helios.Messages.Outgoing
 
         public override void Write()
         {
-            m_Data.Add(page.Data.Id);
-            m_Data.Add(page.Data.Layout);
+            _data.Add(page.Data.Id);
+            _data.Add(page.Data.Layout);
 
-            m_Data.Add(page.Images.Count);
+            _data.Add(page.Images.Count);
 
             foreach (var image in page.Images)
-                m_Data.Add(image);
+                _data.Add(image);
 
-            m_Data.Add(page.Texts.Count);
+            _data.Add(page.Texts.Count);
 
             foreach (var text in page.Texts)
-                m_Data.Add(text);
+                _data.Add(text);
 
-            m_Data.Add(page.Items.Count);
+            _data.Add(page.Items.Count);
 
             foreach (CatalogueItem item in page.Items)
             {
                 PurchaseOKComposer.SerialiseOffer(this, item);
             }
 
-            m_Data.Add(-1);
-            m_Data.Add(false);
+            _data.Add(-1);
+            _data.Add(false);
 
            /*
             foreach (CatalogueItem item in page.Items)

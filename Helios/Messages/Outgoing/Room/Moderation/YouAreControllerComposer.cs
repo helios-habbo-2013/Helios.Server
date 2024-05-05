@@ -11,7 +11,7 @@
 
         public override void Write()
         {
-            m_Data.Add(rightsLevel);
+            _data.Add(rightsLevel);
         }
     }
 }

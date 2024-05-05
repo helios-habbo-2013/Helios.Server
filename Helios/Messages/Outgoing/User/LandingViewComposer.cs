@@ -12,8 +12,8 @@
 
         public override void Write()
         {
-            m_Data.Add(this.promotion);
-            m_Data.Add(this.catalogueTeaser);
+            _data.Add(this.promotion);
+            _data.Add(this.catalogueTeaser);
         }
     }
 }

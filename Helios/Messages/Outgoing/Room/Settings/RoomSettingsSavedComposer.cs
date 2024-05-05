@@ -11,7 +11,7 @@
 
         public override void Write()
         {
-            m_Data.Add(this.roomId);
+            _data.Add(this.roomId);
         }
     }
 }

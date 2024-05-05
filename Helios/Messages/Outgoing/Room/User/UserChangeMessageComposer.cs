@@ -19,11 +19,11 @@
 
         public override void Write()
         {
-            m_Data.Add(virtualId);
-            m_Data.Add(figure);
-            m_Data.Add(sex);
-            m_Data.Add(motto);
-            m_Data.Add(achievementPoints);
+            _data.Add(virtualId);
+            _data.Add(figure);
+            _data.Add(sex);
+            _data.Add(motto);
+            _data.Add(achievementPoints);
         }
     }
 }

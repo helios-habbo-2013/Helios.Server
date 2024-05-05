@@ -1,4 +1,6 @@
-﻿namespace Helios.Messages.Outgoing
+﻿using Helios.Storage.Models.Catalogue;
+
+namespace Helios.Messages.Outgoing
 {
     class ActivityPointsNotificationComposer : IMessageComposer
     {
@@ -15,9 +17,9 @@
 
         public override void Write()
         {        
-            m_Data.Add(balance);
-            m_Data.Add(notifyClient ? 1 : 0);
-            m_Data.Add((int)currencyType);
+            _data.Add(balance);
+            _data.Add(notifyClient ? 1 : 0);
+            _data.Add((int)currencyType);
         }
     }
 }

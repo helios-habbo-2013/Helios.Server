@@ -2,6 +2,7 @@
 using System.Linq;
 using Helios.Util.Extensions;
 using Helios.Storage.Access;
+using Helios.Storage.Models.Navigator;
 
 namespace Helios.Game
 {

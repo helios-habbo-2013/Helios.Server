@@ -13,8 +13,8 @@
 
         public override void Write()
         {
-            m_Data.Add(instanceId);
-            m_Data.Add(danceId);
+            _data.Add(instanceId);
+            _data.Add(danceId);
         }
     }
 }

@@ -19,31 +19,31 @@ namespace Helios.Messages.Outgoing
 
         public override void Write()
         {
-            m_Data.Add(roller.Position.X);
-            m_Data.Add(roller.Position.Y);
+            _data.Add(roller.Position.X);
+            _data.Add(roller.Position.Y);
 
-            m_Data.Add(roller.Position.GetSquareInFront().X);
-            m_Data.Add(roller.Position.GetSquareInFront().Y);
+            _data.Add(roller.Position.GetSquareInFront().X);
+            _data.Add(roller.Position.GetSquareInFront().Y);
 
-            m_Data.Add(rollingItems.Count);
+            _data.Add(rollingItems.Count);
 
             foreach (var item in rollingItems)
             {
-                m_Data.Add(item.Item.Id);
-                m_Data.Add(item.FromPosition.Z.ToClientValue());
-                m_Data.Add(item.NextPosition.Z.ToClientValue());
+                _data.Add(item.Item.Id);
+                _data.Add(item.FromPosition.Z.ToClientValue());
+                _data.Add(item.NextPosition.Z.ToClientValue());
             }
 
             bool hasEntity = rollingEntity != null && rollingEntity.Entity.RoomEntity.Room != null;
 
-            m_Data.Add(roller.Id);
-            m_Data.Add(hasEntity ? 2 : 0);
+            _data.Add(roller.Id);
+            _data.Add(hasEntity ? 2 : 0);
 
             if (hasEntity)
             {
-                m_Data.Add(rollingEntity.Entity.RoomEntity.InstanceId);
-                m_Data.Add(rollingEntity.FromPosition.Z.ToClientValue());
-                m_Data.Add(rollingEntity.DisplayHeight.ToClientValue());
+                _data.Add(rollingEntity.Entity.RoomEntity.InstanceId);
+                _data.Add(rollingEntity.FromPosition.Z.ToClientValue());
+                _data.Add(rollingEntity.DisplayHeight.ToClientValue());
             }
         }
     }

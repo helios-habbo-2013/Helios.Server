@@ -15,8 +15,8 @@ namespace Helios.Messages.Outgoing
         {
             FloorItemsComposer.Serialize(this, floorItem);
 
-            m_Data.Add(floorItem.Data.OwnerData.Id);
-            m_Data.Add(floorItem.Data.OwnerData.Name);
+            _data.Add(floorItem.Data.OwnerData.Id);
+            _data.Add(floorItem.Data.OwnerData.Name);
         }
     }
 }

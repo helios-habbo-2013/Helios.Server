@@ -1,4 +1,6 @@
-﻿namespace Helios.Messages.Outgoing
+﻿using Helios.Storage.Models.Room;
+
+namespace Helios.Messages.Outgoing
 {
     class RoomEntryInfoComposer : IMessageComposer
     {
@@ -13,17 +15,17 @@
 
         public override void Write()
         {
-            m_Data.Add(roomData.IsPrivateRoom);
+            _data.Add(roomData.IsPrivateRoom);
 
             if (roomData.IsPrivateRoom)
             {
-                m_Data.Add(roomData.Id);
-                m_Data.Add(isOwner);
+                _data.Add(roomData.Id);
+                _data.Add(isOwner);
             }
             else
             {
-                m_Data.Add(roomData.Description);
-                m_Data.Add(roomData.Id);
+                _data.Add(roomData.Description);
+                _data.Add(roomData.Id);
             }
         }
     }

@@ -2,6 +2,7 @@
 using Helios.Messages.Outgoing;
 using Helios.Network.Streams;
 using Helios.Storage.Access;
+using Helios.Storage.Models.Messenger;
 using Helios.Util.Extensions;
 
 namespace Helios.Messages.Incoming

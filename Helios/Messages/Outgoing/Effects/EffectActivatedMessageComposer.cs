@@ -13,8 +13,8 @@ namespace Helios.Messages.Outgoing
 
         public override void Write()
         {
-            m_Data.Add(effect.Id);
-            m_Data.Add(effect.Duration);
+            _data.Add(effect.Id);
+            _data.Add(effect.Duration);
         }
     }
 }

@@ -13,8 +13,8 @@
 
         public override void Write()
         {
-            m_Data.Add(isOpen);
-            m_Data.Add(isTradingEnded);
+            _data.Add(isOpen);
+            _data.Add(isTradingEnded);
         }
     }
 }

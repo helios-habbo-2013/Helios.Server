@@ -14,14 +14,14 @@ namespace Helios.Messages.Outgoing
 
         public override void Write()
         {
-            m_Data.Add(requests.Count);
-            m_Data.Add(requests.Count);
+            _data.Add(requests.Count);
+            _data.Add(requests.Count);
 
             foreach (var request in requests)
             {
-                m_Data.Add(request.AvatarData.Id);
-                m_Data.Add(request.AvatarData.Name);
-                m_Data.Add(request.AvatarData.Figure);
+                _data.Add(request.AvatarData.Id);
+                _data.Add(request.AvatarData.Name);
+                _data.Add(request.AvatarData.Figure);
             }
         }
     }

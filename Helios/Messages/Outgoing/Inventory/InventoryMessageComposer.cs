@@ -18,9 +18,9 @@ namespace Helios.Messages.Outgoing
 
         public override void Write()
         {
-            m_Data.Add(totalPages);
-            m_Data.Add(page - 1);
-            m_Data.Add(items.Count);
+            _data.Add(totalPages);
+            _data.Add(page - 1);
+            _data.Add(items.Count);
 
             foreach (var item in items)
             {

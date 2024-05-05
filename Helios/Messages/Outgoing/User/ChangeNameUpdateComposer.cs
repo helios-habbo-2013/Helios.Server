@@ -9,11 +9,11 @@
 
         public override void Write()
         {
-            this.m_Data.Add(4);
-            this.m_Data.Add("test");
-            this.m_Data.Add(2);
-            this.m_Data.Add("test123");
-            this.m_Data.Add("test1337");
+            this._data.Add(4);
+            this._data.Add("test");
+            this._data.Add(2);
+            this._data.Add("test123");
+            this._data.Add("test1337");
         }
     }
 }

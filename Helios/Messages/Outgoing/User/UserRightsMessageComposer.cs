@@ -13,8 +13,8 @@
 
         public override void Write()
         {
-            m_Data.Add(clubLevel);
-            m_Data.Add(rank);
+            _data.Add(clubLevel);
+            _data.Add(rank);
         }
     }
 }

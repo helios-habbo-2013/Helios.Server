@@ -1,4 +1,6 @@
 ﻿using Helios.Game;
+using Helios.Storage.Models.Navigator;
+using Helios.Storage.Models.Room;
 using System;
 using System.Collections.Generic;
 
@@ -19,9 +21,9 @@ namespace Helios.Messages.Outgoing
 
         public override void Write()
         {
-            m_Data.Add(0);
-            m_Data.Add(Convert.ToString(this.signifier));
-            m_Data.Add(roomList.Count);
+            _data.Add(0);
+            _data.Add(Convert.ToString(this.signifier));
+            _data.Add(roomList.Count);
 
             foreach (Room room in roomList)
             {
@@ -29,7 +31,7 @@ namespace Helios.Messages.Outgoing
             }
 
             //m_Data.Add(false);
-            m_Data.Add(promotion != null);
+            _data.Add(promotion != null);
 
             if (promotion != null)
             {

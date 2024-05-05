@@ -13,9 +13,9 @@ namespace Helios.Messages.Outgoing.Messenger
 
         public override void Write()
         {
-            m_Data.Add(m_AvatarData.Id);
-            m_Data.Add(m_AvatarData.Name);
-            m_Data.Add(m_AvatarData.Figure);
+            _data.Add(m_AvatarData.Id);
+            _data.Add(m_AvatarData.Name);
+            _data.Add(m_AvatarData.Figure);
         }
     }
 }

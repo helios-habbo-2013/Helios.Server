@@ -13,8 +13,8 @@
 
         public override void Write()
         {
-            m_Data.Add(instanceId);
-            m_Data.Add(isTyping ? 1 : 0);
+            _data.Add(instanceId);
+            _data.Add(isTyping ? 1 : 0);
         }
     }
 }

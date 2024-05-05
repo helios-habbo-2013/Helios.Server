@@ -1,4 +1,6 @@
-﻿namespace Helios.Messages.Outgoing
+﻿using Helios.Storage.Models.Catalogue;
+
+namespace Helios.Messages.Outgoing
 {
     public class NoCreditsComposer : IMessageComposer
     {
@@ -21,11 +23,11 @@
 
         public override void Write()
         {
-            m_Data.Add(hasEnoughCredits);
-            m_Data.Add(hasEnoughSeasonalCurrency);
+            _data.Add(hasEnoughCredits);
+            _data.Add(hasEnoughSeasonalCurrency);
 
             if (seasonalCurrencyType != null)
-                m_Data.Add((int)seasonalCurrencyType.Value);
+                _data.Add((int)seasonalCurrencyType.Value);
         }
     }
 }

@@ -11,7 +11,7 @@
 
         public override void Write()
         {
-            m_Data.Add(muteFlag);
+            _data.Add(muteFlag);
         }
     }
 }

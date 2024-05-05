@@ -1,4 +1,5 @@
 ﻿using System;
+using Helios.Storage.Models.Room;
 using Helios.Util.Extensions;
 
 namespace Helios.Game

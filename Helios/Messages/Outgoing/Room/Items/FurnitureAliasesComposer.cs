@@ -4,7 +4,7 @@
     {
         public override void Write()
         {
-            m_Data.Add(0);
+            _data.Add(0);
         }
     }
 }

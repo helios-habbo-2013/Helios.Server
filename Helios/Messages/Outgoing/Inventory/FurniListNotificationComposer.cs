@@ -49,16 +49,16 @@ namespace Helios.Messages.Outgoing
             foreach (var value in notifications.Keys)
                 m_Data.Add(value);*/
 
-            m_Data.Add(notifications.Count);
+            _data.Add(notifications.Count);
 
             foreach (var kvp in notifications)
             {
-                m_Data.Add((int)kvp.Key);
-                m_Data.Add(kvp.Value.Count);
+                _data.Add((int)kvp.Key);
+                _data.Add(kvp.Value.Count);
 
                 foreach (int itemId in kvp.Value)
                 {
-                    m_Data.Add(itemId);
+                    _data.Add(itemId);
                 }
             }
 

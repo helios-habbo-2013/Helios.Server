@@ -13,8 +13,8 @@
 
         public override void Write()
         {
-            m_Data.Add(modelName);
-            m_Data.Add(roomId);
+            _data.Add(modelName);
+            _data.Add(roomId);
         }
     }
 }

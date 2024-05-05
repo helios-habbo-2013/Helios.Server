@@ -16,12 +16,12 @@ namespace Helios.Messages.Outgoing
 
         public override void Write()
         {
-            m_Data.Add(friends.Count);
+            _data.Add(friends.Count);
 
             foreach (var user in friends)
                 Serialise(user);
 
-            m_Data.Add(users.Count);
+            _data.Add(users.Count);
 
             foreach (var user in users)
                 Serialise(user);
@@ -29,15 +29,15 @@ namespace Helios.Messages.Outgoing
 
         private void Serialise(MessengerUser user)
         {
-            m_Data.Add(user.AvatarData.Id);
-            m_Data.Add(user.AvatarData.Name);
-            m_Data.Add(user.AvatarData.Motto);
-            m_Data.Add(user.IsOnline);
-            m_Data.Add(false);
-            m_Data.Add(string.Empty);
-            m_Data.Add(0);
-            m_Data.Add(user.AvatarData.Figure);
-            m_Data.Add(user.AvatarData.LastOnline.ToString("MM-dd-yyyy HH:mm:ss"));
+            _data.Add(user.AvatarData.Id);
+            _data.Add(user.AvatarData.Name);
+            _data.Add(user.AvatarData.Motto);
+            _data.Add(user.IsOnline);
+            _data.Add(false);
+            _data.Add(string.Empty);
+            _data.Add(0);
+            _data.Add(user.AvatarData.Figure);
+            _data.Add(user.AvatarData.LastOnline.ToString("MM-dd-yyyy HH:mm:ss"));
         }
     }
 }

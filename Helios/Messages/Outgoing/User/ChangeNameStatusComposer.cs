@@ -9,9 +9,9 @@
 
         public override void Write()
         {
-            this.m_Data.Add(0);
-            this.m_Data.Add("test");
-            this.m_Data.Add(0);
+            this._data.Add(0);
+            this._data.Add("test");
+            this._data.Add(0);
         }
     }
 }

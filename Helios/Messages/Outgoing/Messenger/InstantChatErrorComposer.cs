@@ -14,9 +14,9 @@
 
         public override void Write()
         {
-            m_Data.Add((int)instantChatError);
-            m_Data.Add(AvatarId);
-            m_Data.Add(message);
+            _data.Add((int)instantChatError);
+            _data.Add(AvatarId);
+            _data.Add(message);
         }
     }
 

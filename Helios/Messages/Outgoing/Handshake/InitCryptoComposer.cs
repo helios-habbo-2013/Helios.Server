@@ -11,9 +11,9 @@
 
         public override void Write()
         {
-            m_Data.Add(false);
-            m_Data.Add(false);
-            m_Data.Add(this.secretKey);
+            _data.Add(false);
+            _data.Add(false);
+            _data.Add(this.secretKey);
         }
     }
 }

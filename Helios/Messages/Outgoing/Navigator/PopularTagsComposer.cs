@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Helios.Storage.Models.Misc;
+using System.Collections.Generic;
 
 namespace Helios.Messages.Outgoing
 {
@@ -13,12 +14,12 @@ namespace Helios.Messages.Outgoing
 
         public override void Write()
         {
-            m_Data.Add(this.popularTags.Count);
+            _data.Add(this.popularTags.Count);
 
             foreach (var tag in this.popularTags)
             {
-                m_Data.Add(tag.Tag);
-                m_Data.Add(tag.Quantity);
+                _data.Add(tag.Tag);
+                _data.Add(tag.Quantity);
             }
         }
     }

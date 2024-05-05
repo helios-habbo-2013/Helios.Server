@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Helios.Storage.Models.Entity;
+using System;
 
 namespace Helios.Game
 {

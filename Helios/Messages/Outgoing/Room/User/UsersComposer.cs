@@ -15,30 +15,30 @@ namespace Helios.Messages.Outgoing
 
         public override void Write()
         {
-            m_Data.Add(entities.Count);
+            _data.Add(entities.Count);
 
             foreach (var entity in entities)
             {
                 if (entity is Avatar avatar)
                 {
-                    m_Data.Add(avatar.Details.Id);
-                    m_Data.Add(avatar.Details.Name);
-                    m_Data.Add(avatar.Details.Motto);
-                    m_Data.Add(avatar.Details.Figure);
-                    m_Data.Add(avatar.RoomUser.InstanceId);
-                    m_Data.Add(avatar.RoomUser.Position.X);
-                    m_Data.Add(avatar.RoomUser.Position.Y);
-                    m_Data.Add(avatar.RoomUser.Position.Z.ToClientValue());
-                    m_Data.Add(avatar.RoomUser.Position.BodyRotation);
-                    m_Data.Add(1);
-                    m_Data.Add(avatar.Details.Sex.ToLower());
+                    _data.Add(avatar.Details.Id);
+                    _data.Add(avatar.Details.Name);
+                    _data.Add(avatar.Details.Motto);
+                    _data.Add(avatar.Details.Figure);
+                    _data.Add(avatar.RoomUser.InstanceId);
+                    _data.Add(avatar.RoomUser.Position.X);
+                    _data.Add(avatar.RoomUser.Position.Y);
+                    _data.Add(avatar.RoomUser.Position.Z.ToClientValue());
+                    _data.Add(avatar.RoomUser.Position.BodyRotation);
+                    _data.Add(1);
+                    _data.Add(avatar.Details.Sex.ToLower());
 
                     // TODO: Group shit for later
-                    m_Data.Add(-1);
-                    m_Data.Add(-1);
-                    m_Data.Add(0);
+                    _data.Add(-1);
+                    _data.Add(-1);
+                    _data.Add(0);
 
-                    m_Data.Add(avatar.Details.AchievementPoints);
+                    _data.Add(avatar.Details.AchievementPoints);
                 }
             }
         }

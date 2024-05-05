@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Helios.Storage.Models.Navigator;
+using System.Collections.Generic;
 
 namespace Helios.Messages.Outgoing
 {
@@ -13,13 +14,13 @@ namespace Helios.Messages.Outgoing
 
         public override void Write()
         {
-            m_Data.Add(publicItems.Count);
+            _data.Add(publicItems.Count);
 
             foreach (var item in publicItems)
                 Compose(this, item);
 
-            m_Data.Add(0);
-            m_Data.Add(0);
+            _data.Add(0);
+            _data.Add(0);
         }
         
         public static void Compose(IMessageComposer messageComposer, PublicItemData publicItem)

@@ -14,7 +14,7 @@ namespace Helios.Messages.Outgoing
 
         public override void Write()
         {
-            m_Data.Add(effects.Count);
+            _data.Add(effects.Count);
         
             foreach (var effect in effects)
             {

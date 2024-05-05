@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Helios.Storage.Models.Catalogue;
+using System;
 using System.Collections.Generic;
 
 namespace Helios.Messages.Outgoing
@@ -14,7 +15,7 @@ namespace Helios.Messages.Outgoing
 
         public override void Write()
         {
-            m_Data.Add(subscriptions.Count);
+            _data.Add(subscriptions.Count);
 
             /* SENT 2677 / [0][0][0]�
              * [10]u
@@ -24,25 +25,25 @@ namespace Helios.Messages.Outgoing
 
             foreach (var subscription in subscriptions)
             {
-                m_Data.Add(subscription.Id);
-                m_Data.Add("DEAL_HC_" + subscription.Months);
-                m_Data.Add(subscription.PriceCoins);
-                m_Data.Add(subscription.PriceSeasonal);
-                m_Data.Add((int)subscription.SeasonalType);
-                m_Data.Add(true); // public function get vip():Boolean
-                m_Data.Add(subscription.Months);
+                _data.Add(subscription.Id);
+                _data.Add("DEAL_HC_" + subscription.Months);
+                _data.Add(subscription.PriceCoins);
+                _data.Add(subscription.PriceSeasonal);
+                _data.Add((int)subscription.SeasonalType);
+                _data.Add(true); // public function get vip():Boolean
+                _data.Add(subscription.Months);
 
-                m_Data.Add(0); // ??
-                m_Data.Add(0); // ??
+                _data.Add(0); // ??
+                _data.Add(0); // ??
 
                 var futureDate = DateTime.Now.AddMonths(subscription.Months);
 
-                m_Data.Add(futureDate.Year);
-                m_Data.Add(futureDate.Month);
-                m_Data.Add(futureDate.Day);
+                _data.Add(futureDate.Year);
+                _data.Add(futureDate.Month);
+                _data.Add(futureDate.Day);
             }
 
-            m_Data.Add(1);
+            _data.Add(1);
         }
     }
 }

@@ -13,9 +13,9 @@
 
         public override void Write()
         {
-            m_Data.Add(instanceId);
-            m_Data.Add(effectId);
-            m_Data.Add(0);
+            _data.Add(instanceId);
+            _data.Add(effectId);
+            _data.Add(0);
         }
     }
 }

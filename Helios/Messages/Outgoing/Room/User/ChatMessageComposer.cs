@@ -17,12 +17,12 @@
 
         public override void Write()
         {
-            m_Data.Add(instanceId);
-            m_Data.Add(message);
-            m_Data.Add(gesture);
-            m_Data.Add(colour);
-            m_Data.Add(0);
-            m_Data.Add(-1);
+            _data.Add(instanceId);
+            _data.Add(message);
+            _data.Add(gesture);
+            _data.Add(colour);
+            _data.Add(0);
+            _data.Add(-1);
         }
     }
 }

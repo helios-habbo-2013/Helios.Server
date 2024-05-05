@@ -13,9 +13,9 @@ namespace Helios.Messages.Outgoing
 
         public override void Write()
         {
-            m_Data.Add(item.Id.ToString());
-            m_Data.Add(0);
-            m_Data.Add(item.Data.OwnerId);
+            _data.Add(item.Id.ToString());
+            _data.Add(0);
+            _data.Add(item.Data.OwnerId);
         }
     }
 }

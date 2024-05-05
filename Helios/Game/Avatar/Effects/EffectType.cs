@@ -1,4 +1,6 @@
-﻿namespace Helios.Game
+﻿using Helios.Storage.Models.Effect;
+
+namespace Helios.Game
 {
     public class EffectType
     {

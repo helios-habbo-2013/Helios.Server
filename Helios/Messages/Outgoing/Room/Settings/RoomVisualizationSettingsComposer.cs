@@ -15,9 +15,9 @@
 
         public override void Write()
         {
-            m_Data.Add(hideWall);
-            m_Data.Add(wallThickness);
-            m_Data.Add(floorThickness);
+            _data.Add(hideWall);
+            _data.Add(wallThickness);
+            _data.Add(floorThickness);
         }
     }
 }

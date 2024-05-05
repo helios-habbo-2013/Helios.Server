@@ -1,4 +1,6 @@
-﻿namespace Helios.Messages.Outgoing
+﻿using Helios.Storage.Models.Room;
+
+namespace Helios.Messages.Outgoing
 {
     class RoomInfoComposer : IMessageComposer
     {

@@ -11,7 +11,7 @@
 
         public override void Write()
         {
-            m_Data.Add(itemId);
+            _data.Add(itemId);
         }
     }
 }

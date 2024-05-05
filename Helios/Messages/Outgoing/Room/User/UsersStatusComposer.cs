@@ -15,16 +15,16 @@ namespace Helios.Messages.Outgoing
 
         public override void Write()
         {
-            m_Data.Add(entities.Count);
+            _data.Add(entities.Count);
 
             foreach (var entity in entities)
             {
-                m_Data.Add(entity.RoomEntity.InstanceId);
-                m_Data.Add(entity.RoomEntity.Position.X);
-                m_Data.Add(entity.RoomEntity.Position.Y);
-                m_Data.Add(entity.RoomEntity.Position.Z.ToClientValue());
-                m_Data.Add(entity.RoomEntity.Position.HeadRotation);
-                m_Data.Add(entity.RoomEntity.Position.BodyRotation);
+                _data.Add(entity.RoomEntity.InstanceId);
+                _data.Add(entity.RoomEntity.Position.X);
+                _data.Add(entity.RoomEntity.Position.Y);
+                _data.Add(entity.RoomEntity.Position.Z.ToClientValue());
+                _data.Add(entity.RoomEntity.Position.HeadRotation);
+                _data.Add(entity.RoomEntity.Position.BodyRotation);
 
                 string statusString = "/";
 
@@ -41,7 +41,7 @@ namespace Helios.Messages.Outgoing
                     statusString += "/";
                 }
 
-                m_Data.Add(statusString);
+                _data.Add(statusString);
             }
         }
     }

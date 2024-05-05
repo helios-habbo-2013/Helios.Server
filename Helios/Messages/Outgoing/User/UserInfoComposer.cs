@@ -13,20 +13,20 @@ namespace Helios.Messages.Outgoing
 
         public override void Write()
         {
-            m_Data.Add(avatar.Details.Id);
-            m_Data.Add(avatar.Details.Name);
-            m_Data.Add(avatar.Details.Figure);
-            m_Data.Add(avatar.Details.Sex.ToUpper());
-            m_Data.Add(avatar.Details.Motto);
-            m_Data.Add(avatar.Details.RealName);
-            m_Data.Add(false);
-            m_Data.Add(avatar.Settings.Respect);
-            m_Data.Add(avatar.Settings.DailyRespectPoints);
-            m_Data.Add(avatar.Settings.DailyPetRespectPoints);
-            m_Data.Add(true);
-            m_Data.Add(avatar.Details.PreviousLastOnline.ToString("MM-dd-yyyy HH:mm:ss"));
-            m_Data.Add(true);
-            m_Data.Add(false);
+            _data.Add(avatar.Details.Id);
+            _data.Add(avatar.Details.Name);
+            _data.Add(avatar.Details.Figure);
+            _data.Add(avatar.Details.Sex.ToUpper());
+            _data.Add(avatar.Details.Motto);
+            _data.Add(avatar.Details.RealName);
+            _data.Add(false);
+            _data.Add(avatar.Settings.Respect);
+            _data.Add(avatar.Settings.DailyRespectPoints);
+            _data.Add(avatar.Settings.DailyPetRespectPoints);
+            _data.Add(true);
+            _data.Add(avatar.Details.PreviousLastOnline.ToString("MM-dd-yyyy HH:mm:ss"));
+            _data.Add(true);
+            _data.Add(false);
         }
     }
 }

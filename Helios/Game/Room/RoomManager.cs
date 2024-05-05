@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Helios.Storage.Access;
+using Helios.Storage.Models.Room;
 using Helios.Util.Extensions;
 
 namespace Helios.Game

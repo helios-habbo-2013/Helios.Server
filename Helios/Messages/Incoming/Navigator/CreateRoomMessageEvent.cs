@@ -4,6 +4,7 @@ using System.Linq;
 using Helios.Util.Extensions;
 using Helios.Messages.Outgoing;
 using Helios.Storage.Access;
+using Helios.Storage.Models.Room;
 
 namespace Helios.Messages.Incoming
 {

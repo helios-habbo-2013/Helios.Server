@@ -26,37 +26,37 @@ namespace Helios.Messages.Outgoing
         public override void Write()
         {
             // See https://habbo.fandom.com/wiki/Benefits_of_VIP
-            m_Data.Add(maxNormalFriends); // HC            _SafeStr_10476():int
-            m_Data.Add(0);
-            m_Data.Add(maxHCFriends); // HC limit         _SafeStr_10477():int
-            m_Data.Add(maxVIPFriends); // VIP limit        _local_2._SafeStr_10478
-            m_Data.Add(categories.Count);
+            _data.Add(maxNormalFriends); // HC            _SafeStr_10476():int
+            _data.Add(0);
+            _data.Add(maxHCFriends); // HC limit         _SafeStr_10477():int
+            _data.Add(maxVIPFriends); // VIP limit        _local_2._SafeStr_10478
+            _data.Add(categories.Count);
 
             int i = 1;
             foreach (var category in categories)
             {
-                m_Data.Add(i);
-                m_Data.Add(category.Label);
+                _data.Add(i);
+                _data.Add(category.Label);
                 i++;
             }
 
-            m_Data.Add(friends.Count);
+            _data.Add(friends.Count);
             foreach (var friend in friends)
             {
-                m_Data.Add(friend.AvatarData.Id);
-                m_Data.Add(friend.AvatarData.Name);
-                m_Data.Add(1);
-                m_Data.Add(friend.IsOnline);
-                m_Data.Add(friend.Avatar != null ? (friend.Avatar.Settings.FollowingEnabled && friend.InRoom) : false);
-                m_Data.Add(friend.IsOnline ? friend.AvatarData.Figure : "");
-                m_Data.Add(0); // category id
-                m_Data.Add(friend.AvatarData.Motto); // motto
-                m_Data.Add(friend.AvatarData.RealName); // real name
-                m_Data.Add(friend.AvatarData.LastOnline.ToString("MM-dd-yyyy HH:mm:ss")); // unknown??
-                m_Data.Add(false);
-                m_Data.Add(false);
-                m_Data.Add(false); // is using pocket habbo
-                m_Data.Add((short)0); // relationship status
+                _data.Add(friend.AvatarData.Id);
+                _data.Add(friend.AvatarData.Name);
+                _data.Add(1);
+                _data.Add(friend.IsOnline);
+                _data.Add(friend.Avatar != null ? (friend.Avatar.Settings.FollowingEnabled && friend.InRoom) : false);
+                _data.Add(friend.IsOnline ? friend.AvatarData.Figure : "");
+                _data.Add(0); // category id
+                _data.Add(friend.AvatarData.Motto); // motto
+                _data.Add(friend.AvatarData.RealName); // real name
+                _data.Add(friend.AvatarData.LastOnline.ToString("MM-dd-yyyy HH:mm:ss")); // unknown??
+                _data.Add(false);
+                _data.Add(false);
+                _data.Add(false); // is using pocket habbo
+                _data.Add((short)0); // relationship status
             }
         }
     }

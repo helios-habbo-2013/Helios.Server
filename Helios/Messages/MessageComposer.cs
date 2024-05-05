@@ -4,15 +4,15 @@ namespace Helios.Messages
 {
     public abstract class IMessageComposer
     {
-        protected List<object> m_Data;
-        protected bool m_Composed;
+        protected List<object> _data;
+        protected bool _composed;
 
         /// <summary>
         /// Get the data appended
         /// </summary>
         public List<object> Data
         {
-            get { return m_Data; }
+            get { return _data; }
         }
 
         /// <summary>
@@ -20,20 +20,20 @@ namespace Helios.Messages
         /// </summary>
         public bool Composed
         {
-            get { return m_Composed; }
-            set { m_Composed = value; }
+            get { return _composed; }
+            set { _composed = value; }
         }
 
         public IMessageComposer()
         {
-            m_Data = new List<object>();
+            _data = new List<object>();
         }
 
         public abstract void Write();
 
         public object[] GetMessageArray()
         {
-            return m_Data.ToArray();
+            return _data.ToArray();
         }
     }
 }

@@ -17,7 +17,7 @@
 
         public override void Write()
         {
-            m_Data.Add((int)itemPlaceError);
+            _data.Add((int)itemPlaceError);
         }
     }
 }

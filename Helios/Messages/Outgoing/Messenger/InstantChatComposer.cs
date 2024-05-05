@@ -12,9 +12,9 @@
         }
         public override void Write()
         {
-            m_Data.Add(fromId);
-            m_Data.Add(message);
-            m_Data.Add(0);
+            _data.Add(fromId);
+            _data.Add(message);
+            _data.Add(0);
         }
     }
 }

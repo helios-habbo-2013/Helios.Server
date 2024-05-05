@@ -15,8 +15,8 @@ namespace Helios.Messages.Outgoing
 
         public override void Write()
         {
-            m_Data.Add(itemId.ToString());
-            m_Data.Add($"{stickieData.Colour} {stickieData.Message}");
+            _data.Add(itemId.ToString());
+            _data.Add($"{stickieData.Colour} {stickieData.Message}");
         }
     }
 }

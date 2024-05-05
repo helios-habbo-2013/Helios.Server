@@ -1,4 +1,6 @@
-﻿namespace Helios.Messages.Outgoing
+﻿using Helios.Storage.Models.Subscription;
+
+namespace Helios.Messages.Outgoing
 {
     internal class ScrSendUserInfoComposer : IMessageComposer
     {
@@ -11,16 +13,16 @@
 
         public override void Write()
         {
-            m_Data.Add("habbo_club"); // Which product/widget to assign the value
-            m_Data.Add(subscription != null ? subscription.DaysLeft : 0); // DAYS LEFT
-            m_Data.Add(0); // unused ??
-            m_Data.Add(subscription != null ? subscription.MonthsLeft : 0); // MONTHS LEFT
-            m_Data.Add(0); // unused ??
-            m_Data.Add(false); // unused ??
-            m_Data.Add(subscription != null);
-            m_Data.Add(0); // unused ??
-            m_Data.Add(0); // unused ??
-            m_Data.Add(0); // unused ??
+            _data.Add("habbo_club"); // Which product/widget to assign the value
+            _data.Add(subscription != null ? subscription.DaysLeft : 0); // DAYS LEFT
+            _data.Add(0); // unused ??
+            _data.Add(subscription != null ? subscription.MonthsLeft : 0); // MONTHS LEFT
+            _data.Add(0); // unused ??
+            _data.Add(false); // unused ??
+            _data.Add(subscription != null);
+            _data.Add(0); // unused ??
+            _data.Add(0); // unused ??
+            _data.Add(0); // unused ??
         }
     }
 }

@@ -20,20 +20,20 @@ namespace Helios.Messages.Outgoing
 
         public override void Write()
         {
-            m_Data.Add(owners.Count);
+            _data.Add(owners.Count);
 
             foreach (AvatarData avatarData in owners)
             {
-                m_Data.Add(avatarData.Id);
-                m_Data.Add(avatarData.Name);
+                _data.Add(avatarData.Id);
+                _data.Add(avatarData.Name);
             }
 
-            m_Data.Add(floorItems.Count);
+            _data.Add(floorItems.Count);
 
             foreach (Item item in floorItems)
             {
                 Serialize(this, item);
-                m_Data.Add(item.Data.OwnerId);
+                _data.Add(item.Data.OwnerId);
             }
         }
 

@@ -15,8 +15,8 @@ namespace Helios.Messages.Outgoing
         {
             WallItemsComposer.Serialize(this, item);
 
-            m_Data.Add(item.Data.OwnerData.Id);
-            m_Data.Add(item.Data.OwnerData.Name);
+            _data.Add(item.Data.OwnerData.Id);
+            _data.Add(item.Data.OwnerData.Name);
         }
     }
 }

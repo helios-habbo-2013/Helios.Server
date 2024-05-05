@@ -13,16 +13,16 @@ namespace Helios.Messages.Outgoing
 
         public override void Write()
         {
-            m_Data.Add(moodlightData.Presets.Count);
-            m_Data.Add(moodlightData.CurrentPreset);
+            _data.Add(moodlightData.Presets.Count);
+            _data.Add(moodlightData.CurrentPreset);
 
             int i = 1;
             foreach (var preset in moodlightData.Presets)
             {
-                m_Data.Add(i);
-                m_Data.Add(preset.IsBackground ? 2 : 1);
-                m_Data.Add(preset.ColorCode);
-                m_Data.Add(preset.ColorIntensity);
+                _data.Add(i);
+                _data.Add(preset.IsBackground ? 2 : 1);
+                _data.Add(preset.ColorCode);
+                _data.Add(preset.ColorIntensity);
                 i++;
             }
         }

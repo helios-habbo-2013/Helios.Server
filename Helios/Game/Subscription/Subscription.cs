@@ -1,5 +1,6 @@
 ﻿using Helios.Messages.Outgoing;
 using Helios.Storage.Access;
+using Helios.Storage.Models.Subscription;
 using System;
 
 namespace Helios.Game

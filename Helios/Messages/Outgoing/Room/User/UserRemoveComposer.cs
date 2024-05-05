@@ -13,7 +13,7 @@ namespace Helios.Messages.Outgoing
 
         public override void Write()
         {
-            m_Data.Add(Convert.ToString(instanceId));
+            _data.Add(Convert.ToString(instanceId));
         }
     }
 }

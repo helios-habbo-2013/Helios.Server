@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Helios.Storage.Models.Subscription;
+using System;
 
 namespace Helios.Game
 {

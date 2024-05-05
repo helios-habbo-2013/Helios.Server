@@ -13,8 +13,8 @@
 
         public override void Write()
         {
-            m_Data.Add(roomId);
-            m_Data.Add(categoryId);
+            _data.Add(roomId);
+            _data.Add(categoryId);
         }
     }
 }

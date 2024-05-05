@@ -11,7 +11,7 @@
 
         public override void Write()
         {
-            m_Data.Add($"{credits}.0");
+            _data.Add($"{credits}.0");
         }
     }
 }

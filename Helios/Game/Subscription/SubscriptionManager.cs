@@ -1,5 +1,6 @@
 ﻿using Helios.Messages.Outgoing;
 using Helios.Storage.Access;
+using Helios.Storage.Models.Catalogue;
 using System.Collections.Generic;
 using System.Linq;
 

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Helios.Storage.Models.Navigator;
+using System.Collections.Generic;
 
 namespace Helios.Messages.Outgoing
 {
@@ -13,13 +14,13 @@ namespace Helios.Messages.Outgoing
 
         public override void Write()
         {
-            m_Data.Add(categories.Count);
+            _data.Add(categories.Count);
 
             foreach (var category in categories)
             {
-                m_Data.Add(category.Id);
-                m_Data.Add(category.Caption);
-                m_Data.Add(category.IsEnabled);
+                _data.Add(category.Id);
+                _data.Add(category.Caption);
+                _data.Add(category.IsEnabled);
             }
         }
     }

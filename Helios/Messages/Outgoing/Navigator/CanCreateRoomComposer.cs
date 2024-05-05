@@ -13,8 +13,8 @@
 
         public override void Write()
         {
-            m_Data.Add(hasReachedLimit ? 0 : 1);
-            m_Data.Add(maxRooms);
+            _data.Add(hasReachedLimit ? 0 : 1);
+            _data.Add(maxRooms);
         }
     }
 }

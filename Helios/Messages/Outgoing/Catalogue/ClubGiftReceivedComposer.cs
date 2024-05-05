@@ -13,16 +13,16 @@ namespace Helios.Messages.Outgoing
 
         public override void Write()
         {
-            m_Data.Add(item.Data.SaleCode);
-            m_Data.Add(item.Packages.Count);
+            _data.Add(item.Data.SaleCode);
+            _data.Add(item.Packages.Count);
 
             foreach (CataloguePackage package in item.Packages)
             {
-                m_Data.Add(package.Definition.Type);
-                m_Data.Add(package.Definition.Data.SpriteId);
-                m_Data.Add(package.Data.SpecialSpriteId);
-                m_Data.Add(package.Data.Amount);
-                m_Data.Add(false);
+                _data.Add(package.Definition.Type);
+                _data.Add(package.Definition.Data.SpriteId);
+                _data.Add(package.Data.SpecialSpriteId);
+                _data.Add(package.Data.Amount);
+                _data.Add(false);
             }
         }
     }

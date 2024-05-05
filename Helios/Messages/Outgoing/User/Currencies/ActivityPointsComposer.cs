@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Helios.Storage.Models.Catalogue;
+using System.Collections.Generic;
 
 namespace Helios.Messages.Outgoing
 {
@@ -13,12 +14,12 @@ namespace Helios.Messages.Outgoing
 
         public override void Write()
         {
-            m_Data.Add(currencies.Count);
+            _data.Add(currencies.Count);
 
             foreach (var currency in currencies)
             {
-                m_Data.Add((int)currency.Key);
-                m_Data.Add(currency.Value);
+                _data.Add((int)currency.Key);
+                _data.Add(currency.Value);
             }
         }
     }

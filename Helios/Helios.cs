@@ -10,6 +10,7 @@ using Helios.Messages;
 using System.Threading;
 using Helios.Storage.Access;
 using Helios.Storage;
+using System.Linq;
 
 namespace Helios
 {
@@ -78,7 +79,7 @@ namespace Helios
         {
             log.Warn("Attempting to connect to MySQL database");
             StorageContext.Instance.Init();// ServerConfig.Instance.ConnectionString);
-            log.Info("Connection using Fluid NHibernate is successful!");
+            log.Info("Connection using  is successful!");
         }
 
         /// <summary>

@@ -13,8 +13,8 @@
 
         public override void Write()
         {
-            m_Data.Add(key);
-            m_Data.Add(value);
+            _data.Add(key);
+            _data.Add(value);
         }
     }
 }

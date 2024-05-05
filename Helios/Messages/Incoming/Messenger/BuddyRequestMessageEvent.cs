@@ -3,6 +3,7 @@ using Helios.Messages.Outgoing;
 using Helios.Messages.Outgoing.Messenger;
 using Helios.Network.Streams;
 using Helios.Storage.Access;
+using Helios.Storage.Models.Messenger;
 
 namespace Helios.Messages.Incoming
 {

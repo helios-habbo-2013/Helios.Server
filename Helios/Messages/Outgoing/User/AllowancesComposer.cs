@@ -15,25 +15,25 @@
 
         public override void Write()
         {
-            m_Data.Add(6);
-            m_Data.Add("SAFE_CHAT");
-            m_Data.Add(SAFECHAT);
-            m_Data.Add((!SAFECHAT) ? "requirement.unfulfilled.safety_quiz_1" : "");
-            m_Data.Add("USE_GUIDE_TOOL");
-            m_Data.Add(ISGUIDE);
-            m_Data.Add((!ISGUIDE) ? "requirement.unfulfilled.helper_level_4" : "");
-            m_Data.Add("VOTE_IN_COMPETITIONS");
-            m_Data.Add(VOTE_IN_COMP);
-            m_Data.Add((!VOTE_IN_COMP) ? "requirement.unfulfilled.helper_level_2" : "");
-            m_Data.Add("TRADE");
-            m_Data.Add(true);
-            m_Data.Add("");
-            m_Data.Add("FULL_CHAT");
-            m_Data.Add(true);
-            m_Data.Add("");
-            m_Data.Add("CITIZEN");
-            m_Data.Add(true);
-            m_Data.Add("");
+            _data.Add(6);
+            _data.Add("SAFE_CHAT");
+            _data.Add(SAFECHAT);
+            _data.Add((!SAFECHAT) ? "requirement.unfulfilled.safety_quiz_1" : "");
+            _data.Add("USE_GUIDE_TOOL");
+            _data.Add(ISGUIDE);
+            _data.Add((!ISGUIDE) ? "requirement.unfulfilled.helper_level_4" : "");
+            _data.Add("VOTE_IN_COMPETITIONS");
+            _data.Add(VOTE_IN_COMP);
+            _data.Add((!VOTE_IN_COMP) ? "requirement.unfulfilled.helper_level_2" : "");
+            _data.Add("TRADE");
+            _data.Add(true);
+            _data.Add("");
+            _data.Add("FULL_CHAT");
+            _data.Add(true);
+            _data.Add("");
+            _data.Add("CITIZEN");
+            _data.Add(true);
+            _data.Add("");
         }
     }
 }

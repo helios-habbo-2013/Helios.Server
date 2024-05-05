@@ -18,13 +18,13 @@ namespace Helios.Messages.Outgoing
 
         public override void Write()
         {
-            m_Data.Add(true);
-            m_Data.Add(0);
-            m_Data.Add(0);
-            m_Data.Add(-1);
-            m_Data.Add("root");
-            m_Data.Add("");
-            m_Data.Add(parentPages.Count);
+            _data.Add(true);
+            _data.Add(0);
+            _data.Add(0);
+            _data.Add(-1);
+            _data.Add("root");
+            _data.Add("");
+            _data.Add(parentPages.Count);
 
             foreach (var childTab in parentPages)
             {
@@ -32,13 +32,13 @@ namespace Helios.Messages.Outgoing
                 RecursiveIndexNode(childTab);
             }
 
-            m_Data.Add(true);
+            _data.Add(true);
         }
 
         private void RecursiveIndexNode(CataloguePage parentTab)
         {
             var childTabs = CatalogueManager.Instance.GetPages(parentTab.Data.Id, rank, hasClub);
-            m_Data.Add(childTabs.Count);
+            _data.Add(childTabs.Count);
 
             foreach (var childTab in childTabs)
             {
@@ -49,12 +49,12 @@ namespace Helios.Messages.Outgoing
 
         private void AppendIndexNode(CataloguePage childTab)
         {
-            m_Data.Add(true);
-            m_Data.Add(childTab.Data.IconColour);
-            m_Data.Add(childTab.Data.IconImage);
-            m_Data.Add(childTab.Data.Id);
-            m_Data.Add(childTab.Data.PageLink);
-            m_Data.Add(childTab.Data.Caption);
+            _data.Add(true);
+            _data.Add(childTab.Data.IconColour);
+            _data.Add(childTab.Data.IconImage);
+            _data.Add(childTab.Data.Id);
+            _data.Add(childTab.Data.PageLink);
+            _data.Add(childTab.Data.Caption);
         }
     }
 }
