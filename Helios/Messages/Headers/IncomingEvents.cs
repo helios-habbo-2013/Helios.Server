@@ -76,5 +76,6 @@
         public static readonly short SearchFlatTagsMessageEvent = 2952;
         public static readonly short CheckChangeNameMessageEvent = 2026;
         public static readonly short ConfirmChangeNameMessageEvent = 2451;
+        public static readonly short BuyGroupDialogMessageEvent = 3253;
     }
 }

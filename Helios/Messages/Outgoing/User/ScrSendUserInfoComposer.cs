@@ -15,14 +15,14 @@ namespace Helios.Messages.Outgoing
         {
             _data.Add("habbo_club"); // Which product/widget to assign the value
             _data.Add(subscription != null ? subscription.DaysLeft : 0); // DAYS LEFT
-            _data.Add(0); // unused ??
+            _data.Add(2); // unused ??
             _data.Add(subscription != null ? subscription.MonthsLeft : 0); // MONTHS LEFT
+            _data.Add(1); // unused ??
+            _data.Add(subscription != null); // unused ??
+            _data.Add(true);
             _data.Add(0); // unused ??
-            _data.Add(false); // unused ??
-            _data.Add(subscription != null);
-            _data.Add(0); // unused ??
-            _data.Add(0); // unused ??
-            _data.Add(0); // unused ??
+            _data.Add(subscription != null ? subscription.DaysLeft : 0); // unused ??
+            _data.Add(subscription != null ? subscription.DaysLeft : 0); // unused ??
         }
     }
 }

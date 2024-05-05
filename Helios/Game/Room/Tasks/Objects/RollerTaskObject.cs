@@ -8,7 +8,7 @@ namespace Helios.Game
     {
         #region Properties
 
-        public double TaskProcessTime { get { return 2; } }
+        public double TaskProcessTime { get { return 3; } }
         //public List<RollingData> RollingItems { get; set; }
         //public IEntity RollingEntity { get; set; }
         private RollerEntry _rollerEntry { get; set; }

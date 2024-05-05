@@ -88,5 +88,7 @@
         public static readonly short PopularTagsComposer = 257;
         public static readonly short ChangeNameStatusComposer = 1770;
         public static readonly short ChangeNameUpdateComposer = 0x0A00;
+        public static readonly short GroupElementsMessageComposer = 29;
+        public static readonly short GroupPartsMessageComposer = 1061;
     }
 }

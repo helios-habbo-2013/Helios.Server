@@ -91,6 +91,7 @@ namespace Helios
             ValueManager.Instance.Load();
             InteractionManager.Instance.Load();
             ItemManager.Instance.Load();
+            GroupManager.Instance.Load();
             CatalogueManager.Instance.Load();
             RoomManager.Instance.Load();
             SubscriptionManager.Instance.Load();
