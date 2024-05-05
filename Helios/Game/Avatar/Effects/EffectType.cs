@@ -1,9 +1,4 @@
-﻿using Helios.Storage.Database.Data;
-using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Helios.Game
+﻿namespace Helios.Game
 {
     public class EffectType
     {

@@ -1,7 +1,7 @@
 ﻿using Helios.Game;
 using Helios.Network.Streams;
-using Helios.Storage.Database.Access;
-using Helios.Storage.Database.Data;
+using Helios.Storage.Access;
+using Helios.Storage.Models.Messenger;
 
 namespace Helios.Messages.Incoming
 {

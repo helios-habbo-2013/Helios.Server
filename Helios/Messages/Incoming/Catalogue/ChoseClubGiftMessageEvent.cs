@@ -1,6 +1,6 @@
 ﻿using Helios.Game;
 using Helios.Network.Streams;
-using Helios.Storage.Database.Access;
+using Helios.Storage.Access;
 using Helios.Util;
 
 namespace Helios.Messages.Incoming.Catalogue

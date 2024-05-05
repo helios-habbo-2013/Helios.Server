@@ -1,9 +1,4 @@
-﻿using Helios.Game;
-using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Helios.Messages.Outgoing
+﻿namespace Helios.Messages.Outgoing
 {
     class EffectMessageComposer : IMessageComposer
     {

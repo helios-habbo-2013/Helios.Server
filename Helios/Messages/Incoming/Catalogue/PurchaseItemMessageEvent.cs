@@ -2,7 +2,6 @@
 using Helios.Game;
 using Helios.Messages.Outgoing;
 using Helios.Network.Streams;
-using Helios.Storage.Database.Data;
 using Helios.Util;
 using Helios.Util.Extensions;
 

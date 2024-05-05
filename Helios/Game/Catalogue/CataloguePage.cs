@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using Helios.Storage.Database.Data;
+﻿using Helios.Storage.Models.Catalogue;
+using System.Collections.Generic;
 
 namespace Helios.Game
 {

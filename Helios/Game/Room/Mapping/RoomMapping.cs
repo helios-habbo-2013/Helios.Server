@@ -1,7 +1,4 @@
-﻿using System;
-using Helios.Messages.Outgoing;
-
-namespace Helios.Game
+﻿namespace Helios.Game
 {
     public class RoomMapping : ILoadable
     {

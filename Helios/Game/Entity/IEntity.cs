@@ -1,4 +1,4 @@
-﻿using Helios.Storage.Database.Data;
+﻿using Helios.Storage.Models.Entity;
 
 namespace Helios.Game
 {

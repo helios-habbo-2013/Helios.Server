@@ -1,6 +1,7 @@
 ﻿using Helios.Messages.Outgoing;
-using Helios.Storage.Database.Access;
-using Helios.Storage.Database.Data;
+using Helios.Storage.Access;
+using Helios.Storage.Models.Messenger;
+using Helios.Storage.Models.Subscription;
 using Helios.Util.Extensions;
 using System.Collections.Concurrent;
 using System.Collections.Generic;

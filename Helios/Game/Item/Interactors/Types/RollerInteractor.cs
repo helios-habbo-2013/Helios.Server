@@ -1,10 +1,4 @@
-﻿using Helios.Messages.Outgoing;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace Helios.Game
+﻿namespace Helios.Game
 {
     public class RollerInteractor : Interactor
     {

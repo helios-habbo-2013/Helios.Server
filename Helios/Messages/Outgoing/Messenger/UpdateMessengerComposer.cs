@@ -1,5 +1,5 @@
 ﻿using Helios.Game;
-using Helios.Storage.Database.Data;
+using Helios.Storage.Models.Messenger;
 using System.Collections.Generic;
 
 namespace Helios.Messages.Outgoing

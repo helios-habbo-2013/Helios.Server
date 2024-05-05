@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Helios.Game;
-using Helios.Messages.Outgoing;
+﻿using Helios.Game;
 using Helios.Network.Streams;
 
 namespace Helios.Messages.Incoming

@@ -2,7 +2,6 @@
 using Helios.Messages.Outgoing;
 using Helios.Network.Streams;
 using Helios.Util.Extensions;
-using System;
 using System.Collections.Generic;
 
 namespace Helios.Messages.Incoming

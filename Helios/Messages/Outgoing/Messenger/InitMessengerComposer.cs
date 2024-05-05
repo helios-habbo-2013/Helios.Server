@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using Helios.Game;
-using Helios.Storage.Database.Data;
+using Helios.Storage.Models.Messenger;
 
 namespace Helios.Messages.Outgoing
 {

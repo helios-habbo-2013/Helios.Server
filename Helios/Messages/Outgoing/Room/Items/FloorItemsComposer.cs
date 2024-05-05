@@ -1,10 +1,9 @@
 ﻿using Helios.Game;
-using Helios.Storage.Database.Data;
 using Helios.Util.Extensions;
 using System.Linq;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
-using System;
+using Helios.Storage.Models.Avatar;
 
 namespace Helios.Messages.Outgoing
 {

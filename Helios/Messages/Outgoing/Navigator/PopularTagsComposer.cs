@@ -1,5 +1,4 @@
-﻿using Helios.Storage.Database.Data;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace Helios.Messages.Outgoing
 {

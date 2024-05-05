@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Helios.Game
+﻿namespace Helios.Game
 {
     public interface IRollerTask<T>
     {

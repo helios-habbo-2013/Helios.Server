@@ -1,5 +1,5 @@
 ﻿using Helios.Messages.Outgoing;
-using Helios.Storage.Database.Access;
+using Helios.Storage.Access;
 using Helios.Util;
 using Helios.Util.Extensions;
 using log4net;
@@ -7,7 +7,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Text;
 
 namespace Helios.Game
 {

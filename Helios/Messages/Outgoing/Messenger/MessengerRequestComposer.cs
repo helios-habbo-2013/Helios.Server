@@ -1,4 +1,4 @@
-﻿using Helios.Storage.Database.Data;
+﻿using Helios.Storage.Models.Avatar;
 
 namespace Helios.Messages.Outgoing.Messenger
 {

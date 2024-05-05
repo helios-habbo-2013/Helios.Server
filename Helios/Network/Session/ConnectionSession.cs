@@ -1,5 +1,4 @@
-﻿using System;
-using DotNetty.Transport.Channels;
+﻿using DotNetty.Transport.Channels;
 using Helios.Game;
 using Helios.Messages;
 

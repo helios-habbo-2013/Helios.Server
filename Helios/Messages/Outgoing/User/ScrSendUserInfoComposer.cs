@@ -1,6 +1,4 @@
-﻿using Helios.Storage.Database.Data;
-
-namespace Helios.Messages.Outgoing
+﻿namespace Helios.Messages.Outgoing
 {
     internal class ScrSendUserInfoComposer : IMessageComposer
     {

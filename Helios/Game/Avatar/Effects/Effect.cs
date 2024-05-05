@@ -1,5 +1,5 @@
-﻿using Helios.Storage.Database.Access;
-using Helios.Storage.Database.Data;
+﻿using Helios.Storage.Access;
+using Helios.Storage.Models.Effect;
 using System;
 
 namespace Helios.Game

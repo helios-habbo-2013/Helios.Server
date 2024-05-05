@@ -1,8 +1,9 @@
 ﻿using Helios.Messages;
 using Helios.Messages.Outgoing;
 using Helios.Network.Session;
-using Helios.Storage.Database.Access;
-using Helios.Storage.Database.Data;
+using Helios.Storage.Access;
+using Helios.Storage.Models.Avatar;
+using Helios.Storage.Models.Entity;
 using log4net;
 using System;
 using System.Reflection;
