@@ -90,5 +90,7 @@
         public static readonly short ChangeNameUpdateComposer = 0x0A00;
         public static readonly short GroupElementsMessageComposer = 29;
         public static readonly short GroupPartsMessageComposer = 1061;
+        public static readonly short GiveRoomRightsMessageComposer = 3158;
+        public static readonly short RemoveRightsMessageComposer = 3702;
     }
 }

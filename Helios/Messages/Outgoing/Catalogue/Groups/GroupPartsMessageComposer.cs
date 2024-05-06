@@ -1,17 +1,14 @@
 ﻿using Helios.Game;
-using System;
+using Helios.Storage.Models.Room;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Helios.Messages.Outgoing.Catalogue.Groups
 {
     public class GroupPartsMessageComposer : IMessageComposer
     {
-        private List<Room> roomList;
+        private List<RoomData> roomList;
 
-        public GroupPartsMessageComposer(List<Room> roomList)
+        public GroupPartsMessageComposer(List<RoomData> roomList)
         {
             this.roomList = roomList;
         }
@@ -23,8 +20,8 @@ namespace Helios.Messages.Outgoing.Catalogue.Groups
 
             foreach (var room in roomList)
             {
-                _data.Add(room.Data.Id);
-                _data.Add(room.Data.Name);
+                _data.Add(room.Id);
+                _data.Add(room.Name);
                 _data.Add(false);
             }
 

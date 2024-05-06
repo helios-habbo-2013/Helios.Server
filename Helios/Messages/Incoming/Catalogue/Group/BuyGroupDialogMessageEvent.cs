@@ -11,11 +11,9 @@ namespace Helios.Messages.Incoming.Catalogue
     {
         public void Handle(Avatar avatar, Request request)
         {
-            var roomList = RoomManager.Instance.ReplaceQueryRooms(
-                RoomDao.GetUserRooms(avatar.Details.Id)
-            )
-            .Where(x => x.Data.GroupId == null)
-            .ToList();
+            var roomList = RoomDao.GetUserRooms(avatar.Details.Id)
+                .Where(x => x.GroupId == null)
+                .ToList();
 
             avatar.Send(new GroupPartsMessageComposer(roomList));
 
