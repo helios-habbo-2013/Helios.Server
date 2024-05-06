@@ -82,7 +82,7 @@ namespace Helios.Game
                     avatar.Send(new YouAreOwnerMessageEvent());
                     entity.RoomEntity.AddStatus("flatctrl", "useradmin");
                 }
-                else if (room.RightsManager.HasRights(avatar.Details.Id, false))
+                else if (room.RightsManager.HasRights(avatar.Details.Id))
                 {
                     accessLevel = 1;
 

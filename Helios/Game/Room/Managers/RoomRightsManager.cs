@@ -5,6 +5,7 @@ using System.Linq;
 using Helios.Util.Extensions;
 using System.Threading.Tasks;
 using Helios.Storage.Access;
+using Helios.Storage.Models.Room;
 
 namespace Helios.Game
 {
@@ -13,6 +14,7 @@ namespace Helios.Game
         #region Fields
 
         private Room room;
+        private List<int> rights;
 
         #endregion
 
@@ -21,6 +23,7 @@ namespace Helios.Game
         public RoomRightsManager(Room room)
         {
             this.room = room;
+            this.rights = RoomDao.GetRoomRights(room.Data.Id);
         }
 
         #endregion
@@ -31,11 +34,13 @@ namespace Helios.Game
         /// <summary>
         /// Get if the user has rights
         /// </summary>
-        public bool HasRights(int AvatarId, bool checkOwner = true)
+        public bool HasRights(int AvatarId)
         {
-            if (checkOwner)
-                if (room.Data.OwnerId == AvatarId)
-                    return true;
+            if (room.Data.OwnerId == AvatarId)
+                return true;
+
+            if (rights.Contains(AvatarId))
+                return true;
 
             var avatar = AvatarManager.Instance.GetAvatarById(AvatarId);
 
@@ -74,7 +79,10 @@ namespace Helios.Game
         public void AddRights(int avatarId)
         {
             var playerEntity = AvatarManager.Instance.GetAvatarById(avatarId);
-            var playerData = AvatarManager.Instance.GetDataById(avatarId);
+
+            RoomDao.AddRights(room.Data.Id, avatarId);
+
+            rights.Add(avatarId);
 
             if (playerEntity != null)
             {
@@ -92,7 +100,10 @@ namespace Helios.Game
         public void RemoveRights(int avatarId)
         {
             var playerEntity = AvatarManager.Instance.GetAvatarById(avatarId);
-            var playerData = AvatarManager.Instance.GetDataById(avatarId);
+
+            RoomDao.RemoveRights(room.Data.Id, avatarId);
+
+            rights.Remove(avatarId);
 
             if (playerEntity != null)
             {
