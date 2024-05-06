@@ -55,8 +55,20 @@ namespace Helios.Messages.Outgoing
             messageComposer.Data.Add(room.Rating);
             messageComposer.Data.Add(0);
             messageComposer.Data.Add(room.Category.Id);
-            messageComposer.Data.Add(0);
-            messageComposer.Data.Add(0);
+            messageComposer.Data.Add(room.GroupData != null ? room.GroupData.Id : 0);
+
+            if (room.GroupData != null)
+            {
+                messageComposer.Data.Add(room.GroupData.Name);
+                messageComposer.Data.Add(room.GroupData.Badge);
+            }
+            else
+            {
+
+                messageComposer.Data.Add("");
+                messageComposer.Data.Add("");
+            }
+
             messageComposer.Data.Add("");
             messageComposer.Data.Add(room.Tags.Count);
 
@@ -72,6 +84,15 @@ namespace Helios.Messages.Outgoing
             messageComposer.Data.Add(true);
             messageComposer.Data.Add(0);
             messageComposer.Data.Add(0);
+
+            /*
+            this._SafeStr_14029 = new _SafeStr_2759(k);
+            this._SafeStr_14030 = k.readBoolean();
+            this._SafeStr_14031 = k.readBoolean();
+            this._SafeStr_14032 = k.readString();
+            this._SafeStr_14033 = k.readString();
+            this._SafeStr_14034 = k._SafeStr_10829();
+            */
         }
     }
 }

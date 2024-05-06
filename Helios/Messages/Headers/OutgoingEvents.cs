@@ -93,5 +93,8 @@
         public static readonly short GiveRoomRightsMessageComposer = 3158;
         public static readonly short RemoveRightsMessageComposer = 3702;
         public static readonly short RightsListMessageComposer = 2532;
+        public static readonly short GroupBadgesMessageComposer = 2119;
+        public static readonly short GroupRoomMessageComposer = 1644;
+        public static readonly short GroupInfoMessageComposer = 3225;
     }
 }

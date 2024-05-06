@@ -82,5 +82,6 @@
         public static readonly short RemoveRightsMessageEvent = 572;
         public static readonly short RemoveAllRightsMessageEvent = 3020;
         public static readonly short GetRoomRightsMessageEvent = 308;
+        public static readonly short GetGroupInfoMessageEvent = 539;
     }
 }

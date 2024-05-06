@@ -30,8 +30,8 @@ namespace Helios.Messages.Outgoing
             foreach (var element in this.badgeBase.Values)
             {
                 _data.Add(element.Id);
-                _data.Add(element.BaseTemplate);
-                _data.Add(element.SymbolTemplate);
+                _data.Add(element.FirstValue);
+                _data.Add(element.SecondValue);
             }
 
             _data.Add(this.badgeSymbol.Count);
@@ -39,8 +39,8 @@ namespace Helios.Messages.Outgoing
             foreach (var element in this.badgeSymbol.Values)
             {
                 _data.Add(element.Id);
-                _data.Add(element.BaseTemplate);
-                _data.Add(element.SymbolTemplate);
+                _data.Add(element.FirstValue);
+                _data.Add(element.SecondValue);
             }
 
             _data.Add(this.badgeColour1.Count);
@@ -48,7 +48,7 @@ namespace Helios.Messages.Outgoing
             foreach (var element in this.badgeColour1.Values)
             {
                 _data.Add(element.Id);
-                _data.Add(element.BaseTemplate);
+                _data.Add(element.FirstValue);
             }
 
             _data.Add(this.badgeColour2.Count);
@@ -56,7 +56,7 @@ namespace Helios.Messages.Outgoing
             foreach (var element in this.badgeColour2.Values)
             {
                 _data.Add(element.Id);
-                _data.Add(element.BaseTemplate);
+                _data.Add(element.FirstValue);
             }
 
             _data.Add(this.badgeColour3.Count);
@@ -64,7 +64,7 @@ namespace Helios.Messages.Outgoing
             foreach (var element in this.badgeColour3.Values)
             {
                 _data.Add(element.Id);
-                _data.Add(element.BaseTemplate);
+                _data.Add(element.FirstValue);
             }
         }
     }

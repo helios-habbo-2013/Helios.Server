@@ -3,6 +3,8 @@ using Helios.Messages.Outgoing;
 using Helios.Messages.Outgoing.Catalogue.Groups;
 using Helios.Network.Streams;
 using Helios.Storage.Access;
+using Helios.Storage.Models.Group;
+using Helios.Storage.Models.Room;
 using Microsoft.Extensions.Primitives;
 using Newtonsoft.Json;
 using System.Collections.Generic;
@@ -25,15 +27,6 @@ namespace Helios.Messages.Incoming.Catalogue
             string desc = request.ReadString();
 
             int roomId = request.ReadInt();
-
-            var roomList = RoomDao.GetUserRooms(avatar.Details.Id)
-                .Where(x => x.GroupId == null)
-                .ToList();
-
-            if (!roomList.Any(x => x.Id == roomId)) {
-                return;
-            }
-
             int colour1 = request.ReadInt();
             int colour2 = request.ReadInt();
 
@@ -69,9 +62,63 @@ namespace Helios.Messages.Incoming.Catalogue
                 //}
             }
 
-            var badgeCode = badgeBuilder.ToString();
+            var roomList = RoomManager.Instance.ReplaceQueryRooms(
+                new List<RoomData>() { RoomDao.GetRoomData(roomId) }
+            );
 
+            var room = roomList.FirstOrDefault();
 
+            if (room == null || room.Data.GroupId != null || !room.RightsManager.IsOwner(avatar.Details.Id))
+            {
+                return;
+            }
+
+            var groupData = new GroupData
+            {
+                OwnerId = avatar.EntityData.Id,
+                RoomId = roomId,
+                Name = name,
+                Description = desc,
+                Colour1 = GroupManager.Instance.BadgeManager.Colour2[colour1].FirstValue,
+                Colour2 = GroupManager.Instance.BadgeManager.Colour3[colour2].FirstValue,
+                Badge = badgeBuilder.ToString()
+            };
+
+            GroupDao.SaveGroup(groupData);
+
+            room.Data.GroupId = groupData.Id;
+
+            RoomDao.SaveRoom(room.Data);
+
+            avatar.Details.FavouriteGroupId = groupData.Id;
+
+            AvatarDao.Update(avatar.Details);
+
+            if (room != null)
+            {
+                // if (avatar.RoomUser.Room == null || avatar.RoomUser.Room.Data.Id != roomId)
+                //    room.Forward(avatar);
+
+                var rightsList = RoomDao.GetRoomRights(room.Data.Id);
+
+                foreach (var toRemove in rightsList)
+                {
+                    room.RightsManager.RemoveRights(toRemove.AvatarData.Id, false);
+
+                    avatar.Send(new RemoveRightsMessageComposer(room.Data.Id, toRemove.AvatarData.Id));
+                }
+
+                room.Send(new GroupBadgesMessageComposer(groupData.Id, groupData.Name));
+
+                room.Send(new UserRemoveComposer(avatar.RoomUser.InstanceId));
+                room.Send(new UsersComposer(List.Create(avatar as IEntity)));
+
+                avatar.RoomUser.NeedsUpdate = true;
+            }
+
+            RoomDao.ClearRoomRights(room.Data.Id);
+
+            avatar.Send(new GroupRoomMessageComposer(roomId, groupData.Id));
         }
     }
 }

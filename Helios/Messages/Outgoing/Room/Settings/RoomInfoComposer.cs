@@ -1,4 +1,5 @@
-﻿using Helios.Storage.Models.Room;
+﻿using Helios.Game;
+using Helios.Storage.Models.Room;
 
 namespace Helios.Messages.Outgoing
 {
@@ -17,40 +18,52 @@ namespace Helios.Messages.Outgoing
 
         public override void Write()
         {
-            Data.Add(isLoading);
-            Data.Add(roomData.Id);
-            Data.Add(roomData.Name);
-            Data.Add(!roomData.IsOwnerHidden); 
-            Data.Add(roomData.OwnerId);
-            Data.Add(roomData.OwnerData == null ? string.Empty : roomData.OwnerData.Name);
-            Data.Add((int)roomData.Status);
-            Data.Add(roomData.UsersNow);
-            Data.Add(roomData.UsersMax);
-            Data.Add(roomData.Description);
-            Data.Add(0);
-            Data.Add(roomData.TradeSetting); // can category trade?
-            Data.Add(roomData.Rating);
-            Data.Add(0);
-            Data.Add(roomData.Category.Id);
-            Data.Add(0);
-            Data.Add(0);
-            Data.Add("");
+            _data.Add(isLoading);
+            _data.Add(roomData.Id);
+            _data.Add(roomData.Name);
+            _data.Add(!roomData.IsOwnerHidden); 
+            _data.Add(roomData.OwnerId);
+            _data.Add(roomData.OwnerData == null ? string.Empty : roomData.OwnerData.Name);
+            _data.Add((int)roomData.Status);
+            _data.Add(roomData.UsersNow);
+            _data.Add(roomData.UsersMax);
+            _data.Add(roomData.Description);
+            _data.Add(0);
+            _data.Add(roomData.TradeSetting); // can category trade?
+            _data.Add(roomData.Rating);
+            _data.Add(0);
+            _data.Add(roomData.Category.Id);
+            _data.Add(roomData.GroupData != null ? roomData.GroupData.Id : 0);
 
-            Data.Add(roomData.Tags.Count);
+            if (roomData.GroupData != null)
+            {
+                _data.Add(roomData.GroupData.Name);
+                _data.Add(roomData.GroupData.Badge);
+            }
+            else
+            {
+
+                _data.Add("");
+                _data.Add("");
+            }
+
+            _data.Add("");
+
+            _data.Add(roomData.Tags.Count);
 
             foreach (var tag in roomData.Tags)
             {
-                Data.Add(tag.Text);
+                _data.Add(tag.Text);
             }
 
 
-            Data.Add(0);
-            Data.Add(0);
-            Data.Add(0);
-            Data.Add(true);
-            Data.Add(true);
-            Data.Add(0);
-            Data.Add(0);
+            _data.Add(0);
+            _data.Add(0);
+            _data.Add(0);
+            _data.Add(true);
+            _data.Add(true);
+            _data.Add(0);
+            _data.Add(0);
 
             /*
             this._SafeStr_10153 = k.readBoolean(); == CHECK ENTRY
@@ -59,15 +72,15 @@ namespace Helios.Messages.Outgoing
             var _local_2:Boolean = k.readBoolean();
             */
 
-            Data.Add(checkEntry);
-            Data.Add(false); // ??
-            Data.Add(false); // ??
-            Data.Add(roomData.IsMuted); // ??
+            _data.Add(checkEntry);
+            _data.Add(false); // ??
+            _data.Add(false); // ??
+            _data.Add(roomData.IsMuted); // ??
 
-            Data.Add(0); // ??
-            Data.Add(0); // ??
-            Data.Add(0); // ??
-            Data.Add(true); // whether you can mute room
+            _data.Add(0); // ??
+            _data.Add(0); // ??
+            _data.Add(0); // ??
+            _data.Add(true); // whether you can mute room
         }
     }
 }

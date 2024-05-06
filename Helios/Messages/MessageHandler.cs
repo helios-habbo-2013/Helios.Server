@@ -1,5 +1,6 @@
 ﻿using Helios.Game;
 using Helios.Messages.Headers;
+using Helios.Messages.Incoming;
 using Helios.Network.Streams;
 using log4net;
 using System;

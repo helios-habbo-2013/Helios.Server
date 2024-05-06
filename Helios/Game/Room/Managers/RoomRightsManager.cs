@@ -76,11 +76,12 @@ namespace Helios.Game
         /// Give rights to avatar
         /// </summary>
         /// <param name="id"></param>
-        public void AddRights(int avatarId)
+        public void AddRights(int avatarId, bool databaseChange = true)
         {
             var playerEntity = AvatarManager.Instance.GetAvatarById(avatarId);
 
-            RoomDao.AddRights(room.Data.Id, avatarId);
+            if (databaseChange)
+                RoomDao.AddRights(room.Data.Id, avatarId);
 
             rights.Add(avatarId);
 
@@ -97,11 +98,12 @@ namespace Helios.Game
         /// Remove rights from avatar
         /// </summary>
         /// <param name="id"></param>
-        public void RemoveRights(int avatarId)
+        public void RemoveRights(int avatarId, bool databaseChange = true)
         {
             var playerEntity = AvatarManager.Instance.GetAvatarById(avatarId);
 
-            RoomDao.RemoveRights(room.Data.Id, avatarId);
+            if (databaseChange)
+                RoomDao.RemoveRights(room.Data.Id, avatarId);
 
             rights.Remove(avatarId);
 

@@ -34,9 +34,20 @@ namespace Helios.Messages.Outgoing
                     _data.Add(avatar.Details.Sex.ToLower());
 
                     // TODO: Group shit for later
-                    _data.Add(-1);
-                    _data.Add(-1);
-                    _data.Add(0);
+
+                    if (avatar.Details.FavouriteGroup != null)
+                    {
+                        _data.Add(avatar.Details.FavouriteGroup.Id);
+                        _data.Add(0);
+                        _data.Add(avatar.Details.FavouriteGroup.Name);
+                        _data.Add(avatar.Details.FavouriteGroup.Badge);
+                    }
+                    else
+                    {
+                        _data.Add(-1);
+                        _data.Add(-1);
+                        _data.Add(0);
+                    }
 
                     _data.Add(avatar.Details.AchievementPoints);
                 }

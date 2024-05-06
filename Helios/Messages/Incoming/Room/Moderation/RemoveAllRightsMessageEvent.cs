@@ -1,6 +1,7 @@
 ﻿using Helios.Game;
 using Helios.Messages.Outgoing;
 using Helios.Network.Streams;
+using Helios.Storage.Access;
 
 namespace Helios.Messages.Incoming
 {
@@ -8,7 +9,23 @@ namespace Helios.Messages.Incoming
     {
         public void Handle(Avatar avatar, Request request)
         {
+            var room = avatar.RoomUser.Room;
 
+            if (room == null || !room.RightsManager.IsOwner(avatar.Details.Id))
+            {
+                return;
+            }
+
+            var rightsList = RoomDao.GetRoomRights(room.Data.Id);
+
+            foreach (var toRemove in rightsList)
+            {
+                room.RightsManager.RemoveRights(toRemove.AvatarData.Id, false);
+
+                avatar.Send(new RemoveRightsMessageComposer(room.Data.Id, toRemove.AvatarData.Id));
+            }
+
+            RoomDao.ClearRoomRights(room.Data.Id);
         }
     }
 }
