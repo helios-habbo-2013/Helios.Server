@@ -23,7 +23,7 @@ namespace Helios.Game
         public RoomRightsManager(Room room)
         {
             this.room = room;
-            this.rights = RoomDao.GetRoomRights(room.Data.Id);
+            this.rights = RoomDao.GetRoomRights(room.Data.Id).Select(x => x.AvatarId).ToList();
         }
 
         #endregion
