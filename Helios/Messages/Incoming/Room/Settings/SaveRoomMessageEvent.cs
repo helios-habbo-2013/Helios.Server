@@ -14,7 +14,7 @@ namespace Helios.Messages.Incoming
         {
             var room = avatar.RoomUser.Room;
 
-            if (room == null || !room.IsOwner(avatar.Details.Id))
+            if (room == null || !room.RightsManager.IsOwner(avatar.Details.Id))
                 return;
 
             int roomId = request.ReadInt();

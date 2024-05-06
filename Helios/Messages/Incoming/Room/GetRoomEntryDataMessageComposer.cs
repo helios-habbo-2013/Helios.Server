@@ -18,7 +18,7 @@ namespace Helios.Messages.Incoming
             avatar.Send(new HeightMapComposer(roomModel.Heightmap));
             avatar.Send(new FloorHeightMapComposer(roomModel.Heightmap));
             avatar.Send(new RoomVisualizationSettingsComposer(room.Data.FloorThickness, room.Data.WallThickness, room.Data.IsHidingWall));
-            avatar.Send(new RoomEntryInfoComposer(room.Data, room.IsOwner(avatar.Details.Id)));
+            avatar.Send(new RoomEntryInfoComposer(room.Data, room.RightsManager.IsOwner(avatar.Details.Id)));
 
             room.Send(new UsersComposer(List.Create<IEntity>(avatar)));
             room.Send(new UsersStatusComposer(List.Create<IEntity>(avatar)));

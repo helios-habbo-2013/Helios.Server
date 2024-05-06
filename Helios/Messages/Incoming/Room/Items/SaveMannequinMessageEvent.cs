@@ -20,7 +20,7 @@ namespace Helios.Messages.Outgoing
             if (string.IsNullOrEmpty(avatar.Details.Figure))
                 return;
 
-            if (!room.IsOwner(avatar.Details.Id))
+            if (!room.RightsManager.IsOwner(avatar.Details.Id))
                 return;
 
             string mannequinName = request.ReadString().FilterInput(true);

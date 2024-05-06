@@ -20,9 +20,8 @@ namespace Helios.Messages.Incoming
 
             Item item = room.ItemManager.GetItem(itemId);
 
-            if (item == null || item.Data.OwnerId != avatar.Details.Id) // TODO: Staff check
+            if (item == null || !room.RightsManager.HasRights(avatar.Details.Id))
                 return;
-
 
             int x = request.ReadInt();
             int y = request.ReadInt();

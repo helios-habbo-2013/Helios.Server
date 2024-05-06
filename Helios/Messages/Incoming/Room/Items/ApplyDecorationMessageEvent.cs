@@ -14,7 +14,7 @@ namespace Helios.Messages.Incoming
 
             Room room = avatar.RoomUser.Room;
 
-            if (room == null || !room.IsOwner(avatar.Details.Id))
+            if (room == null || !room.RightsManager.IsOwner(avatar.Details.Id))
                 return;
 
             Item item = avatar.Inventory.GetItem(request.ReadInt());

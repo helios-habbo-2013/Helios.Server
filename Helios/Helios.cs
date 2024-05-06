@@ -11,6 +11,7 @@ using System.Threading;
 using Helios.Storage.Access;
 using Helios.Storage;
 using System.Linq;
+using Newtonsoft.Json;
 
 namespace Helios
 {
@@ -79,7 +80,7 @@ namespace Helios
         {
             log.Warn("Attempting to connect to MySQL database");
             StorageContext.Instance.Init();// ServerConfig.Instance.ConnectionString);
-            log.Info("Connection using  is successful!");
+            log.Info("Connection using Entity Framework is successful!");
         }
 
         /// <summary>
@@ -87,18 +88,62 @@ namespace Helios
         /// </summary>
         private static void tryGameData()
         {
+            /*
+            using (var ctx = new StorageContext())
+            {
+                var guildElements = ctx.GroupBadgeElementData.ToList();
+
+                var guildElementsGrouped = guildElements.GroupBy(x => x.Type);
+
+                foreach (var group in guildElementsGrouped)
+                {
+                    // Access the key (group.Key) which represents the grouping criterion
+                    Console.WriteLine($"Group Key: {group.Key}");
+
+                    int i = 0;
+
+                    // Iterate over each item in the group
+                    foreach (var item in group)
+                    {
+                        i++;
+
+                        item.clientid = i;
+                        ctx.Update(item);
+                    }
+                }
+
+                ctx.SaveChanges();
+
+            }*/
+
             PermissionsManager.Instance.Load();
             ValueManager.Instance.Load();
             InteractionManager.Instance.Load();
             ItemManager.Instance.Load();
-            GroupManager.Instance.Load();
             CatalogueManager.Instance.Load();
             RoomManager.Instance.Load();
             SubscriptionManager.Instance.Load();
             NavigatorManager.Instance.Load();
             MessageHandler.Instance.Load();
             PluginManager.Instance.Load();
+            GroupManager.Instance.Load();
             RoomDao.ResetVisitorCounts();
+
+            /*
+            using (var ctx = new StorageContext())
+            {
+
+                var guildelements = ctx.GroupBadgeElementData.Select(x => new
+                {
+                    Id = x.Id,
+                    ExtraData1 = x.BaseTemplate,
+                    ExtraData2 = x.SymbolTemplate,
+                    Type = x.Type
+                }).ToList();
+
+                File.WriteAllText("badge_resource.json", JsonConvert.SerializeObject(guildelements));
+                
+            }*/
 
             /*int defId = 2300;
             foreach (int fx in "1,10,11,12,13,14,15,16,17,18,19,2,20,21,22,23,24,25,26,27,28,29,3,4,5,6,7,8,9,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140".ToIntArray(','))

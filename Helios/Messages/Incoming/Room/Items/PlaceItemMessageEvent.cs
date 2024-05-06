@@ -24,7 +24,7 @@ namespace Helios.Messages.Incoming
             if (item == null)
                 return;
 
-            if (room == null || !room.HasRights(avatar.Details.Id) || (room.ItemManager.HasItem(x => x.Definition.HasBehaviour(ItemBehaviour.STICKY_POLE)) && item.Definition.InteractorType == InteractorType.POST_IT)) 
+            if (room == null || !room.RightsManager.HasRights(avatar.Details.Id) || (room.ItemManager.HasItem(x => x.Definition.HasBehaviour(ItemBehaviour.STICKY_POLE)) && item.Definition.InteractorType == InteractorType.POST_IT)) 
             {
                 avatar.Send(new ItemPlaceErrorComposer(ItemPlaceError.NoRights));
                 return;

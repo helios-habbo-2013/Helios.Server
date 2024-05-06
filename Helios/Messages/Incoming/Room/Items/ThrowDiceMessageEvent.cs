@@ -24,7 +24,7 @@ namespace Helios.Messages
 
             if (item.Definition.HasBehaviour(ItemBehaviour.REQUIRES_RIGHTS_FOR_INTERACTION))
             {
-                if (!room.HasRights(avatar.Details.Id))
+                if (!room.RightsManager.HasRights(avatar.Details.Id))
                     return;
             }
 

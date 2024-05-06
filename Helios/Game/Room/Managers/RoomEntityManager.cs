@@ -5,6 +5,7 @@ using System.Linq;
 using Helios.Util.Extensions;
 using System.Threading.Tasks;
 using Helios.Storage.Access;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Helios.Game
 {
@@ -72,15 +73,23 @@ namespace Helios.Game
             
             if (!room.Data.IsPublicRoom)
             {
-                if (room.IsOwner(avatar.Details.Id))
+                int accessLevel = 0;
+
+                if (room.RightsManager.IsOwner(avatar.Details.Id))
                 {
+                    accessLevel = 4;
+
                     avatar.Send(new YouAreOwnerMessageEvent());
-                    avatar.Send(new YouAreControllerComposer(4));
+                    entity.RoomEntity.AddStatus("flatctrl", "useradmin");
                 }
-                else if (room.HasRights(avatar.Details.Id, false))
+                else if (room.RightsManager.HasRights(avatar.Details.Id, false))
                 {
-                    avatar.Send(new YouAreControllerComposer(1));
-                }
+                    accessLevel = 1;
+
+                    entity.RoomEntity.AddStatus("flatctrl", "1");
+                }  
+                
+                avatar.Send(new YouAreControllerComposer(accessLevel));
             }
         }
 

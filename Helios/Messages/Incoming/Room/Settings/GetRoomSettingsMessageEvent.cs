@@ -10,7 +10,7 @@ namespace Helios.Messages.Incoming
         {
             Room room = RoomManager.Instance.GetRoom(request.ReadInt());
 
-            if (room == null || !room.IsOwner(avatar.Details.Id))
+            if (room == null || !room.RightsManager.IsOwner(avatar.Details.Id))
                 return;
 
             avatar.Send(new RoomSettingsDataComposer(room));

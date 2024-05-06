@@ -29,7 +29,7 @@ namespace Helios.Messages.Incoming
             string text = request.ReadString().FilterInput(false);
 
             if (colour != stickieData.Colour || !stickieData.Message.StartsWith(text))
-                if (!room.HasRights(avatar.Details.Id))
+                if (!room.RightsManager.HasRights(avatar.Details.Id))
                     return; // TODO: Staff check
 
             item.Interactor.SetJsonObject(new StickieExtraData

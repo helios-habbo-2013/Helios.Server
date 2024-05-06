@@ -16,8 +16,10 @@ namespace Helios.Game
         public RoomEntityManager EntityManager { get; }
         public RoomTaskManager TaskManager { get; }
         public RoomItemManager ItemManager { get; }
-        public RoomMapping Mapping { get; set; }
-        public RoomFurniture FurnitureManager { get; set; }
+        public RoomMapping Mapping { get; private set; }
+        public RoomFurniture FurnitureManager { get; }
+        public RoomRightsManager RightsManager { get; }
+
         public RoomModel Model => RoomManager.Instance.RoomModels.FirstOrDefault(x => x.Data.Id == Data.ModelId);
         public ConcurrentDictionary<int, IEntity> Entities { get; }
         public bool IsActive { get; set; }
@@ -35,6 +37,7 @@ namespace Helios.Game
             TaskManager = new RoomTaskManager(this);
             ItemManager = new RoomItemManager(this);
             FurnitureManager = new RoomFurniture(this);
+            RightsManager = new RoomRightsManager(this);
         }
 
         #endregion
@@ -52,45 +55,6 @@ namespace Helios.Game
         #endregion
 
         #region Private methods
-
-        /// <summary>
-        /// Get if the user has rights
-        /// </summary>
-        public bool HasRights(int AvatarId, bool checkOwner = true)
-        {
-            if (checkOwner)
-                if (Data.OwnerId == AvatarId)
-                    return true;
-
-            var avatar = AvatarManager.Instance.GetAvatarById(AvatarId);
-
-            if (avatar != null)
-            {
-                if (avatar.UserGroup.HasPermission("room.rights"))
-                    return true;
-            }
-
-            return false;
-        }
-
-        /// <summary>
-        /// Get if the user is owner
-        /// </summary>
-        public bool IsOwner(int AvatarId)
-        {
-            if (Data.OwnerId == AvatarId)
-                return true;
-
-            var avatar = AvatarManager.Instance.GetAvatarById(AvatarId);
-
-            if (avatar != null)
-            {
-                if (avatar.UserGroup.HasPermission("room.owner"))
-                    return true;
-            }
-
-            return false;
-        }
 
 
         /// <summary>

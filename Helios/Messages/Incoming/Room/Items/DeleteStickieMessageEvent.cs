@@ -20,7 +20,7 @@ namespace Helios.Messages.Incoming
 
             Item item = room.ItemManager.GetItem(itemId);
 
-            if (item == null && item.Data.OwnerId != avatar.Details.Id && !room.IsOwner(avatar.Details.Id)) // TODO: Staff check
+            if (item == null && item.Data.OwnerId != avatar.Details.Id && !room.RightsManager.IsOwner(avatar.Details.Id)) // TODO: Staff check
                 return;
 
             room.FurnitureManager.RemoveItem(item, avatar);
