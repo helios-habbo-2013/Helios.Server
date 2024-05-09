@@ -1,6 +1,7 @@
 ﻿using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
+using Helios.Storage;
 using Helios.Storage.Access;
 using Helios.Storage.Models.Room;
 using Helios.Util.Extensions;
@@ -31,7 +32,10 @@ namespace Helios.Game
 
         public void Load()
         {
-            RoomModels = RoomDao.GetModels().Select(x => new RoomModel(x)).ToList();
+            using (var context = new GameStorageContext())
+            {
+                RoomModels = context.GetModels().Select(x => new RoomModel(x)).ToList();
+            }
         }
 
         #endregion
@@ -77,10 +81,14 @@ namespace Helios.Game
             if (Rooms.TryGetValue(roomId, out var room))
                 return room;
 
-            var data = RoomDao.GetRoomData(roomId);
+            using (var context = new GameStorageContext())
+            {
+                var data = context.GetRoomData(roomId);
 
-            if (data != null) {
-                return new Room(data);
+                if (data != null)
+                {
+                    return new Room(data);
+                }
             }
 
             return null;

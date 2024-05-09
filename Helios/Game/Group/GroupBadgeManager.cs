@@ -1,4 +1,5 @@
-﻿using Helios.Storage.Access;
+﻿using Helios.Storage;
+using Helios.Storage.Access;
 using Helios.Storage.Models.Group;
 using Helios.Storage.Models.Item;
 using System.Collections.Generic;
@@ -61,13 +62,16 @@ namespace Helios.Game
 
         public GroupBadgeManager()
         {
-            GroupBadgeElements = GroupDao.GetGroupBadgeElementData();
+            using (var context = new GameStorageContext())
+            {
+                GroupBadgeElements = context.GetGroupBadgeElementData();
 
-            var t1 = Base;
-            var t2 = Symbol;
-            var t3 = Colour1;
-            var t4 = Colour2;
-            var t5 = Colour3;
+                var t1 = Base;
+                var t2 = Symbol;
+                var t3 = Colour1;
+                var t4 = Colour2;
+                var t5 = Colour3;
+            }
         }
 
         #endregion

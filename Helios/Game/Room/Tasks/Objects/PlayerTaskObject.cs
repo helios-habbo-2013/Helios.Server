@@ -1,4 +1,5 @@
 ﻿using Helios.Messages.Outgoing;
+using Helios.Storage;
 using Helios.Storage.Access;
 using Helios.Util;
 using Helios.Util.Extensions;
@@ -79,14 +80,17 @@ namespace Helios.Game
 
                     effect.Value.Data.ExpiresAt = null;
 
-                    if (effect.Value.Data.Quantity == 0)
+                    using (var context = new GameStorageContext())
                     {
-                        avatar.EffectManager.Effects.Remove(effect.Value.Id);
-                        EffectDao.DeleteEffect(effect.Value.Data);
-                    }
-                    else
-                    {
-                        EffectDao.UpdateEffect(effect.Value.Data);
+                        if (effect.Value.Data.Quantity == 0)
+                        {
+                            avatar.EffectManager.Effects.Remove(effect.Value.Id);
+                            context.DeleteEffect(effect.Value.Data);
+                        }
+                        else
+                        {
+                            context.UpdateEffect(effect.Value.Data);
+                        }
                     }
 
                     avatar.Send(new EffectExpiredMessageComposer(effect.Value.Id));

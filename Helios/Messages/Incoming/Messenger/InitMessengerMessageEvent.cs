@@ -1,6 +1,7 @@
 ﻿using Helios.Game;
 using Helios.Messages.Outgoing;
 using Helios.Network.Streams;
+using Helios.Storage;
 using Helios.Storage.Access;
 
 namespace Helios.Messages.Incoming
@@ -19,14 +20,17 @@ namespace Helios.Messages.Incoming
 
             avatar.Send(new MessengerRequestsComposer(avatar.Messenger.Requests));
 
-            var unreadMessages = MessengerDao.GetUneadMessages(avatar.Details.Id);
-
-            if (unreadMessages.Count > 0)
+            using (var context = new GameStorageContext())
             {
-                foreach (var unreadMessage in unreadMessages)
-                    avatar.Send(new InstantChatComposer(unreadMessage.AvatarId, unreadMessage.Message));
+                var unreadMessages = context.GetUneadMessages(avatar.Details.Id);
 
-                MessengerDao.SetReadMessages(avatar.Details.Id);
+                if (unreadMessages.Count > 0)
+                {
+                    foreach (var unreadMessage in unreadMessages)
+                        avatar.Send(new InstantChatComposer(unreadMessage.AvatarId, unreadMessage.Message));
+
+                    context.SetReadMessages(avatar.Details.Id);
+                }
             }
         }
     }

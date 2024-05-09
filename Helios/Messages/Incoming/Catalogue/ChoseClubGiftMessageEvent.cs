@@ -1,5 +1,6 @@
 ﻿using Helios.Game;
 using Helios.Network.Streams;
+using Helios.Storage;
 using Helios.Storage.Access;
 using Helios.Util;
 
@@ -22,7 +23,11 @@ namespace Helios.Messages.Incoming.Catalogue
 
             avatar.Subscription.Data.GiftsRedeemable--;
 
-            SubscriptionDao.SaveGiftsRedeemable(avatar.Details.Id, avatar.Subscription.Data.GiftsRedeemable);
+            using (var context = new GameStorageContext())
+            {
+                context.SaveGiftsRedeemable(avatar.Details.Id, avatar.Subscription.Data.GiftsRedeemable);
+            }
+
             CatalogueManager.Instance.Purchase(avatar.Details.Id, subscriptionGift.CatalogueItem.Data.Id, 1, string.Empty, DateUtil.GetUnixTimestamp(), isClubGift: true);
         }
     }

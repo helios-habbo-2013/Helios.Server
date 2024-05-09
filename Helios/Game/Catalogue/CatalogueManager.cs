@@ -1,4 +1,5 @@
 ﻿using Helios.Messages.Outgoing;
+using Helios.Storage;
 using Helios.Storage.Access;
 using Helios.Storage.Models.Catalogue;
 using Helios.Storage.Models.Effect;
@@ -32,11 +33,15 @@ namespace Helios.Game
 
         public void Load()
         {
-            Pages = CatalogueDao.GetPages().Select(x => new CataloguePage(x)).ToList();
-            Items = CatalogueDao.GetItems().Select(x => new CatalogueItem(x)).ToList();
-            Packages = CatalogueDao.GetPackages().Select(i => new CataloguePackage(i, Items.FirstOrDefault(x => x.Data.SaleCode == i.SaleCode))).ToList();
-            Effects = new Dictionary<int, EffectType>();//EffectDao.GetEffectSettings().ToDictionary(x => x.EffectId, x => new EffectType(x));
-            Discounts = CatalogueDao.GetDiscounts();
+            using (var context = new GameStorageContext())
+            {
+                Pages = context.GetPages().Select(x => new CataloguePage(x)).ToList();
+                Items = context.GetItems().Select(x => new CatalogueItem(x)).ToList();
+                Packages = context.GetPackages().Select(i => new CataloguePackage(i, Items.FirstOrDefault(x => x.Data.SaleCode == i.SaleCode))).ToList();
+                Effects = context.GetEffectSettings().ToDictionary(x => x.EffectId, x => new EffectType(x));
+                Discounts = context.GetDiscounts();
+            }
+
             DeserialisePageData();
         }
 
@@ -76,7 +81,10 @@ namespace Helios.Game
             }
 
             // Bulk create items - ignore teleporters because they were already created
-            ItemDao.CreateItems(purchaseQueue);
+            using (var context = new GameStorageContext())
+            {
+                context.CreateItems(purchaseQueue);
+            }
 
             // Convert item data to item instance
             List<Item> items = purchaseQueue.Select(x => new Item(x)).ToList();
@@ -103,32 +111,35 @@ namespace Helios.Game
         /// </summary>
         private void PurchaseEffect(int AvatarId, CatalogueItem catalogueItem, int amount)
         {
-            List<EffectData> purchaseEffectsQueue = new List<EffectData>();
-            var existingEffects = EffectDao.GetUserEffects(AvatarId);
-
-            for (int i = 0; i < amount; i++)
+            using (var context = new GameStorageContext())
             {
-                foreach (var cataloguePackage in catalogueItem.Packages)
+                List<EffectData> purchaseEffectsQueue = new List<EffectData>();
+                var existingEffects = context.GetUserEffects(AvatarId);
+
+                for (int i = 0; i < amount; i++)
                 {
-                    var dataList = GenerateEffectData(AvatarId, cataloguePackage, existingEffects);
+                    foreach (var cataloguePackage in catalogueItem.Packages)
+                    {
+                        var dataList = GenerateEffectData(AvatarId, cataloguePackage, existingEffects);
 
-                    if (!dataList.Any())
-                        continue;
+                        if (!dataList.Any())
+                            continue;
 
-                    purchaseEffectsQueue.AddRange(dataList);
+                        purchaseEffectsQueue.AddRange(dataList);
+                    }
                 }
+
+                // Bulk create items
+                context.SaveEffects(purchaseEffectsQueue);
+
+                var avatar = AvatarManager.Instance.GetAvatarById(AvatarId);
+
+                if (avatar == null)
+                    return;
+
+                avatar.Send(new PurchaseOKComposer(catalogueItem));
+                purchaseEffectsQueue.ForEach(avatar.EffectManager.AddEffect);
             }
-
-            // Bulk create items
-            EffectDao.SaveEffects(purchaseEffectsQueue);
-
-            var avatar = AvatarManager.Instance.GetAvatarById(AvatarId);
-
-            if (avatar == null)
-                return;
-
-            avatar.Send(new PurchaseOKComposer(catalogueItem));
-            purchaseEffectsQueue.ForEach(avatar.EffectManager.AddEffect);
         }
 
         /// <summary>

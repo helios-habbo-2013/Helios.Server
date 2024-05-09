@@ -6,6 +6,7 @@ using Helios.Util.Extensions;
 using System.Threading.Tasks;
 using Helios.Storage.Access;
 using Helios.Storage.Models.Room;
+using Helios.Storage;
 
 namespace Helios.Game
 {
@@ -23,7 +24,11 @@ namespace Helios.Game
         public RoomRightsManager(Room room)
         {
             this.room = room;
-            this.rights = RoomDao.GetRoomRights(room.Data.Id).Select(x => x.AvatarId).ToList();
+
+            using (var context = new GameStorageContext())
+            {
+                this.rights = context.GetRoomRights(room.Data.Id).Select(x => x.AvatarId).ToList();
+            }
         }
 
         #endregion
@@ -81,7 +86,12 @@ namespace Helios.Game
             var playerEntity = AvatarManager.Instance.GetAvatarById(avatarId);
 
             if (databaseChange)
-                RoomDao.AddRights(room.Data.Id, avatarId);
+            {
+                using (var context = new GameStorageContext())
+                {
+                    context.AddRights(room.Data.Id, avatarId);
+                }
+            }
 
             rights.Add(avatarId);
 
@@ -103,7 +113,12 @@ namespace Helios.Game
             var playerEntity = AvatarManager.Instance.GetAvatarById(avatarId);
 
             if (databaseChange)
-                RoomDao.RemoveRights(room.Data.Id, avatarId);
+            {
+                using (var context = new GameStorageContext())
+                {
+                    context.RemoveRights(room.Data.Id, avatarId);
+                }
+            }
 
             rights.Remove(avatarId);
 

@@ -1,6 +1,7 @@
 ﻿using Helios.Messages;
 using Helios.Messages.Outgoing;
 using Helios.Network.Session;
+using Helios.Storage;
 using Helios.Storage.Access;
 using Helios.Storage.Models.Avatar;
 using Helios.Storage.Models.Entity;
@@ -141,23 +142,26 @@ namespace Helios.Game
         /// <returns></returns>
         public bool TryLogin(string ssoTicket)
         {
-            AvatarDao.Login(out avatarData, ssoTicket);
+            using (var context = new GameStorageContext())
+            {
+                context.Login(out avatarData, ssoTicket);
 
-            if (avatarData == null)
-                return false;
+                if (avatarData == null)
+                    return false;
 
-            log = LogManager.GetLogger(Assembly.GetExecutingAssembly(), $"Avatar {avatarData.Name}");
-            log.Debug($"Avatar {avatarData.Name} has logged in");
+                log = LogManager.GetLogger(Assembly.GetExecutingAssembly(), $"Avatar {avatarData.Name}");
+                log.Debug($"Avatar {avatarData.Name} has logged in");
 
-            UserSettingsDao.CreateOrUpdate(out settings, avatarData.Id);
+                context.CreateOrUpdate(out settings, avatarData.Id);
 
-            avatarData.PreviousLastOnline = avatarData.LastOnline;
+                avatarData.PreviousLastOnline = avatarData.LastOnline;
 
-            avatarData.LastOnline = DateTime.Now;
-            AvatarDao.Update(avatarData);
+                avatarData.LastOnline = DateTime.Now;
+                context.Update(avatarData);
 
-            avatarData.User.LastOnline = DateTime.Now;
-            UserDao.Update(avatarData.User);
+                avatarData.User.LastOnline = DateTime.Now;
+                context.Update(avatarData.User);
+            }
 
             AvatarManager.Instance.AddAvatar(this);
 
@@ -212,17 +216,19 @@ namespace Helios.Game
             Messenger.SendStatus();
             Subscription.CountMemberDays();
 
-            avatarData.LastOnline = DateTime.Now;
-            AvatarDao.Update(avatarData);
+            using (var context = new GameStorageContext())
+            {
+                avatarData.LastOnline = DateTime.Now;
+                context.Update(avatarData);
 
-            avatarData.User.LastOnline = DateTime.Now;
-            UserDao.Update(avatarData.User);
-            // AvatarDao.Update(avatarData);
+                avatarData.User.LastOnline = DateTime.Now;
+                context.Update(avatarData.User);
+                // AvatarDao.Update(avatarData);
 
-            long timeInSeconds = (long)(DateTime.Now - AuthenticationTime).TotalSeconds;
-            settings.OnlineTime += timeInSeconds;
-            UserSettingsDao.Update(settings);
-           
+                long timeInSeconds = (long)(DateTime.Now - AuthenticationTime).TotalSeconds;
+                settings.OnlineTime += timeInSeconds;
+                context.Update(settings);
+            }
         }
 
         #endregion

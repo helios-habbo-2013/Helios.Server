@@ -1,4 +1,5 @@
-﻿using Helios.Storage.Access;
+﻿using Helios.Storage;
+using Helios.Storage.Access;
 using Helios.Storage.Models.Item;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,7 +28,11 @@ namespace Helios.Game
         public void Load()
         {
             ItemCounter = 1;
-            Definitions = ItemDao.GetDefinitions().Select(x => new ItemDefinition(x)).ToDictionary(x => x.Data.Id, x => x);
+
+            using (var context = new GameStorageContext())
+            {
+                Definitions = context.GetDefinitions().Select(x => new ItemDefinition(x)).ToDictionary(x => x.Data.Id, x => x);
+            }
         }
 
         #endregion
@@ -72,7 +77,12 @@ namespace Helios.Game
         public Item ResolveItem(string itemId = null, ItemData itemData = null)
         {
             if (itemData == null)
-                itemData = ItemDao.GetItem(itemId);
+            {
+                using (var context = new GameStorageContext())
+                {
+                    itemData = context.GetItem(itemId);
+                }
+            }
 
             if (itemData == null || itemData.RoomId == null)
                 return null;

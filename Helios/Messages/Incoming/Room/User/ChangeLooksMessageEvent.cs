@@ -1,6 +1,7 @@
 ﻿using Helios.Game;
 using Helios.Messages.Outgoing;
 using Helios.Network.Streams;
+using Helios.Storage;
 using Helios.Storage.Access;
 using Helios.Util.Extensions;
 
@@ -25,7 +26,10 @@ namespace Helios.Messages.Incoming
             avatar.Details.Figure = figure;
             avatar.Details.Sex = sex;
 
-            AvatarDao.Update(avatar.Details);
+            using (var context = new GameStorageContext())
+            {
+                context.Update(avatar.Details);
+            }
 
             avatar.Send(new UserChangeMessageComposer(-1, avatar.Details.Figure, avatar.Details.Sex, avatar.Details.Motto, avatar.Details.AchievementPoints));
             room.Send(new UserChangeMessageComposer(avatar.RoomEntity.InstanceId, avatar.Details.Figure, avatar.Details.Sex, avatar.Details.Motto, avatar.Details.AchievementPoints));

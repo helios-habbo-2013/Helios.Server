@@ -1,6 +1,7 @@
 ﻿using Helios.Game;
 using Helios.Messages.Outgoing;
 using Helios.Network.Streams;
+using Helios.Storage;
 using Helios.Storage.Access;
 
 namespace Helios.Messages.Incoming
@@ -16,16 +17,19 @@ namespace Helios.Messages.Incoming
                 return;
             }
 
-            var rightsList = RoomDao.GetRoomRights(room.Data.Id);
-
-            foreach (var toRemove in rightsList)
+            using (var context = new GameStorageContext())
             {
-                room.RightsManager.RemoveRights(toRemove.AvatarData.Id, false);
+                var rightsList = context.GetRoomRights(room.Data.Id);
 
-                avatar.Send(new RemoveRightsMessageComposer(room.Data.Id, toRemove.AvatarData.Id));
+                foreach (var toRemove in rightsList)
+                {
+                    room.RightsManager.RemoveRights(toRemove.AvatarData.Id, false);
+
+                    avatar.Send(new RemoveRightsMessageComposer(room.Data.Id, toRemove.AvatarData.Id));
+                }
+
+                context.ClearRoomRights(room.Data.Id);
             }
-
-            RoomDao.ClearRoomRights(room.Data.Id);
         }
     }
 }

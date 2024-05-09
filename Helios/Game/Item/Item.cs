@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Helios.Messages.Outgoing;
+using Helios.Storage;
 using Helios.Storage.Access;
 using Helios.Storage.Models.Item;
 
@@ -102,7 +103,10 @@ namespace Helios.Game
         /// </summary>
         public void Save()
         {
-            ItemDao.SaveItem(Data);
+            using (var context = new GameStorageContext())
+            {
+                context.SaveItem(Data);
+            }
         }
 
         public void UpdateState(string state = "")

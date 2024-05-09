@@ -2,6 +2,7 @@
 using Helios.Game;
 using Helios.Messages.Outgoing;
 using Helios.Network.Streams;
+using Helios.Storage;
 using Helios.Storage.Access;
 using Helios.Storage.Models.Misc;
 using Helios.Storage.Models.Room;
@@ -92,19 +93,22 @@ namespace Helios.Messages.Incoming
             room.Data.WhoCanKick  = (RoomKickSetting)whoKick;
             room.Data.WhoCanMute = (RoomMuteSetting)whoMute;
 
-            TagDao.DeleteRoomTags(room.Data.Id);
-
-            foreach (var tag in tags)
+            using (var context = new GameStorageContext())
             {
-                TagDao.SaveTag(new TagData
+                context.DeleteRoomTags(room.Data.Id);
+
+                foreach (var tag in tags)
                 {
-                    RoomId = room.Data.Id,
-                    Text = tag
-                });
+                    context.SaveTag(new TagData
+                    {
+                        RoomId = room.Data.Id,
+                        Text = tag
+                    });
 
+                }
+
+                context.SaveRoom(room.Data);
             }
-
-            RoomDao.SaveRoom(room.Data);
 
             room.Send(new RoomSettingsSavedComposer(room.Data.Id));
             room.Send(new RoomInfoComposer(room.Data, true, false));

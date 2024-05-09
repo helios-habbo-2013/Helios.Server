@@ -1,5 +1,6 @@
 ﻿using Helios.Game;
 using Helios.Network.Streams;
+using Helios.Storage;
 using Helios.Storage.Access;
 
 namespace Helios.Messages.Incoming
@@ -39,8 +40,11 @@ namespace Helios.Messages.Incoming
                     targetAvatar.Messenger.ForceUpdate();
                 }
 
-                MessengerDao.DeleteRequests(avatar.Details.Id, AvatarId);
-                MessengerDao.DeleteFriends(avatar.Details.Id, AvatarId);
+                using (var context = new GameStorageContext())
+                {
+                    context.DeleteRequests(avatar.Details.Id, AvatarId);
+                    context.DeleteFriends(avatar.Details.Id, AvatarId);
+                }
 
                 messenger.QueueUpdate(MessengerUpdateType.RemoveFriend, new MessengerUser(avatarData));
             }

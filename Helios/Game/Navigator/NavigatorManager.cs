@@ -3,6 +3,7 @@ using System.Linq;
 using Helios.Util.Extensions;
 using Helios.Storage.Access;
 using Helios.Storage.Models.Navigator;
+using Helios.Storage;
 
 namespace Helios.Game
 {
@@ -24,7 +25,10 @@ namespace Helios.Game
 
         public void Load()
         {
-            Categories = NavigatorDao.GetCategories();
+            using (var context = new GameStorageContext())
+            {
+                Categories = context.GetCategories();
+            }
         }
 
         #endregion
@@ -49,10 +53,13 @@ namespace Helios.Game
         /// <returns></returns>
         public PublicItemData GetPopularPromotion()
         {
-            var publicItemsList = NavigatorDao.GetPublicItems().Where(x => x.Room != null && x.Room.UsersNow > 0).ToList();
+            using (var context = new GameStorageContext())
+            {
+                var publicItemsList = context.GetPublicItems().Where(x => x.Room != null && x.Room.UsersNow > 0).ToList();
 
-            if (publicItemsList.Count > 0)
-                return publicItemsList.PickRandom();
+                if (publicItemsList.Count > 0)
+                    return publicItemsList.PickRandom();
+            }
 
             return null;
         }

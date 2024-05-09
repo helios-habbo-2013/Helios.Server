@@ -1,5 +1,6 @@
 ﻿using Helios.Game;
 using Helios.Network.Streams;
+using Helios.Storage;
 using Helios.Storage.Access;
 
 namespace Helios.Messages.Incoming
@@ -25,7 +26,10 @@ namespace Helios.Messages.Incoming
 
             room.FurnitureManager.RemoveItem(item, avatar);
 
-            ItemDao.DeleteItem(item.Data);
+            using (var context = new GameStorageContext())
+            {
+                context.DeleteItem(item.Data);
+            }
         }
     }
 }

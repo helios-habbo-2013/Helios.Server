@@ -2,6 +2,7 @@
 using Helios.Messages.Outgoing;
 using Helios.Messages.Outgoing.Catalogue.Groups;
 using Helios.Network.Streams;
+using Helios.Storage;
 using Helios.Storage.Access;
 using System.Linq;
 
@@ -11,11 +12,14 @@ namespace Helios.Messages.Incoming.Catalogue
     {
         public void Handle(Avatar avatar, Request request)
         {
-            var roomList = RoomDao.GetUserRooms(avatar.Details.Id)
-                .Where(x => x.GroupId == null)
-                .ToList();
+            using (var context = new GameStorageContext())
+            {
+                var roomList = context.GetUserRooms(avatar.Details.Id)
+                    .Where(x => x.GroupId == null)
+                    .ToList();
 
-            avatar.Send(new GroupPartsMessageComposer(roomList));
+                avatar.Send(new GroupPartsMessageComposer(roomList));
+            }
 
             avatar.Send(new GroupElementsMessageComposer(
                 GroupManager.Instance.BadgeManager.Base,

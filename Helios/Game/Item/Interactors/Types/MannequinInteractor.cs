@@ -1,4 +1,5 @@
 ﻿using Helios.Messages.Outgoing;
+using Helios.Storage;
 using Helios.Storage.Access;
 using Newtonsoft.Json;
 using System.Collections.Generic;
@@ -85,7 +86,10 @@ namespace Helios.Game
             avatar.Details.Figure = newFigure;
             avatar.Details.Sex = mannequinData.Gender.ToLower();
 
-            AvatarDao.Update(avatar.Details);
+            using (var context = new GameStorageContext())
+            {
+                context.Update(avatar.Details);
+            }
 
             avatar.Send(new UserChangeMessageComposer(-1, avatar.Details.Figure, avatar.Details.Sex, avatar.Details.Motto, avatar.Details.AchievementPoints));
             room.Send(new UserChangeMessageComposer(avatar.RoomEntity.InstanceId, avatar.Details.Figure, avatar.Details.Sex, avatar.Details.Motto, avatar.Details.AchievementPoints));

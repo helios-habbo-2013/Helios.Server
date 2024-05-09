@@ -1,4 +1,5 @@
-﻿using Helios.Storage.Access;
+﻿using Helios.Storage;
+using Helios.Storage.Access;
 using Helios.Util.Extensions;
 using System.Collections.Concurrent;
 using System.Linq;
@@ -28,7 +29,10 @@ namespace Helios.Game
 
         public void Load()
         {
-            Items = new ConcurrentDictionary<int, Item>(ItemDao.GetInventoryItems(avatar.Details.Id).Select(x => new Item(x)).ToDictionary(x => x.Id, x => x));
+            using (var context = new GameStorageContext())
+            {
+                Items = new ConcurrentDictionary<int, Item>(context.GetInventoryItems(avatar.Details.Id).Select(x => new Item(x)).ToDictionary(x => x.Id, x => x));
+            }
         }
 
         #endregion

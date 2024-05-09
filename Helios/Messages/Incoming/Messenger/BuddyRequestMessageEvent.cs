@@ -2,6 +2,7 @@
 using Helios.Messages.Outgoing;
 using Helios.Messages.Outgoing.Messenger;
 using Helios.Network.Streams;
+using Helios.Storage;
 using Helios.Storage.Access;
 using Helios.Storage.Models.Messenger;
 
@@ -11,13 +12,18 @@ namespace Helios.Messages.Incoming
     {
         public void Handle(Avatar avatar, Request request)
         {
-            int AvatarId = AvatarDao.GetIdByName(request.ReadString());
+            int avatarId;
 
-            if (AvatarId < 1)
+            using (var context = new GameStorageContext())
+            {
+                avatarId = context.GetIdByName(request.ReadString());
+            }
+
+            if (avatarId < 1)
                 return;
 
-            var targetMessenger = Messenger.GetMessengerData(AvatarId);
-            var targetAvatar = AvatarManager.Instance.GetAvatarById(AvatarId);
+            var targetMessenger = Messenger.GetMessengerData(avatarId);
+            var targetAvatar = AvatarManager.Instance.GetAvatarById(avatarId);
 
             if (targetMessenger == null || 
                 targetMessenger.HasFriend(avatar.Details.Id) || 
@@ -39,10 +45,13 @@ namespace Helios.Messages.Incoming
             var messengerRequest = new MessengerRequestData
             {
                 FriendId = avatar.Details.Id,
-                AvatarId = AvatarId
+                AvatarId = avatarId
             };
 
-            MessengerDao.SaveRequest(messengerRequest);
+            using (var context = new GameStorageContext())
+            {
+                context.SaveRequest(messengerRequest);
+            }
 
             targetMessenger.Requests.Add(avatar.Messenger.MessengerUser);
 

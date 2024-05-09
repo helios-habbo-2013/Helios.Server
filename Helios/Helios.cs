@@ -79,7 +79,7 @@ namespace Helios
         private static void tryDatabaseConnection()
         {
             log.Warn("Attempting to connect to MySQL database");
-            StorageContext.Instance.Init();// ServerConfig.Instance.ConnectionString);
+            using var context = new GameStorageContext();
             log.Info("Connection using Entity Framework is successful!");
         }
 
@@ -89,7 +89,7 @@ namespace Helios
         private static void tryGameData()
         {
             /*
-            using (var ctx = new StorageContext())
+            using (var ctx = new GameContext())
             {
                 var guildElements = ctx.GroupBadgeElementData.ToList();
 
@@ -127,10 +127,14 @@ namespace Helios
             MessageHandler.Instance.Load();
             PluginManager.Instance.Load();
             GroupManager.Instance.Load();
-            RoomDao.ResetVisitorCounts();
+
+            using (var context = new GameStorageContext())
+            {
+                context.ResetVisitorCounts();
+            }
 
             /*
-            using (var ctx = new StorageContext())
+            using (var ctx = new GameContext())
             {
 
                 var guildelements = ctx.GroupBadgeElementData.Select(x => new

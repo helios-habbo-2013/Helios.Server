@@ -1,5 +1,6 @@
 ﻿using Helios.Game;
 using Helios.Network.Streams;
+using Helios.Storage;
 using Helios.Storage.Access;
 using Helios.Storage.Models.Messenger;
 
@@ -44,17 +45,20 @@ namespace Helios.Messages.Incoming
                     targetAvatar.Messenger.ForceUpdate();
                 }
 
-                MessengerDao.DeleteRequests(avatar.Details.Id, AvatarId);
-                MessengerDao.SaveFriend(new MessengerFriendData
+                using (var context = new GameStorageContext())
                 {
-                    FriendId = AvatarId,
-                    AvatarId = avatar.Details.Id
-                });
-                MessengerDao.SaveFriend(new MessengerFriendData
-                {
-                    AvatarId = AvatarId,
-                    FriendId = avatar.Details.Id
-                });
+                    context.DeleteRequests(avatar.Details.Id, AvatarId);
+                    context.SaveFriend(new MessengerFriendData
+                    {
+                        FriendId = AvatarId,
+                        AvatarId = avatar.Details.Id
+                    });
+                    context.SaveFriend(new MessengerFriendData
+                    {
+                        AvatarId = AvatarId,
+                        FriendId = avatar.Details.Id
+                    });
+                }
 
                 messenger.QueueUpdate(MessengerUpdateType.AddFriend, targetFriend);
             }

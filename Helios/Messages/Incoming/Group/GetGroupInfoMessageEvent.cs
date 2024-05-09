@@ -1,6 +1,7 @@
 ﻿using Helios.Game;
 using Helios.Messages.Outgoing;
 using Helios.Network.Streams;
+using Helios.Storage;
 using Helios.Storage.Access;
 using MySql.Data.MySqlClient.Memcached;
 
@@ -13,14 +14,17 @@ namespace Helios.Messages.Incoming
             int groupId = request.ReadInt();
             bool flag = request.ReadBoolean();
 
-            var groupData = GroupDao.GetGroup(groupId);
-        
-            if (groupData == null)
+            using (var context = new GameStorageContext())
             {
-                return;
-            }
+                var groupData = context.GetGroup(groupId);
 
-            avatar.Send(new GroupInfoMessageComposer(groupData, groupData.RoomData, flag, groupData.OwnerId == avatar.Details.Id));
+                if (groupData == null)
+                {
+                    return;
+                }
+
+                avatar.Send(new GroupInfoMessageComposer(groupData, groupData.RoomData, flag, groupData.OwnerId == avatar.Details.Id));
+            }
         }
     }
 }

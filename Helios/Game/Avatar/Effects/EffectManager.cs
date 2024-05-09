@@ -1,4 +1,5 @@
 ﻿using Helios.Messages.Outgoing;
+using Helios.Storage;
 using Helios.Storage.Access;
 using Helios.Storage.Models.Effect;
 using System.Collections.Concurrent;
@@ -30,10 +31,13 @@ namespace Helios.Game
         {
             Effects = new ConcurrentDictionary<int, Effect>();
 
-            foreach (var effectData in EffectDao.GetUserEffects(avatar.EntityData.Id))
+            using (var context = new GameStorageContext())
             {
-                Effect effect = new Effect(effectData);
-                Effects.TryAdd(effect.Id, effect);
+                foreach (var effectData in context.GetUserEffects(avatar.EntityData.Id))
+                {
+                    Effect effect = new Effect(effectData);
+                    Effects.TryAdd(effect.Id, effect);
+                }
             }
 
             avatar.Send(new EffectsMessageComposer(new List<Effect>(Effects.Values)));

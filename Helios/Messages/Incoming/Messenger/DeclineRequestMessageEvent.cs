@@ -1,5 +1,6 @@
 ﻿using Helios.Game;
 using Helios.Network.Streams;
+using Helios.Storage;
 using Helios.Storage.Access;
 
 namespace Helios.Messages.Incoming
@@ -8,26 +9,29 @@ namespace Helios.Messages.Incoming
     {
         public void Handle(Avatar avatar, Request request)
         {
-            bool mode = request.ReadBoolean();
-            int amount = request.ReadInt();
-
-            if (!mode)
+            using (var context = new GameStorageContext())
             {
-                for (int i = 0; i < amount; i++)
+                bool mode = request.ReadBoolean();
+                int amount = request.ReadInt();
+
+                if (!mode)
                 {
-                    int AvatarId = request.ReadInt();
+                    for (int i = 0; i < amount; i++)
+                    {
+                        int AvatarId = request.ReadInt();
 
-                    if (!avatar.Messenger.HasRequest(AvatarId))
-                        continue;
+                        if (!avatar.Messenger.HasRequest(AvatarId))
+                            continue;
 
-                    MessengerDao.DeleteRequests(avatar.Details.Id, AvatarId);
-                    avatar.Messenger.RemoveRequest(AvatarId);
+                        context.DeleteRequests(avatar.Details.Id, AvatarId);
+                        avatar.Messenger.RemoveRequest(AvatarId);
+                    }
                 }
-            } 
-            else
-            {
-                avatar.Messenger.Requests.Clear();
-                MessengerDao.DeleteAllRequests(avatar.Details.Id);
+                else
+                {
+                    avatar.Messenger.Requests.Clear();
+                    context.DeleteAllRequests(avatar.Details.Id);
+                }
             }
         }
     }

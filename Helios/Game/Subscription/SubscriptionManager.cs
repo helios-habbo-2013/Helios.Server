@@ -1,4 +1,5 @@
 ﻿using Helios.Messages.Outgoing;
+using Helios.Storage;
 using Helios.Storage.Access;
 using Helios.Storage.Models.Catalogue;
 using System.Collections.Generic;
@@ -25,11 +26,15 @@ namespace Helios.Game
 
         public void Load()
         {
-            Subscriptions = CatalogueDao.GetSubscriptionData();
-            Gifts = SubscriptionDao.GetSubscriptionGifts()
-                .Select(x => new SubscriptionGift(x, CatalogueManager.Instance.GetItem(x.SaleCode)))
-                .OrderBy(x => x.Data.DurationRequirement)
-                .ToList();
+            using (var context = new GameStorageContext())
+            {
+                Subscriptions = context.GetSubscriptionData();
+
+                Gifts = context.GetSubscriptionGifts()
+                    .Select(x => new SubscriptionGift(x, CatalogueManager.Instance.GetItem(x.SaleCode)))
+                    .OrderBy(x => x.Data.DurationRequirement)
+                    .ToList();
+            }
         }
 
         #endregion

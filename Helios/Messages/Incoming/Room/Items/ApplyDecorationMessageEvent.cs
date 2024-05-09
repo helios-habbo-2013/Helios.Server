@@ -1,6 +1,7 @@
 ﻿using Helios.Game;
 using Helios.Messages.Outgoing;
 using Helios.Network.Streams;
+using Helios.Storage;
 using Helios.Storage.Access;
 
 namespace Helios.Messages.Incoming
@@ -41,8 +42,11 @@ namespace Helios.Messages.Incoming
             avatar.Inventory.RemoveItem(item);
             avatar.Send(new FurniListRemoveComposer(item.Id));
 
-            RoomDao.SaveRoom(room.Data);
-            ItemDao.DeleteItem(item.Data);
+            using (var context = new GameStorageContext())
+            {
+                context.SaveRoom(room.Data);
+                context.DeleteItem(item.Data);
+            }
         }
     }
 }

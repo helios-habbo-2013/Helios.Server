@@ -1,6 +1,7 @@
 ﻿using Helios.Game;
 using Helios.Messages.Outgoing;
 using Helios.Network.Streams;
+using Helios.Storage;
 using Helios.Storage.Access;
 
 namespace Helios.Messages.Incoming
@@ -9,7 +10,10 @@ namespace Helios.Messages.Incoming
     {
         public void Handle(Avatar avatar, Request request)
         {
-            avatar.Send(new PublicItemsComposer(NavigatorDao.GetPublicItems()));
+            using (var context = new GameStorageContext())
+            {
+                avatar.Send(new PublicItemsComposer(context.GetPublicItems()));
+            }
         }
     }
 }

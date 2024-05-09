@@ -5,6 +5,7 @@ using Helios.Util.Extensions;
 using Helios.Messages.Outgoing;
 using Helios.Storage.Access;
 using Helios.Storage.Models.Room;
+using Helios.Storage;
 
 namespace Helios.Messages.Incoming
 {
@@ -48,7 +49,11 @@ namespace Helios.Messages.Incoming
                 Description = string.Empty
             };
 
-            RoomDao.NewRoom(roomData);
+            using (var context = new GameStorageContext())
+            {
+                context.NewRoom(roomData);
+            }
+
             avatar.Send(new FlatCreatedComposer(roomData.Id, roomData.Name));
         }
     }

@@ -1,4 +1,5 @@
-﻿using Helios.Storage.Access;
+﻿using Helios.Storage;
+using Helios.Storage.Access;
 using Helios.Storage.Models.Avatar;
 using Helios.Util.Extensions;
 using System.Collections.Concurrent;
@@ -99,7 +100,10 @@ namespace Helios.Game
             if (avatar != null)
                 return avatar.Details;
 
-            return AvatarDao.GetById(AvatarId);
+            using (var context = new GameStorageContext())
+            {
+                return context.GetAvatarById(AvatarId);
+            }
         }
 
         /// <summary>
@@ -112,7 +116,10 @@ namespace Helios.Game
             if (avatar != null)
                 return avatar.Details;
 
-            return AvatarDao.GetById(AvatarId);
+            using (var context = new GameStorageContext())
+            {
+                return context.GetAvatarById(AvatarId);
+            }
         }
 
         /// <summary>
@@ -125,7 +132,10 @@ namespace Helios.Game
             if (avatar != null)
                 return avatar.Details.Name;
 
-            return AvatarDao.GetNameById(AvatarId);
+            using (var context = new GameStorageContext())
+            {
+                return context.GetNameById(AvatarId);
+            }
         }
 
         #endregion

@@ -1,6 +1,7 @@
 ﻿using Helios.Game;
 using Helios.Messages.Outgoing;
 using Helios.Network.Streams;
+using Helios.Storage;
 using Helios.Storage.Access;
 using System;
 using System.Collections.Generic;
@@ -21,9 +22,12 @@ namespace Helios.Messages.Incoming
                 return;
             }
 
-            var rightsList = RoomDao.GetRoomRights(room.Data.Id);
+            using (var context = new GameStorageContext())
+            {
+                var rightsList = context.GetRoomRights(room.Data.Id);
 
-            avatar.Send(new RightsListMessageComposer(room.Data.Id, rightsList));
+                avatar.Send(new RightsListMessageComposer(room.Data.Id, rightsList));
+            }
         }
     }
 }

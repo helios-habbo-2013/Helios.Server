@@ -1,4 +1,5 @@
 ﻿using Helios.Messages.Outgoing;
+using Helios.Storage;
 using Helios.Storage.Access;
 using Helios.Storage.Models.Subscription;
 using System;
@@ -28,7 +29,10 @@ namespace Helios.Game
 
         public void Load()
         {
-            this.Data = SubscriptionDao.GetSubscription(avatar.Details.Id);
+            using (var context = new GameStorageContext())
+            {
+                this.Data = context.GetSubscription(avatar.Details.Id);
+            }
         }
 
         #endregion
@@ -47,34 +51,37 @@ namespace Helios.Game
             else
                 startTime = DateTime.Now;
 
-            if (Data == null)
+            using (var context = new GameStorageContext())
             {
-                var nextGiftDate = DateTime.Now;
-
-                switch (ValueManager.Instance.GetString("club.gift.interval.type"))
+                if (Data == null)
                 {
-                    case "MONTH":
-                        nextGiftDate = nextGiftDate.AddMonths(ValueManager.Instance.GetInt("club.gift.interval"));
-                        break;
-                    case "DAY":
-                        nextGiftDate = nextGiftDate.AddDays(ValueManager.Instance.GetInt("club.gift.interval"));
-                        break;
+                    var nextGiftDate = DateTime.Now;
+
+                    switch (ValueManager.Instance.GetString("club.gift.interval.type"))
+                    {
+                        case "MONTH":
+                            nextGiftDate = nextGiftDate.AddMonths(ValueManager.Instance.GetInt("club.gift.interval"));
+                            break;
+                        case "DAY":
+                            nextGiftDate = nextGiftDate.AddDays(ValueManager.Instance.GetInt("club.gift.interval"));
+                            break;
+                    }
+
+                    Data = new SubscriptionData
+                    {
+                        SubscribedDate = DateTime.Now,
+                        ExpireDate = startTime.AddMonths(months),
+                        AvatarId = avatar.Details.Id,
+                        GiftDate = nextGiftDate
+                    };
+
+                    context.AddSubscription(Data);
                 }
-
-                Data = new SubscriptionData
+                else
                 {
-                    SubscribedDate = DateTime.Now,
-                    ExpireDate = startTime.AddMonths(months),
-                    AvatarId = avatar.Details.Id,
-                    GiftDate = nextGiftDate
-                };
-
-                SubscriptionDao.AddSubscription(Data);
-            }
-            else
-            {
-                Data.ExpireDate = startTime.AddMonths(months);
-                SubscriptionDao.SaveSubscriptionExpiry(avatar.Details.Id, Data.ExpireDate);
+                    Data.ExpireDate = startTime.AddMonths(months);
+                    context.SaveSubscriptionExpiry(avatar.Details.Id, Data.ExpireDate);
+                }
             }
 
             Update();
@@ -94,7 +101,10 @@ namespace Helios.Game
         /// </summary>
         public void Refresh()
         {
-            SubscriptionDao.Refresh(Data);
+            using (var context = new GameStorageContext())
+            {
+                context.Refresh(Data);
+            }
         }
 
         /// <summary>
@@ -107,7 +117,10 @@ namespace Helios.Game
                 Data.SubscriptionAge += (long)DateTime.Now.Subtract(Data.SubscriptionAgeLastUpdated).TotalSeconds;
                 Data.SubscriptionAgeLastUpdated = DateTime.Now;
 
-                SubscriptionDao.SaveSubscriptionAge(avatar.Details.Id, Data.SubscriptionAge, Data.SubscriptionAgeLastUpdated);
+                using (var context = new GameStorageContext())
+                {
+                    context.SaveSubscriptionAge(avatar.Details.Id, Data.SubscriptionAge, Data.SubscriptionAgeLastUpdated);
+                }
             }
         }
 

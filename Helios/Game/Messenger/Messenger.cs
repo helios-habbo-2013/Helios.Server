@@ -1,4 +1,5 @@
 ﻿using Helios.Messages.Outgoing;
+using Helios.Storage;
 using Helios.Storage.Access;
 using Helios.Storage.Models.Messenger;
 using Helios.Storage.Models.Subscription;
@@ -86,8 +87,12 @@ namespace Helios.Game
 
         public Messenger(int AvatarId)
         {
-            subscription = SubscriptionDao.GetSubscription(AvatarId);
-            FriendRequestsEnabled = MessengerDao.GetAcceptsFriendRequests(AvatarId);
+            using (var context = new GameStorageContext())
+            {
+                subscription = context.GetSubscription(AvatarId);
+                FriendRequestsEnabled = context.GetAcceptsFriendRequests(AvatarId);
+            }
+
             LoadMessengerData(AvatarId);
         }
 
@@ -114,9 +119,13 @@ namespace Helios.Game
         /// </summary>
         private void LoadMessengerData(int AvatarId)
         {
-            Friends = MessengerDao.GetFriends(AvatarId).Select(data => new MessengerUser(data.FriendData)).ToList();
-            Requests = MessengerDao.GetRequests(AvatarId).Select(data => new MessengerUser(data.FriendData)).ToList();
-            Categories = MessengerDao.GetCategories(AvatarId);
+            using (var context = new GameStorageContext())
+            {
+                Friends = context.GetFriends(AvatarId).Select(data => new MessengerUser(data.FriendData)).ToList();
+                Requests = context.GetRequests(AvatarId).Select(data => new MessengerUser(data.FriendData)).ToList();
+                Categories = context.GetCategories(AvatarId);
+            }
+
             Queue = new ConcurrentQueue<MessengerUpdate>();
         }
 

@@ -2,6 +2,7 @@
 using Helios.Messages.Outgoing;
 using Helios.Messages.Outgoing.Catalogue.Groups;
 using Helios.Network.Streams;
+using Helios.Storage;
 using Helios.Storage.Access;
 using Helios.Storage.Models.Group;
 using Helios.Storage.Models.Room;
@@ -62,63 +63,66 @@ namespace Helios.Messages.Incoming.Catalogue
                 //}
             }
 
-            var roomList = RoomManager.Instance.ReplaceQueryRooms(
-                new List<RoomData>() { RoomDao.GetRoomData(roomId) }
-            );
-
-            var room = roomList.FirstOrDefault();
-
-            if (room == null || room.Data.GroupId != null || !room.RightsManager.IsOwner(avatar.Details.Id))
+            using (var context = new GameStorageContext())
             {
-                return;
-            }
+                var roomList = RoomManager.Instance.ReplaceQueryRooms(
+                    new List<RoomData>() { context.GetRoomData(roomId) }
+                );
 
-            var groupData = new GroupData
-            {
-                OwnerId = avatar.EntityData.Id,
-                RoomId = roomId,
-                Name = name,
-                Description = desc,
-                Colour1 = GroupManager.Instance.BadgeManager.Colour2[colour1].FirstValue,
-                Colour2 = GroupManager.Instance.BadgeManager.Colour3[colour2].FirstValue,
-                Badge = badgeBuilder.ToString()
-            };
+                var room = roomList.FirstOrDefault();
 
-            GroupDao.SaveGroup(groupData);
-
-            room.Data.GroupId = groupData.Id;
-
-            RoomDao.SaveRoom(room.Data);
-
-            avatar.Details.FavouriteGroupId = groupData.Id;
-
-            AvatarDao.Update(avatar.Details);
-
-            if (room != null)
-            {
-                // if (avatar.RoomUser.Room == null || avatar.RoomUser.Room.Data.Id != roomId)
-                //    room.Forward(avatar);
-
-                var rightsList = RoomDao.GetRoomRights(room.Data.Id);
-
-                foreach (var toRemove in rightsList)
+                if (room == null || room.Data.GroupId != null || !room.RightsManager.IsOwner(avatar.Details.Id))
                 {
-                    room.RightsManager.RemoveRights(toRemove.AvatarData.Id, false);
-
-                    avatar.Send(new RemoveRightsMessageComposer(room.Data.Id, toRemove.AvatarData.Id));
+                    return;
                 }
 
-                room.Send(new GroupBadgesMessageComposer(groupData.Id, groupData.Name));
+                var groupData = new GroupData
+                {
+                    OwnerId = avatar.EntityData.Id,
+                    RoomId = roomId,
+                    Name = name,
+                    Description = desc,
+                    Colour1 = GroupManager.Instance.BadgeManager.Colour2[colour1].FirstValue,
+                    Colour2 = GroupManager.Instance.BadgeManager.Colour3[colour2].FirstValue,
+                    Badge = badgeBuilder.ToString()
+                };
 
-                room.Send(new UserRemoveComposer(avatar.RoomUser.InstanceId));
-                room.Send(new UsersComposer(List.Create(avatar as IEntity)));
+                context.SaveGroup(groupData);
 
-                avatar.RoomUser.NeedsUpdate = true;
+                room.Data.GroupId = groupData.Id;
+
+                context.SaveRoom(room.Data);
+
+                avatar.Details.FavouriteGroupId = groupData.Id;
+
+                context.Update(avatar.Details);
+
+                if (room != null)
+                {
+                    // if (avatar.RoomUser.Room == null || avatar.RoomUser.Room.Data.Id != roomId)
+                    //    room.Forward(avatar);
+
+                    var rightsList = context.GetRoomRights(room.Data.Id);
+
+                    foreach (var toRemove in rightsList)
+                    {
+                        room.RightsManager.RemoveRights(toRemove.AvatarData.Id, false);
+
+                        avatar.Send(new RemoveRightsMessageComposer(room.Data.Id, toRemove.AvatarData.Id));
+                    }
+
+                    room.Send(new GroupBadgesMessageComposer(groupData.Id, groupData.Name));
+
+                    room.Send(new UserRemoveComposer(avatar.RoomUser.InstanceId));
+                    room.Send(new UsersComposer(List.Create(avatar as IEntity)));
+
+                    avatar.RoomUser.NeedsUpdate = true;
+                }
+
+                context.ClearRoomRights(room.Data.Id);
+
+                avatar.Send(new GroupRoomMessageComposer(roomId, groupData.Id));
             }
-
-            RoomDao.ClearRoomRights(room.Data.Id);
-
-            avatar.Send(new GroupRoomMessageComposer(roomId, groupData.Id));
         }
     }
 }

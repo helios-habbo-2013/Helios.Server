@@ -1,6 +1,7 @@
 ﻿using Helios.Game;
 using Helios.Messages.Outgoing;
 using Helios.Network.Streams;
+using Helios.Storage;
 using Helios.Storage.Access;
 using Helios.Storage.Models.Messenger;
 using Helios.Util.Extensions;
@@ -32,7 +33,10 @@ namespace Helios.Messages.Incoming
                     IsRead = friend.IsOnline
                 };
 
-                MessengerDao.SaveMessage(chatMessageData);
+                using (var context = new GameStorageContext())
+                {
+                    context.SaveMessage(chatMessageData);
+                }
 
                 if (!friend.IsOnline)
                 {

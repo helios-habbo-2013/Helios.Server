@@ -1,4 +1,5 @@
 ﻿using Helios.Messages.Outgoing;
+using Helios.Storage;
 using Helios.Storage.Access;
 using Helios.Storage.Models.Avatar;
 using Helios.Storage.Models.Catalogue;
@@ -25,7 +26,10 @@ namespace Helios.Game
 
         public void Load()
         {
-            this.Currencies = CurrencyDao.GetCurrencies(avatar.Details.Id).ToDictionary(x => x.SeasonalType, x => x.Balance < 0 ? 0 : x.Balance);
+            using (var context = new GameStorageContext())
+            {
+                this.Currencies = context.GetCurrencies(avatar.Details.Id).ToDictionary(x => x.SeasonalType, x => x.Balance < 0 ? 0 : x.Balance);
+            }
         }
 
         #endregion
@@ -53,7 +57,10 @@ namespace Helios.Game
         /// </summary>
         public void AddBalance(SeasonalCurrencyType currencyType, int newBalance)
         {
-            Currencies[currencyType] = CurrencyDao.GetCurrency(avatar.Details.Id, currencyType).Balance + newBalance;
+            using (var context = new GameStorageContext())
+            {
+                Currencies[currencyType] = context.GetCurrency(avatar.Details.Id, currencyType).Balance + newBalance;
+            }
         }
 
         /// <summary>
@@ -61,7 +68,10 @@ namespace Helios.Game
         /// </summary>
         public void ModifyCredits(int creditsChanged)
         {
-            avatar.Details.Credits = CurrencyDao.SaveCredits(avatar.Details.Id, creditsChanged);
+            using (var context = new GameStorageContext())
+            {
+                avatar.Details.Credits = context.SaveCredits(avatar.Details.Id, creditsChanged);
+            }
         }
 
         /// <summary>
@@ -98,7 +108,10 @@ namespace Helios.Game
                 .Select(kvp => new CurrencyData { AvatarId = avatar.Details.Id, SeasonalType = kvp.Key, Balance = kvp.Value })
                 .ToList();
 
-            CurrencyDao.SaveCurrencies(currencyList);
+            using (var context = new GameStorageContext())
+            {
+                context.SaveCurrencies(currencyList);
+            }
         }
 
         #endregion

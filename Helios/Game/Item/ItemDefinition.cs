@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Helios.Storage;
 using Helios.Storage.Access;
 using Helios.Storage.Models.Item;
 
@@ -91,7 +92,11 @@ namespace Helios.Game
 
                 this.Data.Behaviour = behaviours;
                 //this.Data.Interactor = "one_way_gate";
-                ItemDao.SaveDefinition(this.Data);
+
+                using (var context = new GameStorageContext())
+                {
+                    context.SaveDefinition(this.Data);
+                }
             }
         }
 

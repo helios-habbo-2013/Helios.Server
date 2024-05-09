@@ -1,4 +1,5 @@
-﻿using Helios.Storage.Access;
+﻿using Helios.Storage;
+using Helios.Storage.Access;
 using Helios.Util.Extensions;
 using System;
 using System.Collections.Concurrent;
@@ -35,10 +36,13 @@ namespace Helios.Game.Managers
         {
             Items = new ConcurrentDictionary<int, Item>();
 
-            foreach (var itemData in ItemDao.GetRoomItems(room.Data.Id))
+            using (var context = new GameStorageContext())
             {
-                Item item = new Item(itemData);
-                Items.TryAdd(item.Id, item);
+                foreach (var itemData in context.GetRoomItems(room.Data.Id))
+                {
+                    Item item = new Item(itemData);
+                    Items.TryAdd(item.Id, item);
+                }
             }
         }
 

@@ -6,6 +6,7 @@ using Helios.Util.Extensions;
 using System.Threading.Tasks;
 using Helios.Storage.Access;
 using static System.Net.Mime.MediaTypeNames;
+using Helios.Storage;
 
 namespace Helios.Game
 {
@@ -152,7 +153,11 @@ namespace Helios.Game
                 avatar.Messenger.SendStatus();
 
                 room.Data.UsersNow++;
-                RoomDao.SetVisitorCount(room.Data.Id, room.Data.UsersNow);
+
+                using (var context = new GameStorageContext())
+                {
+                    context.SetVisitorCount(room.Data.Id, room.Data.UsersNow);
+                }
             }
             else
             {
@@ -205,7 +210,11 @@ namespace Helios.Game
             if (entity is Avatar avatar)
             {
                 room.Data.UsersNow--;
-                RoomDao.SetVisitorCount(room.Data.Id, room.Data.UsersNow);
+
+                using (var context = new GameStorageContext())
+                {
+                    context.SetVisitorCount(room.Data.Id, room.Data.UsersNow);
+                }
 
                 if (hotelView)
                     avatar.Send(new CloseConnectionComposer());

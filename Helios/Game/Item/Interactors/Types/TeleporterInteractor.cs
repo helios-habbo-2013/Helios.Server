@@ -1,4 +1,5 @@
-﻿using Helios.Storage.Access;
+﻿using Helios.Storage;
+using Helios.Storage.Access;
 using Helios.Storage.Models.Item;
 using Newtonsoft.Json;
 using System.Threading.Tasks;
@@ -38,7 +39,12 @@ namespace Helios.Game
             var teleporterData = (TeleporterExtraData)GetJsonObject();
 
             string pairId = ((TeleporterExtraData)GetJsonObject()).LinkedItem;
-            ItemData targetTeleporterData = ItemDao.GetItem(pairId);
+            ItemData targetTeleporterData = null;
+
+            using (var context = new GameStorageContext())
+            {
+                context.GetItem(pairId);
+            }
 
             Item.UpdateState(TELEPORTER_OPEN);
 

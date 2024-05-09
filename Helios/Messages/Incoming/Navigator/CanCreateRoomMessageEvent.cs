@@ -1,6 +1,7 @@
 ﻿using Helios.Game;
 using Helios.Messages.Outgoing;
 using Helios.Network.Streams;
+using Helios.Storage;
 using Helios.Storage.Access;
 
 namespace Helios.Messages.Incoming
@@ -14,10 +15,13 @@ namespace Helios.Messages.Incoming
             if (avatar.IsSubscribed)
                 maxRoomsAllowed = ValueManager.Instance.GetInt("max.rooms.allowed.subscribed");
 
-            avatar.Send(new CanCreateRoomComposer(
-                maxRoomsAllowed >= RoomDao.CountUserRooms(avatar.Details.Id),
-                maxRoomsAllowed)
-            );
+            using (var context = new GameStorageContext())
+            {
+                avatar.Send(new CanCreateRoomComposer(
+                    maxRoomsAllowed >= context.CountUserRooms(avatar.Details.Id),
+                    maxRoomsAllowed)
+                );
+            }
         }
     }
 }

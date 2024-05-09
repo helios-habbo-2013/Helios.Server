@@ -1,4 +1,5 @@
-﻿using Helios.Storage.Access;
+﻿using Helios.Storage;
+using Helios.Storage.Access;
 using Helios.Storage.Models.Effect;
 using System;
 
@@ -52,7 +53,11 @@ namespace Helios.Game
 
             Data.IsActivated = true;
             Data.ExpiresAt = DateTime.Now.AddSeconds(Duration);
-            EffectDao.UpdateEffect(Data);
+
+            using (var context = new GameStorageContext())
+            {
+                context.UpdateEffect(Data);
+            }
 
             return true;
         }

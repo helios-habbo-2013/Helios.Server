@@ -1,6 +1,7 @@
 ﻿using Helios.Game;
 using Helios.Messages.Outgoing;
 using Helios.Network.Streams;
+using Helios.Storage;
 using Helios.Storage.Access;
 
 namespace Helios.Messages.Incoming
@@ -9,8 +10,11 @@ namespace Helios.Messages.Incoming
     {
         public void Handle(Avatar avatar, Request request)
         {
-            var roomList = RoomManager.Instance.ReplaceQueryRooms(RoomDao.GetUserRooms(avatar.Details.Id));
-            avatar.Send(new PromotableRoomsMessageComposer(roomList));
+            using (var context = new GameStorageContext())
+            {
+                var roomList = RoomManager.Instance.ReplaceQueryRooms(context.GetUserRooms(avatar.Details.Id));
+                avatar.Send(new PromotableRoomsMessageComposer(roomList));
+            }
         }
     }
 }

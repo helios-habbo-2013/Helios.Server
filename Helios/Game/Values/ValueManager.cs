@@ -1,4 +1,5 @@
-﻿using Helios.Storage.Access;
+﻿using Helios.Storage;
+using Helios.Storage.Access;
 using Helios.Util.Extensions;
 using System;
 using System.Collections.Generic;
@@ -27,14 +28,17 @@ namespace Helios.Game
 
         public void Load()
         {
-            SettingDao.GetSettings(out _clientValues);
-
-            foreach (var kvp in GetDefaultValues())
+            using (var context = new GameStorageContext())
             {
-                if (!SettingDao.HasSetting(kvp.Key))
+                context.GetSettings(out _clientValues);
+
+                foreach (var kvp in GetDefaultValues())
                 {
-                    SettingDao.SaveSetting(kvp.Key, kvp.Value);
-                    _clientValues[kvp.Key] = kvp.Value;
+                    if (!context.HasSetting(kvp.Key))
+                    {
+                        context.SaveSetting(kvp.Key, kvp.Value);
+                        _clientValues[kvp.Key] = kvp.Value;
+                    }
                 }
             }
         }
