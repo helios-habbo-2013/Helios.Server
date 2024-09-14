@@ -15,43 +15,43 @@ namespace Helios.Game
 
         public List<GroupBadgeElementData> GroupBadgeElements { get; private set; }
 
-        public Dictionary<int, GroupBadgeElementData> Base
+        public List<GroupBadgeElementData> Base
         {
             get
             {
-                return GroupBadgeElements.Where(x => x.Type == "base").ToDictionary(x => x.Id, x => x);
+                return GroupBadgeElements.Where(x => x.Type == "base").ToList();
             }
         }
 
-        public Dictionary<int, GroupBadgeElementData> Symbol
+        public List<GroupBadgeElementData> Symbol
         {
             get
             {
-                return GroupBadgeElements.Where(x => x.Type == "symbol").ToDictionary(x => x.Id, x => x);
+                return GroupBadgeElements.Where(x => x.Type == "symbol").ToList();
             }
         }
 
-        public Dictionary<int, GroupBadgeElementData> Colour1
+        public List<GroupBadgeElementData> Colour1
         {
             get
             {
-                return GroupBadgeElements.Where(x => x.Type == "colour1").ToDictionary(x => x.Id, x => x);
+                return GroupBadgeElements.Where(x => x.Type == "colour1").ToList();
             }
         }
 
-        public Dictionary<int, GroupBadgeElementData> Colour2
+        public List<GroupBadgeElementData> Colour2
         {
             get
             {
-                return GroupBadgeElements.Where(x => x.Type == "colour2").ToDictionary(x => x.Id, x => x);
+                return GroupBadgeElements.Where(x => x.Type == "colour2").ToList();
             }
         }
 
-        public Dictionary<int, GroupBadgeElementData> Colour3
+        public List<GroupBadgeElementData> Colour3
         {
             get
             {
-                return GroupBadgeElements.Where(x => x.Type == "colour3").ToDictionary(x => x.Id, x => x);
+                return GroupBadgeElements.Where(x => x.Type == "colour3").ToList(); // (x => x.Id, x => x);
             }
         }
 

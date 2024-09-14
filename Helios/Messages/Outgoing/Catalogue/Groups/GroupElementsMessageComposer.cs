@@ -7,14 +7,14 @@ namespace Helios.Messages.Outgoing
 {
     class GroupElementsMessageComposer : IMessageComposer
     {
-        private Dictionary<int, GroupBadgeElementData> badgeBase;
-        private Dictionary<int, GroupBadgeElementData> badgeSymbol;
-        private Dictionary<int, GroupBadgeElementData> badgeColour1;
-        private Dictionary<int, GroupBadgeElementData> badgeColour2;
-        private Dictionary<int, GroupBadgeElementData> badgeColour3;
+        private List<GroupBadgeElementData> badgeBase;
+        private List<GroupBadgeElementData> badgeSymbol;
+        private List<GroupBadgeElementData> badgeColour1;
+        private List<GroupBadgeElementData> badgeColour2;
+        private List<GroupBadgeElementData> badgeColour3;
 
 
-        public GroupElementsMessageComposer(Dictionary<int, GroupBadgeElementData> badgeBase, Dictionary<int, GroupBadgeElementData> badgeSymbol, Dictionary<int, GroupBadgeElementData> badgeColour1, Dictionary<int, GroupBadgeElementData> badgeColour2, Dictionary<int, GroupBadgeElementData> badgeColour3)
+        public GroupElementsMessageComposer(List<GroupBadgeElementData> badgeBase, List<GroupBadgeElementData> badgeSymbol, List<GroupBadgeElementData> badgeColour1, List<GroupBadgeElementData> badgeColour2, List<GroupBadgeElementData> badgeColour3)
         {
             this.badgeBase = badgeBase;
             this.badgeSymbol = badgeSymbol;
@@ -27,7 +27,7 @@ namespace Helios.Messages.Outgoing
         {
             _data.Add(this.badgeBase.Count);
 
-            foreach (var element in this.badgeBase.Values)
+            foreach (var element in this.badgeBase)
             {
                 _data.Add(element.Id);
                 _data.Add(element.FirstValue);
@@ -36,7 +36,7 @@ namespace Helios.Messages.Outgoing
 
             _data.Add(this.badgeSymbol.Count);
 
-            foreach (var element in this.badgeSymbol.Values)
+            foreach (var element in this.badgeSymbol)
             {
                 _data.Add(element.Id);
                 _data.Add(element.FirstValue);
@@ -45,7 +45,7 @@ namespace Helios.Messages.Outgoing
 
             _data.Add(this.badgeColour1.Count);
 
-            foreach (var element in this.badgeColour1.Values)
+            foreach (var element in this.badgeColour1)
             {
                 _data.Add(element.Id);
                 _data.Add(element.FirstValue);
@@ -53,7 +53,7 @@ namespace Helios.Messages.Outgoing
 
             _data.Add(this.badgeColour2.Count);
 
-            foreach (var element in this.badgeColour2.Values)
+            foreach (var element in this.badgeColour2)
             {
                 _data.Add(element.Id);
                 _data.Add(element.FirstValue);
@@ -61,7 +61,7 @@ namespace Helios.Messages.Outgoing
 
             _data.Add(this.badgeColour3.Count);
 
-            foreach (var element in this.badgeColour3.Values)
+            foreach (var element in this.badgeColour3)
             {
                 _data.Add(element.Id);
                 _data.Add(element.FirstValue);

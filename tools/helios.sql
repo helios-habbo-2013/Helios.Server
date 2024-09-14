@@ -1,28 +1,30 @@
 -- --------------------------------------------------------
 -- Host:                         127.0.0.1
--- Server version:               10.9.3-MariaDB - mariadb.org binary distribution
+-- Server version:               11.4.2-MariaDB - mariadb.org binary distribution
 -- Server OS:                    Win64
--- HeidiSQL Version:             11.3.0.6295
+-- HeidiSQL Version:             12.6.0.6765
 -- --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET NAMES utf8 */;
 /*!50503 SET NAMES utf8mb4 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 -- Dumping structure for table helios.article_categories
+DROP TABLE IF EXISTS `article_categories`;
 CREATE TABLE IF NOT EXISTS `article_categories` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `label` varchar(50) NOT NULL,
   `category_index` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Dumping data for table helios.article_categories: ~11 rows (approximately)
 DELETE FROM `article_categories`;
-/*!40000 ALTER TABLE `article_categories` DISABLE KEYS */;
 INSERT INTO `article_categories` (`id`, `label`, `category_index`) VALUES
 	(1, 'Fansites', 'fansites'),
 	(2, 'Events', 'events'),
@@ -35,24 +37,161 @@ INSERT INTO `article_categories` (`id`, `label`, `category_index`) VALUES
 	(9, 'Special Offers', 'credit_promo'),
 	(10, 'Sponsored', 'sponsored'),
 	(11, 'Other', 'other');
-/*!40000 ALTER TABLE `article_categories` ENABLE KEYS */;
 
 -- Dumping structure for table helios.authentication_ticket
+DROP TABLE IF EXISTS `authentication_ticket`;
 CREATE TABLE IF NOT EXISTS `authentication_ticket` (
-  `user_id` int(11) NOT NULL,
+  `avatar_id` int(11) NOT NULL,
   `sso_ticket` varchar(250) NOT NULL DEFAULT '',
   `expires_at` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Dumping data for table helios.authentication_ticket: ~2 rows (approximately)
+-- Dumping data for table helios.authentication_ticket: ~33 rows (approximately)
 DELETE FROM `authentication_ticket`;
-/*!40000 ALTER TABLE `authentication_ticket` DISABLE KEYS */;
-INSERT INTO `authentication_ticket` (`user_id`, `sso_ticket`, `expires_at`) VALUES
+INSERT INTO `authentication_ticket` (`avatar_id`, `sso_ticket`, `expires_at`) VALUES
 	(1, '123', NULL),
-	(3, 'kek', NULL);
-/*!40000 ALTER TABLE `authentication_ticket` ENABLE KEYS */;
+	(3, 'kek', NULL),
+	(1, 'b23643fe-2a38-4255-b475-fc3510ae1587', NULL),
+	(1, '7a8bdbcb-903d-4949-abc1-6b279b648e85', NULL),
+	(1, 'e8cff775-f879-467e-9598-efa56ec72e1e', NULL),
+	(1, '94b3c2f5-4112-439b-bb10-0189ffa3a6b6', NULL),
+	(1, '4d5e12f0-310a-44f4-9803-a35008d291a6', NULL),
+	(1, 'dbe452a2-bcb4-4697-8299-97a9a199bb1c', NULL),
+	(1, '393f9693-21da-4e12-963d-efda45b583dc', NULL),
+	(1, '793a5fc9-3b1f-445c-89ab-1e5d6b5ad957', NULL),
+	(1, '35757191-094b-4192-9441-df8124d2b3ba', NULL),
+	(1, '6b0def29-8def-47c0-8b4e-12d819a9ce90', NULL),
+	(1, 'b2a19b44-c439-478f-973a-b5e6c772cbf0', NULL),
+	(2, '81b5ef05-4ecc-4d99-9e47-a85dd9720e84', NULL),
+	(2, '62d40885-46af-4b7a-9ba1-1348d6bc16b5', NULL),
+	(2, 'fff2263e-8df1-4d29-a377-0aa2266ce4e0', NULL),
+	(2, 'e84cd29e-7a57-4c72-abcf-4cf80f039c87', NULL),
+	(2, '16d50be2-c0c6-4532-8687-7e3790dc9bec', NULL),
+	(2, 'b3506e71-2493-4242-9ff5-e67cdc324364', NULL),
+	(2, '18cb05ec-1957-4f9f-b669-ea620a7a0ece', NULL),
+	(2, 'af0fba01-9497-4084-afbc-f52f2e149ec1', NULL),
+	(2, 'fdd80a4b-e34a-4ae2-8fcc-965a1e1024c1', NULL),
+	(2, 'b9249ce3-d726-4b92-82d4-0b5c9793aea9', NULL),
+	(2, '5b47a783-da83-4272-8435-f658a89c5e61', NULL),
+	(2, '9e4fa74f-606c-4eaf-8409-7ff57f9b846b', NULL),
+	(2, '5f53ea3f-8de2-4733-a438-e2aa19a59364', NULL),
+	(2, '7a4ca14e-cd71-4f5a-8eb6-05b6300b79e7', NULL),
+	(2, '13d020aa-4e7d-42eb-8549-af8dd5c22836', NULL),
+	(2, '3962862b-9e26-4f9a-a39e-70ac82fd102f', NULL),
+	(2, 'a51206eb-53bb-4e92-b06a-f4c490c55142', NULL),
+	(2, '829725a3-e3e9-4553-8055-84e9dfc59501', NULL),
+	(2, '3dc1c991-c750-40f5-82f2-bfe79ccde19d', NULL),
+	(2, 'b898fa89-264a-4e78-bbfe-14a039c9d694', NULL);
+
+-- Dumping structure for table helios.avatar
+DROP TABLE IF EXISTS `avatar`;
+CREATE TABLE IF NOT EXISTS `avatar` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `username` varchar(50) NOT NULL,
+  `figure` text NOT NULL DEFAULT 'hd-180-1.hr-100-61.ch-210-66.lg-270-82.sh-290-80',
+  `sex` varchar(1) NOT NULL DEFAULT 'M',
+  `rank` int(11) NOT NULL DEFAULT 1,
+  `credits` int(11) NOT NULL DEFAULT 0,
+  `motto` text NOT NULL DEFAULT '',
+  `created_date` datetime NOT NULL DEFAULT current_timestamp(),
+  `last_online` datetime NOT NULL DEFAULT current_timestamp(),
+  `favourite_group_id` int(11) DEFAULT NULL,
+  UNIQUE KEY `id` (`id`),
+  KEY `user_id` (`user_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- Dumping data for table helios.avatar: ~2 rows (approximately)
+DELETE FROM `avatar`;
+INSERT INTO `avatar` (`id`, `user_id`, `username`, `figure`, `sex`, `rank`, `credits`, `motto`, `created_date`, `last_online`, `favourite_group_id`) VALUES
+	(1, 1, 'Alex', 'hr-105-1158.hd-207-1006.ch-3030-1202.lg-280-1289.ha-1001-1', 'M', 1, 656314, '', '2024-09-07 23:01:56', '2024-09-07 23:01:56', NULL),
+	(2, 1, 'Lucy', 'hr-555-34.hd-605-1018.ch-685-1314.lg-700-1190.sh-730-1247', 'F', 1, 0, '', '2024-09-08 14:39:20', '2024-09-08 14:39:20', NULL);
+
+-- Dumping structure for table helios.avatar_effects
+DROP TABLE IF EXISTS `avatar_effects`;
+CREATE TABLE IF NOT EXISTS `avatar_effects` (
+  `avatar_id` int(11) NOT NULL,
+  `effect_id` int(11) NOT NULL,
+  `expires_at` datetime DEFAULT NULL,
+  `quantity` int(11) NOT NULL DEFAULT 1,
+  `is_activated` tinyint(1) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- Dumping data for table helios.avatar_effects: ~0 rows (approximately)
+DELETE FROM `avatar_effects`;
+
+-- Dumping structure for table helios.avatar_seasonal_currencies
+DROP TABLE IF EXISTS `avatar_seasonal_currencies`;
+CREATE TABLE IF NOT EXISTS `avatar_seasonal_currencies` (
+  `avatar_id` int(11) NOT NULL,
+  `seasonal_type` enum('PUMPKINS','PEANUTS','STARS','CLOUDS','DIAMONDS','LOYALTY_POINTS','DUCKETS') NOT NULL,
+  `balance` int(11) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- Dumping data for table helios.avatar_seasonal_currencies: ~21 rows (approximately)
+DELETE FROM `avatar_seasonal_currencies`;
+INSERT INTO `avatar_seasonal_currencies` (`avatar_id`, `seasonal_type`, `balance`) VALUES
+	(1, 'DUCKETS', 0),
+	(1, 'LOYALTY_POINTS', 0),
+	(1, 'PUMPKINS', 0),
+	(1, 'PEANUTS', 0),
+	(1, 'STARS', 0),
+	(1, 'CLOUDS', 0),
+	(1, 'DIAMONDS', 0),
+	(3, 'DUCKETS', 0),
+	(3, 'LOYALTY_POINTS', 0),
+	(3, 'PUMPKINS', 0),
+	(3, 'PEANUTS', 0),
+	(3, 'STARS', 0),
+	(3, 'CLOUDS', 0),
+	(3, 'DIAMONDS', 0),
+	(2, 'DUCKETS', 0),
+	(2, 'LOYALTY_POINTS', 0),
+	(2, 'PUMPKINS', 0),
+	(2, 'PEANUTS', 0),
+	(2, 'STARS', 0),
+	(2, 'CLOUDS', 0),
+	(2, 'DIAMONDS', 0);
+
+-- Dumping structure for table helios.avatar_settings
+DROP TABLE IF EXISTS `avatar_settings`;
+CREATE TABLE IF NOT EXISTS `avatar_settings` (
+  `avatar_id` int(11) NOT NULL,
+  `daily_respect_points` int(11) NOT NULL DEFAULT 0,
+  `daily_respect_pet_points` int(11) NOT NULL DEFAULT 0,
+  `respect_points` int(11) NOT NULL DEFAULT 0,
+  `friend_requests_enabled` tinyint(1) NOT NULL DEFAULT 1,
+  `following_enabled` tinyint(1) NOT NULL DEFAULT 1,
+  `online_time` bigint(11) NOT NULL DEFAULT 0,
+  `name_change_enabled` tinyint(4) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`avatar_id`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- Dumping data for table helios.avatar_settings: ~2 rows (approximately)
+DELETE FROM `avatar_settings`;
+INSERT INTO `avatar_settings` (`avatar_id`, `daily_respect_points`, `daily_respect_pet_points`, `respect_points`, `friend_requests_enabled`, `following_enabled`, `online_time`, `name_change_enabled`) VALUES
+	(1, 0, 0, 0, 1, 1, 4499, 0),
+	(2, 0, 0, 0, 1, 1, 0, 0),
+	(3, 0, 0, 0, 1, 1, 13, 0);
+
+-- Dumping structure for table helios.avatar_subscriptions
+DROP TABLE IF EXISTS `avatar_subscriptions`;
+CREATE TABLE IF NOT EXISTS `avatar_subscriptions` (
+  `avatar_id` int(11) NOT NULL,
+  `subscribed_at` datetime NOT NULL,
+  `expire_at` datetime NOT NULL,
+  `gift_at` datetime NOT NULL,
+  `gifts_redeemable` int(11) NOT NULL DEFAULT 0,
+  `subscription_age` bigint(11) NOT NULL DEFAULT 0,
+  `subscription_age_last_updated` datetime NOT NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`avatar_id`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- Dumping data for table helios.avatar_subscriptions: ~0 rows (approximately)
+DELETE FROM `avatar_subscriptions`;
 
 -- Dumping structure for table helios.catalogue_discounts
+DROP TABLE IF EXISTS `catalogue_discounts`;
 CREATE TABLE IF NOT EXISTS `catalogue_discounts` (
   `page_id` int(11) NOT NULL,
   `purchase_limit` int(11) NOT NULL DEFAULT 100,
@@ -61,17 +200,16 @@ CREATE TABLE IF NOT EXISTS `catalogue_discounts` (
   `minimum_required` int(11) NOT NULL,
   `expire_at` datetime DEFAULT NULL,
   KEY `page_id` (`page_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Dumping data for table helios.catalogue_discounts: ~2 rows (approximately)
 DELETE FROM `catalogue_discounts`;
-/*!40000 ALTER TABLE `catalogue_discounts` DISABLE KEYS */;
 INSERT INTO `catalogue_discounts` (`page_id`, `purchase_limit`, `item_count_required`, `item_count_free`, `minimum_required`, `expire_at`) VALUES
 	(16, 100, 5, 2, 1, '2020-07-20 19:54:58'),
 	(16, 100, 5, 2, 1, '2020-07-20 19:54:58');
-/*!40000 ALTER TABLE `catalogue_discounts` ENABLE KEYS */;
 
 -- Dumping structure for table helios.catalogue_items
+DROP TABLE IF EXISTS `catalogue_items`;
 CREATE TABLE IF NOT EXISTS `catalogue_items` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `sale_code` varchar(255) DEFAULT NULL,
@@ -88,11 +226,10 @@ CREATE TABLE IF NOT EXISTS `catalogue_items` (
   `allow_bulk_purchase` tinyint(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`),
   KEY `id` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2560 DEFAULT CHARSET=utf8mb4 ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB AUTO_INCREMENT=2560 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=COMPACT;
 
--- Dumping data for table helios.catalogue_items: ~2,538 rows (approximately)
+-- Dumping data for table helios.catalogue_items: ~2,443 rows (approximately)
 DELETE FROM `catalogue_items`;
-/*!40000 ALTER TABLE `catalogue_items` DISABLE KEYS */;
 INSERT INTO `catalogue_items` (`id`, `sale_code`, `page_id`, `order_id`, `price_coins`, `price_seasonal`, `seasonal_type`, `hidden`, `amount`, `definition_id`, `item_specialspriteid`, `is_package`, `allow_bulk_purchase`) VALUES
 	(1, 'floor', '3', 1, 2, 0, 'DUCKETS', 0, 1, 249, '101', 0, 1),
 	(2, 'CF_50_goldbar', '4', 5, 50, 0, 'DUCKETS', 0, 1, 212, '', 0, 1),
@@ -2632,9 +2769,9 @@ INSERT INTO `catalogue_items` (`id`, `sale_code`, `page_id`, `order_id`, `price_
 	(2557, 'floor', '3', 1, 2, 0, 'DUCKETS', 0, 1, 249, '610', 0, 1),
 	(2558, 'boutique_mannequin1', '19', 1, 2, 0, 'DUCKETS', 0, 1, 2383, '', 0, 1),
 	(2559, 'note_tag', '19', 1, 2, 0, 'DUCKETS', 0, 1, 2382, '0', 0, 1);
-/*!40000 ALTER TABLE `catalogue_items` ENABLE KEYS */;
 
 -- Dumping structure for table helios.catalogue_packages
+DROP TABLE IF EXISTS `catalogue_packages`;
 CREATE TABLE IF NOT EXISTS `catalogue_packages` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `salecode` varchar(255) DEFAULT NULL,
@@ -2643,11 +2780,10 @@ CREATE TABLE IF NOT EXISTS `catalogue_packages` (
   `amount` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `id` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Dumping data for table helios.catalogue_packages: ~31 rows (approximately)
 DELETE FROM `catalogue_packages`;
-/*!40000 ALTER TABLE `catalogue_packages` DISABLE KEYS */;
 INSERT INTO `catalogue_packages` (`id`, `salecode`, `definition_id`, `special_sprite_id`, `amount`) VALUES
 	(1, 'a0 deal102', 184, '', 5),
 	(2, 'a0 deal104', 184, '', 3),
@@ -2680,9 +2816,9 @@ INSERT INTO `catalogue_packages` (`id`, `salecode`, `definition_id`, `special_sp
 	(33, 'country_grass_deal5', 813, '', 5),
 	(34, 'country_ditch_deal5', 826, '', 5),
 	(35, 'garden_wall_deal5', 2248, '', 5);
-/*!40000 ALTER TABLE `catalogue_packages` ENABLE KEYS */;
 
 -- Dumping structure for table helios.catalogue_pages
+DROP TABLE IF EXISTS `catalogue_pages`;
 CREATE TABLE IF NOT EXISTS `catalogue_pages` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `parent_id` int(11) NOT NULL DEFAULT -1,
@@ -2700,13 +2836,12 @@ CREATE TABLE IF NOT EXISTS `catalogue_pages` (
   `texts` text NOT NULL,
   PRIMARY KEY (`id`),
   KEY `id` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=140 DEFAULT CHARSET=utf8mb4 ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB AUTO_INCREMENT=141 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=COMPACT;
 
 -- Dumping data for table helios.catalogue_pages: ~130 rows (approximately)
 DELETE FROM `catalogue_pages`;
-/*!40000 ALTER TABLE `catalogue_pages` DISABLE KEYS */;
 INSERT INTO `catalogue_pages` (`id`, `parent_id`, `order_id`, `min_rank`, `is_navigatable`, `is_enabled`, `is_club_only`, `caption`, `page_link`, `icon_image`, `icon_colour`, `layout`, `images`, `texts`) VALUES
-	(1, -1, 0, 1, 1, 1, 0, 'Frontpage', 'frontpage', 1, 0, 'frontpage3', '["catalog_frontpage_headline2_en","topstory_ecotron_03"]', '["Helios Development","Enjoy the catalogue for the Helios server","","How do I get Credits easily?","1. Always ask permission from the bill payer first.\\r\\n2. Send HABBO in a UK SMS to 78881. You\'\'ll get an SMS back with a voucher code and will be charged Ãƒâ€šÃ‚Â£3 plus your standard UK SMS rate, normally 10p.\\r\\n3. Enter the code below to redeem 35 Credits. For Habbo Credit options or to redeem a Wallie Voucher Card, simply click \\"Get Credits >>\\" below.","Redeem a Habbo Voucher code here:","","#FAF8CC","#FAF8CC","Click here for more information..."]'),
+	(1, -1, 0, 1, 1, 1, 0, 'Frontpage', 'frontpage', 1, 0, 'frontpage3', '["catalog_frontpage_headline2_en","topstory_ecotron_03"]', '["Helios Development","Enjoy the catalogue for the Helios server","","How do I get Credits easily?","1. Always ask permission from the bill payer first.\\r\\n2. Send HABBO in a UK SMS to 78881. You\'\'ll get an SMS back with a voucher code and will be charged ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â£3 plus your standard UK SMS rate, normally 10p.\\r\\n3. Enter the code below to redeem 35 Credits. For Habbo Credit options or to redeem a Wallie Voucher Card, simply click \\"Get Credits >>\\" below.","Redeem a Habbo Voucher code here:","","#FAF8CC","#FAF8CC","Click here for more information..."]'),
 	(2, -1, 1000, 1, 0, 1, 0, 'Classic Furni', 'classic_furni', 2, 2, '', '[]', '[]'),
 	(3, 2, 1001, 1, 1, 1, 0, 'Spaces', 'spaces', 55, 1, 'spaces_new', '["catalog_spaces_headline1"]', '["Floors, wallpapers, landscapes - get a groovy combination to your room. Use our virtual room preview below to test out the combinations before you buy. Select the design and color you like and click Buy."]'),
 	(4, -1, 8000, 1, 1, 1, 0, 'Exchange', 'exchange', 6, 3, 'default_3x3', '["catalog_bank_headline1","catalog_bank_teaser","catalog_special_txtbg1"]', '["The Habbo Exchange is where you can convert your Habbo Credits into a tradable currency. You can use this tradable currency to exchange Habbo Credits for Furni!","Click on the item you want for more information","Gold! Glorious Gold!"]'),
@@ -2835,10 +2970,11 @@ INSERT INTO `catalogue_pages` (`id`, `parent_id`, `order_id`, `min_rank`, `is_na
 	(135, 63, 5002, 1, 1, 1, 1, 'VIP Shop', 'vip_shop', 137, 0, 'default_3x3', '["ctlg_buy_vip_header","vippremium2",""]', '["NEW VIP Furni range. Allow these elegant delights to make your room sophisticated and humble. They look great placed with your monthly gifts!","Click on the item you want for more information",""]'),
 	(136, 138, 0, 1, 1, 1, 0, 'Easter', 'easter', 25, 3, 'default_3x3', '["catalog_easter_headline1","catalog_easter_teaser1","catalog_special_txtbg2"]', '["\'Egg\'cellent furni - Bouncing bunnies, fluffy chicks, choccy eggs... Yep, it\'s Easter!\\rCelebrate with something \'eggs\'tra special from our Easter range. But hurry - it\'s not here for long this year!","Click on the item you want for more information","\'Egg\'-Tastic!"]'),
 	(137, -1, 2000, 1, 0, 1, 0, 'Furni By Line', 'furni_by_line', 121, 2, '', '[]', '[]'),
-	(138, -1, 3000, 1, 0, 1, 0, 'Furni By Theme', 'furni_by_theme', 64, 2, '', '[]', '[]');
-/*!40000 ALTER TABLE `catalogue_pages` ENABLE KEYS */;
+	(138, -1, 3000, 1, 0, 1, 0, 'Furni By Theme', 'furni_by_theme', 64, 2, '', '[]', '[]'),
+	(140, -1, 900, 1, 1, 1, 0, 'Habbo Groups', 'habbo_groups', 1, 0, 'guild_frontpage', '["catalog_groups_en","catalog_groupsteaser_en"]', '[]');
 
 -- Dumping structure for table helios.catalogue_subscriptions
+DROP TABLE IF EXISTS `catalogue_subscriptions`;
 CREATE TABLE IF NOT EXISTS `catalogue_subscriptions` (
   `id` int(11) NOT NULL,
   `page_id` int(11) NOT NULL DEFAULT 5,
@@ -2847,28 +2983,78 @@ CREATE TABLE IF NOT EXISTS `catalogue_subscriptions` (
   `seasonal_type` enum('PUMPKINS','PEANUTS','STARS','CLOUDS','DIAMONDS','LOYALTY_POINTS','DUCKETS') NOT NULL DEFAULT 'DUCKETS',
   `months` int(11) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Dumping data for table helios.catalogue_subscriptions: ~3 rows (approximately)
 DELETE FROM `catalogue_subscriptions`;
-/*!40000 ALTER TABLE `catalogue_subscriptions` DISABLE KEYS */;
 INSERT INTO `catalogue_subscriptions` (`id`, `page_id`, `price_coins`, `price_seasonal`, `seasonal_type`, `months`) VALUES
 	(1, 63, 15, 0, 'DUCKETS', 1),
 	(2, 63, 30, 0, 'DUCKETS', 3),
 	(3, 63, 60, 0, 'DUCKETS', 6);
-/*!40000 ALTER TABLE `catalogue_subscriptions` ENABLE KEYS */;
+
+-- Dumping structure for table helios.cms_pages
+DROP TABLE IF EXISTS `cms_pages`;
+CREATE TABLE IF NOT EXISTS `cms_pages` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `parent_id` int(11) NOT NULL,
+  `order_id` int(11) NOT NULL DEFAULT 1,
+  `label` text DEFAULT NULL,
+  `page` text NOT NULL,
+  `link` text NOT NULL DEFAULT '',
+  `colour` enum('BLUE','GREEN') NOT NULL DEFAULT 'GREEN',
+  `minimum_rank` int(11) NOT NULL DEFAULT 1,
+  `requires_login` tinyint(4) NOT NULL DEFAULT 0,
+  `requires_logout` tinyint(4) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+-- Dumping data for table helios.cms_pages: ~7 rows (approximately)
+DELETE FROM `cms_pages`;
+INSERT INTO `cms_pages` (`id`, `parent_id`, `order_id`, `label`, `page`, `link`, `colour`, `minimum_rank`, `requires_login`, `requires_logout`) VALUES
+	(1, -1, 1, NULL, 'me', '/me', 'BLUE', 1, 1, 0),
+	(2, -1, 1, 'Register now!', '', '/register', 'GREEN', 1, 0, 1),
+	(3, -1, 1, 'Community', 'community', '/community', 'BLUE', 1, 0, 0),
+	(5, 1, 1, 'Home', 'me', '/me', 'BLUE', 1, 1, 0),
+	(6, 1, 2, 'My Page', 'my_page', '/home/{name}', 'BLUE', 1, 1, 0),
+	(7, 1, 3, 'Account Settings', 'account_settings', '/profile', 'BLUE', 1, 1, 0),
+	(8, 3, 1, 'Community', 'community', '/community', 'BLUE', 1, 0, 0);
+
+-- Dumping structure for table helios.cms_pages_habblets
+DROP TABLE IF EXISTS `cms_pages_habblets`;
+CREATE TABLE IF NOT EXISTS `cms_pages_habblets` (
+  `page` varchar(250) NOT NULL,
+  `order_id` int(11) NOT NULL DEFAULT 0,
+  `widget` text NOT NULL,
+  `column` text NOT NULL,
+  UNIQUE KEY `page_order_id_widget_column` (`page`,`order_id`,`widget`,`column`) USING HASH
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+-- Dumping data for table helios.cms_pages_habblets: ~11 rows (approximately)
+DELETE FROM `cms_pages_habblets`;
+INSERT INTO `cms_pages_habblets` (`page`, `order_id`, `widget`, `column`) VALUES
+	('me', 1, 'PersonalInfo', 'column1'),
+	('me', 2, 'MyCharacters', 'column1'),
+	('me', 1, 'TopStories', 'column2'),
+	('error', 1, 'PageNotFound', 'column1'),
+	('error', 1, 'WhatWereYouLookingFor', 'column2'),
+	('community', 1, 'TopStories', 'column2'),
+	('community', 3, 'RandomHabbos', 'column1'),
+	('community', 1, 'Rooms', 'column1'),
+	('community', 2, 'Groups', 'column1'),
+	('community', 2, 'CommunityTags', 'column2'),
+	('me', 2, 'HotelPicks', 'column2');
 
 -- Dumping structure for table helios.effects
+DROP TABLE IF EXISTS `effects`;
 CREATE TABLE IF NOT EXISTS `effects` (
   `effect_id` int(11) NOT NULL,
   `duration` int(11) NOT NULL,
   `is_costume` tinyint(4) NOT NULL,
   PRIMARY KEY (`effect_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Dumping data for table helios.effects: ~102 rows (approximately)
 DELETE FROM `effects`;
-/*!40000 ALTER TABLE `effects` DISABLE KEYS */;
 INSERT INTO `effects` (`effect_id`, `duration`, `is_costume`) VALUES
 	(1, 3600, 0),
 	(2, 3600, 0),
@@ -2972,11 +3158,11 @@ INSERT INTO `effects` (`effect_id`, `duration`, `is_costume`) VALUES
 	(138, 3600, 0),
 	(139, 3600, 0),
 	(140, 3600, 0);
-/*!40000 ALTER TABLE `effects` ENABLE KEYS */;
 
 -- Dumping structure for event helios.event_club_gifts
+DROP EVENT IF EXISTS `event_club_gifts`;
 DELIMITER //
-CREATE EVENT `event_club_gifts` ON SCHEDULE EVERY 1 SECOND STARTS '2020-05-03 19:17:59' ON COMPLETION NOT PRESERVE ENABLE DO BEGIN
+CREATE EVENT `event_club_gifts` ON SCHEDULE EVERY 1 MINUTE STARTS '2020-05-03 19:17:59' ON COMPLETION NOT PRESERVE ENABLE DO BEGIN
 	SET @gift_interval = (SELECT `value` FROM `server_settings` WHERE `setting` = 'club.gift.interval');
 	SET @gift_interval_type = (SELECT `value` FROM `server_settings` WHERE `setting` = 'club.gift.interval.type');
 	
@@ -2999,25 +3185,1353 @@ END//
 DELIMITER ;
 
 -- Dumping structure for event helios.event_respect_points
+DROP EVENT IF EXISTS `event_respect_points`;
 DELIMITER //
-CREATE EVENT `event_respect_points` ON SCHEDULE EVERY 1 DAY STARTS '2020-05-03 14:29:37' ON COMPLETION PRESERVE ENABLE DO BEGIN
+CREATE EVENT `event_respect_points` ON SCHEDULE EVERY 1 MINUTE STARTS '2020-05-03 14:29:37' ON COMPLETION PRESERVE ENABLE DO BEGIN
 	UPDATE user_settings SET daily_respect_points = 3, daily_respect_pet_points = 3;
 END//
 DELIMITER ;
 
 -- Dumping structure for event helios.event_ticket_expire
+DROP EVENT IF EXISTS `event_ticket_expire`;
 DELIMITER //
-CREATE EVENT `event_ticket_expire` ON SCHEDULE EVERY 1 DAY STARTS '2020-05-03 14:26:20' ON COMPLETION PRESERVE ENABLE DO BEGIN
+CREATE EVENT `event_ticket_expire` ON SCHEDULE EVERY 1 MINUTE STARTS '2020-05-03 14:26:20' ON COMPLETION PRESERVE ENABLE DO BEGIN
 	DELETE FROM authentication_ticket WHERE expires_at IS NOT NULL AND CURRENT_TIMESTAMP() > expires_at;
 END//
 DELIMITER ;
 
+-- Dumping structure for table helios.group
+DROP TABLE IF EXISTS `group`;
+CREATE TABLE IF NOT EXISTS `group` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) NOT NULL,
+  `description` mediumtext NOT NULL,
+  `owner_id` int(10) NOT NULL,
+  `room_id` int(10) NOT NULL DEFAULT 0,
+  `badge` mediumtext NOT NULL DEFAULT 'b0503Xs09114s05013s05015',
+  `recommended` tinyint(4) NOT NULL DEFAULT 0,
+  `background` varchar(255) NOT NULL DEFAULT 'bg_colour_08',
+  `views` int(11) NOT NULL DEFAULT 0,
+  `topics` int(11) NOT NULL DEFAULT 0,
+  `group_type` tinyint(4) NOT NULL DEFAULT 0,
+  `forum_type` tinyint(4) NOT NULL DEFAULT 0,
+  `forum_permission_type` tinyint(4) NOT NULL DEFAULT 0,
+  `alias` varchar(45) DEFAULT NULL,
+  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
+  `colour1` varchar(50) DEFAULT NULL,
+  `colour2` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `alias` (`alias`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- Dumping data for table helios.group: ~0 rows (approximately)
+DELETE FROM `group`;
+
+-- Dumping structure for table helios.groups_badge_elements
+DROP TABLE IF EXISTS `groups_badge_elements`;
+CREATE TABLE IF NOT EXISTS `groups_badge_elements` (
+  `Id` int(11) NOT NULL,
+  `ExtraData1` varchar(300) NOT NULL,
+  `ExtraData2` varchar(300) NOT NULL,
+  `Type` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+-- Dumping data for table helios.groups_badge_elements: ~469 rows (approximately)
+DELETE FROM `groups_badge_elements`;
+INSERT INTO `groups_badge_elements` (`Id`, `ExtraData1`, `ExtraData2`, `Type`) VALUES
+	(1, 'base_basic_1.gif', '', 'Base'),
+	(2, 'base_basic_2.gif', '', 'Base'),
+	(3, 'base_basic_3.gif', '', 'Base'),
+	(4, 'base_basic_4.gif', '', 'Base'),
+	(5, 'base_basic_5.gif', '', 'Base'),
+	(6, 'base_advanced_1.gif', '', 'Base'),
+	(7, 'base_advanced_2.gif', '', 'Base'),
+	(8, 'base_advanced_3.gif', '', 'Base'),
+	(9, 'base_advanced_4.gif', '', 'Base'),
+	(10, 'base_gold_1_part2.gif', 'base_gold_1_part1.gif', 'Base'),
+	(11, 'base_gold_2_part2.gif', 'base_gold_2_part1.gif', 'Base'),
+	(12, 'base_pin_part2.gif', 'base_pin_part1.gif', 'Base'),
+	(13, 'base_gradient_1.gif', '', 'Base'),
+	(14, 'base_gradient_2.gif', '', 'Base'),
+	(15, 'base_circles_1.gif', '', 'Base'),
+	(16, 'base_circles_2.gif', '', 'Base'),
+	(17, 'base_ornament_1_part2.gif', 'base_ornament_1_part1.gif', 'Base'),
+	(18, 'base_ornament_2_part2.gif', 'base_ornament_2_part1.gif', 'Base'),
+	(19, 'base_misc_1_part2.gif', 'base_misc_1_part1.gif', 'Base'),
+	(20, 'base_misc_2.gif', '', 'Base'),
+	(65, 'base_beams_part2.gif', 'base_beams_part1.gif', 'Base'),
+	(66, 'base_ring.gif', '', 'Base'),
+	(67, 'base_simplestar_part2.gif', 'base_simplestar_part1.gif', 'Base'),
+	(24, 'base_spiral.gif', '', 'Base'),
+	(69, 'base_book.gif', '', 'Base'),
+	(70, 'base_egg.gif', '', 'Base'),
+	(71, 'base_ornament.gif', '', 'Base'),
+	(72, 'base_shield_part2.gif', 'base_shield_part1.gif', 'Base'),
+	(21, 'symbol_background_1.gif', '', 'Symbol'),
+	(22, 'symbol_background_2.gif', '', 'Symbol'),
+	(1, 'ffd601', '', 'Color1'),
+	(11, 'ffffff', '', 'Color1'),
+	(2, 'ec7600', '', 'Color1'),
+	(3, '84de00', '', 'Color1'),
+	(4, '589a00', '', 'Color1'),
+	(18, 'aaff7d', '', 'Color1'),
+	(5, '50c1fb', '', 'Color1'),
+	(19, '87e6c8', '', 'Color1'),
+	(6, '006fcf', '', 'Color1'),
+	(16, 'c2eaff', '', 'Color1'),
+	(7, 'ff98e3', '', 'Color1'),
+	(8, 'f334bf', '', 'Color1'),
+	(9, 'ff2d2d', '', 'Color1'),
+	(20, '9844e7', '', 'Color1'),
+	(1, 'ffffff', '', 'Color2'),
+	(2, 'ebebeb', '', 'Color2'),
+	(3, 'd4d4d4', '', 'Color2'),
+	(4, 'bdbdbd', '', 'Color2'),
+	(5, 'a6a6a6', '', 'Color2'),
+	(3, '8f8f8f', '', 'Color2'),
+	(4, '787878', '', 'Color2'),
+	(5, '616161', '', 'Color2'),
+	(6, '4c4c4c', '', 'Color2'),
+	(7, '589a00', '', 'Color2'),
+	(8, '518e00', '', 'Color2'),
+	(9, '498000', '', 'Color2'),
+	(10, '417200', '', 'Color2'),
+	(11, '396400', '', 'Color2'),
+	(12, '315600', '', 'Color2'),
+	(13, '294800', '', 'Color2'),
+	(14, '213b00', '', 'Color2'),
+	(15, '1a2e00', '', 'Color2'),
+	(16, '84de00', '', 'Color2'),
+	(17, '7acd00', '', 'Color2'),
+	(18, '6eb900', '', 'Color2'),
+	(19, '62a500', '', 'Color2'),
+	(20, '569100', '', 'Color2'),
+	(21, '4a7c00', '', 'Color2'),
+	(22, '3e6800', '', 'Color2'),
+	(23, '325400', '', 'Color2'),
+	(24, '274200', '', 'Color2'),
+	(25, 'c2eaff', '', 'Color2'),
+	(26, 'b3d8eb', '', 'Color2'),
+	(27, 'a1c3d4', '', 'Color2'),
+	(28, '90adbd', '', 'Color2'),
+	(29, '7e98a6', '', 'Color2'),
+	(30, '6d838f', '', 'Color2'),
+	(31, '5b6e78', '', 'Color2'),
+	(32, '4a5961', '', 'Color2'),
+	(33, '3a464c', '', 'Color2'),
+	(34, '50c1fb', '', 'Color2'),
+	(35, '4ab2e7', '', 'Color2'),
+	(36, '43a0d1', '', 'Color2'),
+	(37, '3b8fba', '', 'Color2'),
+	(38, '347ea3', '', 'Color2'),
+	(39, '2d6c8d', '', 'Color2'),
+	(40, '265b76', '', 'Color2'),
+	(41, '1e495f', '', 'Color2'),
+	(42, '183a4b', '', 'Color2'),
+	(43, '006fcf', '', 'Color2'),
+	(44, '0066bf', '', 'Color2'),
+	(45, '005cac', '', 'Color2'),
+	(46, '005299', '', 'Color2'),
+	(47, '004887', '', 'Color2'),
+	(48, '003e74', '', 'Color2'),
+	(49, '003461', '', 'Color2'),
+	(50, '002a4f', '', 'Color2'),
+	(51, '00213e', '', 'Color2'),
+	(52, '9844e7', '', 'Color2'),
+	(53, '8c3fd5', '', 'Color2'),
+	(54, '7e39c0', '', 'Color2'),
+	(55, '7132ab', '', 'Color2'),
+	(56, '632c96', '', 'Color2'),
+	(57, '552682', '', 'Color2'),
+	(58, '48206d', '', 'Color2'),
+	(59, '3a1a58', '', 'Color2'),
+	(60, '2d1445', '', 'Color2'),
+	(61, 'dea9ff', '', 'Color2'),
+	(62, 'cd9ceb', '', 'Color2'),
+	(63, 'b98dd4', '', 'Color2'),
+	(64, 'a57dbd', '', 'Color2'),
+	(65, '916ea6', '', 'Color2'),
+	(66, '7c5f8f', '', 'Color2'),
+	(67, '685078', '', 'Color2'),
+	(68, '544061', '', 'Color2'),
+	(69, '42324c', '', 'Color2'),
+	(70, 'ff98e3', '', 'Color2'),
+	(71, 'eb8cd1', '', 'Color2'),
+	(72, 'd47ebd', '', 'Color2'),
+	(73, 'bd71a8', '', 'Color2'),
+	(74, 'a66394', '', 'Color2'),
+	(75, '8f557f', '', 'Color2'),
+	(76, '78486b', '', 'Color2'),
+	(77, '613a56', '', 'Color2'),
+	(78, '4c2d44', '', 'Color2'),
+	(79, 'f334bf', '', 'Color2'),
+	(80, 'e030b0', '', 'Color2'),
+	(81, 'ca2b9f', '', 'Color2'),
+	(82, 'b4278e', '', 'Color2'),
+	(83, '9e227c', '', 'Color2'),
+	(84, '881d6b', '', 'Color2'),
+	(85, '72185a', '', 'Color2'),
+	(86, '5c1449', '', 'Color2'),
+	(87, '480f39', '', 'Color2'),
+	(88, 'ff2d2d', '', 'Color2'),
+	(89, 'eb2929', '', 'Color2'),
+	(90, 'd42525', '', 'Color2'),
+	(91, 'bd2121', '', 'Color2'),
+	(92, 'a61d1d', '', 'Color2'),
+	(93, '8f1919', '', 'Color2'),
+	(94, '781515', '', 'Color2'),
+	(95, '611111', '', 'Color2'),
+	(96, '4c0d0d', '', 'Color2'),
+	(97, 'ffb579', '', 'Color2'),
+	(98, 'eba770', '', 'Color2'),
+	(99, 'd49665', '', 'Color2'),
+	(100, 'bd865a', '', 'Color2'),
+	(101, 'a6764f', '', 'Color2'),
+	(102, '8f6644', '', 'Color2'),
+	(103, '785539', '', 'Color2'),
+	(104, '61452e', '', 'Color2'),
+	(105, '4c3624', '', 'Color2'),
+	(106, 'ec7600', '', 'Color2'),
+	(107, 'd96d00', '', 'Color2'),
+	(108, 'c46200', '', 'Color2'),
+	(109, 'af5700', '', 'Color2'),
+	(110, '9a4d00', '', 'Color2'),
+	(111, '844200', '', 'Color2'),
+	(112, '6f3800', '', 'Color2'),
+	(113, '5a2d00', '', 'Color2'),
+	(114, '462300', '', 'Color2'),
+	(115, 'ffd601', '', 'Color2'),
+	(116, 'ebc501', '', 'Color2'),
+	(117, 'd4b201', '', 'Color2'),
+	(118, 'bd9f01', '', 'Color2'),
+	(119, 'a68b01', '', 'Color2'),
+	(120, '8f7801', '', 'Color2'),
+	(121, '786500', '', 'Color2'),
+	(122, '615100', '', 'Color2'),
+	(123, '4c4000', '', 'Color2'),
+	(124, 'c3aa6e', '', 'Color2'),
+	(125, 'b49d65', '', 'Color2'),
+	(126, 'a28d5b', '', 'Color2'),
+	(127, '917e52', '', 'Color2'),
+	(128, '7f6f48', '', 'Color2'),
+	(129, '6d5f3e', '', 'Color2'),
+	(130, '5c5034', '', 'Color2'),
+	(131, '4a412a', '', 'Color2'),
+	(132, '3a3321', '', 'Color2'),
+	(133, '977641', '', 'Color2'),
+	(134, '8b6d3c', '', 'Color2'),
+	(135, '7e6236', '', 'Color2'),
+	(136, '705730', '', 'Color2'),
+	(137, '624d2a', '', 'Color2'),
+	(138, '554224', '', 'Color2'),
+	(139, '47381f', '', 'Color2'),
+	(140, '392d19', '', 'Color2'),
+	(141, '2d2313', '', 'Color2'),
+	(142, 'c0c0c0', '', 'Color2'),
+	(143, 'b1b1b1', '', 'Color2'),
+	(144, 'a0a0a0', '', 'Color2'),
+	(145, '8e8e8e', '', 'Color2'),
+	(146, '7d7d7d', '', 'Color2'),
+	(3, '6c6c6c', '', 'Color2'),
+	(4, '5a5a5a', '', 'Color2'),
+	(5, '494949', '', 'Color2'),
+	(6, '393939', '', 'Color2'),
+	(7, '7a7a7a', '', 'Color2'),
+	(8, '707070', '', 'Color2'),
+	(9, '656565', '', 'Color2'),
+	(10, '5a5a5a', '', 'Color2'),
+	(11, '4f4f4f', '', 'Color2'),
+	(12, '444444', '', 'Color2'),
+	(13, '393939', '', 'Color2'),
+	(14, '2e2e2e', '', 'Color2'),
+	(15, '242424', '', 'Color2'),
+	(1, 'ffffff', '', 'Color3'),
+	(2, 'e5e5e5', '', 'Color3'),
+	(3, 'bfbfbf', '', 'Color3'),
+	(4, '999999', '', 'Color3'),
+	(5, '737373', '', 'Color3'),
+	(6, '4c4c4c', '', 'Color3'),
+	(7, '589a00', '', 'Color3'),
+	(8, '4f8a00', '', 'Color3'),
+	(9, '427300', '', 'Color3'),
+	(10, '355c00', '', 'Color3'),
+	(11, '284500', '', 'Color3'),
+	(12, '1a2e00', '', 'Color3'),
+	(13, '84de00', '', 'Color3'),
+	(14, '77c700', '', 'Color3'),
+	(15, '63a600', '', 'Color3'),
+	(16, '4f8500', '', 'Color3'),
+	(17, '3c6400', '', 'Color3'),
+	(18, '274200', '', 'Color3'),
+	(19, 'c2eaff', '', 'Color3'),
+	(20, 'aed2e5', '', 'Color3'),
+	(21, '91afbf', '', 'Color3'),
+	(22, '748c99', '', 'Color3'),
+	(23, '576a73', '', 'Color3'),
+	(24, '3a464c', '', 'Color3'),
+	(25, '50c1fb', '', 'Color3'),
+	(26, '48ade1', '', 'Color3'),
+	(27, '3c91bc', '', 'Color3'),
+	(28, '307497', '', 'Color3'),
+	(29, '245771', '', 'Color3'),
+	(30, '183a4b', '', 'Color3'),
+	(31, '006fcf', '', 'Color3'),
+	(32, '0064ba', '', 'Color3'),
+	(33, '00539b', '', 'Color3'),
+	(34, '00437c', '', 'Color3'),
+	(35, '00325d', '', 'Color3'),
+	(36, '00213e', '', 'Color3'),
+	(37, '9844e7', '', 'Color3'),
+	(38, '893dcf', '', 'Color3'),
+	(39, '7233ad', '', 'Color3'),
+	(40, '5b298b', '', 'Color3'),
+	(41, '451f68', '', 'Color3'),
+	(42, '2d1445', '', 'Color3'),
+	(43, 'dea9ff', '', 'Color3'),
+	(44, 'c798e5', '', 'Color3'),
+	(45, 'a67fbf', '', 'Color3'),
+	(46, '856599', '', 'Color3'),
+	(47, '644c73', '', 'Color3'),
+	(48, '42324c', '', 'Color3'),
+	(49, 'ff98e3', '', 'Color3'),
+	(50, 'e589cc', '', 'Color3'),
+	(51, 'bf72aa', '', 'Color3'),
+	(52, '995b88', '', 'Color3'),
+	(53, '734566', '', 'Color3'),
+	(54, '4c2d44', '', 'Color3'),
+	(55, 'f334bf', '', 'Color3'),
+	(56, 'da2fac', '', 'Color3'),
+	(57, 'b6278f', '', 'Color3'),
+	(58, '921f73', '', 'Color3'),
+	(59, '6e1756', '', 'Color3'),
+	(60, '480f39', '', 'Color3'),
+	(61, 'ff2d2d', '', 'Color3'),
+	(62, 'e52828', '', 'Color3'),
+	(63, 'bf2222', '', 'Color3'),
+	(64, '991b1b', '', 'Color3'),
+	(65, '731414', '', 'Color3'),
+	(66, '4c0d0d', '', 'Color3'),
+	(67, 'ffb579', '', 'Color3'),
+	(68, 'e5a36d', '', 'Color3'),
+	(69, 'bf885b', '', 'Color3'),
+	(70, '996d49', '', 'Color3'),
+	(71, '735237', '', 'Color3'),
+	(72, '4c3624', '', 'Color3'),
+	(73, 'ec7600', '', 'Color3'),
+	(74, 'd46a00', '', 'Color3'),
+	(75, 'b15800', '', 'Color3'),
+	(76, '8e4700', '', 'Color3'),
+	(77, '6a3500', '', 'Color3'),
+	(78, '462300', '', 'Color3'),
+	(79, 'ffd601', '', 'Color3'),
+	(80, 'e5c001', '', 'Color3'),
+	(81, 'bfa001', '', 'Color3'),
+	(82, '998001', '', 'Color3'),
+	(83, '736100', '', 'Color3'),
+	(84, '4c4000', '', 'Color3'),
+	(85, 'c3aa6e', '', 'Color3'),
+	(86, 'af9963', '', 'Color3'),
+	(87, '927f52', '', 'Color3'),
+	(88, '756642', '', 'Color3'),
+	(89, '584d32', '', 'Color3'),
+	(90, '3a3321', '', 'Color3'),
+	(91, '977641', '', 'Color3'),
+	(92, '886a3a', '', 'Color3'),
+	(93, '715831', '', 'Color3'),
+	(94, '5b4727', '', 'Color3'),
+	(95, '44351d', '', 'Color3'),
+	(96, '2d2313', '', 'Color3'),
+	(97, 'c0c0c0', '', 'Color3'),
+	(98, 'acacac', '', 'Color3'),
+	(99, '909090', '', 'Color3'),
+	(100, '737373', '', 'Color3'),
+	(101, '575757', '', 'Color3'),
+	(102, '393939', '', 'Color3'),
+	(103, '7a7a7a', '', 'Color3'),
+	(104, '6e6e6e', '', 'Color3'),
+	(105, '5b5b5b', '', 'Color3'),
+	(106, '494949', '', 'Color3'),
+	(107, '373737', '', 'Color3'),
+	(108, '242424', '', 'Color3'),
+	(23, 'symbol_background_3_part2.gif', 'symbol_background_3_part1.gif', 'Symbol'),
+	(24, 'symbol_ball_1_part2.gif', 'symbol_ball_1_part1.gif', 'Symbol'),
+	(25, 'symbol_ball_2_part2.gif', 'symbol_ball_2_part1.gif', 'Symbol'),
+	(26, 'symbol_bobba.gif', '', 'Symbol'),
+	(27, 'symbol_bomb_part2.gif', 'symbol_bomb_part1.gif', 'Symbol'),
+	(28, 'symbol_bow.gif', '', 'Symbol'),
+	(29, 'symbol_box_1.gif', '', 'Symbol'),
+	(30, 'symbol_box_2.gif', '', 'Symbol'),
+	(31, 'symbol_bunting_1.gif', '', 'Symbol'),
+	(32, 'symbol_bunting_2.gif', '', 'Symbol'),
+	(33, 'symbol_butterfly_part2.gif', 'symbol_butterfly_part1.gif', 'Symbol'),
+	(34, 'symbol_cowskull_part2.gif', 'symbol_cowskull_part1.gif', 'Symbol'),
+	(35, 'symbol_cross.gif', '', 'Symbol'),
+	(36, 'symbol_diamond.gif', '', 'Symbol'),
+	(37, 'symbol_diploma_part2.gif', 'symbol_diploma_part1.gif', 'Symbol'),
+	(38, 'symbol_eyeball_part2.gif', 'symbol_eyeball_part1.gif', 'Symbol'),
+	(39, 'symbol_fist.gif', '', 'Symbol'),
+	(40, 'symbol_flame_1.gif', '', 'Symbol'),
+	(41, 'symbol_flame_2.gif', '', 'Symbol'),
+	(42, 'symbol_flash.gif', '', 'Symbol'),
+	(43, 'symbol_flower_1_part2.gif', 'symbol_flower_1_part1.gif', 'Symbol'),
+	(44, 'symbol_flower_2.gif', '', 'Symbol'),
+	(45, 'symbol_flower_3.gif', '', 'Symbol'),
+	(46, 'symbol_flower_4.gif', '', 'Symbol'),
+	(47, 'symbol_football.gif', '', 'Symbol'),
+	(48, 'symbol_heart_1_part2.gif', 'symbol_heart_1_part1.gif', 'Symbol'),
+	(49, 'symbol_heart_2_part2.gif', 'symbol_heart_2_part1.gif', 'Symbol'),
+	(50, 'symbol_jingjang_part2.gif', 'symbol_jingjang_part1.gif', 'Symbol'),
+	(51, 'symbol_lips_part2.gif', 'symbol_lips_part1.gif', 'Symbol'),
+	(52, 'symbol_note.gif', '', 'Symbol'),
+	(53, 'symbol_peace.gif', '', 'Symbol'),
+	(54, 'symbol_planet_part2.gif', 'symbol_planet_part1.gif', 'Symbol'),
+	(55, 'symbol_rainbow_part2.gif', 'symbol_rainbow_part1.gif', 'Symbol'),
+	(56, 'symbol_rosete.gif', '', 'Symbol'),
+	(57, 'symbol_shape.gif', '', 'Symbol'),
+	(58, 'symbol_star_1.gif', '', 'Symbol'),
+	(59, 'symbol_star_2.gif', '', 'Symbol'),
+	(60, 'symbol_sword_1_part2.gif', 'symbol_sword_1_part1.gif', 'Symbol'),
+	(61, 'symbol_sword_2_part2.gif', 'symbol_sword_2_part1.gif', 'Symbol'),
+	(62, 'symbol_sword_3_part2.gif', 'symbol_sword_3_part1.gif', 'Symbol'),
+	(63, 'symbol_wings_1.gif', '', 'Symbol'),
+	(64, 'symbol_wings_2.gif', '', 'Symbol'),
+	(69, 'symbol_arrow_down.gif', '', 'Symbol'),
+	(70, 'symbol_arrow_left.gif', '', 'Symbol'),
+	(71, 'symbol_arrow_right.gif', '', 'Symbol'),
+	(72, 'symbol_arrow_up.gif', '', 'Symbol'),
+	(73, 'symbol_arrowbig_up.gif', '', 'Symbol'),
+	(74, 'symbol_axe_part2.gif', 'symbol_axe_part1.gif', 'Symbol'),
+	(75, 'symbol_bug_part2.gif', 'symbol_bug_part1.gif', 'Symbol'),
+	(76, 'symbol_capsbig_part2.gif', 'symbol_capsbig_part1.gif', 'Symbol'),
+	(77, 'symbol_capssmall_part2.gif', 'symbol_capssmall_part1.gif', 'Symbol'),
+	(78, 'symbol_cloud.gif', '', 'Symbol'),
+	(79, 'symbol_crown_part2.gif', 'symbol_crown_part1.gif', 'Symbol'),
+	(80, 'symbol_diamsmall2.gif', '', 'Symbol'),
+	(81, 'symbol_diamsmall.gif', '', 'Symbol'),
+	(82, 'symbol_drop.gif', '', 'Symbol'),
+	(83, 'symbol_fingersheavy.gif', '', 'Symbol'),
+	(84, 'symbol_fingersv.gif', '', 'Symbol'),
+	(85, 'symbol_gtr_part2.gif', 'symbol_gtr_part1.gif', 'Symbol'),
+	(86, 'symbol_hat.gif', '', 'Symbol'),
+	(87, 'symbol_oval_part2.gif', 'symbol_oval_part1.gif', 'Symbol'),
+	(88, 'symbol_pawprint.gif', '', 'Symbol'),
+	(89, 'symbol_screw.gif', '', 'Symbol'),
+	(90, 'symbol_stickL_part2.gif', 'symbol_stickL_part1.gif', 'Symbol'),
+	(122, 'symbol_alligator.gif', '', 'Symbol'),
+	(123, 'symbol_americanfootball_part2.gif', 'symbol_americanfootball_part1.gif', 'Symbol'),
+	(124, 'symbol_award_part2.gif', 'symbol_award_part1.gif', 'Symbol'),
+	(125, 'symbol_bananapeel.gif', '', 'Symbol'),
+	(126, 'symbol_battleball.gif', '', 'Symbol'),
+	(127, 'symbol_biohazard.gif', '', 'Symbol'),
+	(128, 'symbol_bird.gif', '', 'Symbol'),
+	(129, 'symbol_bishop.gif', '', 'Symbol'),
+	(130, 'symbol_coalion.gif', '', 'Symbol'),
+	(131, 'symbol_cocoamug.gif', '', 'Symbol'),
+	(132, 'symbol_dashflag.gif', '', 'Symbol'),
+	(133, 'symbol_diamondring_part2.gif', 'symbol_diamondring_part1.gif', 'Symbol'),
+	(134, 'symbol_discoball_part2.gif', 'symbol_discoball_part1.gif', 'Symbol'),
+	(135, 'symbol_dog.gif', '', 'Symbol'),
+	(136, 'symbol_electricguitarh_part2.gif', 'symbol_electricguitarh_part1.gif', 'Symbol'),
+	(137, 'symbol_electricguitarv_part2.gif', 'symbol_electricguitarv_part1.gif', 'Symbol'),
+	(138, 'symbol_film.gif', '', 'Symbol'),
+	(139, 'symbol_flame_part2.gif', 'symbol_flame_part1.gif', 'Symbol'),
+	(140, 'symbol_gamepad.gif', '', 'Symbol'),
+	(141, 'symbol_gem1_part2.gif', 'symbol_gem1_part1.gif', 'Symbol'),
+	(142, 'symbol_gem2_part2.gif', 'symbol_gem2_part1.gif', 'Symbol'),
+	(143, 'symbol_gem3_part2.gif', 'symbol_gem3_part1.gif', 'Symbol'),
+	(144, 'symbol_hawk.gif', '', 'Symbol'),
+	(145, 'symbol_hearts_down.gif', '', 'Symbol'),
+	(146, 'symbol_hearts_up.gif', '', 'Symbol'),
+	(147, 'symbol_horseshoe.gif', '', 'Symbol'),
+	(148, 'symbol_inksplatter.gif', '', 'Symbol'),
+	(149, 'symbol_leaf.gif', '', 'Symbol'),
+	(150, 'symbol_micstand.gif', '', 'Symbol'),
+	(151, 'symbol_mirror_part2.gif', 'symbol_mirror_part1.gif', 'Symbol'),
+	(152, 'symbol_monkeywrench.gif', '', 'Symbol'),
+	(153, 'symbol_note1.gif', '', 'Symbol'),
+	(154, 'symbol_note2.gif', '', 'Symbol'),
+	(155, 'symbol_note3.gif', '', 'Symbol'),
+	(156, 'symbol_nursecross.gif', '', 'Symbol'),
+	(157, 'symbol_pencil_part2.gif', 'symbol_pencil_part1.gif', 'Symbol'),
+	(158, 'symbol_queen.gif', '', 'Symbol'),
+	(159, 'symbol_rock.gif', '', 'Symbol'),
+	(160, 'symbol_rook.gif', '', 'Symbol'),
+	(161, 'symbol_skate.gif', '', 'Symbol'),
+	(162, 'symbol_smallring_part2.gif', 'symbol_smallring_part1.gif', 'Symbol'),
+	(163, 'symbol_snowstorm_part2.gif', 'symbol_snowstorm_part1.gif', 'Symbol'),
+	(164, 'symbol_sphere.gif', '', 'Symbol'),
+	(165, 'symbol_spraycan_part2.gif', 'symbol_spraycan_part1.gif', 'Symbol'),
+	(166, 'symbol_stars1.gif', '', 'Symbol'),
+	(167, 'symbol_stars2.gif', '', 'Symbol'),
+	(168, 'symbol_stars3.gif', '', 'Symbol'),
+	(169, 'symbol_stars4.gif', '', 'Symbol'),
+	(170, 'symbol_stars5.gif', '', 'Symbol'),
+	(171, 'symbol_waterdrop_part2.gif', 'symbol_waterdrop_part1.gif', 'Symbol'),
+	(172, 'symbol_wolverine.gif', '', 'Symbol'),
+	(173, 'symbol_0.gif', '', 'Symbol'),
+	(174, 'symbol_1.gif', '', 'Symbol'),
+	(175, 'symbol_2.gif', '', 'Symbol'),
+	(176, 'symbol_3.gif', '', 'Symbol'),
+	(177, 'symbol_4.gif', '', 'Symbol'),
+	(178, 'symbol_5.gif', '', 'Symbol'),
+	(179, 'symbol_6.gif', '', 'Symbol'),
+	(180, 'symbol_7.gif', '', 'Symbol'),
+	(181, 'symbol_8.gif', '', 'Symbol'),
+	(182, 'symbol_9.gif', '', 'Symbol'),
+	(183, 'symbol_a.gif', '', 'Symbol'),
+	(184, 'symbol_b.gif', '', 'Symbol'),
+	(185, 'symbol_c.gif', '', 'Symbol'),
+	(186, 'symbol_d.gif', '', 'Symbol'),
+	(187, 'symbol_e.gif', '', 'Symbol'),
+	(188, 'symbol_f.gif', '', 'Symbol'),
+	(189, 'symbol_g.gif', '', 'Symbol'),
+	(190, 'symbol_h.gif', '', 'Symbol'),
+	(191, 'symbol_i.gif', '', 'Symbol'),
+	(192, 'symbol_j.gif', '', 'Symbol'),
+	(193, 'symbol_k.gif', '', 'Symbol'),
+	(194, 'symbol_l.gif', '', 'Symbol'),
+	(195, 'symbol_m.gif', '', 'Symbol'),
+	(196, 'symbol_n.gif', '', 'Symbol'),
+	(197, 'symbol_o.gif', '', 'Symbol'),
+	(198, 'symbol_p.gif', '', 'Symbol'),
+	(199, 'symbol_q.gif', '', 'Symbol'),
+	(200, 'symbol_r.gif', '', 'Symbol'),
+	(201, 'symbol_s.gif', '', 'Symbol'),
+	(202, 'symbol_t.gif', '', 'Symbol'),
+	(203, 'symbol_u.gif', '', 'Symbol'),
+	(204, 'symbol_v.gif', '', 'Symbol'),
+	(205, 'symbol_w.gif', '', 'Symbol'),
+	(206, 'symbol_x.gif', '', 'Symbol'),
+	(207, 'symbol_y.gif', '', 'Symbol'),
+	(208, 'symbol_z.gif', '', 'Symbol'),
+	(209, 'symbol_pixel_part2.gif', 'symbol_pixel_part1.gif', 'Symbol'),
+	(210, 'symbol_credit_part2.gif', 'symbol_credit_part1.gif', 'Symbol'),
+	(211, 'symbol_hc_part2.gif', 'symbol_hc_part1.gif', 'Symbol'),
+	(212, 'symbol_vip_part2.gif', 'symbol_vip_part1.gif', 'Symbol');
+
+-- Dumping structure for table helios.groups_items
+DROP TABLE IF EXISTS `groups_items`;
+CREATE TABLE IF NOT EXISTS `groups_items` (
+  `first_value` varchar(255) NOT NULL,
+  `second_value` varchar(2000) NOT NULL,
+  `type` varchar(50) NOT NULL DEFAULT ''
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+-- Dumping data for table helios.groups_items: ~294 rows (approximately)
+DELETE FROM `groups_items`;
+INSERT INTO `groups_items` (`first_value`, `second_value`, `type`) VALUES
+	('ffd601', '', 'colour1'),
+	('ffffff', '', 'colour2'),
+	('ffffff', '', 'colour3'),
+	('ec7600', '', 'colour1'),
+	('ebebeb', '', 'colour2'),
+	('e5e5e5', '', 'colour3'),
+	('84de00', '', 'colour1'),
+	('d4d4d4', '', 'colour2'),
+	('bfbfbf', '', 'colour3'),
+	('589a00', '', 'colour1'),
+	('bdbdbd', '', 'colour2'),
+	('999999', '', 'colour3'),
+	('50c1fb', '', 'colour1'),
+	('a6a6a6', '', 'colour2'),
+	('737373', '', 'colour3'),
+	('006fcf', '', 'colour1'),
+	('8f8f8f', '', 'colour2'),
+	('4c4c4c', '', 'colour3'),
+	('ff98e3', '', 'colour1'),
+	('787878', '', 'colour2'),
+	('589a00', '', 'colour3'),
+	('f334bf', '', 'colour1'),
+	('616161', '', 'colour2'),
+	('4f8a00', '', 'colour3'),
+	('ff2d2d', '', 'colour1'),
+	('4c4c4c', '', 'colour2'),
+	('427300', '', 'colour3'),
+	('af0a0a', '', 'colour1'),
+	('589a00', '', 'colour2'),
+	('355c00', '', 'colour3'),
+	('ffffff', '', 'colour1'),
+	('518e00', '', 'colour2'),
+	('284500', '', 'colour3'),
+	('c0c0c0', '', 'colour1'),
+	('498000', '', 'colour2'),
+	('1a2e00', '', 'colour3'),
+	('373737', '', 'colour1'),
+	('417200', '', 'colour2'),
+	('84de00', '', 'colour3'),
+	('fbe7ac', '', 'colour1'),
+	('396400', '', 'colour2'),
+	('77c700', '', 'colour3'),
+	('977641', '', 'colour1'),
+	('315600', '', 'colour2'),
+	('63a600', '', 'colour3'),
+	('c2eaff', '', 'colour1'),
+	('294800', '', 'colour2'),
+	('4f8500', '', 'colour3'),
+	('fff165', '', 'colour1'),
+	('213b00', '', 'colour2'),
+	('3c6400', '', 'colour3'),
+	('aaff7d', '', 'colour1'),
+	('1a2e00', '', 'colour2'),
+	('274200', '', 'colour3'),
+	('87e6c8', '', 'colour1'),
+	('84de00', '', 'colour2'),
+	('c2eaff', '', 'colour3'),
+	('9844e7', '', 'colour1'),
+	('7acd00', '', 'colour2'),
+	('aed2e5', '', 'colour3'),
+	('dea9ff', '', 'colour1'),
+	('6eb900', '', 'colour2'),
+	('91afbf', '', 'colour3'),
+	('ffb579', '', 'colour1'),
+	('62a500', '', 'colour2'),
+	('748c99', '', 'colour3'),
+	('c3aa6e', '', 'colour1'),
+	('569100', '', 'colour2'),
+	('576a73', '', 'colour3'),
+	('7a7a7a', '', 'colour1'),
+	('4a7c00', '', 'colour2'),
+	('3a464c', '', 'colour3'),
+	('3e6800', '', 'colour2'),
+	('50c1fb', '', 'colour3'),
+	('325400', '', 'colour2'),
+	('48ade1', '', 'colour3'),
+	('274200', '', 'colour2'),
+	('3c91bc', '', 'colour3'),
+	('c2eaff', '', 'colour2'),
+	('307497', '', 'colour3'),
+	('b3d8eb', '', 'colour2'),
+	('245771', '', 'colour3'),
+	('a1c3d4', '', 'colour2'),
+	('183a4b', '', 'colour3'),
+	('90adbd', '', 'colour2'),
+	('006fcf', '', 'colour3'),
+	('7e98a6', '', 'colour2'),
+	('0064ba', '', 'colour3'),
+	('6d838f', '', 'colour2'),
+	('00539b', '', 'colour3'),
+	('5b6e78', '', 'colour2'),
+	('00437c', '', 'colour3'),
+	('4a5961', '', 'colour2'),
+	('00325d', '', 'colour3'),
+	('3a464c', '', 'colour2'),
+	('00213e', '', 'colour3'),
+	('50c1fb', '', 'colour2'),
+	('9844e7', '', 'colour3'),
+	('4ab2e7', '', 'colour2'),
+	('893dcf', '', 'colour3'),
+	('43a0d1', '', 'colour2'),
+	('7233ad', '', 'colour3'),
+	('3b8fba', '', 'colour2'),
+	('5b298b', '', 'colour3'),
+	('347ea3', '', 'colour2'),
+	('451f68', '', 'colour3'),
+	('2d6c8d', '', 'colour2'),
+	('2d1445', '', 'colour3'),
+	('265b76', '', 'colour2'),
+	('dea9ff', '', 'colour3'),
+	('1e495f', '', 'colour2'),
+	('c798e5', '', 'colour3'),
+	('183a4b', '', 'colour2'),
+	('a67fbf', '', 'colour3'),
+	('006fcf', '', 'colour2'),
+	('856599', '', 'colour3'),
+	('0066bf', '', 'colour2'),
+	('644c73', '', 'colour3'),
+	('005cac', '', 'colour2'),
+	('42324c', '', 'colour3'),
+	('005299', '', 'colour2'),
+	('ff98e3', '', 'colour3'),
+	('004887', '', 'colour2'),
+	('e589cc', '', 'colour3'),
+	('003e74', '', 'colour2'),
+	('bf72aa', '', 'colour3'),
+	('003461', '', 'colour2'),
+	('995b88', '', 'colour3'),
+	('002a4f', '', 'colour2'),
+	('734566', '', 'colour3'),
+	('00213e', '', 'colour2'),
+	('4c2d44', '', 'colour3'),
+	('9844e7', '', 'colour2'),
+	('f334bf', '', 'colour3'),
+	('8c3fd5', '', 'colour2'),
+	('da2fac', '', 'colour3'),
+	('7e39c0', '', 'colour2'),
+	('b6278f', '', 'colour3'),
+	('7132ab', '', 'colour2'),
+	('921f73', '', 'colour3'),
+	('632c96', '', 'colour2'),
+	('6e1756', '', 'colour3'),
+	('552682', '', 'colour2'),
+	('480f39', '', 'colour3'),
+	('48206d', '', 'colour2'),
+	('ff2d2d', '', 'colour3'),
+	('3a1a58', '', 'colour2'),
+	('e52828', '', 'colour3'),
+	('2d1445', '', 'colour2'),
+	('bf2222', '', 'colour3'),
+	('dea9ff', '', 'colour2'),
+	('991b1b', '', 'colour3'),
+	('cd9ceb', '', 'colour2'),
+	('731414', '', 'colour3'),
+	('b98dd4', '', 'colour2'),
+	('4c0d0d', '', 'colour3'),
+	('a57dbd', '', 'colour2'),
+	('ffb579', '', 'colour3'),
+	('916ea6', '', 'colour2'),
+	('e5a36d', '', 'colour3'),
+	('7c5f8f', '', 'colour2'),
+	('bf885b', '', 'colour3'),
+	('685078', '', 'colour2'),
+	('996d49', '', 'colour3'),
+	('544061', '', 'colour2'),
+	('735237', '', 'colour3'),
+	('42324c', '', 'colour2'),
+	('4c3624', '', 'colour3'),
+	('ff98e3', '', 'colour2'),
+	('ec7600', '', 'colour3'),
+	('eb8cd1', '', 'colour2'),
+	('d46a00', '', 'colour3'),
+	('d47ebd', '', 'colour2'),
+	('b15800', '', 'colour3'),
+	('bd71a8', '', 'colour2'),
+	('8e4700', '', 'colour3'),
+	('a66394', '', 'colour2'),
+	('6a3500', '', 'colour3'),
+	('8f557f', '', 'colour2'),
+	('462300', '', 'colour3'),
+	('78486b', '', 'colour2'),
+	('ffd601', '', 'colour3'),
+	('613a56', '', 'colour2'),
+	('e5c001', '', 'colour3'),
+	('4c2d44', '', 'colour2'),
+	('bfa001', '', 'colour3'),
+	('f334bf', '', 'colour2'),
+	('998001', '', 'colour3'),
+	('e030b0', '', 'colour2'),
+	('736100', '', 'colour3'),
+	('ca2b9f', '', 'colour2'),
+	('4c4000', '', 'colour3'),
+	('b4278e', '', 'colour2'),
+	('c3aa6e', '', 'colour3'),
+	('9e227c', '', 'colour2'),
+	('af9963', '', 'colour3'),
+	('881d6b', '', 'colour2'),
+	('927f52', '', 'colour3'),
+	('72185a', '', 'colour2'),
+	('756642', '', 'colour3'),
+	('5c1449', '', 'colour2'),
+	('584d32', '', 'colour3'),
+	('480f39', '', 'colour2'),
+	('3a3321', '', 'colour3'),
+	('ff2d2d', '', 'colour2'),
+	('977641', '', 'colour3'),
+	('eb2929', '', 'colour2'),
+	('886a3a', '', 'colour3'),
+	('d42525', '', 'colour2'),
+	('715831', '', 'colour3'),
+	('bd2121', '', 'colour2'),
+	('5b4727', '', 'colour3'),
+	('a61d1d', '', 'colour2'),
+	('44351d', '', 'colour3'),
+	('8f1919', '', 'colour2'),
+	('2d2313', '', 'colour3'),
+	('781515', '', 'colour2'),
+	('c0c0c0', '', 'colour3'),
+	('611111', '', 'colour2'),
+	('acacac', '', 'colour3'),
+	('4c0d0d', '', 'colour2'),
+	('909090', '', 'colour3'),
+	('ffb579', '', 'colour2'),
+	('737373', '', 'colour3'),
+	('eba770', '', 'colour2'),
+	('575757', '', 'colour3'),
+	('d49665', '', 'colour2'),
+	('393939', '', 'colour3'),
+	('bd865a', '', 'colour2'),
+	('7a7a7a', '', 'colour3'),
+	('a6764f', '', 'colour2'),
+	('6e6e6e', '', 'colour3'),
+	('8f6644', '', 'colour2'),
+	('5b5b5b', '', 'colour3'),
+	('785539', '', 'colour2'),
+	('494949', '', 'colour3'),
+	('61452e', '', 'colour2'),
+	('373737', '', 'colour3'),
+	('4c3624', '', 'colour2'),
+	('242424', '', 'colour3'),
+	('ec7600', '', 'colour2'),
+	('d96d00', '', 'colour2'),
+	('c46200', '', 'colour2'),
+	('af5700', '', 'colour2'),
+	('9a4d00', '', 'colour2'),
+	('844200', '', 'colour2'),
+	('6f3800', '', 'colour2'),
+	('5a2d00', '', 'colour2'),
+	('462300', '', 'colour2'),
+	('ffd601', '', 'colour2'),
+	('ebc501', '', 'colour2'),
+	('d4b201', '', 'colour2'),
+	('bd9f01', '', 'colour2'),
+	('a68b01', '', 'colour2'),
+	('8f7801', '', 'colour2'),
+	('786500', '', 'colour2'),
+	('615100', '', 'colour2'),
+	('4c4000', '', 'colour2'),
+	('c3aa6e', '', 'colour2'),
+	('b49d65', '', 'colour2'),
+	('a28d5b', '', 'colour2'),
+	('917e52', '', 'colour2'),
+	('7f6f48', '', 'colour2'),
+	('6d5f3e', '', 'colour2'),
+	('5c5034', '', 'colour2'),
+	('4a412a', '', 'colour2'),
+	('3a3321', '', 'colour2'),
+	('977641', '', 'colour2'),
+	('8b6d3c', '', 'colour2'),
+	('7e6236', '', 'colour2'),
+	('705730', '', 'colour2'),
+	('624d2a', '', 'colour2'),
+	('554224', '', 'colour2'),
+	('47381f', '', 'colour2'),
+	('392d19', '', 'colour2'),
+	('2d2313', '', 'colour2'),
+	('c0c0c0', '', 'colour2'),
+	('b1b1b1', '', 'colour2'),
+	('a0a0a0', '', 'colour2'),
+	('8e8e8e', '', 'colour2'),
+	('7d7d7d', '', 'colour2'),
+	('6c6c6c', '', 'colour2'),
+	('5a5a5a', '', 'colour2'),
+	('494949', '', 'colour2'),
+	('393939', '', 'colour2'),
+	('7a7a7a', '', 'colour2'),
+	('707070', '', 'colour2'),
+	('656565', '', 'colour2'),
+	('5a5a5a', '', 'colour2'),
+	('4f4f4f', '', 'colour2'),
+	('444444', '', 'colour2'),
+	('393939', '', 'colour2'),
+	('2e2e2e', '', 'colour2'),
+	('242424', '', 'colour2');
+
+-- Dumping structure for table helios.group_badge_elements
+DROP TABLE IF EXISTS `group_badge_elements`;
+CREATE TABLE IF NOT EXISTS `group_badge_elements` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `first_value` varchar(300) NOT NULL,
+  `second_value` varchar(300) NOT NULL,
+  `type` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=480 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+-- Dumping data for table helios.group_badge_elements: ~479 rows (approximately)
+DELETE FROM `group_badge_elements`;
+INSERT INTO `group_badge_elements` (`id`, `first_value`, `second_value`, `type`) VALUES
+	(1, 'base_basic_1.gif', '', 'base'),
+	(2, 'base_basic_2.gif', '', 'base'),
+	(3, 'base_basic_3.gif', '', 'base'),
+	(4, 'base_basic_4.gif', '', 'base'),
+	(5, 'base_basic_5.gif', '', 'base'),
+	(6, 'base_advanced_1.gif', '', 'base'),
+	(7, 'base_advanced_2.gif', '', 'base'),
+	(8, 'base_advanced_3.gif', '', 'base'),
+	(9, 'base_advanced_4.gif', '', 'base'),
+	(10, 'base_gold_1_part2.gif', 'base_gold_1_part1.gif', 'base'),
+	(11, 'base_gold_2_part2.gif', 'base_gold_2_part1.gif', 'base'),
+	(12, 'base_pin_part2.gif', 'base_pin_part1.gif', 'base'),
+	(13, 'base_gradient_1.gif', '', 'base'),
+	(14, 'base_gradient_2.gif', '', 'base'),
+	(15, 'base_circles_1.gif', '', 'base'),
+	(16, 'base_circles_2.gif', '', 'base'),
+	(17, 'base_ornament_1_part2.gif', 'base_ornament_1_part1.gif', 'base'),
+	(18, 'base_ornament_2_part2.gif', 'base_ornament_2_part1.gif', 'base'),
+	(19, 'base_misc_1_part2.gif', 'base_misc_1_part1.gif', 'base'),
+	(20, 'base_misc_2.gif', '', 'base'),
+	(21, 'base_beams_part2.gif', 'base_beams_part1.gif', 'base'),
+	(22, 'base_ring.gif', '', 'base'),
+	(23, 'base_simplestar_part2.gif', 'base_simplestar_part1.gif', 'base'),
+	(24, 'base_spiral.gif', '', 'base'),
+	(25, 'base_book.gif', '', 'base'),
+	(26, 'base_egg.gif', '', 'base'),
+	(27, 'base_ornament.gif', '', 'base'),
+	(28, 'base_shield_part2.gif', 'base_shield_part1.gif', 'base'),
+	(29, 'symbol_background_1.gif', '', 'symbol'),
+	(30, 'symbol_background_2.gif', '', 'symbol'),
+	(31, 'symbol_background_3_part2.gif', 'symbol_background_3_part1.gif', 'symbol'),
+	(32, 'symbol_ball_1_part2.gif', 'symbol_ball_1_part1.gif', 'symbol'),
+	(33, 'symbol_ball_2_part2.gif', 'symbol_ball_2_part1.gif', 'symbol'),
+	(34, 'symbol_bobba.gif', '', 'symbol'),
+	(35, 'symbol_bomb_part2.gif', 'symbol_bomb_part1.gif', 'symbol'),
+	(36, 'symbol_bow.gif', '', 'symbol'),
+	(37, 'symbol_box_1.gif', '', 'symbol'),
+	(38, 'symbol_box_2.gif', '', 'symbol'),
+	(39, 'symbol_bunting_1.gif', '', 'symbol'),
+	(40, 'symbol_bunting_2.gif', '', 'symbol'),
+	(41, 'symbol_butterfly_part2.gif', 'symbol_butterfly_part1.gif', 'symbol'),
+	(42, 'symbol_cowskull_part2.gif', 'symbol_cowskull_part1.gif', 'symbol'),
+	(43, 'symbol_cross.gif', '', 'symbol'),
+	(44, 'symbol_diamond.gif', '', 'symbol'),
+	(45, 'symbol_diploma_part2.gif', 'symbol_diploma_part1.gif', 'symbol'),
+	(46, 'symbol_eyeball_part2.gif', 'symbol_eyeball_part1.gif', 'symbol'),
+	(47, 'symbol_fist.gif', '', 'symbol'),
+	(48, 'symbol_flame_1.gif', '', 'symbol'),
+	(49, 'symbol_flame_2.gif', '', 'symbol'),
+	(50, 'symbol_flash.gif', '', 'symbol'),
+	(51, 'symbol_flower_1_part2.gif', 'symbol_flower_1_part1.gif', 'symbol'),
+	(52, 'symbol_flower_2.gif', '', 'symbol'),
+	(53, 'symbol_flower_3.gif', '', 'symbol'),
+	(54, 'symbol_flower_4.gif', '', 'symbol'),
+	(55, 'symbol_football.gif', '', 'symbol'),
+	(56, 'symbol_heart_1_part2.gif', 'symbol_heart_1_part1.gif', 'symbol'),
+	(57, 'symbol_heart_2_part2.gif', 'symbol_heart_2_part1.gif', 'symbol'),
+	(58, 'symbol_jingjang_part2.gif', 'symbol_jingjang_part1.gif', 'symbol'),
+	(59, 'symbol_lips_part2.gif', 'symbol_lips_part1.gif', 'symbol'),
+	(60, 'symbol_note.gif', '', 'symbol'),
+	(61, 'symbol_peace.gif', '', 'symbol'),
+	(62, 'symbol_planet_part2.gif', 'symbol_planet_part1.gif', 'symbol'),
+	(63, 'symbol_rainbow_part2.gif', 'symbol_rainbow_part1.gif', 'symbol'),
+	(64, 'symbol_rosete.gif', '', 'symbol'),
+	(65, 'symbol_shape.gif', '', 'symbol'),
+	(66, 'symbol_star_1.gif', '', 'symbol'),
+	(67, 'symbol_star_2.gif', '', 'symbol'),
+	(68, 'symbol_sword_1_part2.gif', 'symbol_sword_1_part1.gif', 'symbol'),
+	(69, 'symbol_sword_2_part2.gif', 'symbol_sword_2_part1.gif', 'symbol'),
+	(70, 'symbol_sword_3_part2.gif', 'symbol_sword_3_part1.gif', 'symbol'),
+	(71, 'symbol_wings_1.gif', '', 'symbol'),
+	(72, 'symbol_wings_2.gif', '', 'symbol'),
+	(73, 'symbol_arrow_down.gif', '', 'symbol'),
+	(74, 'symbol_arrow_left.gif', '', 'symbol'),
+	(75, 'symbol_arrow_right.gif', '', 'symbol'),
+	(76, 'symbol_arrow_up.gif', '', 'symbol'),
+	(77, 'symbol_arrowbig_up.gif', '', 'symbol'),
+	(78, 'symbol_axe_part2.gif', 'symbol_axe_part1.gif', 'symbol'),
+	(79, 'symbol_bug_part2.gif', 'symbol_bug_part1.gif', 'symbol'),
+	(80, 'symbol_capsbig_part2.gif', 'symbol_capsbig_part1.gif', 'symbol'),
+	(81, 'symbol_capssmall_part2.gif', 'symbol_capssmall_part1.gif', 'symbol'),
+	(82, 'symbol_cloud.gif', '', 'symbol'),
+	(83, 'symbol_crown_part2.gif', 'symbol_crown_part1.gif', 'symbol'),
+	(84, 'symbol_diamsmall2.gif', '', 'symbol'),
+	(85, 'symbol_diamsmall.gif', '', 'symbol'),
+	(86, 'symbol_drop.gif', '', 'symbol'),
+	(87, 'symbol_fingersheavy.gif', '', 'symbol'),
+	(88, 'symbol_fingersv.gif', '', 'symbol'),
+	(89, 'symbol_gtr_part2.gif', 'symbol_gtr_part1.gif', 'symbol'),
+	(90, 'symbol_hat.gif', '', 'symbol'),
+	(91, 'symbol_oval_part2.gif', 'symbol_oval_part1.gif', 'symbol'),
+	(92, 'symbol_pawprint.gif', '', 'symbol'),
+	(93, 'symbol_screw.gif', '', 'symbol'),
+	(94, 'symbol_stickL_part2.gif', 'symbol_stickL_part1.gif', 'symbol'),
+	(95, 'symbol_alligator.gif', '', 'symbol'),
+	(96, 'symbol_americanfootball_part2.gif', 'symbol_americanfootball_part1.gif', 'symbol'),
+	(97, 'symbol_award_part2.gif', 'symbol_award_part1.gif', 'symbol'),
+	(98, 'symbol_bananapeel.gif', '', 'symbol'),
+	(99, 'symbol_battleball.gif', '', 'symbol'),
+	(100, 'symbol_biohazard.gif', '', 'symbol'),
+	(101, 'symbol_bird.gif', '', 'symbol'),
+	(102, 'symbol_bishop.gif', '', 'symbol'),
+	(103, 'symbol_coalion.gif', '', 'symbol'),
+	(104, 'symbol_cocoamug.gif', '', 'symbol'),
+	(105, 'symbol_dashflag.gif', '', 'symbol'),
+	(106, 'symbol_diamondring_part2.gif', 'symbol_diamondring_part1.gif', 'symbol'),
+	(107, 'symbol_discoball_part2.gif', 'symbol_discoball_part1.gif', 'symbol'),
+	(108, 'symbol_dog.gif', '', 'symbol'),
+	(109, 'symbol_electricguitarh_part2.gif', 'symbol_electricguitarh_part1.gif', 'symbol'),
+	(110, 'symbol_electricguitarv_part2.gif', 'symbol_electricguitarv_part1.gif', 'symbol'),
+	(111, 'symbol_film.gif', '', 'symbol'),
+	(112, 'symbol_flame_part2.gif', 'symbol_flame_part1.gif', 'symbol'),
+	(113, 'symbol_gamepad.gif', '', 'symbol'),
+	(114, 'symbol_gem1_part2.gif', 'symbol_gem1_part1.gif', 'symbol'),
+	(115, 'symbol_gem2_part2.gif', 'symbol_gem2_part1.gif', 'symbol'),
+	(116, 'symbol_gem3_part2.gif', 'symbol_gem3_part1.gif', 'symbol'),
+	(117, 'symbol_hawk.gif', '', 'symbol'),
+	(118, 'symbol_hearts_down.gif', '', 'symbol'),
+	(119, 'symbol_hearts_up.gif', '', 'symbol'),
+	(120, 'symbol_horseshoe.gif', '', 'symbol'),
+	(121, 'symbol_inksplatter.gif', '', 'symbol'),
+	(122, 'symbol_leaf.gif', '', 'symbol'),
+	(123, 'symbol_micstand.gif', '', 'symbol'),
+	(124, 'symbol_mirror_part2.gif', 'symbol_mirror_part1.gif', 'symbol'),
+	(125, 'symbol_monkeywrench.gif', '', 'symbol'),
+	(126, 'symbol_note1.gif', '', 'symbol'),
+	(127, 'symbol_note2.gif', '', 'symbol'),
+	(128, 'symbol_note3.gif', '', 'symbol'),
+	(129, 'symbol_nursecross.gif', '', 'symbol'),
+	(130, 'symbol_pencil_part2.gif', 'symbol_pencil_part1.gif', 'symbol'),
+	(131, 'symbol_queen.gif', '', 'symbol'),
+	(132, 'symbol_rock.gif', '', 'symbol'),
+	(133, 'symbol_rook.gif', '', 'symbol'),
+	(134, 'symbol_skate.gif', '', 'symbol'),
+	(135, 'symbol_smallring_part2.gif', 'symbol_smallring_part1.gif', 'symbol'),
+	(136, 'symbol_snowstorm_part2.gif', 'symbol_snowstorm_part1.gif', 'symbol'),
+	(137, 'symbol_sphere.gif', '', 'symbol'),
+	(138, 'symbol_spraycan_part2.gif', 'symbol_spraycan_part1.gif', 'symbol'),
+	(139, 'symbol_stars1.gif', '', 'symbol'),
+	(140, 'symbol_stars2.gif', '', 'symbol'),
+	(141, 'symbol_stars3.gif', '', 'symbol'),
+	(142, 'symbol_stars4.gif', '', 'symbol'),
+	(143, 'symbol_stars5.gif', '', 'symbol'),
+	(144, 'symbol_waterdrop_part2.gif', 'symbol_waterdrop_part1.gif', 'symbol'),
+	(145, 'symbol_wolverine.gif', '', 'symbol'),
+	(146, 'symbol_0.gif', '', 'symbol'),
+	(147, 'symbol_1.gif', '', 'symbol'),
+	(148, 'symbol_2.gif', '', 'symbol'),
+	(149, 'symbol_3.gif', '', 'symbol'),
+	(150, 'symbol_4.gif', '', 'symbol'),
+	(151, 'symbol_5.gif', '', 'symbol'),
+	(152, 'symbol_6.gif', '', 'symbol'),
+	(153, 'symbol_7.gif', '', 'symbol'),
+	(154, 'symbol_8.gif', '', 'symbol'),
+	(155, 'symbol_9.gif', '', 'symbol'),
+	(156, 'symbol_a.gif', '', 'symbol'),
+	(157, 'symbol_b.gif', '', 'symbol'),
+	(158, 'symbol_c.gif', '', 'symbol'),
+	(159, 'symbol_d.gif', '', 'symbol'),
+	(160, 'symbol_e.gif', '', 'symbol'),
+	(161, 'symbol_f.gif', '', 'symbol'),
+	(162, 'symbol_g.gif', '', 'symbol'),
+	(163, 'symbol_h.gif', '', 'symbol'),
+	(164, 'symbol_i.gif', '', 'symbol'),
+	(165, 'symbol_j.gif', '', 'symbol'),
+	(166, 'symbol_k.gif', '', 'symbol'),
+	(167, 'symbol_l.gif', '', 'symbol'),
+	(168, 'symbol_m.gif', '', 'symbol'),
+	(169, 'symbol_n.gif', '', 'symbol'),
+	(170, 'symbol_o.gif', '', 'symbol'),
+	(171, 'symbol_p.gif', '', 'symbol'),
+	(172, 'symbol_q.gif', '', 'symbol'),
+	(173, 'symbol_r.gif', '', 'symbol'),
+	(174, 'symbol_s.gif', '', 'symbol'),
+	(175, 'symbol_t.gif', '', 'symbol'),
+	(176, 'symbol_u.gif', '', 'symbol'),
+	(177, 'symbol_v.gif', '', 'symbol'),
+	(178, 'symbol_w.gif', '', 'symbol'),
+	(179, 'symbol_x.gif', '', 'symbol'),
+	(180, 'symbol_y.gif', '', 'symbol'),
+	(181, 'symbol_z.gif', '', 'symbol'),
+	(182, 'symbol_pixel_part2.gif', 'symbol_pixel_part1.gif', 'symbol'),
+	(183, 'symbol_credit_part2.gif', 'symbol_credit_part1.gif', 'symbol'),
+	(184, 'symbol_hc_part2.gif', 'symbol_hc_part1.gif', 'symbol'),
+	(185, 'symbol_vip_part2.gif', 'symbol_vip_part1.gif', 'symbol'),
+	(186, 'ffd601', '', 'colour1'),
+	(187, 'ffffff', '', 'colour2'),
+	(188, 'ffffff', '', 'colour3'),
+	(189, 'ec7600', '', 'colour1'),
+	(190, 'ebebeb', '', 'colour2'),
+	(191, 'e5e5e5', '', 'colour3'),
+	(192, '84de00', '', 'colour1'),
+	(193, 'd4d4d4', '', 'colour2'),
+	(194, 'bfbfbf', '', 'colour3'),
+	(195, '589a00', '', 'colour1'),
+	(196, 'bdbdbd', '', 'colour2'),
+	(197, '999999', '', 'colour3'),
+	(198, '50c1fb', '', 'colour1'),
+	(199, 'a6a6a6', '', 'colour2'),
+	(200, '737373', '', 'colour3'),
+	(201, '006fcf', '', 'colour1'),
+	(202, '8f8f8f', '', 'colour2'),
+	(203, '4c4c4c', '', 'colour3'),
+	(204, 'ff98e3', '', 'colour1'),
+	(205, '787878', '', 'colour2'),
+	(206, '589a00', '', 'colour3'),
+	(207, 'f334bf', '', 'colour1'),
+	(208, '616161', '', 'colour2'),
+	(209, '4f8a00', '', 'colour3'),
+	(210, 'ff2d2d', '', 'colour1'),
+	(211, '4c4c4c', '', 'colour2'),
+	(212, '427300', '', 'colour3'),
+	(213, 'af0a0a', '', 'colour1'),
+	(214, '589a00', '', 'colour2'),
+	(215, '355c00', '', 'colour3'),
+	(216, 'ffffff', '', 'colour1'),
+	(217, '518e00', '', 'colour2'),
+	(218, '284500', '', 'colour3'),
+	(219, 'c0c0c0', '', 'colour1'),
+	(220, '498000', '', 'colour2'),
+	(221, '1a2e00', '', 'colour3'),
+	(222, '373737', '', 'colour1'),
+	(223, '417200', '', 'colour2'),
+	(224, '84de00', '', 'colour3'),
+	(225, 'fbe7ac', '', 'colour1'),
+	(226, '396400', '', 'colour2'),
+	(227, '77c700', '', 'colour3'),
+	(228, '977641', '', 'colour1'),
+	(229, '315600', '', 'colour2'),
+	(230, '63a600', '', 'colour3'),
+	(231, 'c2eaff', '', 'colour1'),
+	(232, '294800', '', 'colour2'),
+	(233, '4f8500', '', 'colour3'),
+	(234, 'fff165', '', 'colour1'),
+	(235, '213b00', '', 'colour2'),
+	(236, '3c6400', '', 'colour3'),
+	(237, 'aaff7d', '', 'colour1'),
+	(238, '1a2e00', '', 'colour2'),
+	(239, '274200', '', 'colour3'),
+	(240, '87e6c8', '', 'colour1'),
+	(241, '84de00', '', 'colour2'),
+	(242, 'c2eaff', '', 'colour3'),
+	(243, '9844e7', '', 'colour1'),
+	(244, '7acd00', '', 'colour2'),
+	(245, 'aed2e5', '', 'colour3'),
+	(246, 'dea9ff', '', 'colour1'),
+	(247, '6eb900', '', 'colour2'),
+	(248, '91afbf', '', 'colour3'),
+	(249, 'ffb579', '', 'colour1'),
+	(250, '62a500', '', 'colour2'),
+	(251, '748c99', '', 'colour3'),
+	(252, 'c3aa6e', '', 'colour1'),
+	(253, '569100', '', 'colour2'),
+	(254, '576a73', '', 'colour3'),
+	(255, '7a7a7a', '', 'colour1'),
+	(256, '4a7c00', '', 'colour2'),
+	(257, '3a464c', '', 'colour3'),
+	(258, '3e6800', '', 'colour2'),
+	(259, '50c1fb', '', 'colour3'),
+	(260, '325400', '', 'colour2'),
+	(261, '48ade1', '', 'colour3'),
+	(262, '274200', '', 'colour2'),
+	(263, '3c91bc', '', 'colour3'),
+	(264, 'c2eaff', '', 'colour2'),
+	(265, '307497', '', 'colour3'),
+	(266, 'b3d8eb', '', 'colour2'),
+	(267, '245771', '', 'colour3'),
+	(268, 'a1c3d4', '', 'colour2'),
+	(269, '183a4b', '', 'colour3'),
+	(270, '90adbd', '', 'colour2'),
+	(271, '006fcf', '', 'colour3'),
+	(272, '7e98a6', '', 'colour2'),
+	(273, '0064ba', '', 'colour3'),
+	(274, '6d838f', '', 'colour2'),
+	(275, '00539b', '', 'colour3'),
+	(276, '5b6e78', '', 'colour2'),
+	(277, '00437c', '', 'colour3'),
+	(278, '4a5961', '', 'colour2'),
+	(279, '00325d', '', 'colour3'),
+	(280, '3a464c', '', 'colour2'),
+	(281, '00213e', '', 'colour3'),
+	(282, '50c1fb', '', 'colour2'),
+	(283, '9844e7', '', 'colour3'),
+	(284, '4ab2e7', '', 'colour2'),
+	(285, '893dcf', '', 'colour3'),
+	(286, '43a0d1', '', 'colour2'),
+	(287, '7233ad', '', 'colour3'),
+	(288, '3b8fba', '', 'colour2'),
+	(289, '5b298b', '', 'colour3'),
+	(290, '347ea3', '', 'colour2'),
+	(291, '451f68', '', 'colour3'),
+	(292, '2d6c8d', '', 'colour2'),
+	(293, '2d1445', '', 'colour3'),
+	(294, '265b76', '', 'colour2'),
+	(295, 'dea9ff', '', 'colour3'),
+	(296, '1e495f', '', 'colour2'),
+	(297, 'c798e5', '', 'colour3'),
+	(298, '183a4b', '', 'colour2'),
+	(299, 'a67fbf', '', 'colour3'),
+	(300, '006fcf', '', 'colour2'),
+	(301, '856599', '', 'colour3'),
+	(302, '0066bf', '', 'colour2'),
+	(303, '644c73', '', 'colour3'),
+	(304, '005cac', '', 'colour2'),
+	(305, '42324c', '', 'colour3'),
+	(306, '005299', '', 'colour2'),
+	(307, 'ff98e3', '', 'colour3'),
+	(308, '004887', '', 'colour2'),
+	(309, 'e589cc', '', 'colour3'),
+	(310, '003e74', '', 'colour2'),
+	(311, 'bf72aa', '', 'colour3'),
+	(312, '003461', '', 'colour2'),
+	(313, '995b88', '', 'colour3'),
+	(314, '002a4f', '', 'colour2'),
+	(315, '734566', '', 'colour3'),
+	(316, '00213e', '', 'colour2'),
+	(317, '4c2d44', '', 'colour3'),
+	(318, '9844e7', '', 'colour2'),
+	(319, 'f334bf', '', 'colour3'),
+	(320, '8c3fd5', '', 'colour2'),
+	(321, 'da2fac', '', 'colour3'),
+	(322, '7e39c0', '', 'colour2'),
+	(323, 'b6278f', '', 'colour3'),
+	(324, '7132ab', '', 'colour2'),
+	(325, '921f73', '', 'colour3'),
+	(326, '632c96', '', 'colour2'),
+	(327, '6e1756', '', 'colour3'),
+	(328, '552682', '', 'colour2'),
+	(329, '480f39', '', 'colour3'),
+	(330, '48206d', '', 'colour2'),
+	(331, 'ff2d2d', '', 'colour3'),
+	(332, '3a1a58', '', 'colour2'),
+	(333, 'e52828', '', 'colour3'),
+	(334, '2d1445', '', 'colour2'),
+	(335, 'bf2222', '', 'colour3'),
+	(336, 'dea9ff', '', 'colour2'),
+	(337, '991b1b', '', 'colour3'),
+	(338, 'cd9ceb', '', 'colour2'),
+	(339, '731414', '', 'colour3'),
+	(340, 'b98dd4', '', 'colour2'),
+	(341, '4c0d0d', '', 'colour3'),
+	(342, 'a57dbd', '', 'colour2'),
+	(343, 'ffb579', '', 'colour3'),
+	(344, '916ea6', '', 'colour2'),
+	(345, 'e5a36d', '', 'colour3'),
+	(346, '7c5f8f', '', 'colour2'),
+	(347, 'bf885b', '', 'colour3'),
+	(348, '685078', '', 'colour2'),
+	(349, '996d49', '', 'colour3'),
+	(350, '544061', '', 'colour2'),
+	(351, '735237', '', 'colour3'),
+	(352, '42324c', '', 'colour2'),
+	(353, '4c3624', '', 'colour3'),
+	(354, 'ff98e3', '', 'colour2'),
+	(355, 'ec7600', '', 'colour3'),
+	(356, 'eb8cd1', '', 'colour2'),
+	(357, 'd46a00', '', 'colour3'),
+	(358, 'd47ebd', '', 'colour2'),
+	(359, 'b15800', '', 'colour3'),
+	(360, 'bd71a8', '', 'colour2'),
+	(361, '8e4700', '', 'colour3'),
+	(362, 'a66394', '', 'colour2'),
+	(363, '6a3500', '', 'colour3'),
+	(364, '8f557f', '', 'colour2'),
+	(365, '462300', '', 'colour3'),
+	(366, '78486b', '', 'colour2'),
+	(367, 'ffd601', '', 'colour3'),
+	(368, '613a56', '', 'colour2'),
+	(369, 'e5c001', '', 'colour3'),
+	(370, '4c2d44', '', 'colour2'),
+	(371, 'bfa001', '', 'colour3'),
+	(372, 'f334bf', '', 'colour2'),
+	(373, '998001', '', 'colour3'),
+	(374, 'e030b0', '', 'colour2'),
+	(375, '736100', '', 'colour3'),
+	(376, 'ca2b9f', '', 'colour2'),
+	(377, '4c4000', '', 'colour3'),
+	(378, 'b4278e', '', 'colour2'),
+	(379, 'c3aa6e', '', 'colour3'),
+	(380, '9e227c', '', 'colour2'),
+	(381, 'af9963', '', 'colour3'),
+	(382, '881d6b', '', 'colour2'),
+	(383, '927f52', '', 'colour3'),
+	(384, '72185a', '', 'colour2'),
+	(385, '756642', '', 'colour3'),
+	(386, '5c1449', '', 'colour2'),
+	(387, '584d32', '', 'colour3'),
+	(388, '480f39', '', 'colour2'),
+	(389, '3a3321', '', 'colour3'),
+	(390, 'ff2d2d', '', 'colour2'),
+	(391, '977641', '', 'colour3'),
+	(392, 'eb2929', '', 'colour2'),
+	(393, '886a3a', '', 'colour3'),
+	(394, 'd42525', '', 'colour2'),
+	(395, '715831', '', 'colour3'),
+	(396, 'bd2121', '', 'colour2'),
+	(397, '5b4727', '', 'colour3'),
+	(398, 'a61d1d', '', 'colour2'),
+	(399, '44351d', '', 'colour3'),
+	(400, '8f1919', '', 'colour2'),
+	(401, '2d2313', '', 'colour3'),
+	(402, '781515', '', 'colour2'),
+	(403, 'c0c0c0', '', 'colour3'),
+	(404, '611111', '', 'colour2'),
+	(405, 'acacac', '', 'colour3'),
+	(406, '4c0d0d', '', 'colour2'),
+	(407, '909090', '', 'colour3'),
+	(408, 'ffb579', '', 'colour2'),
+	(409, '737373', '', 'colour3'),
+	(410, 'eba770', '', 'colour2'),
+	(411, '575757', '', 'colour3'),
+	(412, 'd49665', '', 'colour2'),
+	(413, '393939', '', 'colour3'),
+	(414, 'bd865a', '', 'colour2'),
+	(415, '7a7a7a', '', 'colour3'),
+	(416, 'a6764f', '', 'colour2'),
+	(417, '6e6e6e', '', 'colour3'),
+	(418, '8f6644', '', 'colour2'),
+	(419, '5b5b5b', '', 'colour3'),
+	(420, '785539', '', 'colour2'),
+	(421, '494949', '', 'colour3'),
+	(422, '61452e', '', 'colour2'),
+	(423, '373737', '', 'colour3'),
+	(424, '4c3624', '', 'colour2'),
+	(425, '242424', '', 'colour3'),
+	(426, 'ec7600', '', 'colour2'),
+	(427, 'd96d00', '', 'colour2'),
+	(428, 'c46200', '', 'colour2'),
+	(429, 'af5700', '', 'colour2'),
+	(430, '9a4d00', '', 'colour2'),
+	(431, '844200', '', 'colour2'),
+	(432, '6f3800', '', 'colour2'),
+	(433, '5a2d00', '', 'colour2'),
+	(434, '462300', '', 'colour2'),
+	(435, 'ffd601', '', 'colour2'),
+	(436, 'ebc501', '', 'colour2'),
+	(437, 'd4b201', '', 'colour2'),
+	(438, 'bd9f01', '', 'colour2'),
+	(439, 'a68b01', '', 'colour2'),
+	(440, '8f7801', '', 'colour2'),
+	(441, '786500', '', 'colour2'),
+	(442, '615100', '', 'colour2'),
+	(443, '4c4000', '', 'colour2'),
+	(444, 'c3aa6e', '', 'colour2'),
+	(445, 'b49d65', '', 'colour2'),
+	(446, 'a28d5b', '', 'colour2'),
+	(447, '917e52', '', 'colour2'),
+	(448, '7f6f48', '', 'colour2'),
+	(449, '6d5f3e', '', 'colour2'),
+	(450, '5c5034', '', 'colour2'),
+	(451, '4a412a', '', 'colour2'),
+	(452, '3a3321', '', 'colour2'),
+	(453, '977641', '', 'colour2'),
+	(454, '8b6d3c', '', 'colour2'),
+	(455, '7e6236', '', 'colour2'),
+	(456, '705730', '', 'colour2'),
+	(457, '624d2a', '', 'colour2'),
+	(458, '554224', '', 'colour2'),
+	(459, '47381f', '', 'colour2'),
+	(460, '392d19', '', 'colour2'),
+	(461, '2d2313', '', 'colour2'),
+	(462, 'c0c0c0', '', 'colour2'),
+	(463, 'b1b1b1', '', 'colour2'),
+	(464, 'a0a0a0', '', 'colour2'),
+	(465, '8e8e8e', '', 'colour2'),
+	(466, '7d7d7d', '', 'colour2'),
+	(467, '6c6c6c', '', 'colour2'),
+	(468, '5a5a5a', '', 'colour2'),
+	(469, '494949', '', 'colour2'),
+	(470, '393939', '', 'colour2'),
+	(471, '7a7a7a', '', 'colour2'),
+	(472, '707070', '', 'colour2'),
+	(473, '656565', '', 'colour2'),
+	(474, '5a5a5a', '', 'colour2'),
+	(475, '4f4f4f', '', 'colour2'),
+	(476, '444444', '', 'colour2'),
+	(477, '393939', '', 'colour2'),
+	(478, '2e2e2e', '', 'colour2'),
+	(479, '242424', '', 'colour2');
+
+-- Dumping structure for table helios.group_memberships
+DROP TABLE IF EXISTS `group_memberships`;
+CREATE TABLE IF NOT EXISTS `group_memberships` (
+  `user_id` int(10) NOT NULL,
+  `group_id` int(10) NOT NULL,
+  `member_rank` enum('3','2','1') NOT NULL DEFAULT '1',
+  `is_pending` bit(1) NOT NULL DEFAULT b'0',
+  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
+  KEY `userid` (`user_id`),
+  KEY `groupid` (`group_id`),
+  KEY `group_id` (`group_id`),
+  KEY `user_id` (`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- Dumping data for table helios.group_memberships: ~0 rows (approximately)
+DELETE FROM `group_memberships`;
+
 -- Dumping structure for table helios.item
+DROP TABLE IF EXISTS `item`;
 CREATE TABLE IF NOT EXISTS `item` (
   `id` char(36) NOT NULL DEFAULT '0',
   `order_id` int(11) NOT NULL DEFAULT -1,
-  `user_id` int(11) NOT NULL,
-  `room_id` int(11) NOT NULL DEFAULT 0,
+  `avatar_id` int(11) NOT NULL,
+  `room_id` int(11) DEFAULT NULL,
   `definition_id` int(11) NOT NULL,
   `x` varchar(255) NOT NULL DEFAULT '0',
   `y` varchar(255) NOT NULL DEFAULT '0',
@@ -3030,18 +4544,23 @@ CREATE TABLE IF NOT EXISTS `item` (
   `updated_at` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`),
   KEY `room_id` (`room_id`),
-  KEY `user_id` (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  KEY `user_id` (`avatar_id`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Dumping data for table helios.item: ~2 rows (approximately)
+-- Dumping data for table helios.item: ~8 rows (approximately)
 DELETE FROM `item`;
-/*!40000 ALTER TABLE `item` DISABLE KEYS */;
-INSERT INTO `item` (`id`, `order_id`, `user_id`, `room_id`, `definition_id`, `x`, `y`, `z`, `wall_position`, `rotation`, `custom_data`, `expire_time`, `created_at`, `updated_at`) VALUES
-	('0', -1, 1, 67, 1, '7', '2', '0', '', 0, '', -1, '2022-11-17 21:30:09', '2022-11-20 19:13:31'),
-	('1', -1, 1, 67, 2, '10', '2', '0', '', 0, '', -1, '2022-11-17 21:30:09', '2022-11-20 19:13:34');
-/*!40000 ALTER TABLE `item` ENABLE KEYS */;
+INSERT INTO `item` (`id`, `order_id`, `avatar_id`, `room_id`, `definition_id`, `x`, `y`, `z`, `wall_position`, `rotation`, `custom_data`, `expire_time`, `created_at`, `updated_at`) VALUES
+	('0b6e0ed0-66ed-400b-8bba-038eb05bf621', 0, 1, NULL, 249, '0', '0', '0', '', 0, '102', -1, '2024-09-08 00:30:34', '2024-09-08 00:30:34'),
+	('241d4ad1-e66b-4347-b34e-efd2e6ec24ca', 0, 1, 66, 1651, '8', '4', '0', '', 0, '', -1, '2024-09-08 00:29:31', '2024-09-08 00:29:44'),
+	('4dffc4ca-a7ac-492d-ac5e-6a9c5eeba11b', 0, 1, 66, 1669, '2', '8', '1', '', 2, '', -1, '2024-09-08 00:29:09', '2024-09-08 00:29:21'),
+	('6cc9c0d7-dc31-4097-b647-49b33afdeb55', 0, 1, 66, 1652, '8', '7', '0', '', 0, '', -1, '2024-09-08 00:29:32', '2024-09-08 00:29:42'),
+	('90bbc7cb-4739-4dfa-a8ae-9cf301de13d9', 0, 1, 66, 1648, '8', '7', '0.001', '', 2, '', -1, '2024-09-08 00:29:28', '2024-09-08 00:29:52'),
+	('96408807-b15b-45a6-a9cf-3f678d828507', 0, 1, 66, 1666, '4', '5', '1', '', 0, '', -1, '2024-09-08 00:29:36', '2024-09-08 00:29:40'),
+	('ebdb16f1-fedc-43f3-aab0-5639089f76a4', 0, 1, NULL, 250, '0', '0', '0', '', 0, '108', -1, '2024-09-08 00:30:21', '2024-09-08 00:30:21'),
+	('f1d048ed-2295-4438-b0e0-ccf19a653c74', 0, 1, NULL, 249, '0', '0', '0', '', 0, '205', -1, '2024-09-08 00:30:27', '2024-09-08 00:30:27');
 
 -- Dumping structure for table helios.item_definitions
+DROP TABLE IF EXISTS `item_definitions`;
 CREATE TABLE IF NOT EXISTS `item_definitions` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `sprite` varchar(50) DEFAULT NULL,
@@ -3063,11 +4582,10 @@ CREATE TABLE IF NOT EXISTS `item_definitions` (
   `allowed_rotations` tinytext NOT NULL DEFAULT '',
   PRIMARY KEY (`id`),
   KEY `id` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2384 DEFAULT CHARSET=utf8mb4 ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB AUTO_INCREMENT=2384 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=COMPACT;
 
 -- Dumping data for table helios.item_definitions: ~2,162 rows (approximately)
 DELETE FROM `item_definitions`;
-/*!40000 ALTER TABLE `item_definitions` DISABLE KEYS */;
 INSERT INTO `item_definitions` (`id`, `sprite`, `name`, `description`, `sprite_id`, `length`, `width`, `top_height`, `max_status`, `behaviour`, `interactor`, `is_tradable`, `is_recyclable`, `is_stackable`, `is_sellable`, `drink_ids`, `rental_time`, `allowed_rotations`) VALUES
 	(1, 'shelves_norja', 'Beige Bookcase', 'For nic naks and books.', 13, 1, 1, 0, '2', 'requires_rights_for_interaction,solid', 'default', 1, 1, 1, 1, '', -1, '0,2,4,6'),
 	(2, 'shelves_polyfon', 'Bookcase', 'Make your books look sleek.', 14, 2, 1, 0, '2', 'requires_rights_for_interaction,solid', 'default', 1, 1, 1, 1, '', -1, '0,2,4,6'),
@@ -5217,61 +6735,59 @@ INSERT INTO `item_definitions` (`id`, `sprite`, `name`, `description`, `sprite_i
 	(2381, 'room_ad_plus_badge', NULL, NULL, -1, 0, 0, 0, '0', '', 'default', 1, 1, 1, 1, NULL, -1, ''),
 	(2382, 'note_tag', NULL, NULL, 3983, 1, 1, 0, '0', 'solid,sticky_pole', 'default', 1, 1, 1, 1, NULL, -1, ''),
 	(2383, 'boutique_mannequin1', NULL, NULL, 4170, 1, 1, 0, '0', 'solid', 'mannequin', 1, 1, 1, 1, NULL, -1, '');
-/*!40000 ALTER TABLE `item_definitions` ENABLE KEYS */;
 
 -- Dumping structure for table helios.messenger_category
+DROP TABLE IF EXISTS `messenger_category`;
 CREATE TABLE IF NOT EXISTS `messenger_category` (
-  `user_id` int(11) NOT NULL,
+  `avatar_id` int(11) NOT NULL,
   `label` varchar(100) NOT NULL DEFAULT '',
-  UNIQUE KEY `unique_userid_label` (`user_id`,`label`),
-  KEY `index_userid_label` (`user_id`,`label`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  UNIQUE KEY `unique_userid_label` (`avatar_id`,`label`) USING BTREE,
+  KEY `index_userid_label` (`avatar_id`,`label`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Dumping data for table helios.messenger_category: ~0 rows (approximately)
 DELETE FROM `messenger_category`;
-/*!40000 ALTER TABLE `messenger_category` DISABLE KEYS */;
-/*!40000 ALTER TABLE `messenger_category` ENABLE KEYS */;
 
 -- Dumping structure for table helios.messenger_chat_history
+DROP TABLE IF EXISTS `messenger_chat_history`;
 CREATE TABLE IF NOT EXISTS `messenger_chat_history` (
-  `user_id` int(11) NOT NULL,
+  `avatar_id` int(11) NOT NULL,
   `friend_id` int(11) NOT NULL,
   `message` text NOT NULL,
   `has_read` tinyint(1) NOT NULL DEFAULT 0,
   `messaged_at` datetime NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Dumping data for table helios.messenger_chat_history: ~0 rows (approximately)
 DELETE FROM `messenger_chat_history`;
-/*!40000 ALTER TABLE `messenger_chat_history` DISABLE KEYS */;
-/*!40000 ALTER TABLE `messenger_chat_history` ENABLE KEYS */;
+INSERT INTO `messenger_chat_history` (`avatar_id`, `friend_id`, `message`, `has_read`, `messaged_at`) VALUES
+	(1, 3, 'hello!', 1, '2023-04-20 22:55:01');
 
 -- Dumping structure for table helios.messenger_friend
+DROP TABLE IF EXISTS `messenger_friend`;
 CREATE TABLE IF NOT EXISTS `messenger_friend` (
-  `user_id` int(11) NOT NULL,
+  `avatar_id` int(11) NOT NULL,
   `friend_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Dumping data for table helios.messenger_friend: ~2 rows (approximately)
 DELETE FROM `messenger_friend`;
-/*!40000 ALTER TABLE `messenger_friend` DISABLE KEYS */;
-INSERT INTO `messenger_friend` (`user_id`, `friend_id`) VALUES
+INSERT INTO `messenger_friend` (`avatar_id`, `friend_id`) VALUES
 	(1, 3),
 	(3, 1);
-/*!40000 ALTER TABLE `messenger_friend` ENABLE KEYS */;
 
 -- Dumping structure for table helios.messenger_request
+DROP TABLE IF EXISTS `messenger_request`;
 CREATE TABLE IF NOT EXISTS `messenger_request` (
-  `user_id` int(11) NOT NULL,
+  `avatar_id` int(11) NOT NULL,
   `friend_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Dumping data for table helios.messenger_request: ~0 rows (approximately)
 DELETE FROM `messenger_request`;
-/*!40000 ALTER TABLE `messenger_request` DISABLE KEYS */;
-/*!40000 ALTER TABLE `messenger_request` ENABLE KEYS */;
 
 -- Dumping structure for table helios.navigator_official_rooms
+DROP TABLE IF EXISTS `navigator_official_rooms`;
 CREATE TABLE IF NOT EXISTS `navigator_official_rooms` (
   `banner_id` int(11) NOT NULL AUTO_INCREMENT,
   `parent_id` int(11) NOT NULL DEFAULT 1,
@@ -5284,11 +6800,10 @@ CREATE TABLE IF NOT EXISTS `navigator_official_rooms` (
   `image_url` text NOT NULL,
   `thumbnail_layout` text NOT NULL,
   PRIMARY KEY (`banner_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=63 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=63 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Dumping data for table helios.navigator_official_rooms: ~41 rows (approximately)
+-- Dumping data for table helios.navigator_official_rooms: ~40 rows (approximately)
 DELETE FROM `navigator_official_rooms`;
-/*!40000 ALTER TABLE `navigator_official_rooms` DISABLE KEYS */;
 INSERT INTO `navigator_official_rooms` (`banner_id`, `parent_id`, `banner_type`, `room_id`, `image_type`, `label`, `description`, `description_entry`, `image_url`, `thumbnail_layout`) VALUES
 	(1, 0, 'CATEGORY', 0, 'EXTERNAL', 'Classic Rooms', '', 0, 'officialrooms_hq/alhambra_official_rooms.gif', ''),
 	(5, 1, 'PUBLIC_FLAT', 1, 'EXTERNAL', '', 'welcome_lounge', 0, 'officialrooms_defaults/hh_room_nlobby.png', '4'),
@@ -5330,15 +6845,16 @@ INSERT INTO `navigator_official_rooms` (`banner_id`, `parent_id`, `banner_type`,
 	(42, 1, 'PUBLIC_FLAT', 59, 'EXTERNAL', '', 'star_lounge', 0, 'officialrooms_defaults/hh_room_starlounge.png', '1'),
 	(43, 1, 'PUBLIC_FLAT', 60, 'EXTERNAL', '', 'orient', 0, 'officialrooms_defaults/hh_room_orient.png', '1'),
 	(61, 1, 'PUBLIC_FLAT', 61, 'EXTERNAL', '', 'emperors', 0, 'officialrooms_defaults/hh_room_emperors.png', '1');
-/*!40000 ALTER TABLE `navigator_official_rooms` ENABLE KEYS */;
 
 -- Dumping structure for table helios.room
+DROP TABLE IF EXISTS `room`;
 CREATE TABLE IF NOT EXISTS `room` (
   `id` int(100) NOT NULL AUTO_INCREMENT,
   `owner_id` int(11) NOT NULL,
   `name` mediumtext NOT NULL,
   `description` mediumtext NOT NULL,
   `category_id` int(11) NOT NULL DEFAULT 14,
+  `group_id` int(11) DEFAULT NULL,
   `visitors_now` int(11) NOT NULL DEFAULT 0,
   `visitors_max` int(11) NOT NULL DEFAULT 25,
   `status` enum('OPEN','CLOSED','PASSWORD') NOT NULL DEFAULT 'OPEN',
@@ -5363,92 +6879,91 @@ CREATE TABLE IF NOT EXISTS `room` (
   `who_can_kick` enum('NONE','USERS_WITH_RIGHTS','ALL_USERS') NOT NULL DEFAULT 'USERS_WITH_RIGHTS',
   `who_can_ban` enum('NONE','USERS_WITH_RIGHTS') NOT NULL DEFAULT 'USERS_WITH_RIGHTS',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=68 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=69 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Dumping data for table helios.room: ~66 rows (approximately)
 DELETE FROM `room`;
-/*!40000 ALTER TABLE `room` DISABLE KEYS */;
-INSERT INTO `room` (`id`, `owner_id`, `name`, `description`, `category_id`, `visitors_now`, `visitors_max`, `status`, `password`, `model`, `model_id`, `ccts`, `wallpaper`, `floor`, `landscape`, `rating`, `allow_pets`, `allow_pets_eat`, `allow_walkthrough`, `hidewall`, `wall_thickness`, `floor_thickness`, `is_owner_hidden`, `trade_setting`, `is_muted`, `who_can_mute`, `who_can_kick`, `who_can_ban`) VALUES
-	(1, 0, 'Welcome Lounge', 'welcome_lounge', 3, 0, 40, 'OPEN', '', 'newbie_lobby', 19, 'hh_room_nlobby', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(2, 0, 'Theatredome', 'theatredrome', 5, 0, 100, 'OPEN', '', 'theater', 20, 'hh_room_theater', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(3, 0, 'Library', 'library', 5, 0, 30, 'OPEN', '', 'library', 21, 'hh_room_library', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(4, 0, 'TV Studio', 'tv_studio', 5, 0, 20, 'OPEN', '', 'tv_studio', 65, 'hh_room_tv_studio_general', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(5, 0, 'Cinema', 'habbo_cinema', 5, 0, 50, 'OPEN', '', 'cinema_a', 53, 'hh_room_cinema', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(6, 0, 'Power Gym', 'sport', 5, 0, 35, 'OPEN', '', 'sport', 54, 'hh_room_sport', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(7, 0, 'Olympic Stadium', 'ballroom', 5, 0, 50, 'OPEN', '', 'ballroom', 31, 'hh_room_ballroom', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(8, 0, 'Habbo Kitchen', 'hotel_kitchen', 6, 0, 20, 'OPEN', '', 'cr_kitchen', 66, 'hh_room_kitchen', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(9, 0, 'The Dirty Duck Pub', 'the_dirty_duck_pub', 6, 0, 40, 'OPEN', '', 'pub_a', 25, 'hh_room_pub', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(10, 0, 'Cafe Ole', 'cafe_ole', 6, 0, 35, 'OPEN', '', 'cafe_ole', 33, 'hh_room_cafe', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(11, 0, 'Eric\'s Eaterie', 'eric\'s_eaterie', 6, 0, 35, 'OPEN', '', 'cr_cafe', 48, 'hh_room_erics', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(12, 0, 'Space Cafe', 'space_cafe', 6, 0, 35, 'OPEN', '', 'space_cafe', 39, 'hh_room_space_cafe', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(13, 0, 'Rooftop Terrace', 'rooftop', 7, 0, 30, 'OPEN', '', 'rooftop', 44, 'hh_room_rooftop', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(14, 0, 'Rooftop Cafe', 'rooftop', 7, 0, 20, 'OPEN', '', 'rooftop_2', 45, 'hh_room_rooftop', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(15, 0, 'Palazzo Pizza', 'pizza', 6, 0, 40, 'OPEN', '', 'pizza', 62, 'hh_room_pizza', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(16, 0, 'Habburgers', 'habburger\'s', 6, 0, 40, 'OPEN', '', 'habburger', 61, 'hh_room_habburger', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(17, 0, 'Grandfathers Lounge', 'dusty_lounge', 8, 0, 45, 'OPEN', '', 'dusty_lounge', 42, 'hh_room_dustylounge', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(18, 0, 'Oriental Tearoom', 'tearoom', 7, 0, 40, 'OPEN', '', 'tearoom', 46, 'hh_room_tearoom', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(19, 0, 'Oldskool Lounge', 'old_skool', 7, 0, 45, 'OPEN', '', 'old_skool0', 55, 'hh_room_old_skool', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(20, 0, 'Oldskool Dancefloor', 'old_skool', 7, 0, 45, 'OPEN', '', 'old_skool1', 56, 'hh_room_old_skool', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(21, 0, 'The Chromide Club', 'the_chromide_club', 7, 0, 45, 'OPEN', '', 'malja_bar_a', 57, 'hh_room_disco', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(22, 0, 'The Chromide Club II', 'the_chromide_club', 7, 0, 50, 'OPEN', '', 'malja_bar_b', 58, 'hh_room_disco', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(23, 0, 'Club Massiva', 'club_massiva', 7, 0, 45, 'OPEN', '', 'bar_a', 59, 'hh_room_bar', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(24, 0, 'Club Massiva II', 'club_massiva2', 7, 0, 70, 'OPEN', '', 'bar_b', 60, 'hh_room_bar', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(25, 0, 'Sunset Cafe', 'sunset_cafe', 6, 0, 35, 'OPEN', '', 'sunset_cafe', 23, 'hh_room_sunsetcafe', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(26, 0, 'Safety Spa', 'cafe_gold', 7, 0, 50, 'OPEN', '', 'cafe_gold0', 32, 'hh_room_gold', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(27, 0, 'Zen Garden', 'chill', 9, 0, 30, 'OPEN', '', 'chill', 41, 'hh_room_chill', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(28, 0, 'Club Mammoth', 'club_mammoth', 8, 0, 45, 'OPEN', '', 'club_mammoth', 67, 'hh_room_clubmammoth', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(29, 0, 'Floating Garden', 'floatinggarden', 9, 0, 80, 'OPEN', '', 'floatinggarden', 22, 'hh_room_floatinggarden', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(30, 0, 'Picnic Fields', 'picnic', 9, 0, 55, 'OPEN', '', 'picnic', 27, 'hh_room_picnic', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(31, 0, 'Sun Terrace', 'sun_terrace', 9, 0, 50, 'OPEN', '', 'sun_terrace', 38, 'hh_room_sun_terrace', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(32, 0, 'Peaceful Park', 'gate_park', 9, 0, 50, 'OPEN', '', 'gate_park', 36, 'hh_room_gate_park', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(33, 0, 'Peaceful Park - B', 'gate_park', 9, 0, 50, 'OPEN', '', 'gate_park_2', 37, 'hh_room_gate_park', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(34, 0, 'The Park', 'park', 3, 0, 45, 'OPEN', '', 'park_a', 28, 'hh_room_park,hh_room_park_general', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(35, 0, 'The Infobus', 'park', 3, 0, 20, 'OPEN', '', 'park_b', 29, 'hh_room_park,hh_people_pool', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(36, 0, 'Habbo Lido', 'habbo_lido', 3, 0, 60, 'OPEN', '', 'pool_a', 24, 'hh_room_pool,hh_people_pool', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(37, 0, 'Lido B', 'habbo_lido_ii', 3, 0, 60, 'OPEN', '', 'pool_b', 30, 'hh_room_pool,hh_people_pool', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(39, 0, 'Main Lobby', 'main_lobby', 11, 0, 100, 'OPEN', '', 'lobby_a', 49, 'hh_room_lobby', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(40, 0, 'Basement Lobby', 'basement_lobby', 11, 0, 50, 'OPEN', '', 'floorlobby_a', 52, 'hh_room_floorlobbies', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(41, 0, 'Median Lobby', 'median_lobby', 11, 0, 50, 'OPEN', '', 'floorlobby_b', 51, 'hh_room_floorlobbies', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(42, 0, 'Skylight Lobby', 'skylight_lobby', 11, 0, 50, 'OPEN', '', 'floorlobby_c', 50, 'hh_room_floorlobbies', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(43, 0, 'Ice Cafe', 'ice_cafe', 6, 0, 25, 'OPEN', '', 'ice_cafe', 33, 'hh_room_icecafe', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(44, 0, 'Net Cafe', 'netcafe', 6, 0, 25, 'OPEN', '', 'netcafe', 69, 'hh_room_netcafe', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(45, 0, 'Beauty Salon', 'beauty_salon_loreal', 5, 0, 25, 'OPEN', '', 'beauty_salon0', 40, 'hh_room_beauty_salon_general', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(46, 0, 'The Den', 'the_den', 5, 0, 100, 'OPEN', '', 'cr_staff', 43, 'hh_room_den', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(47, 0, 'Lower Hallways', 'hallway', 12, 0, 25, 'OPEN', '', 'hallway2', 72, 'hh_room_hallway', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 1, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(48, 0, 'Lower Hallways I', 'hallway', 12, 0, 25, 'OPEN', '', 'hallway0', 70, 'hh_room_hallway', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 1, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(49, 0, 'Lower Hallways II', 'hallway', 12, 0, 25, 'OPEN', '', 'hallway1', 73, 'hh_room_hallway', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 1, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(50, 0, 'Lower Hallways III', 'hallway', 12, 0, 25, 'OPEN', '', 'hallway3', 74, 'hh_room_hallway', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 1, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(51, 0, 'Lower Hallways IV', 'hallway', 12, 0, 25, 'OPEN', '', 'hallway5', 76, 'hh_room_hallway', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 1, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(52, 0, 'Lower Hallways V', 'hallway', 12, 0, 25, 'OPEN', '', 'hallway4', 75, 'hh_room_hallway', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 1, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(53, 0, 'Upper Hallways', 'hallway_ii', 12, 0, 25, 'OPEN', '', 'hallway9', 71, 'hh_room_hallway', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 1, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(54, 0, 'Upper Hallways I', 'hallway_ii', 12, 0, 25, 'OPEN', '', 'hallway8', 77, 'hh_room_hallway', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 1, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(55, 0, 'Upper Hallways II', 'hallway_ii', 12, 0, 25, 'OPEN', '', 'hallway7', 78, 'hh_room_hallway', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 1, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(56, 0, 'Upper Hallways III', 'hallway_ii', 12, 0, 25, 'OPEN', '', 'hallway6', 79, 'hh_room_hallway', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 1, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(57, 0, 'Upper Hallways IV', 'hallway_ii', 12, 0, 25, 'OPEN', '', 'hallway10', 80, 'hh_room_hallway', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 1, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(58, 0, 'Upper Hallways V', 'hallway_ii', 12, 0, 25, 'OPEN', '', 'hallway11', 81, 'hh_room_hallway', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 1, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(59, 0, 'Star Lounge', 'star_lounge', 7, 0, 35, 'OPEN', '', 'star_lounge', 82, 'hh_room_starlounge', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 1, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(60, 0, 'Club Orient', 'orient', 8, 0, 35, 'OPEN', '', 'orient', 83, 'hh_room_orient', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 1, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(61, 0, 'Imperial Palace', 'emperors', 5, 0, 30, 'OPEN', '', 'emperors', 90, 'hh_room_emperors', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(62, 0, 'Beauty Salon II', 'beauty_salon_loreal', 5, 0, 25, 'OPEN', '', 'beauty_salon1', 91, 'hh_room_beauty_salon_general', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(63, 1, 'test', '', 14, 0, 25, 'OPEN', '', 'model_a', 1, '', '0', '0', '0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(64, 1, 'test 2', '', 14, 0, 25, 'OPEN', '', 'model_c', 3, '', '0', '0', '0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(65, 1, 'test123', '', 14, 0, 25, 'OPEN', '', 'model_g', 7, '', '0', '0', '0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(66, 1, '34234', ' ', 14, 0, 25, 'OPEN', '', 'model_g', 7, '', '0', '0', '0', 34, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(67, 1, '67677', ' ', 14, 0, 25, 'OPEN', '', 'model_g', 7, '', '0', '0', '0', 54, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS');
-/*!40000 ALTER TABLE `room` ENABLE KEYS */;
+INSERT INTO `room` (`id`, `owner_id`, `name`, `description`, `category_id`, `group_id`, `visitors_now`, `visitors_max`, `status`, `password`, `model`, `model_id`, `ccts`, `wallpaper`, `floor`, `landscape`, `rating`, `allow_pets`, `allow_pets_eat`, `allow_walkthrough`, `hidewall`, `wall_thickness`, `floor_thickness`, `is_owner_hidden`, `trade_setting`, `is_muted`, `who_can_mute`, `who_can_kick`, `who_can_ban`) VALUES
+	(1, 0, 'Welcome Lounge', 'welcome_lounge', 3, NULL, 0, 40, 'OPEN', '', 'newbie_lobby', 19, 'hh_room_nlobby', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
+	(2, 0, 'Theatredome', 'theatredrome', 5, NULL, 0, 100, 'OPEN', '', 'theater', 20, 'hh_room_theater', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
+	(3, 0, 'Library', 'library', 5, NULL, 0, 30, 'OPEN', '', 'library', 21, 'hh_room_library', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
+	(4, 0, 'TV Studio', 'tv_studio', 5, NULL, 0, 20, 'OPEN', '', 'tv_studio', 65, 'hh_room_tv_studio_general', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
+	(5, 0, 'Cinema', 'habbo_cinema', 5, NULL, 0, 50, 'OPEN', '', 'cinema_a', 53, 'hh_room_cinema', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
+	(6, 0, 'Power Gym', 'sport', 5, NULL, 0, 35, 'OPEN', '', 'sport', 54, 'hh_room_sport', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
+	(7, 0, 'Olympic Stadium', 'ballroom', 5, NULL, 0, 50, 'OPEN', '', 'ballroom', 31, 'hh_room_ballroom', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
+	(8, 0, 'Habbo Kitchen', 'hotel_kitchen', 6, NULL, 0, 20, 'OPEN', '', 'cr_kitchen', 66, 'hh_room_kitchen', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
+	(9, 0, 'The Dirty Duck Pub', 'the_dirty_duck_pub', 6, NULL, 0, 40, 'OPEN', '', 'pub_a', 25, 'hh_room_pub', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
+	(10, 0, 'Cafe Ole', 'cafe_ole', 6, NULL, 0, 35, 'OPEN', '', 'cafe_ole', 33, 'hh_room_cafe', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
+	(11, 0, 'Eric\'s Eaterie', 'eric\'s_eaterie', 6, NULL, 0, 35, 'OPEN', '', 'cr_cafe', 48, 'hh_room_erics', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
+	(12, 0, 'Space Cafe', 'space_cafe', 6, NULL, 0, 35, 'OPEN', '', 'space_cafe', 39, 'hh_room_space_cafe', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
+	(13, 0, 'Rooftop Terrace', 'rooftop', 7, NULL, 0, 30, 'OPEN', '', 'rooftop', 44, 'hh_room_rooftop', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
+	(14, 0, 'Rooftop Cafe', 'rooftop', 7, NULL, 0, 20, 'OPEN', '', 'rooftop_2', 45, 'hh_room_rooftop', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
+	(15, 0, 'Palazzo Pizza', 'pizza', 6, NULL, 0, 40, 'OPEN', '', 'pizza', 62, 'hh_room_pizza', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
+	(16, 0, 'Habburgers', 'habburger\'s', 6, NULL, 0, 40, 'OPEN', '', 'habburger', 61, 'hh_room_habburger', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
+	(17, 0, 'Grandfathers Lounge', 'dusty_lounge', 8, NULL, 0, 45, 'OPEN', '', 'dusty_lounge', 42, 'hh_room_dustylounge', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
+	(18, 0, 'Oriental Tearoom', 'tearoom', 7, NULL, 0, 40, 'OPEN', '', 'tearoom', 46, 'hh_room_tearoom', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
+	(19, 0, 'Oldskool Lounge', 'old_skool', 7, NULL, 0, 45, 'OPEN', '', 'old_skool0', 55, 'hh_room_old_skool', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
+	(20, 0, 'Oldskool Dancefloor', 'old_skool', 7, NULL, 0, 45, 'OPEN', '', 'old_skool1', 56, 'hh_room_old_skool', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
+	(21, 0, 'The Chromide Club', 'the_chromide_club', 7, NULL, 0, 45, 'OPEN', '', 'malja_bar_a', 57, 'hh_room_disco', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
+	(22, 0, 'The Chromide Club II', 'the_chromide_club', 7, NULL, 0, 50, 'OPEN', '', 'malja_bar_b', 58, 'hh_room_disco', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
+	(23, 0, 'Club Massiva', 'club_massiva', 7, NULL, 0, 45, 'OPEN', '', 'bar_a', 59, 'hh_room_bar', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
+	(24, 0, 'Club Massiva II', 'club_massiva2', 7, NULL, 0, 70, 'OPEN', '', 'bar_b', 60, 'hh_room_bar', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
+	(25, 0, 'Sunset Cafe', 'sunset_cafe', 6, NULL, 0, 35, 'OPEN', '', 'sunset_cafe', 23, 'hh_room_sunsetcafe', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
+	(26, 0, 'Safety Spa', 'cafe_gold', 7, NULL, 0, 50, 'OPEN', '', 'cafe_gold0', 32, 'hh_room_gold', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
+	(27, 0, 'Zen Garden', 'chill', 9, NULL, 0, 30, 'OPEN', '', 'chill', 41, 'hh_room_chill', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
+	(28, 0, 'Club Mammoth', 'club_mammoth', 8, NULL, 0, 45, 'OPEN', '', 'club_mammoth', 67, 'hh_room_clubmammoth', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
+	(29, 0, 'Floating Garden', 'floatinggarden', 9, NULL, 0, 80, 'OPEN', '', 'floatinggarden', 22, 'hh_room_floatinggarden', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
+	(30, 0, 'Picnic Fields', 'picnic', 9, NULL, 0, 55, 'OPEN', '', 'picnic', 27, 'hh_room_picnic', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
+	(31, 0, 'Sun Terrace', 'sun_terrace', 9, NULL, 0, 50, 'OPEN', '', 'sun_terrace', 38, 'hh_room_sun_terrace', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
+	(32, 0, 'Peaceful Park', 'gate_park', 9, NULL, 0, 50, 'OPEN', '', 'gate_park', 36, 'hh_room_gate_park', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
+	(33, 0, 'Peaceful Park - B', 'gate_park', 9, NULL, 0, 50, 'OPEN', '', 'gate_park_2', 37, 'hh_room_gate_park', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
+	(34, 0, 'The Park', 'park', 3, NULL, 0, 45, 'OPEN', '', 'park_a', 28, 'hh_room_park,hh_room_park_general', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
+	(35, 0, 'The Infobus', 'park', 3, NULL, 0, 20, 'OPEN', '', 'park_b', 29, 'hh_room_park,hh_people_pool', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
+	(36, 0, 'Habbo Lido', 'habbo_lido', 3, NULL, 0, 60, 'OPEN', '', 'pool_a', 24, 'hh_room_pool,hh_people_pool', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
+	(37, 0, 'Lido B', 'habbo_lido_ii', 3, NULL, 0, 60, 'OPEN', '', 'pool_b', 30, 'hh_room_pool,hh_people_pool', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
+	(39, 0, 'Main Lobby', 'main_lobby', 11, NULL, 0, 100, 'OPEN', '', 'lobby_a', 49, 'hh_room_lobby', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
+	(40, 0, 'Basement Lobby', 'basement_lobby', 11, NULL, 0, 50, 'OPEN', '', 'floorlobby_a', 52, 'hh_room_floorlobbies', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
+	(41, 0, 'Median Lobby', 'median_lobby', 11, NULL, 0, 50, 'OPEN', '', 'floorlobby_b', 51, 'hh_room_floorlobbies', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
+	(42, 0, 'Skylight Lobby', 'skylight_lobby', 11, NULL, 0, 50, 'OPEN', '', 'floorlobby_c', 50, 'hh_room_floorlobbies', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
+	(43, 0, 'Ice Cafe', 'ice_cafe', 6, NULL, 0, 25, 'OPEN', '', 'ice_cafe', 33, 'hh_room_icecafe', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
+	(44, 0, 'Net Cafe', 'netcafe', 6, NULL, 0, 25, 'OPEN', '', 'netcafe', 69, 'hh_room_netcafe', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
+	(45, 0, 'Beauty Salon', 'beauty_salon_loreal', 5, NULL, 0, 25, 'OPEN', '', 'beauty_salon0', 40, 'hh_room_beauty_salon_general', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
+	(46, 0, 'The Den', 'the_den', 5, NULL, 0, 100, 'OPEN', '', 'cr_staff', 43, 'hh_room_den', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
+	(47, 0, 'Lower Hallways', 'hallway', 12, NULL, 0, 25, 'OPEN', '', 'hallway2', 72, 'hh_room_hallway', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 1, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
+	(48, 0, 'Lower Hallways I', 'hallway', 12, NULL, 0, 25, 'OPEN', '', 'hallway0', 70, 'hh_room_hallway', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 1, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
+	(49, 0, 'Lower Hallways II', 'hallway', 12, NULL, 0, 25, 'OPEN', '', 'hallway1', 73, 'hh_room_hallway', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 1, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
+	(50, 0, 'Lower Hallways III', 'hallway', 12, NULL, 0, 25, 'OPEN', '', 'hallway3', 74, 'hh_room_hallway', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 1, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
+	(51, 0, 'Lower Hallways IV', 'hallway', 12, NULL, 0, 25, 'OPEN', '', 'hallway5', 76, 'hh_room_hallway', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 1, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
+	(52, 0, 'Lower Hallways V', 'hallway', 12, NULL, 0, 25, 'OPEN', '', 'hallway4', 75, 'hh_room_hallway', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 1, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
+	(53, 0, 'Upper Hallways', 'hallway_ii', 12, NULL, 0, 25, 'OPEN', '', 'hallway9', 71, 'hh_room_hallway', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 1, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
+	(54, 0, 'Upper Hallways I', 'hallway_ii', 12, NULL, 0, 25, 'OPEN', '', 'hallway8', 77, 'hh_room_hallway', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 1, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
+	(55, 0, 'Upper Hallways II', 'hallway_ii', 12, NULL, 0, 25, 'OPEN', '', 'hallway7', 78, 'hh_room_hallway', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 1, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
+	(56, 0, 'Upper Hallways III', 'hallway_ii', 12, NULL, 0, 25, 'OPEN', '', 'hallway6', 79, 'hh_room_hallway', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 1, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
+	(57, 0, 'Upper Hallways IV', 'hallway_ii', 12, NULL, 0, 25, 'OPEN', '', 'hallway10', 80, 'hh_room_hallway', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 1, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
+	(58, 0, 'Upper Hallways V', 'hallway_ii', 12, NULL, 0, 25, 'OPEN', '', 'hallway11', 81, 'hh_room_hallway', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 1, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
+	(59, 0, 'Star Lounge', 'star_lounge', 7, NULL, 0, 35, 'OPEN', '', 'star_lounge', 82, 'hh_room_starlounge', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 1, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
+	(60, 0, 'Club Orient', 'orient', 8, NULL, 0, 35, 'OPEN', '', 'orient', 83, 'hh_room_orient', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 1, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
+	(61, 0, 'Imperial Palace', 'emperors', 5, NULL, 0, 30, 'OPEN', '', 'emperors', 90, 'hh_room_emperors', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
+	(62, 0, 'Beauty Salon II', 'beauty_salon_loreal', 5, NULL, 0, 25, 'OPEN', '', 'beauty_salon1', 91, 'hh_room_beauty_salon_general', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
+	(63, 1, 'test', '', 14, NULL, 0, 25, 'OPEN', '', 'model_a', 1, '', '0', '0', '0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
+	(64, 1, 'test 2', '', 14, NULL, 0, 25, 'OPEN', '', 'model_c', 3, '', '0', '0', '0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
+	(65, 1, 'test123', '', 14, NULL, 0, 25, 'OPEN', '', 'model_g', 7, '', '0', '0', '0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
+	(66, 1, '34234', ' ', 14, NULL, 0, 25, 'OPEN', '', 'model_g', 7, '', '108', '102', '0', 34, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
+	(67, 1, '67677', ' ', 14, NULL, 0, 25, 'OPEN', '', 'model_g', 7, '', '1701', '504', '0', 54, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
+	(68, 2, '4553', '', 14, NULL, 0, 25, 'OPEN', '', '', 3, '', '0', '0', '0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS');
 
 -- Dumping structure for table helios.room_category
+DROP TABLE IF EXISTS `room_category`;
 CREATE TABLE IF NOT EXISTS `room_category` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `caption` varchar(100) NOT NULL,
   `enabled` tinyint(1) NOT NULL DEFAULT 1,
   `min_rank` int(11) NOT NULL DEFAULT 1,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Dumping data for table helios.room_category: ~15 rows (approximately)
 DELETE FROM `room_category`;
-/*!40000 ALTER TABLE `room_category` DISABLE KEYS */;
 INSERT INTO `room_category` (`id`, `caption`, `enabled`, `min_rank`) VALUES
 	(1, 'Staff Rooms', 1, 4),
 	(2, 'Competition Category', 1, 1),
@@ -5465,10 +6980,10 @@ INSERT INTO `room_category` (`id`, `caption`, `enabled`, `min_rank`) VALUES
 	(13, 'School, Daycare & Adoption Rooms', 1, 1),
 	(14, 'All Other Rooms', 1, 1),
 	(15, 'No Category', 1, 1);
-/*!40000 ALTER TABLE `room_category` ENABLE KEYS */;
 
--- Dumping structure for table helios.room_model
-CREATE TABLE IF NOT EXISTS `room_model` (
+-- Dumping structure for table helios.room_models
+DROP TABLE IF EXISTS `room_models`;
+CREATE TABLE IF NOT EXISTS `room_models` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `model` varchar(255) NOT NULL,
   `door_x` int(11) NOT NULL DEFAULT 0,
@@ -5480,12 +6995,11 @@ CREATE TABLE IF NOT EXISTS `room_model` (
   `is_club_only` tinyint(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`),
   KEY `id` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=92 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=92 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Dumping data for table helios.room_model: ~91 rows (approximately)
-DELETE FROM `room_model`;
-/*!40000 ALTER TABLE `room_model` DISABLE KEYS */;
-INSERT INTO `room_model` (`id`, `model`, `door_x`, `door_y`, `door_z`, `door_dir`, `heightmap`, `trigger_class`, `is_club_only`) VALUES
+-- Dumping data for table helios.room_models: ~91 rows (approximately)
+DELETE FROM `room_models`;
+INSERT INTO `room_models` (`id`, `model`, `door_x`, `door_y`, `door_z`, `door_dir`, `heightmap`, `trigger_class`, `is_club_only`) VALUES
 	(1, 'model_a', 3, 5, 0, 2, 'xxxxxxxxxxxx|xxxx00000000|xxxx00000000|xxxx00000000|xxxx00000000|xxxx00000000|xxxx00000000|xxxx00000000|xxxx00000000|xxxx00000000|xxxx00000000|xxxx00000000|xxxx00000000|xxxx00000000|xxxxxxxxxxxx|xxxxxxxxxxxx', 'flat_trigger', 0),
 	(2, 'model_b', 0, 5, 0, 2, 'xxxxxxxxxxxx|xxxxx0000000|xxxxx0000000|xxxxx0000000|xxxxx0000000|x00000000000|x00000000000|x00000000000|x00000000000|x00000000000|x00000000000|xxxxxxxxxxxx|xxxxxxxxxxxx|xxxxxxxxxxxx|xxxxxxxxxxxx|xxxxxxxxxxxx', 'flat_trigger', 0),
 	(3, 'model_c', 4, 7, 0, 2, 'xxxxxxxxxxxx|xxxxxxxxxxxx|xxxxxxxxxxxx|xxxxxxxxxxxx|xxxxxxxxxxxx|xxxxx000000x|xxxxx000000x|xxxxx000000x|xxxxx000000x|xxxxx000000x|xxxxx000000x|xxxxxxxxxxxx|xxxxxxxxxxxx|xxxxxxxxxxxx|xxxxxxxxxxxx|xxxxxxxxxxxx', 'flat_trigger', 0),
@@ -5577,131 +7091,26 @@ INSERT INTO `room_model` (`id`, `model`, `door_x`, `door_y`, `door_z`, `door_dir
 	(89, 'model_s', 0, 3, 0, 2, 'xxxxxxx|x00000x|x00000x|000000x|x00000x|x00000x|x00000x|x00000x|xxxxxxx', 'flat_trigger', 0),
 	(90, 'emperors', 11, 31, 0, 0, 'xxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxx444xxxx4444xxxxxx|xxxx2x4444xxxx44444x2xxx|xxxx2x44444x4x44444x2xxx|xxxx2x4444444444444x2xxx|xxxx2x33xx33333xx33x2xxx|xxxx2222xx22222xx2222xxx|xxxx22222222222222222xxx|xxxx22222222222222222xxx|xxxx22222222222222222xxx|xxxx22222222222222222xxx|xxxx22222222222222222xxx|xxxx22222222222222222xxx|xxxx22222222222222222xxx|xxxx22222222222222222xxx|xxxx22xx222222222xx22xxx|xxxx22222222222222222xxx|xxxx22222222222222222xxx|xxxx22222222222222222xxx|xxxx22222222222222222xxx|xxxx22222222222222222xxx|xxxx22222222222222222xxx|xxxx22222222222222222xxx|xxxx22222xx22x2222222xxx|xxxxx2xx2xx22xxx2xx2xxxx|xxxxxxxxxxx11xxxxxxxxxxx|xxxxxxxxxxx00xxxxxxxxxxx|xxxxxxxxxxx00xxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxx', 'none', 0),
 	(91, 'beauty_salon1', 14, 3, 0, 1, 'xxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxx0xxxxxxxxx|xxxxxxx000000000000000xx|xxxxxx0000000000000000xx|xxxxx000000000000xxxxxxx|xxxx000000000000000000xx|xxx0000000000000000000xx|xxx0000000000000000000xx|xxx0000000000000000000xx|xxxxxxxxxxxxxxxx000000xx|xx0000000000000x000000xx|000000000000000x000000xx|000000000000000x000000xx|000000000000000x000000xx|00x000000000000x000000xx|00xxxxxxxxxxxxxx000000xx|00xxxxxxxxxxxxxx000000xx|00x0000000000000000000xx|00x0000000000000000000xx|00x0000000000000000000xx|0000000000000000000000xx|x000000000000000000000xx|xxx0000000000000000000xx', 'none', 0);
-/*!40000 ALTER TABLE `room_model` ENABLE KEYS */;
 
--- Dumping structure for table helios.room_models
-CREATE TABLE IF NOT EXISTS `room_models` (
-  `model` varchar(100) NOT NULL,
-  `door_x` int(11) NOT NULL,
-  `door_y` int(11) NOT NULL,
-  `door_z` double NOT NULL,
-  `door_dir` int(4) NOT NULL DEFAULT 2,
-  `heightmap` text NOT NULL,
-  `club_only` tinyint(1) NOT NULL DEFAULT 0,
-  PRIMARY KEY (`model`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+-- Dumping structure for table helios.room_rights
+DROP TABLE IF EXISTS `room_rights`;
+CREATE TABLE IF NOT EXISTS `room_rights` (
+  `avatar_id` int(11) NOT NULL,
+  `room_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Dumping data for table helios.room_models: ~96 rows (approximately)
-DELETE FROM `room_models`;
-/*!40000 ALTER TABLE `room_models` DISABLE KEYS */;
-INSERT INTO `room_models` (`model`, `door_x`, `door_y`, `door_z`, `door_dir`, `heightmap`, `club_only`) VALUES
-	('ballroom', 13, 6, 0, 4, 'xxxx4444444444444444444|xxxx4444444444444444444|xxxx4444444444444444444|xxxx33x2222444442222x33|xxxx2222222x00xx2222222|xxxx22222220000x2222222|xxxx11x0000x000x0000x11|xxxx0000000000000000000|11100000000000000000000|11100000000000000000000|11100000000000000000000|xxxx0000000000000000000|22210000000000000000000|22210000000000000000000|22210000000000000000000|xxxx0000000000000000000|11100000000000000000000|11100000000000000000000|11100000000000000000000|xxxxx000x11111111x0000x|xxxxxx00x1111x111x000xx|xxxxxxx0x11111111x00xxx|xxxxxxxxx11111111x0xxxx|xxxxxxxxx11111111xxxxxx', 0),
-	('bar_a', 5, 1, 7, 4, 'xxxx8888xxxxxxxxxxx|xxxx7777xxxxxxxxxxx|xxxx6666xxxxxxxxxxx|xxx6666666555555555|xxx6666666555555555|xxx6666666555555555|xxx6666666555555555|xxx6666666555555555|xxx6666666555555555|xxx6666666555555555|xxx6666666555xxxxxx|xxx6666666555555555|xxx5555555555555555|xxx5555555555555555|xxx5555555555555555|xxx5555555555555555|xxx5555555555xxxxxx|xxx5555555555555555|xxx5555555555555555|xxx5555555555555555|xxx5555555555555555|xxx5555555555555555|xxx5555555555xxxxxx|xxxx555555555555555|55xx555555555555555|55xx555555555555555|5555555555555555555|5555555555555555555|xxxxxxxx55555xxxxxx|xxxxxxxxx5555xxxxxx|xxxxxxxxx5555xxxxxx|xxxxxxxxx5555xxxxxx|xxxxxxxxx4444xxxxxx|xxxxxxxxx3333xxxxxx', 0),
-	('bar_b', 2, 12, 4, 2, 'xxxxx4xxxxxxxxxxxx|xxxx4444444xxxxxxx|xxxx4444444xxxxxxx|xxx444444444444444|xxx444444444444444|xxx444444444444444|xxx444444444444444|xxx444444444444444|xxx444444444444444|xxx444444444444444|654444444444444444|654444444444444444|654444444444444444|654444444444444444|xxx444444444444444|xxx444444444444444|xxx444444444444444|xxx444444444444444|xxx444444444444444|xxxx44444444444444|xxxx33444444444444|xxxx22444444444444|xxxx2222222222xx44|xxxx2222222222xx44|xxxxx222222222xxxx|xxxxxx22222222xxxx|xxxxxx22222222xxxx|xxxxxx22222222xxxx|xxxxxx22222222xxxx|xxxxxx22222222xxxx|xxxxxx22222222xxxx', 0),
-	('bb_lobby_1', 14, 19, 0, 0, 'xxx2222222222222222x|xxx2222222222222222x|xxx2222222222222222x|xxx2222222222222222x|xxx11111111111111111|11x11111111111111111|11x11111111111111111|11x11111111111111111|x1x11111111111111111|xxx11111111111111111|xxx11111111111111111|xxx11111111111111111|xxx11111111111111111|xxx11111111111111111|xxxxxxxxx00000000000|xxxxxxxxx00000000000|xxxxxxxxx00000000000|xxxxxxxxx00000000000|xxxxxxxxx00000000000|xxxxxxxxx00000000000|xxxxxxxxxxxxx000xxxx|xxxxxxxxxxxxx000xxxx|xxxxxxxxxxxxx000xxxx', 0),
-	('beauty_salon0', 4, 3, 0, 0, 'xxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxx|xxx0000000000000xxxxxxxx|xxx00000000000000xxxxxxx|xxxxxx000000000000xxxxxx|xxxxxxxxxxxxx0000xxxxxxx|xxxx0x0000x00000000xxxxx|xxx00xxxxxx0000000xxxxxx|xx000x000xx0000000xxxxxx|xx000xxxxx00000000xxxxxx|xx000x000000000000xxxxxx|xx000x000000000000xxxxxx|xx00xx000000000000xxxxxx|xx00xx00x0000000000xxxxx|xx00xx00x0000000000xxxxx|xx00xx0000000000000xxxxx|xx00xx0000000000000xxxxx|xx000x0xx0000000000xxxxx|xx000x0x00000000000xxxxx|xx000x0x00x00000000xxxxx|xx000x0x00000000000xxxxx|xx000x0x00x00000000xxxxx|xx000xx000000000000xxxxx|xx00000000000000000000xx|xx00000000000000000000xx|xxxxxx0000000000000000xx', 0),
-	('beauty_salon1', 14, 3, 0, 1, 'xxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxx0xxxxxxxxx|xxxxxxx000000000000000xx|xxxxxx0000000000000000xx|xxxxx000000000000xxxxxxx|xxxx000000000000000000xx|xxx0000000000000000000xx|xxx0000000000000000000xx|xxx0000000000000000000xx|xxxxxxxxxxxxxxxx000000xx|xx0000000000000x000000xx|000000000000000x000000xx|000000000000000x000000xx|000000000000000x000000xx|00x000000000000x000000xx|00xxxxxxxxxxxxxx000000xx|00xxxxxxxxxxxxxx000000xx|00x0000000000000000000xx|00x0000000000000000000xx|00x0000000000000000000xx|0000000000000000000000xx|x000000000000000000000xx|xxx0000000000000000000xx', 0),
-	('cafe', 30, 40, 0, 0, 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx000000xxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx0000000xxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxx00000xx00000000xxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxx000000000000000000xxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxx000000000000000000xxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxx000000000000000000xxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxx000000000000000000xxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxx00000000xxx0000000xxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxx00000000xxxx000000xxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxx00000000xxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxx0000000000000000xxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxx00000000000000000xxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxx00000000000000000xxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxx00000000000000000xxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxx00000000000000000xxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxx00000000000000000xxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx00000000xxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx0000000xxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx0000xxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx0000xxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx0000xxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx', 0),
-	('cafe_gold0', 9, 29, 0, 0, 'xxxxxxxxxx1111xxxxxxx|xxxxxxxxxx11111xxxxxx|xxxxxxxxxx111111xxxxx|xx111111111111111xxxx|x11111111111111111xxx|1111111111111111111xx|11111111111111111111x|111111111111111111111|111111111111111111111|1111111111111x1111111|1111111000000x1111111|1111111000000x1111111|1111111000000x1111111|1111111000000x1111111|1111111000000x1111111|1111111000000x1111111|1111111000000x1111111|1111111000000x1111111|1111111000000x1111111|1111111000000xxx00000|111111100000000000000|111111100000000000000|111111100000000000000|111111100000000xxxxx0|11111110000000xxxxxx0|11111110000000xxxxxx0|11111110000000xxxxxxx|x1111110000000xxxxxxx|xxxxxxxx0000000000xxx|xxxxxxxx000xxxxxxxxxx|xxxxxxxx000xxxxxxxxxx|xxxxxxxx000xxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxx', 0),
-	('chill', 22, 22, 0, 6, 'xxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxx00xxxxxxxx|xxxxxxxxxxx000000xxxxxxxx|xxxxxxxxxxx000000xxxxxxxx|xxxxxxxxxxxxxx000xxxxxxxx|xxxxxxxxxxxxxxxx0xxxxxxxx|xxxxxxxxx00000000xxxxxxxx|xxxxxxxx000000xxxxxxxxxxx|xxxxxxxx000000xxxxxxxxxxx|xxxxxxxx000000xxxxxxxxxxx|xxxxxxxx000000xxxxxxxxxxx|xxxxxxxx000000xxxxxxxxxxx|xxxxxxxx0000000xxxxxxxxxx|xxxxxxxx00000000xxxxxxxxx|xxxxxxxx0000000000xxxxxxx|xxxxxxxx0000000000xxxxxxx|xxxxxxxx0000000000xxxxxxx|xxxxxxxx0000000000xxxxxxx|xx000000000000xxxxxxxxxxx|xx000000000000000000000xx|xx000000000000000000000xx|xx000000000xx0000000000xx|xx000000000xxxxx000000000|xx000000000xxx0x000000000|xx00000x000xxx0x000000000|xx000000000xxxxx0000000xx|xx000000000000000000000xx|xx000000000000000000000xx|xx000000000000000000000xx|xx000000000000xxxxxxxxxxx', 0),
-	('cinema_a', 20, 27, 1, 0, 'xxxxxxx1xx11111111xxxxxx|xxx1111111111111111xxxxx|xxx111xxxx1111111111xxxx|xxxx2xxxxxxxxxxxxxxxxxxx|xx3x3x333311xxxxxxxxxx11|xx3333333311111111111111|xx3333333311111111111111|xx3333333311111111122111|xx3333333311x22222222111|xx3333333311x22222222111|xx3333333311xxxxxxxxx111|xx3333333311111111111111|xx3333333311111111111111|xx3333333311111111111111|xx3333333311111xxxx11111|xx3333333311111xxxx11111|xx3333333311111xxxx11111|xx3333333311111xxxx11111|xx3333333311111xxxx11111|xx3333333311111xxxx11111|xx3333333311111xxxx11111|333333332111111xxxx11111|333333332111111111111111|333333332111111111111111|333333332111111111111111|xx3333332111111111111111|xxxxxxxxxxxxxxxxxxx11111|xxxxxxxxxxxxxxxxxxx11111|xxxxxxxxxxxxxxxxxxx11111', 0),
-	('club_mammoth', 6, 16, 4, 2, 'xxxxxx4444444x4444xxxxxxxxxxxxx|xxxxxx4444444x444322xxxxxxxxxxx|xxxxxxxxxxxxxx444322xxxxxxxxxxx|x444444444444444442222xxxxxxxxx|4444444444444444442222xxxxxxxxx|4xxxxxxxxxxxxxxxxx2222xxxxxxxxx|4xxxxxxxxxx22222xx2222xxxxxxxxx|44xxxxxxxxx22222x2xxxxxxxxxxxxx|x4444444xxx22222x22xxxxxxxxxxxx|xx4444444xx22x22x222xxxxxxxxxxx|xxxxxxx444x22222xxxxxxxxxxxxxxx|xxxxxx444322222222211111111xxxx|xxxxxx444322222222211111111xxxx|xxxxxx444442222222211111111xxxx|xxx444444442222222211111111xxxx|xxx444444442222222211111111xxxx|xxx444444442222222211111111xxxx|xxx444444442222222211111111xxxx|xxxxxx4444422222222x1111111xxxx|xxxxxx4444422222222xxxxxxxxxxxx|xxxxxx4443222222222222222222xxx|xxxxxx4443xxxxxxx2xxxxx222xxxxx|xxxxxx444xxxxxxxxxxxxxxx22xxxxx|xxxxxx4xxxxxxxxxxxxx444422xxxxx|xxx4444xxxxxxxxxxxxx4444x2xxxxx|xxx566666666666666664444xxxxxxx|xxxx66666666666666664444xxxxxxx|xxxxxxx666666666666544xxxxxxxxx|xxxxxxx666666666666544xxxxxxxxx|xxxxxxx6666666666666xxxxxxxxxxx|xxxxxxx6666666666666xxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx', 0),
-	('cr_cafe', 20, 10, 0, 6, '0000000000000000000xx|x000000000000000000xx|xx00000000000000000xx|xx00000000000000000xx|xx00000000000000000xx|xxxx000000000000000xx|0000000000000000000xx|0000000000000000000xx|x000000000000000000xx|xx00000000000000000xx|xxxx00000000000000000|xxx000000000000000000|xxx0000000000000000xx|xxx0000000000000000xx|xx00000000000000000xx|xx00000000000000000xx|xx00000000000000000xx|xx00000000000000000xx|xx00000000000000000xx|xx00000000000000000xx', 0),
-	('cr_kitchen', 7, 21, 0, 0, 'X0XXXX000XXXX000X0X|X000000000000000000|X000000000000000000|X000000000000000XXX|X00XXXX00XXXX000XXX|X00XXXX00XXXX00XXXX|X00000000000000XXXX|X00000000000000XXXX|X00000000000000XXXX|X00XXXXXXXXXX00XXXX|X00XXXXXXXXXX00XXXX|X00XXXXXXXXXX000XXX|0000000000000000XXX|000000000000000XXXX|000000000000000XXXX|000XXX0000XXX00XXXX|000XXX0000XXX00XXXX|000000000000000XXXX|000000000000000XXXX|000000000000000XXXX|XXXXXXX00XXXXXXXXXX|XXXXXXX00XXXXXXXXXX|XXXXXXX00XXXXXXXXXX', 0),
-	('cr_staff', 3, 22, 0, 0, '00000000xxxxxxxx|0000000000000000|0000000000000000|000000000000xx00|0000000000000000|0000000000000000|0000000000000000|x000000000000000|0000000000000000|0000000000000000|0000000000000000|0000000000000000|x000000000000000|x000000000000000|x000000000000000|x000000000000000|x000000000000000|x000000000000000|x000000000000000|x000000000000000|xxx00xxxxxxxxxxx|xxx00xxxxxxxxxxx|xxx00xxxxxxxxxxx', 0),
-	('den', 3, 22, 0, 0, '00000000xxxxxxxx|0000000000000000|0000000000000000|000000000000xx00|0000000000000000|0000000000000000|0000000000000000|x000000000000000|0000000000000000|0000000000000000|0000000000000000|0000000000000000|x000000000000000|x000000000000000|x000000000000000|x000000000000000|x000000000000000|x000000000000000|x000000000000000|x000000000000000|xxx00xxxxxxxxxxx|xxx00xxxxxxxxxxx|xxx00xxxxxxxxxxx', 0),
-	('dusty_lounge', 14, 1, 2, 4, 'xxxxxxxxxxxxxx22xxxxxxxxxxxxx|xxxxxxxxxx222x222x2xxxxxxxxxx|xxxxxxx33322222222223xxxxxxx3|xxxxxxx33322222222223xxxxxxx3|xxxxxxx33322222222223x33333x3|xxxxxxx33322222222223x33333x3|xx111xx33322222222223xxxxxxx3|xx111xxx332222222222333333333|xx111xxxx32222222222333333333|xx111xxxxxx222222222333333333|xx111xxxxxxx1111111x333333333|xx111xxxxxxx1111111x222222222|xx111xxxxxx111111111111111111|xx111xxxxxx111111111111111111|11111xxxxxx111111111111111111|11111xxxxxx111111111111111111|11x11xxxxxx111111111111111111|11xxxxxxxxx11111111111111111x|x11xxxxxxxxx1111111x1111111xx|xx11xxxxxxx111111111111111xxx|xxx11xxxxxx11111111111111xxxx|xxxx11111111111111111111xxxxx|xxxxx11111111111111xxxxxxxxxx|xxxxxxxxxxx11111111xxxxxxxxxx|xxxxxxxxxxx11111111xxxxxxxxxx', 0),
-	('emperors', 11, 31, 0, 0, 'xxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxx444xxxx4444xxxxxx|xxxx2x4444xxxx44444x2xxx|xxxx2x44444x4x44444x2xxx|xxxx2x4444444444444x2xxx|xxxx2x33xx33333xx33x2xxx|xxxx2222xx22222xx2222xxx|xxxx22222222222222222xxx|xxxx22222222222222222xxx|xxxx22222222222222222xxx|xxxx22222222222222222xxx|xxxx22222222222222222xxx|xxxx22222222222222222xxx|xxxx22222222222222222xxx|xxxx22222222222222222xxx|xxxx22xx222222222xx22xxx|xxxx22222222222222222xxx|xxxx22222222222222222xxx|xxxx22222222222222222xxx|xxxx22222222222222222xxx|xxxx22222222222222222xxx|xxxx22222222222222222xxx|xxxx22222222222222222xxx|xxxx22222xx22x2222222xxx|xxxxx2xx2xx22xxx2xx2xxxx|xxxxxxxxxxx11xxxxxxxxxxx|xxxxxxxxxxx00xxxxxxxxxxx|xxxxxxxxxxx00xxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxx', 0),
-	('entryhall', 17, 18, 1, 0, 'xx11xxxx11xxxx11xxxx|x1111111111111111111|11111111111111111111|11111111111111111111|x1111111111111111111|x1111111111111111111|x1111111111111111111|x1111111111111111111|x1111111111111111111|x1111111111111111111|x1111111111111111111|x1111111111111111111|x1111111111111111111|x1111111111111111111|x1111111111111111111|x1111111111111111111|x1111111111111111111|x1111111111111111111|x1111111111111111111|x1111111111111111111|xxxxxxxxxxxxxxxxx11x', 0),
-	('floatinggarden', 2, 21, 5, 4, 'xxxxxxxxxxxxxxxx333333xxxxxxxxx|xxxxxxxxxxxxxxxx3xxxx3xxxxxxxxx|xxxxxxxxxxxxxxxx3xxxx3xxxxxxxxx|xxxxxxxxxxxxxxxx3xxxx3xxxxxxxxx|xxxxxxxxxxxxxxx223xxx33xxxxxxxx|xxxxxxxxxxxxxxx11xxx33333xxxxxx|xxxxxxxxxxxxxxxx11xx3333333xxxx|xxxxxxxxxxxxxxxx11xx33333333xxx|xxxxxxxxxxxxxxxxx11xxxxxxxx3xxx|xxxxxxxxxxxxxxxxxx11xxxx3333xxx|xxxxxxxxxxxxxxxxxxx1xxxx33333xx|xxxxxxxxxxxxxxxxxxx1xxx3333333x|555xxxxxxxxxxx1111111x333333333|555xxxxxxxxxxx21111111xxxxxx333|555xxxxxxxxxxx22111111111xxxxxx|555xxxxxxxxxxx222xxxxxxx111xxxx|555xxxxxxxxxxx22xxxxxxxxxx1xxxx|555xxxxxxxxxxx23333333333x111xx|555xxxxxxxx33333333333333x111xx|555xxxxxxxx333333x3333333x111xx|555xxxxxxxx33333333333333x111xx|555xxxxxxxx33x33333333333x111xx|555xxxxxxxx33x33x33333333x111xx|555xxxxxxxx33x33x33333333x111xx|5554333333333x333x3333333x111xx|x554333333xxxx33xxxxxxxxxx111xx|xxxxxxxxx3xxxx333221111111111xx|xxxxxxxxx3xxxx333221111111111xx|xxxxxxxxx33333333xx1111x11x11xx|xxxxxxxxx33333333111xxx11xxxxxx|xxxxxxxxxxxxxx33311xxxx11xxxxxx|xxxxxxxxxxxxxx33311xxxx11xxxxxx|xxxxxxxxxxxxxx333x1xxxx11xxxxxx|xxxxxxxxxxxxxx333x1xx111111xxxx|xxxxxxxxxxxxxx33311xx111111xxxx|xxxxxxxxxx333333311xx111111xxxx|xxxxxxxxxxx33333311xx111111xxxx|xxxxxxxxxxxxxxxx111xxxxxxxxxxxx|xxxxxxxxxxxxxxx111xxxxxxxxxxxxx', 0),
-	('floorlobby_a', 9, 21, 0, 0, 'XXXXXXXXXXXXXXXXXXXXXXXXXXX|XXXXXXXXXXXXXXXXXXXXXXXXXXX|XXX0000000000000000XXXXXXX0|XXX000000000000000000XXXX00|X00000000000000000000000000|X00000000000000000000000000|XXX000000000000000000000000|XXXXXXX00000000000000000000|XXX111100000011111111111111|XXX111100000011111111111111|XXX111100000011111111111111|XXX111100000011111111111111|XXX111100000011111111111111|XXX111100000011111111111111|XXX1XX100000011111111111111|XXX1XX100000011111111111111|XXX111100000011111111111111|XXX111100000011111111111111|XXX111100000011111111111111|XXXXXXXX0000XXXXXXXXXXXXXXX|XXXXXXXX0000XXXXXXXXXXXXXXX|XXXXXXXX0000XXXXXXXXXXXXXXX', 0),
-	('floorlobby_b', 9, 21, 0, 0, 'XXXXXXXXXXXXXXXXXXXXXXXXXXX|XXXXXXXXXXXXXXXXXXXXXXXXXXX|XXX0000000000000000XXXXXXX0|XXX000000000000000000XXXX00|X00000000000000000000000000|X00000000000000000000000000|XXX000000000000000000000000|XXXXXXX00000000000000000000|XXX111100000011111111111111|XXX111100000011111111111111|XXX111100000011111111111111|XXX111100000011111111111111|XXX111100000011111111111111|XXX111100000011111111111111|XXX1XX100000011111111111111|XXX1XX100000011111111111111|XXX111100000011111111111111|XXX111100000011111111111111|XXX111100000011111111111111|XXXXXXXX0000XXXXXXXXXXXXXXX|XXXXXXXX0000XXXXXXXXXXXXXXX|XXXXXXXX0000XXXXXXXXXXXXXXX', 0),
-	('floorlobby_c', 9, 21, 0, 0, 'XXXXXXXXXXXXXXXXXXXXXXXXXXX|XXXXXXXXXXXXXXXXXXXXXXXXXXX|XXX0000000000000000XXXXXXX0|XXX000000000000000000XXXX00|X00000000000000000000000000|X00000000000000000000000000|XXX000000000000000000000000|XXXXXXX00000000000000000000|XXX111100000011111111111111|XXX111100000011111111111111|XXX111100000011111111111111|XXX111100000011111111111111|XXX111100000011111111111111|XXX111100000011111111111111|XXX1XX100000011111111111111|XXX1XX100000011111111111111|XXX111100000011111111111111|XXX111100000011111111111111|XXX111100000011111111111111|XXXXXXXX0000XXXXXXXXXXXXXXX|XXXXXXXX0000XXXXXXXXXXXXXXX|XXXXXXXX0000XXXXXXXXXXXXXXX', 0),
-	('gardens', 2, 15, 0, 0, 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx0xxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx00xxxxxxxxxxxx|xxxxxxxxxxxxx0x00xxxxxxxxxxx0x000xxxxxxxxxxx|xxxxxxxxxxxx0000000000000000000000xxxxxxxxxx|xxxxxxxxxxx000000000000000000000000xxxxxxxxx|xxxxxxxxxxx0000000000000000000000000xxxxxxxx|xxxxxxxxxxx00000000000000000000000000xxxxxxx|xxxxxxxx000000000000000000000000000000xxxxxx|xxxxxxx00000000000000000000000000000000xxxxx|xxxxxxx000000000000000000000000000000000xxxx|xxxxxxx0000000000000000000000000000000000xxx|xxxxxxxxx000000000000000000000000000000000xx|00000000000000000000xx00000000000000000000xx|0000000000000000000xxxx00000000000xxxxxxx0xx|0000000000000000000xxxx00000000000x00000xxxx|xxxxx00x0000000000xxxxx0xxxxxx0000x0000000xx|xxxxx0000000000000xxxxx0xx000x0000x000000xxx|xxxxx0000000000000xxxxx0x000000000x00000xxxx|xxxxx000000x0000000xxxx0x000000000xxx00xxxxx|xxxxxxxx000x0000000xxx00xxx000000x0000xxxxxx|xxxxxxxx000x000000xxxx0x0000000000000xxxxxxx|xxxxxxxx000x000000011100000000000000xxxxxxxx|xxxxxxxx000x00000001110000000000000xxxxxxxxx|xxxxxxxxx00x0000000111x00000000x00xxxxxxxxxx|xxxxxxxxxx0x0000000xxx0000000xxxxxxxxxxxxxxx|xxxxxxxxxxxx000000xxxx0000000xxxxxxxxxxxxxxx|xxxxxxxxxxxx000000xxx00xxxxx00xxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxx0xxx0xx000x00xxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxx0xxx0x000000xxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxx0xxx0x00000xxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxx0xxxxx00xxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxx0xxxxx0xxxxxxxxxxxxxxxxxxxx', 0),
-	('gate_park', 17, 26, 0, 0, 'xxxxxxxxx222xx222222xxx22xxxxxxx|xxxxxxxxx222xx2222222xx22xxxxxxx|xxxxxxxxx22222222222222222xxxxxx|xxxxxxxxx22222222222222222xxxxxx|xxxxxxxxx22222222222222222xxxxxx|xxxxxxxxx22222x22222x22222xxxxxx|xxxxxxxxx11111x22222x11111xxxxxx|0000000xx00000x22222x00000xxxxxx|0000000xx00000000000000000xxxxxx|000000000000000000000000000xx00x|000000000000xxx00000xxx00000000x|000000000000xxx00000xxx00000000x|000000000000xxx00000xxx000000000|00000000000000000000000000000000|x0000000000000000000000000000000|xxx00000000000000000000000000000|xxxxx000000000000000000000000000|xxxxx000000000000000000000000000|xxxxx000000000000000000000000xxx|xxxxxx00000000000000000000000xxx|xxxxxxx000000000000000000000xxxx|xxxxxxxxxx00000000000000000xxxxx|xxxxxxxxxx0000000000000000xxxxxx|xxxxxxxxxx000000000000000xxxxxxx|xxxxxxxxxxxxx00000000000xxxxxxxx|xxxxxxxxxxxxxx000000000xxxxxxxxx|xxxxxxxxxxxxxxxx000xxxxxxxxxxxxx|xxxxxxxxxxxxxxxx000xxxxxxxxxxxxx|xxxxxxxxxxxxxxxx000xxxxxxxxxxxxx', 0),
-	('gate_park_2', 17, 23, 0, 0, 'xxxxxxxxxxx111111111111xxxxxxxxxxxx|xxxxxxxxxx11111111111111xxxxxxxxxxx|xxxxxxxxxx11111111111111xxxxxxxxxxx|xxxxxxxxxx11xxxx11xxxx11xxxxxxxxxxx|xxxxxxxxxx00xxxx00xxxx00xxxxxxxxxxx|xxxxxxx0000000000000000000xxxxxxxxx|xxxxxx000000000000000000000xxxxxxxx|xxxxx0000000000000000000x000xxxxxxx|xxxx00000000000000000000xx000xxxxxx|xxxx00000000000000000000xxx000xxxxx|xxxx00000000000000000000xxxx00xxxxx|000000000000000000000000000000xxxxx|0000000000000000000000000000000xxxx|000000000000000000000000000000xxxxx|000000000000000000000000000000xxxxx|000000000000000000000000000000xxxxx|xx00000000000000000000000000000000x|xxx000xxxx00000000000000xxxx0000000|xxx0000xxx00000000000000xxx00000000|xxxx0000xx00000000000000xx000000000|xxxxx0000x00000000000000x00000000xx|xxxxxx00000000000000000000000xxxxxx|xxxxxxx00000x000000000000000x0xxxxx|xxxxxxxx0000xxx0000xxx000000xxxxxxx|xxxxxxxxx000xxx0000xxx000000xxxxxxx|xxxxxxxxxxxxxxx0000xxx000000xxxxxxx|xxxxxxxxxxxxxxxx000xxx000000xxxxxxx|xxxxxxxxxxxxxxxxxxxxxx00000xxxxxxxx', 0),
-	('habburger', 22, 10, 0, 6, '22222222222222222222xxx|22222222222222222222xxx|22222222222222222222xxx|22222222222222222222xxx|xxxxxxxxxxxxxxxx1111xxx|xxxxxxxxxxxxxxxx0000xxx|xxx00000000000000000xxx|00000000000000000000xxx|00000000000000000000xxx|00000000000000000000000|00000000000000000000000|00000000000000000000xxx|00000000000000000000xxx|00000000000000000000xxx|xxx00000000000000000xxx', 0),
-	('hallA', 0, 0, 1, 4, '11xxxxxxxxxxxxxxx|11111111111111111|11111111111111111|11111111111111111|11111111111111111|11111111111111111|11111111111111111|11111111111111111|11111111111111111|11111111111111111|11111111111111111|11111111111111111|11111111111111111|11111111111111111|11111111111111111|11111111111111111|11111111111111111|11111111111111111', 0),
-	('hallB', 1, 0, 1, 4, 'x11xxxxxxxxxxxxxxxx|1111111111111111111|1111111111111111111|1111111111111111111|1111111111111111111|1111111111111111111|1111111111111111111|111111xxxxxxxxxxxxx|111111xxxxxxxxxxxxx|111111xxxxxxxxxxxxx|111111xxxxxxxxxxxxx|111111xxxxxxxxxxxxx|111111xxxxxxxxxxxxx|111111xxxxxxxxxxxxx|111111xxxxxxxxxxxxx|111111xxxxxxxxxxxxx|111111xxxxxxxxxxxxx|111111xxxxxxxxxxxxx|111111xxxxxxxxxxxxx|111111xxxxxxxxxxxxx|111111xxxxxxxxxxxxx', 0),
-	('hallC', 0, 0, 1, 4, '11xxxxxxxxxxxxxxx|11111111111111111|11111111111111111|11111111111111111|11111111111111111|11111111111111111|11111111111111111|11111111111111111|11111111111111111|11111111111111111|11111111111111111|11111111111111111|11111111111111111|11111111111111111|11111111111111111|11111111111111111|11111111111111111|11111111111111111', 0),
-	('hallD', 0, 0, 1, 4, '11xxxxxxxxxxxxxxx|11111111111111111|11111111111111111|11111111111111111|11111111111111111|11111111111111111|11111111111111111|11111111111111111|11111111111111111|11111111111111111|11111111111111111|11111111111111111|11111111111111111|11111111111111111|11111111111111111|11111111111111111|11111111111111111|11111111111111111', 0),
-	('hallway0', 2, 2, 0, 2, 'xxxx000000001111111111111111xxxx|xxxx000000001111111111111111xxxx|00000000000011111111111111111111|00000000000011111111111111111111|00000000000011111111111111111111|00000000000011111111111111111111|xxxx000000001111111111111111xxxx|xxxx0000000x1111111111111111xxxx|xxxxxxxxxxxxx1111111xxxxxxxxxxxx|xxxxxxxxxxxx11111111xxxxxxxxxxxx|xxxxxxxxxxxx11111111xxxxxxxxxxxx|xxxxxxxxxxxx11111111xxxxxxxxxxxx|xxxxxxxxxxxx11111111xxxxxxxxxxxx|xxxxxxxxxxxx11111111xxxxxxxxxxxx|xxxxxxxxxxxx11111111xxxxxxxxxxxx|xxxxxxxxxxxx11111111xxxxxxxxxxxx|xxxxxxxxxxxxxx1111xxxxxxxxxxxxxx|xxxxxxxxxxxxxx1111xxxxxxxxxxxxxx|xxxxxxxxxxxxxx1111xxxxxxxxxxxxxx|xxxxxxxxxxxxxx1111xxxxxxxxxxxxxx', 0),
-	('hallway1', 2, 14, 0, 2, 'xxxxxxxxxxxxxx0000xxxxxxxxxxxxxx|xxxxxxxxxxxxxx0000xxxxxxxxxxxxxx|xxxxxxxxxxxxxx0000xxxxxxxxxxxxxx|xxxxxxxxxxxxxx0000xxxxxxxxxxxxxx|xxxxxxxxxxxx0000000000000000xxxx|xxxxxxxxxxxx0000000000000000xxxx|xxxxxxxxxxxx00000000000000000000|xxxxxxxxxxxx00000000000000000000|xxxxxxxxxxxx00000000000000000000|xxxxxxxxxxxx00000000000000000000|xxxxxxxxxxxx0000000000000000xxxx|xxxxxxxxxxxx0000000000000000xxxx|xxxx1111111100000000xxxxxxxxxxxx|xxxx1111111100000000xxxxxxxxxxxx|11111111111100000000xxxxxxxxxxxx|11111111111100000000xxxxxxxxxxxx|11111111111100000000xxxxxxxxxxxx|11111111111100000000xxxxxxxxxxxx|xxxx1111111100000000xxxxxxxxxxxx|xxxx1111111100000000xxxxxxxxxxxx', 0),
-	('hallway10', 3, 23, 1, 1, 'xxxxxxxxxx00000000xxxx|xxxxxxxxxx00000000xxxx|xxxxxxxxxx00000000xxxx|xxxxxxxxxx00000000xxxx|xx1111xxxx0000xxxxxxxx|xx1111xxxx0000xxxxxxxx|xx1111xxxx0000xxxxxxxx|xx1111xxxx0000xxxxxxxx|11111111xx0000000000xx|11111111xx0000000000xx|11111111xx0000000000xx|11111111xx0000000000xx|11111111xxxxxxxx0000xx|11111111xxxxxxxx0000xx|11111111xxxxxxxx0000xx|11111111xxxxxxxx0000xx|1111111111111111000000|1111111111111111000000|1111111111111111000000|1111111111111111000000|1111111111111111000000|1111111111111111000000|1111111111111111000000|1111111111111111000000|xx1111xxxxxxxxxxxxxxxx|xx1111xxxxxxxxxxxxxxxx|xx1111xxxxxxxxxxxxxxxx|xx1111xxxxxxxxxxxxxxxx', 0),
-	('hallway11', 20, 3, 0, 6, 'xxxx1111111100000000xxxx|xxxx1111111100000000xxxx|111111111111000000000000|111111111111000000000000|111111111111000000000000|111111111111000000000000|xxxx1111111100000000xxxx|xxxx1111111100000000xxxx|xxxxxxxxxxxx000000000000|xxxxxxxxxxxx000000000000|xxxxxxxxxx00000000000000|xxxxxxxxxx00000000000000|xxxxxxxxxx00000000000000|xxxxxxxxxx00000000000000|xxxxxxxxxxxx000000000000|xxxxxxxxxxxx000000000000|xxxxxxxxxxxx000000000000|xxxxxxxxxxxx000000000000|xxxxxxxx000000000000xxxx|xxxxxxxx000000000000xxxx|xxxxxxxx000000000000xxxx|xxxxxxxx000000000000xxxx', 0),
-	('hallway2', 15, 2, 0, 4, 'xxxxxxxxxxxxxx000xxxxxxxxxxx|xxxxxxxxxxxxxx000xxxxxxxxxxx|xxxxxxxxxxxxxx000xxxxxxxxxxx|xxxxxxxxxxxxxx0000xxxxxxxxxx|xxxx11111111000000000000xxxx|xxxx11111111000000000000xxxx|1111111111110000000000000000|1111111111110000000000000000|1111111111110000000000000000|1111111111110000000000000000|xxxx11111111000000000000xxxx|xxxx11111111000000000000xxxx|xxxx11111111xxxx00000000xxxx|xxxx11111111xxxx00000000xxxx|xxxx11111111xxxx00000000xxxx|xxxx11111111xxxx00000000xxxx|xxxx11111111xxxx00000000xxxx|xxxx11111111xxxx00000000xxxx|xxxx11111111xxxx00000000xxxx|xxxx11111111xxxx00000000xxxx|xxxxxx1111xxxxxxxxxxxxxxxxxx|xxxxxx1111xxxxxxxxxxxxxxxxxx|xxxxxx1111xxxxxxxxxxxxxxxxxx|xxxxxx1111xxxxxxxxxxxxxxxxxx', 0),
-	('hallway3', 14, 21, 1, 0, 'xxxxxx1111xxxxxxxxxxxxxxxxxxxxxx|xxxxxx1111xxxxxxxxxxxxxxxxxxxxxx|xxxxxx1111xxxxxxxxxxxxxxxxxxxxxx|xxxxxx1111xxxxxxxxxxxxxxxxxxxxxx|xxxx111111111111111100000000xxxx|xxxx111111111111111100000000xxxx|11111111111111111111000000000000|11111111111111111111000000000000|11111111111111111111000000000000|11111111111111111111000000000000|xxxx111111111111111100000000xxxx|xxxx111111111111111100000000xxxx|xxxxxxxxxxxx11111111xxxxxxxxxxxx|xxxxxxxxxxxx11111111xxxxxxxxxxxx|xxxxxxxxxxxx11111111xxxxxxxxxxxx|xxxxxxxxxxxx11111111xxxxxxxxxxxx|xxxxxxxxxxxx11111111xxxxxxxxxxxx|xxxxxxxxxxxx11111111xxxxxxxxxxxx|xxxxxxxxxxxx11111111xxxxxxxxxxxx|xxxxxxxxxxxx11111111xxxxxxxxxxxx|xxxxxxxxxxxxxx1111xxxxxxxxxxxxxx|xxxxxxxxxxxxxx1111xxxxxxxxxxxxxx|xxxxxxxxxxxxxx1111xxxxxxxxxxxxxx|xxxxxxxxxxxxxx1111xxxxxxxxxxxxxx', 0),
-	('hallway4', 29, 3, 1, 6, 'xxxx000000001111111111111111xxxx|xxxx000000001111111111111111xxxx|00000000000011111111111111111111|00000000000011111111111111111111|00000000000011111111111111111111|00000000000011111111111111111111|xxxx000000001111111111111111xxxx|xxxx000000001111111111111111xxxx|xxxxxxxxxxxxxxxxxxxx11111111xxxx|xxxxxxxxxxxxxxxxxxxx11111111xxxx|xxxxxxxxxxxxxxxxxxxx11111111xxxx|xxxxxxxxxxxxxxxxxxxx11111111xxxx|xxxxxxxxxxxxxxxxxxxx11111111xxxx|xxxxxxxxxxxxxxxxxxxx11111111xxxx|xxxxxxxxxxxxxxxxxxxx11111111xxxx|xxxxxxxxxxxxxxxxxxxx11111111xxxx|xxxxxxxxxxxxxxxxxxxxxx1111xxxxxx|xxxxxxxxxxxxxxxxxxxxxx1111xxxxxx|xxxxxxxxxxxxxxxxxxxxxx1111xxxxxx|xxxxxxxxxxxxxxxxxxxxxx1111xxxxxx', 0),
-	('hallway5', 14, 2, 1, 4, 'xxxxxxxxxxxxxx11xxxxxx1111xx|xxxxxxxxxxxxxx111xxxxx1111xx|xxxxxxxxxxxxxx1111xxxx1111xx|xxxxxxxxxxxxxx1111xxxx1111xx|xxxxxxxxxxxx1111111111111111|xxxxxxxxxxxx1111111111111111|xxxxxxxxxxxx1111111111111111|xxxxxxxxxxxx1111111111111111|xxxxxxxxxxxx1111111111111111|xxxxxxxxxxxx1111111111111111|xxxxxxxxxxxx1111111111111111|xxxxxxxxxxxx1111111111111111|xxxx000000001111111111111111|xxxx000000001111111111111111|0000000000001111111111111111|0000000000001111111111111111|0000000000001111111111111111|0000000000001111111111111111|xxxx000000001111111111111111|xxxx0000000x1111111111111111|xxxxxxxxxxxx11111111xxxxxxxx|xxxxxxxxxxxx11111111xxxxxxxx|xxxxxxxxxxxx11111111xxxxxxxx|xxxxxxxxxxxx11111111xxxxxxxx|xxxxxxxxxxxx11111111xxxxxxxx|xxxxxxxxxxxx11111111xxxxxxxx|xxxxxxxxxxxx11111111xxxxxxxx|xxxxxxxxxxxx11111111xxxxxxxx', 0),
-	('hallway6', 1, 10, 1, 2, 'xxxx1111111111111111xxxx|xxxx1111111111111111xxxx|xxxx1111111111111111xxxx|xxxx1111111111111111xxxx|xxxx1111xxxxxxxxxxxxxxxx|xxxx1111xxxxxxxxxxxxxxxx|xxxx1111xxxxxxxxxxxxxxxx|xxxx1111xxxxxxxxxxxxxxxx|xxxx1111111100000000xxxx|xxxx1111111100000000xxxx|111111111111000000000000|111111111111000000000000|111111111111000000000000|111111111111000000000000|xxxx1111111100000000xxxx|xxxx1111111100000000xxxx|xxxxxxxx1111xxxxxxxxxxxx|xxxxxxxx1111xxxxxxxxxxxx|xxxxxxxx1111xxxxxxxxxxxx|xxxxxxxx1111xxxxxxxxxxxx|xxxxxxxx111111111111xxxx|xxxxxxxx111111111111xxxx|xxxxxxxx111111111111xxxx|xxxxxxxx111111111111xxxx', 0),
-	('hallway7', 7, 2, 1, 4, 'xxxxxx11xxxxxxxxxxxx|xxxxxx111xxxxxxxxxxx|xxxxxx1111xxxxxxxxxx|xxxxxx1111xxxxxxxxxx|xxxx11111111xxxxxxxx|xxxx11111111xxxxxxxx|xxxx111111111111xxxx|xxxx111111111111xxxx|xxxx111111111111xxxx|xxxx111111111111xxxx|xxxx11111111xxxxxxxx|xxxx11111111xxxxxxxx|xxxx11111111xxxxxxxx|xxxx11111111xxxxxxxx|xxxx11111111xxxxxxxx|xxxx11111111xxxxxxxx|xxxx11111111xxxxxxxx|xxxx11111111xxxxxxxx|xxxx11111111xxxxxxxx|xxxx11111111xxxxxxxx|xxxx000000000000xxxx|xxxx000000000000xxxx|00000000000000000000|00000000000000000000|00000000000000000000|00000000000000000000|xxxx000000000000xxxx|xxxx000000000000xxxx', 0),
-	('hallway8', 15, 3, 0, 4, 'xxxxxxxxxxxxxx00xxxx0000|xxxxxxxxxxxxxx000xxx0000|xxxxxxxxxxxxxx0000xx0000|xxxxxxxxxxxxxx0000xx0000|xxxx11111111000000000000|xxxx11111111000000000000|xxxx11111111000000000000|xxxx11111111000000000000|xxxx11111111000000000000|xxxx11111111000000000000|xxxx11111111000000000000|xxxx11111111000000000000|xxxx11111111xxxx00000000|xxxx11111111xxxx00000000|111111111111xxxx00000000|111111111111xxxx00000000|111111111111xxxx00000000|111111111111xxxx00000000|xxxx11111111xxxx00000000|xxxx11111111xxxx00000000|xxxxxxxxxxxxxxxxxx0000xx|xxxxxxxxxxxxxxxxxx0000xx|xxxxxxxxxxxxxxxxxx0000xx|xxxxxxxxxxxxxxxxxx0000xx', 0),
-	('hallway9', 21, 23, 0, 7, 'xxxxxxxxxxxxxx0000xxxxxxxxxxxxxx|xxxxxxxxxxxxxx0000xxxxxxxxxxxxxx|xxxxxxxxxxxxxx0000xxxxxxxxxxxxxx|xxxxxxxxxxxxxx0000xxxxxxxxxxxxxx|xxxxxxxxxxxx00000000xxxxxxxxxxxx|xxxxxxxxxxxx00000000xxxxxxxxxxxx|xxxxxxxxxxxx00000000xxxxxxxxxxxx|xxxxxxxxxxxx00000000xxxxxxxxxxxx|xxxxxxxxxxxx00000000xxxxxxxxxxxx|xxxxxxxxxxxx00000000xxxxxxxxxxxx|xxxxxxxxxxxx00000000xxxxxxxxxxxx|xxxxxxxxxxxx00000000xxxxxxxxxxxx|xxxx000000000000000000000000xxxx|xxxx000000000000000000000000xxxx|00000000000000000000000000000000|00000000000000000000000000000000|00000000000000000000000000000000|00000000000000000000000000000000|xxxx000000000000000000000000xxxx|xxxx000000000000000000000000xxxx|xxxxxxxxxxxx00000000xxxxxxxxxxxx|xxxxxxxxxxxx00000000xxxxxxxxxxxx|xxxxxxxxxxxx000000000000xxxxxxxx|xxxxxxxxxxxx000000000000xxxxxxxx|xxxxxxxxxxxx000000000000xxxxxxxx|xxxxxxxxxxxx000000000000xxxxxxxx|xxxxxxxxxxxx00000000xxxxxxxxxxxx|xxxxxxxxxxxx00000000xxxxxxxxxxxx|xxxxxxxxxxxxxx0000xxxxxxxxxxxxxx|xxxxxxxxxxxxxx0000xxxxxxxxxxxxxx|xxxxxxxxxxxxxx0000xxxxxxxxxxxxxx|xxxxxxxxxxxxxx0000xxxxxxxxxxxxxx', 0),
-	('ice_cafe', 17, 23, 0, 0, 'xx111111x000000000|xx111111x000000000|xx111111x000000000|xx111111x000000000|xx111111x000000000|xx111111x000000000|xx111111x000000000|xx1111111000000000|xx1111111000000000|111111111000000000|111111111000000000|111111111000000000|111111111000000000|111111111000000000|11111111x000000000|11111111x000000000|xx111111x000000000|xx111111x000000000|xx111111x000000000|xx111111x000000000|xx111111x000000000|xx111111x000000000|xx1111110000000000|xx1111111000000000|xx1111111000000000|xx1111111000000000', 0),
-	('library', 20, 3, 1, 4, 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxx11111xx1xx1x111111x|xxxxxxxxxxxx111111xx1xx11111111x|xx111xxxxxxx111111xx1xx11111111x|xx111xxxxxxx1111111111111111111x|xx111xxxxxxx1111111111111111111x|xx111xxxxxxx1111111111111111111x|xx111xxxxxxx1111111111111xxxxxxx|xx111xxxxxx11111111111111111111x|xx111xxxxxx11111111111111111111x|xx111xxxxxx11111111111111111111x|xx111xxxxxx11111111111111xxxxxxx|xx111xxxxxxxx111111111111111111x|xx111xx11111x111111111111111111x|xx111xx11111x111111111111111111x|xx111xxxxx11x11111111x111xxxxxxx|xx111xxxxxxxx11111111xx11111111x|xx111xxx1111111111111xxx1111111x|xx111xxx1111111111111xxxx111111x|xxx111xx1111111111x11xxxx000000x|xxxxx1111xx1111111x11xxxx000000x|xxxxxxxxxxxx111111x11xxxx000000x|xxxxxxxxxxxx11xx11x11xxxx000000x|xxxxxxxxxxxx11xx11x11xxxx000000x|xxxxxxxxxxxx11xx11x11xxxx000000x|xxxxxxxxxxxx11xx11x11xxxx000000x|xxxxxxxxxxxx11xx11x11xxxx000000x|xxxxxxxxxxxx11xx11x111xxx000000x|xxxxxxxxxxxxxxxxxxxx11xxx000000x|xxxxxxxxxxxxxxxxxxxx11xxxxxxxxxx|xxxxxxxxxxxxxxxxxxxx22222xxxxxxx|xxxxxxxxxxxxxxxxxxxx22222xxxxxxx|xxxxxxxxxxxxxxxxxxxx22222xxxxxxx|xxxxxxxxxxxxxxxxxxxx22222xxxxxxx|xxxxxxxxxxxxxxxxxxxx22222xxxxxxx|xxxxxxxxxxxxxxxxxxxx22222xxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx', 0),
-	('lobby_a', 12, 27, 1, 0, 'XXXXXXXXX77777777777XXXXX|XXXXXXXXX777777777777XXXX|XXXXXXXXX777777777766XXXX|XXXXXXXXX777777777755XXXX|XX333333333333333334433XX|XX333333333333333333333XX|XX333333333333333333333XX|33333333333333333333333XX|333333XXXXXXX3333333333XX|333333XXXXXXX2222222222XX|333333XXXXXXX2222222222XX|XX3333XXXXXXX2222222222XX|XX3333XXXXXXX222222221111|XX3333XXXXXXX111111111111|333333XXXXXXX111111111111|3333333222211111111111111|3333333222211111111111111|3333333222211111111111111|XX33333222211111111111111|XX33333222211111111111111|XX3333322221111111XXXXXXX|XXXXXXX22221111111XXXXXXX|XXXXXXX22221111111XXXXXXX|XXXXXXX22221111111XXXXXXX|XXXXXXX22221111111XXXXXXX|XXXXXXX222X1111111XXXXXXX|XXXXXXX222X1111111XXXXXXX|XXXXXXXXXXXX11XXXXXXXXXXX|XXXXXXXXXXXX11XXXXXXXXXXX|XXXXXXXXXXXX11XXXXXXXXXXX|XXXXXXXXXXXX11XXXXXXXXXXX', 0),
-	('malja_bar_a', 4, 24, 1, 0, 'xxxxxxxxxxxxxx44|xxxx444444444444|xxxx444444444444|xxxx444444444444|xxxx444444444444|xxxx444444444444|xxxxxxxxxxxxx333|1111111111111222|1111111111111111|1111111111111111|1111111111111111|1111111111111111|1111111111111111|1111111111111111|1111111111111111|1111111111111111|1111111111111111|1111111111111111|1111111111111111|111111111xxxxxxx|xxx11111xxxxxxxx|11111111xxxxxxxx|11111111xxxxxxxx|11111111xxxxxxxx|11111111xxxxxxxx', 0),
-	('malja_bar_b', 4, 24, 3, 0, '6666333333333333|6666333333333333|6666333333333333|7766333333333333|7755333333333333|8855333333332223|8844333311111111|9944333311111111|9933333311111111|9933333311111111|9933333311111111|9933333311111111|9933333311111111|9933333311111111|9933333211111111|9933333211111111|9933333211111111|9933333311111111|99333333xxxxxxxx|99333333xxxxxxxx|xxx33333xxxxxxxx|xxx33333xxxxxxxx|3xx33333xxxxxxxx|xxx33333xxxxxxxx|xxx33333xxxxxxxx|xxx33333xxxxxxxx', 0),
-	('md_a', 3, 4, 7, 2, 'xxxxxxxx77xxxxxxxxxxxxxxxx|xxxxxxxx77xxxxxxxxxxxxxxxx|xxxxxx77777x77xxxxxxxxxxxx|xxx77777777777xxx44xxxxxxx|77777777777777xx444444444x|777777777777777xx44444444x|xxx777777777777xx44444444x|xxxx7777777777xxx44444444x|7777777777777777744448444x|7777777777777x4x744448444x|777777777777x444444448444x|7777777777774444444448444x|7777777777774444444448444x|777777777777x444444448444x|7777777777777x44444448444x|xxx777777777777x444448444x|xxx7777777777777444448444x|xxx7777777777777444448444x|xxx777777777777x444448444x|xxx77777777777x4444444444x|xxxx777777777444444444444x|xxxxxxxxxxxxxxxxxxxxxxxxxx', 0),
-	('model_a', 3, 5, 0, 2, 'xxxxxxxxxxxx|xxxx00000000|xxxx00000000|xxxx00000000|xxxx00000000|xxxx00000000|xxxx00000000|xxxx00000000|xxxx00000000|xxxx00000000|xxxx00000000|xxxx00000000|xxxx00000000|xxxx00000000|xxxxxxxxxxxx|xxxxxxxxxxxx', 0),
-	('model_b', 0, 5, 0, 2, 'xxxxxxxxxxxx|xxxxx0000000|xxxxx0000000|xxxxx0000000|xxxxx0000000|x00000000000|x00000000000|x00000000000|x00000000000|x00000000000|x00000000000|xxxxxxxxxxxx|xxxxxxxxxxxx|xxxxxxxxxxxx|xxxxxxxxxxxx|xxxxxxxxxxxx', 0),
-	('model_c', 4, 7, 0, 2, 'xxxxxxxxxxxx|xxxxxxxxxxxx|xxxxxxxxxxxx|xxxxxxxxxxxx|xxxxxxxxxxxx|xxxxx000000x|xxxxx000000x|xxxxx000000x|xxxxx000000x|xxxxx000000x|xxxxx000000x|xxxxxxxxxxxx|xxxxxxxxxxxx|xxxxxxxxxxxx|xxxxxxxxxxxx|xxxxxxxxxxxx', 0),
-	('model_d', 4, 7, 0, 2, 'xxxxxxxxxxxx|xxxxx000000x|xxxxx000000x|xxxxx000000x|xxxxx000000x|xxxxx000000x|xxxxx000000x|xxxxx000000x|xxxxx000000x|xxxxx000000x|xxxxx000000x|xxxxx000000x|xxxxx000000x|xxxxx000000x|xxxxx000000x|xxxxxxxxxxxx', 0),
-	('model_e', 1, 5, 0, 2, 'xxxxxxxxxxxx|xxxxxxxxxxxx|xxxxxxxxxxxx|xx0000000000|xx0000000000|xx0000000000|xx0000000000|xx0000000000|xx0000000000|xx0000000000|xx0000000000|xxxxxxxxxxxx|xxxxxxxxxxxx|xxxxxxxxxxxx|xxxxxxxxxxxx|xxxxxxxxxxxx', 0),
-	('model_f', 2, 5, 0, 2, 'xxxxxxxxxxxx|xxxxxxx0000x|xxxxxxx0000x|xxx00000000x|xxx00000000x|xxx00000000x|xxx00000000x|x0000000000x|x0000000000x|x0000000000x|x0000000000x|xxxxxxxxxxxx|xxxxxxxxxxxx|xxxxxxxxxxxx|xxxxxxxxxxxx|xxxxxxxxxxxx', 0),
-	('model_g', 1, 7, 1, 2, 'xxxxxxxxxxxx|xxxxxxxxxxxx|xxxxxxx00000|xxxxxxx00000|xxxxxxx00000|xx1111000000|xx1111000000|xx1111000000|xx1111000000|xx1111000000|xxxxxxx00000|xxxxxxx00000|xxxxxxx00000|xxxxxxxxxxxx|xxxxxxxxxxxx|xxxxxxxxxxxx|xxxxxxxxxxxx', 1),
-	('model_h', 4, 4, 1, 2, 'xxxxxxxxxxxx|xxxxxxxxxxxx|xxxxx111111x|xxxxx111111x|xxxxx111111x|xxxxx111111x|xxxxx111111x|xxxxx000000x|xxxxx000000x|xxx00000000x|xxx00000000x|xxx00000000x|xxx00000000x|xxxxxxxxxxxx|xxxxxxxxxxxx|xxxxxxxxxxxx', 1),
-	('model_i', 0, 10, 0, 2, 'xxxxxxxxxxxxxxxxx|x0000000000000000|x0000000000000000|x0000000000000000|x0000000000000000|x0000000000000000|x0000000000000000|x0000000000000000|x0000000000000000|x0000000000000000|x0000000000000000|x0000000000000000|x0000000000000000|x0000000000000000|x0000000000000000|x0000000000000000|x0000000000000000|x0000000000000000|x0000000000000000|x0000000000000000|x0000000000000000|x0000000000000000|x0000000000000000|x0000000000000000|x0000000000000000|x0000000000000000|x0000000000000000|xxxxxxxxxxxxxxxxx', 0),
-	('model_j', 0, 10, 0, 2, 'xxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxx0000000000|xxxxxxxxxxx0000000000|xxxxxxxxxxx0000000000|xxxxxxxxxxx0000000000|xxxxxxxxxxx0000000000|xxxxxxxxxxx0000000000|x00000000000000000000|x00000000000000000000|x00000000000000000000|x00000000000000000000|x00000000000000000000|x00000000000000000000|x00000000000000000000|x00000000000000000000|x00000000000000000000|x00000000000000000000|x0000000000xxxxxxxxxx|x0000000000xxxxxxxxxx|x0000000000xxxxxxxxxx|x0000000000xxxxxxxxxx|x0000000000xxxxxxxxxx|x0000000000xxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxx', 0),
-	('model_k', 0, 13, 0, 2, 'xxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxx00000000|xxxxxxxxxxxxxxxxx00000000|xxxxxxxxxxxxxxxxx00000000|xxxxxxxxxxxxxxxxx00000000|xxxxxxxxx0000000000000000|xxxxxxxxx0000000000000000|xxxxxxxxx0000000000000000|xxxxxxxxx0000000000000000|x000000000000000000000000|x000000000000000000000000|x000000000000000000000000|x000000000000000000000000|x000000000000000000000000|x000000000000000000000000|x000000000000000000000000|x000000000000000000000000|xxxxxxxxx0000000000000000|xxxxxxxxx0000000000000000|xxxxxxxxx0000000000000000|xxxxxxxxx0000000000000000|xxxxxxxxx0000000000000000|xxxxxxxxx0000000000000000|xxxxxxxxx0000000000000000|xxxxxxxxx0000000000000000|xxxxxxxxx0000000000000000|xxxxxxxxx0000000000000000|xxxxxxxxxxxxxxxxxxxxxxxxx', 0),
-	('model_l', 0, 16, 0, 2, 'xxxxxxxxxxxxxxxxxxxxx|x00000000000000000000|x00000000000000000000|x00000000000000000000|x00000000000000000000|x00000000000000000000|x00000000000000000000|x00000000000000000000|x00000000000000000000|x00000000xxxx00000000|x00000000xxxx00000000|x00000000xxxx00000000|x00000000xxxx00000000|x00000000xxxx00000000|x00000000xxxx00000000|x00000000xxxx00000000|x00000000xxxx00000000|x00000000xxxx00000000|x00000000xxxx00000000|x00000000xxxx00000000|x00000000xxxx00000000|xxxxxxxxxxxxxxxxxxxxx', 0),
-	('model_m', 0, 15, 0, 2, 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxx00000000xxxxxxxxxx|xxxxxxxxxxx00000000xxxxxxxxxx|xxxxxxxxxxx00000000xxxxxxxxxx|xxxxxxxxxxx00000000xxxxxxxxxx|xxxxxxxxxxx00000000xxxxxxxxxx|xxxxxxxxxxx00000000xxxxxxxxxx|xxxxxxxxxxx00000000xxxxxxxxxx|xxxxxxxxxxx00000000xxxxxxxxxx|xxxxxxxxxxx00000000xxxxxxxxxx|xxxxxxxxxxx00000000xxxxxxxxxx|x0000000000000000000000000000|x0000000000000000000000000000|x0000000000000000000000000000|x0000000000000000000000000000|x0000000000000000000000000000|x0000000000000000000000000000|x0000000000000000000000000000|x0000000000000000000000000000|xxxxxxxxxxx00000000xxxxxxxxxx|xxxxxxxxxxx00000000xxxxxxxxxx|xxxxxxxxxxx00000000xxxxxxxxxx|xxxxxxxxxxx00000000xxxxxxxxxx|xxxxxxxxxxx00000000xxxxxxxxxx|xxxxxxxxxxx00000000xxxxxxxxxx|xxxxxxxxxxx00000000xxxxxxxxxx|xxxxxxxxxxx00000000xxxxxxxxxx|xxxxxxxxxxx00000000xxxxxxxxxx|xxxxxxxxxxx00000000xxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxx', 0),
-	('model_n', 0, 16, 0, 2, 'xxxxxxxxxxxxxxxxxxxxx|x00000000000000000000|x00000000000000000000|x00000000000000000000|x00000000000000000000|x00000000000000000000|x00000000000000000000|x000000xxxxxxxx000000|x000000x000000x000000|x000000x000000x000000|x000000x000000x000000|x000000x000000x000000|x000000x000000x000000|x000000x000000x000000|x000000xxxxxxxx000000|x00000000000000000000|x00000000000000000000|x00000000000000000000|x00000000000000000000|x00000000000000000000|x00000000000000000000|xxxxxxxxxxxxxxxxxxxxx', 0),
-	('model_o', 0, 18, 1, 2, 'xxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxx11111111xxxx|xxxxxxxxxxxxx11111111xxxx|xxxxxxxxxxxxx11111111xxxx|xxxxxxxxxxxxx11111111xxxx|xxxxxxxxxxxxx11111111xxxx|xxxxxxxxxxxxx11111111xxxx|xxxxxxxxxxxxx11111111xxxx|xxxxxxxxxxxxx00000000xxxx|xxxxxxxxx0000000000000000|xxxxxxxxx0000000000000000|xxxxxxxxx0000000000000000|xxxxxxxxx0000000000000000|xxxxxxxxx0000000000000000|xxxxxxxxx0000000000000000|x111111100000000000000000|x111111100000000000000000|x111111100000000000000000|x111111100000000000000000|x111111100000000000000000|x111111100000000000000000|x111111100000000000000000|x111111100000000000000000|xxxxxxxxx0000000000000000|xxxxxxxxx0000000000000000|xxxxxxxxx0000000000000000|xxxxxxxxx0000000000000000|xxxxxxxxxxxxxxxxxxxxxxxxx', 1),
-	('model_p', 0, 23, 2, 2, 'xxxxxxxxxxxxxxxxxxx|xxxxxxx222222222222|xxxxxxx222222222222|xxxxxxx222222222222|xxxxxxx222222222222|xxxxxxx222222222222|xxxxxxx222222222222|xxxxxxx22222222xxxx|xxxxxxx11111111xxxx|x222221111111111111|x222221111111111111|x222221111111111111|x222221111111111111|x222221111111111111|x222221111111111111|x222221111111111111|x222221111111111111|x2222xx11111111xxxx|x2222xx00000000xxxx|x2222xx000000000000|x2222xx000000000000|x2222xx000000000000|x2222xx000000000000|22222xx000000000000|x2222xx000000000000|xxxxxxxxxxxxxxxxxxx', 1),
-	('model_q', 10, 4, 2, 2, 'xxxxxxxxxxxxxxxxxxx|xxxxxxxxxxx22222222|xxxxxxxxxxx22222222|xxxxxxxxxxx22222222|xxxxxxxxxxx22222222|xxxxxxxxxxx22222222|xxxxxxxxxxx22222222|x222222222222222222|x222222222222222222|x222222222222222222|x222222222222222222|x222222222222222222|x222222222222222222|x2222xxxxxxxxxxxxxx|x2222xxxxxxxxxxxxxx|x2222211111xx000000|x222221111110000000|x222221111110000000|x2222211111xx000000|xx22xxx1111xxxxxxxx|xx11xxx1111xxxxxxxx|x1111xx1111xx000000|x1111xx111110000000|x1111xx111110000000|x1111xx1111xx000000|xxxxxxxxxxxxxxxxxxx', 1),
-	('model_r', 10, 4, 3, 2, 'xxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxx33333333333333|xxxxxxxxxxx33333333333333|xxxxxxxxxxx33333333333333|xxxxxxxxxx333333333333333|xxxxxxxxxxx33333333333333|xxxxxxxxxxx33333333333333|xxxxxxx333333333333333333|xxxxxxx333333333333333333|xxxxxxx333333333333333333|xxxxxxx333333333333333333|xxxxxxx333333333333333333|xxxxxxx333333333333333333|x4444433333xxxxxxxxxxxxxx|x4444433333xxxxxxxxxxxxxx|x44444333333222xx000000xx|x44444333333222xx000000xx|xxx44xxxxxxxx22xx000000xx|xxx33xxxxxxxx11xx000000xx|xxx33322222211110000000xx|xxx33322222211110000000xx|xxxxxxxxxxxxxxxxx000000xx|xxxxxxxxxxxxxxxxx000000xx|xxxxxxxxxxxxxxxxx000000xx|xxxxxxxxxxxxxxxxx000000xx|xxxxxxxxxxxxxxxxxxxxxxxxx', 1),
-	('model_t', 0, 3, 2, 2, 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxx|x222222222222222222222222222x|x222222222222222222222222222x|2222222222222222222222222222x|x222222222222222222222222222x|x2222xxxxxx222222xxxxxxx2222x|x2222xxxxxx111111xxxxxxx2222x|x2222xx111111111111111xx2222x|x2222xx111111111111111xx2222x|x2222xx11xxx1111xxxx11xx2222x|x2222xx11xxx0000xxxx11xx2222x|x22222111x00000000xx11xx2222x|x22222111x00000000xx11xx2222x|x22222111x00000000xx11xx2222x|x22222111x00000000xx11xx2222x|x22222111x00000000xx11xx2222x|x22222111x00000000xx11xx2222x|x2222xx11xxxxxxxxxxx11xx2222x|x2222xx11xxxxxxxxxxx11xx2222x|x2222xx111111111111111xx2222x|x2222xx111111111111111xx2222x|x2222xxxxxxxxxxxxxxxxxxx2222x|x2222xxxxxxxxxxxxxxxxxxx2222x|x222222222222222222222222222x|x222222222222222222222222222x|x222222222222222222222222222x|x222222222222222222222222222x|xxxxxxxxxxxxxxxxxxxxxxxxxxxxx', 1),
-	('model_u', 0, 17, 1, 2, 'xxxxxxxxxxxxxxxxxxxxxxxx|x1111100000000000000000x|x1111100000000000000000x|x1111100000000000000000x|x1111100000000000000000x|x1111100000000000000000x|x1111100000000000000000x|x1111100000000000000000x|x1111100000000000000000x|x1111100000000000000000x|x1111100000000000000000x|x1111100000000000000000x|x1111100000000000000000x|x1111100000000000000000x|x1111100000000000000000x|x1111100000000000000000x|x1111100000000000000000x|11111100000000000000000x|x1111100000000000000000x|x1111100000000000000000x|x1111100000000000000000x|x1111100000000000000000x|x1111100000000000000000x|x1111100000000000000000x|x1111100000000000000000x|x1111100000000000000000x|x1111100000000000000000x|x1111100000000000000000x|x1111100000000000000000x|x1111100000000000000000x|x1111100000000000000000x|x1111100000000000000000x|x1111100000000000000000x|x1111100000000000000000x|x1111100000000000000000x|xxxxxxxxxxxxxxxxxxxxxxxx', 1),
-	('model_v', 0, 3, 2, 2, 'xxxxxxxxxxxxxxxxxxxx|x222221111111111111x|x222221111111111111x|2222221111111111111x|x222221111111111111x|x222221111111111111x|x222221111111111111x|xxxxxxxx1111xxxxxxxx|xxxxxxxx0000xxxxxxxx|x000000x0000x000000x|x000000x0000x000000x|x00000000000x000000x|x00000000000x000000x|x000000000000000000x|x000000000000000000x|xxxxxxxx00000000000x|x000000x00000000000x|x000000x0000xxxxxxxx|x00000000000x000000x|x00000000000x000000x|x00000000000x000000x|x00000000000x000000x|xxxxxxxx0000x000000x|x000000x0000x000000x|x000000x0000x000000x|x000000000000000000x|x000000000000000000x|x000000000000000000x|x000000000000000000x|xxxxxxxxxxxxxxxxxxxx', 1),
-	('model_w', 0, 3, 2, 2, 'xxxxxxxxxxxxxxxxxxxxxxxxxxx|x2222xx1111111111xx11111111|x2222xx1111111111xx11111111|222222111111111111111111111|x22222111111111111111111111|x22222111111111111111111111|x22222111111111111111111111|x2222xx1111111111xx11111111|x2222xx1111111111xx11111111|x2222xx1111111111xxxx1111xx|x2222xx1111111111xxxx0000xx|xxxxxxx1111111111xx00000000|xxxxxxx1111111111xx00000000|x22222111111111111000000000|x22222111111111111000000000|x22222111111111111000000000|x22222111111111111000000000|x2222xx1111111111xx00000000|x2222xx1111111111xx00000000|x2222xxxx1111xxxxxxxxxxxxxx|x2222xxxx0000xxxxxxxxxxxxxx|x2222x0000000000xxxxxxxxxxx|x2222x0000000000xxxxxxxxxxx|x2222x0000000000xxxxxxxxxxx|x2222x0000000000xxxxxxxxxxx|x2222x0000000000xxxxxxxxxxx|x2222x0000000000xxxxxxxxxxx', 1),
-	('model_x', 0, 12, 0, 2, 'xxxxxxxxxxxxxxxxxxxx|x000000000000000000x|x000000000000000000x|x000000000000000000x|x000000000000000000x|x000000000000000000x|x000000000000000000x|xxx00xxx0000xxx00xxx|x000000x0000x000000x|x000000x0000x000000x|x000000x0000x000000x|x000000x0000x000000x|0000000x0000x000000x|x000000x0000x000000x|x000000x0000x000000x|x000000x0000x000000x|x000000x0000x000000x|x000000x0000x000000x|x000000xxxxxx000000x|x000000000000000000x|x000000000000000000x|x000000000000000000x|x000000000000000000x|x000000000000000000x|x000000000000000000x|xxxxxxxxxxxxxxxxxxxx', 1),
-	('model_y', 0, 3, 0, 2, 'xxxxxxxxxxxxxxxxxxxxxxxxxxxx|x00000000xx0000000000xx0000x|x00000000xx0000000000xx0000x|000000000xx0000000000xx0000x|x00000000xx0000000000xx0000x|x00000000xx0000xx0000xx0000x|x00000000xx0000xx0000xx0000x|x00000000xx0000xx0000000000x|x00000000xx0000xx0000000000x|xxxxx0000xx0000xx0000000000x|xxxxx0000xx0000xx0000000000x|xxxxx0000xx0000xxxxxxxxxxxxx|xxxxx0000xx0000xxxxxxxxxxxxx|x00000000xx0000000000000000x|x00000000xx0000000000000000x|x00000000xx0000000000000000x|x00000000xx0000000000000000x|x0000xxxxxxxxxxxxxxxxxx0000x|x0000xxxxxxxxxxxxxxxxxx0000x|x00000000000000000000000000x|x00000000000000000000000000x|x00000000000000000000000000x|x00000000000000000000000000x|xxxxxxxxxxxxxxxxxxxxxxxxxxxx', 1),
-	('model_z', 0, 9, 0, 2, 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxx00000000000000000000|xxxxxxxxxxx00000000000000000000|xxxxxxxxxxx00000000000000000000|x00000000xx00000000000000000000|x00000000xx00000000000000000000|x00000000xx00000000000000000000|x00000000xx00000000000000000000|x00000000xx00000000000000000000|000000000xx00000000000000000000|x00000000xx00000000000000000000|x00000000xx00000000000000000000|x00000000xx00000000000000000000|x00000000xx00000000000000000000|x00000000xx00000000000000000000|x00000000xx00000000000000000000|xxxxxxxxxxx00000000000000000000|xxxxxxxxxxx00000000000000000000|xxxxxxxxxxx00000000000000000000|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx', 1),
-	('netcafe', 22, 12, 0, 6, 'xxxxx1111xxxxxxxxxxx1xxxx|xxxxx1111111111111111xxxx|xxxxx1111111111111111xxxx|xxxxx1111111111111111xxxx|xxxxxxxx0000000000000xxxx|111111100000000000000xxxx|111111100000000000000xxxx|111111100000000000000xxxx|xxxx11100000000000000xxxx|x1xx11100000000000000xxxx|x1xx11100000000000000xxxx|x1xx111000000000000000000|x1xx111000000000000000000|xxxx111000000000000000000|xxxx11100000000000000xxxx|xxxx1110000000xx11111xxxx|xxxxx111110000x111111xxxx|xxxxxx111100001111111xxxx|xxxxxx111100001111111xxxx|xxxxxx111100001111111xxxx|xxxxxx111100001111111xxxx|xxxxxx111100001111111xxxx|xxxxxx111100001111111xxxx|xxxxx1111100001111111xxxx', 0),
-	('newbie_lobby', 2, 11, 0, 2, 'xxxxxxxxxxxxxxxx000000|xxxxx0xxxxxxxxxx000000|xxxxx00000000xxx000000|xxxxx000000000xx000000|0000000000000000000000|0000000000000000000000|0000000000000000000000|0000000000000000000000|0000000000000000000000|xxxxx000000000000000xx|xxxxx000000000000000xx|x0000000000000000000xx|x0000000000000000xxxxx|xxxxxx00000000000xxxxx|xxxxxxx0000000000xxxxx|xxxxxxxx000000000xxxxx|xxxxxxxx000000000xxxxx|xxxxxxxx000000000xxxxx|xxxxxxxx000000000xxxxx|xxxxxxxx000000000xxxxx|xxxxxxxx000000000xxxxx|xxxxxx00000000000xxxxx|xxxxxx00000000000xxxxx|xxxxxx00000000000xxxxx|xxxxxx00000000000xxxxx|xxxxxx00000000000xxxxx|xxxxx000000000000xxxxx|xxxxx000000000000xxxxx', 0),
-	('old_skool0', 2, 1, 0, 4, 'xx0xxxxxxxxxxxxxx|0000000xxx00000xx|0000000x0000000xx|0000000xxxxxxxxxx|0000000000000000x|0000000000000000x|0000000000000000x|0000000000000000x|0000000000000000x|0000000000000000x|0000000000000000x|0000000000000000x|0000000000000000x|0000000000000000x|0000000000000000x|0000000000000000x|0000000000000000x|0000000000000000x|00000000000000000|0000000000000000x|0000000000000000x|0000000000000000x|0000000000000000x|0000000000000000x|0000000000000000x', 0),
-	('old_skool1', 1, 7, 6, 2, 'x6666666665432100|x6666666665432100|x6600000000000x00|x6600000000000000|x6600000000000000|x6600000000000000|x660000000000x000|666000000000x1111|x66000000000xx111|x66000000000x1111|x66000000000x1111|x55000000000x1111|x44000000000x1111|x33000000000x1111|x22000000000xx111|x11x00000000x1111|x00000000000x1111|x00000000000xx111', 0),
-	('orient', 32, 20, 1, 6, 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxx00000000xxxxxxxxxxxx|xxxxxxxxxxxxxx1000000000xxxxxxxxxxxx|xxxxxxxxxxxxxx1xxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxx1xxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxx1xxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxx1xxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxx1xxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxx1xxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxx1xxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxx1xx000x000xx111x111xxx|xxxxxxxxxxxxxx1xx000x000xxxxxx1111xx|xxxxxxxxxxxxxx1xx000x000x111111111xx|xxxxxxxxxxxxxx1xx000x000x111111111xx|xxx111111111111xx000x000x111111111xx|xxx1xxxxxxxxxxxxx000x000x111111111xx|xxx1x1111111111000000000x111111111xx|xxx1x1111111111000000000xx1111111xxx|xxx1x11xxxxxx11000000000xx1111111100|xxx111xxxxxxx11000000000011111111100|xxx111xxxxxxx11000000000011111111100|xxxxx1xxxxxxx11000000000011111111100|xxxxx11xxxxxx11000000000xx1111111100|xxxxx1111111111000000000xx1111111xxx|xxxxx1111111111xx000x000x111111111xx|xxxxxxxxxxxxxxxxx000x000x111111111xx|xxxxxxxxxxxxxxxxx000x000x111111111xx|xxxxxxxxxxxxxxxxx000x000x111111111xx|xxxxxxxxxxxxxxxxx000x000x111111111xx|xxxxxxxxxxxxxxxxx000x00xx11xxxx111xx|xxxxxxxxxxxxxxxxxxxxxxxxxx11111111xx', 0),
-	('park_a', 2, 15, 0, 0, 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx0xxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx00xxxxxxxxxxxx|xxxxxxxxxxxxx0x00xxxxxxxxxxx0x000xxxxxxxxxxx|xxxxxxxxxxxx0000000000000000000000xxxxxxxxxx|xxxxxxxxxxx000000000000000000000000xxxxxxxxx|xxxxxxxxxxx0000000000000000000000000xxxxxxxx|xxxxxxxxxxx00000000000000000000000000xxxxxxx|xxxxxxxx000000000000000000000000000000xxxxxx|xxxxxxx00000000000000000000000000000000xxxxx|xxxxxxx000000000000000000000000000000000xxxx|xxxxxxx0000000000000000000000000000000000xxx|xxxxxxxxx000000000000000000000000000000000xx|00000000000000000000xx00000000000000000000xx|0000000000000000000xxxx00000000000xxxxxxx0xx|0000000000000000000xxxx00000000000x00000xxxx|xxxxx00x0000000000xxxxx0xxxxxx0000x0000000xx|xxxxx0000000000000xxxxx0xx000x0000x000000xxx|xxxxx0000000000000xxxxx0x000000000x00000xxxx|xxxxx000000x0000000xxxx0x000000000xxx00xxxxx|xxxxxxxx000x0000000xxx00xxx000000x0000xxxxxx|xxxxxxxx000x000000xxxx0x0000000000000xxxxxxx|xxxxxxxx000x000000011100000000000000xxxxxxxx|xxxxxxxx000x00000001110000000000000xxxxxxxxx|xxxxxxxxx00x0000000111x00000000x00xxxxxxxxxx|xxxxxxxxxx0x0000000xxx0000000xxxxxxxxxxxxxxx|xxxxxxxxxxxx000000xxxx0000000xxxxxxxxxxxxxxx|xxxxxxxxxxxx000000xxx00xxxxx00xxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxx0xxx0xx000x00xxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxx0xxx0x000000xxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxx0xxx0x00000xxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxx0xxxxx00xxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxx0xxxxx0xxxxxxxxxxxxxxxxxxxx', 0),
-	('park_b', 11, 2, 0, 6, '0000x0000000|0000xx000000|000000000000|00000000000x|000000000000|00x0000x0000', 0),
-	('picnic', 16, 5, 2, 4, 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xx22222xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|22xxxxxxxxxxxxx22xxxxxxxxxxxxxxxxxxxxx|2222222222222222222x222222222222222222|22222222222222222222222222222222222222|22222222222222222222222222222222222222|22222222222222222222222222222222222222|22222222222xxx222222222222222222222222|2222222222xx33x22222222222222222222222|222222222xx3333x2222222222222222222222|222222222x333333x222222222222222222222|222222222x333333x222222222222222222222|2222222222x3332x2222222222222222222222|22222222222x33x22222222222222222222222|22222222222222222222222222222222222222|22222222222222222222222222222222222222|22222222222222222222222222222222222222|22222222222222222222222222222222222222|22222222222222222222222222222222222222|22222222222222222222222222222222222222|22222222x22222xxxx22222222222222222222|22222222222222xxxx22222222222222222222|22222222222222xxx222222222222222222222|22222222222222222222222222222222222222|22222222222222222222222222222222222222|22222222222222222222222222222222222222|22222222222222222222222222222222222222|22222222222222222222222222222222222222|22222222222222222222222222222222222222|22222222222222222222222222222222222222|22222222222222222222222222222222222222|22222222222222222222222222222222222222|22222222222222222222222222222222222222|22222222222222222222222222222222222222|22222222222222222222222222222222222222|22222222222222222222222222222222222222|22222222222222222222222222222222222222|22222222222222222222222222222222222222|22222222222222222222222222222222222222|22222222222222222222222222222222222222|22222222222222222222222222222222222222', 0),
-	('pizza', 5, 27, 1, 0, 'xxxxxxxxx0000000|x11111x1xx000000|11xxxxx111x00000|11x1111111xx0000|11x1111111100000|xxx1111111100000|1111111111100000|1111111111100000|1111111111100000|1111111111100000|1111111111100000|1111111111100000|1111111111100000|1111111111100000|1111111111100000|1111111111100000|1111111111100000|11111111111xxxxx|1111111111xxxxxx|1111111111111111|1111111111111111|1111111111111111|1111111111111111|1111111111111111|1111111111111111|11xx11xx11111111|xxxx11xxxxxxxxxx|xxxx11xxxxxxxxxx', 0),
-	('pool_a', 2, 25, 7, 2, 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxx7xxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxx777xxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxx7777777xxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxx77777777xxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxx77777777xxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxx777777777xxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxx7xxx777777xxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxx7x777777777xxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxx7xxx77777777xxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxx7x777777777x7xxxxxxxxxxxxxxx|xxxxxxxxxxxxxxx7xxx7777777777xxxxxxxxxxxxxx|xxxxxxxxxxxxxxx777777777777xxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxx77777777777x2111xxxxxxxxxxxx|xxxxxxxxxxxxxxx7777777777x221111xxxxxxxxxxx|xxxxxxxxx7777777777777777x2211111xxxxxxxxxx|xxxxxxxxx7777777777777777x22211111xxxxxxxxx|xxxxxxxxx7777777777777777x222211111xxxxxxxx|xxxxxx77777777777777777777x222211111xxxxxxx|xxxxxx7777777xx777777777777x222211111xxxxxx|xxxxxx7777777xx77777777777772222111111xxxxx|xxxxxx777777777777777777777x22221111111xxxx|xx7777777777777777777777x322222211111111xxx|77777777777777777777777x33222222111111111xx|7777777777777777777777x333222222211111111xx|xx7777777777777777777x333322222222111111xxx|xx7777777777777777777333332222222221111xxxx|xx777xxx777777777777733333222222222211xxxxx|xx777x7x77777777777773333322222222222xxxxxx|xx777x7x7777777777777x33332222222222xxxxxxx|xxx77x7x7777777777777xx333222222222xxxxxxxx|xxxx77777777777777777xxx3222222222xxxxxxxxx|xxxxx777777777777777777xx22222222xxxxxxxxxx|xxxxxx777777777777777777x2222222xxxxxxxxxxx|xxxxxxx777777777777777777222222xxxxxxxxxxxx|xxxxxxxx7777777777777777722222xxxxxxxxxxxxx|xxxxxxxxx77777777777777772222xxxxxxxxxxxxxx|xxxxxxxxxx777777777777777222xxxxxxxxxxxxxxx|xxxxxxxxxxx77777777777777x2xxxxxxxxxxxxxxxx|xxxxxxxxxxxx77777777777777xxxxxxxxxxxxxxxxx|xxxxxxxxxxxxx777777777777xxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxx7777777777xxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxx77777777xxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxx777777xxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxx7777xxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxx77xxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx', 0),
-	('pool_b', 9, 21, 7, 1, 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx7xxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx777xxxxxxxxxxx|xxxxxxxxxxxxxxxxxx8888888x7xxx77777xxxxxxxxxx|xxxxxxxxxxxxxxxxxx8888888x7xxx777777xxxxxxxxx|xxxxxxxxxxxxxxxx88xxxxx77x7x777777777xxxxxxxx|xxxxxxxxxxxxxxxx88x7777777777777777777xxxxxxx|xxxxxxxxxxxxxxxx88x77777777777777777777xxxxxx|xxxxxxxxxxxxxx9988x77777777777777777777xxxxxx|xxxxxxxxxxxxxx9988x7777777777777777777x00xxxx|xxxxxxxxxxxxxx9988x777777777777777777x0000xxx|xxxxxxxxxxxxxx9988x7777777x0000000000000000xx|xxxxxxxxxxxxxx9988x777777x000000000000000000x|7777777777xxxx9988777777x0x0000000000000000xx|x7777777777xxx998877777x000x00000000000000xxx|xx7777777777xx99887777x00000x000000000000xxxx|xxx7777777777x9988777x0000000x0000000000xxxxx|xxxx777777777x777777x00000000x000000000xxxxxx|xxxxx777777777777777000000000x00000000xxxxxxx|xxxxxx77777777777777000000000x0000000xxxxxxxx|xxxxxxx777777x7777770000000000xxxx00xxxxxxxxx|xxxxxxxx77777777777xx0000000000000xxxxxxxxxxx|xxxxxxxxx777777110000x000000000000xxxxxxxxxxx|xxxxxxxxxx7x77x1100000x0000000000xxxxxxxxxxxx|xxxxxxxxxxx777x11000000x00000000xxxxxxxxxxxxx|xxxxxxxxxxxx771110000000x000000xxxxxxxxxxxxxx|xxxxxxxxxxxxx111100000000x0000xxxxxxxxxxxxxxx|xxxxxxxxxxxxxx11100000000x000xxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxx1100000000x00xxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxx110000000x0xxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxx110000000xxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxx1100000xxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxx11000xxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxx110xxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxx1xxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx', 0),
-	('pub_a', 15, 25, 0, 0, 'xxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxx2222211111xxx|xxxxxxxxx2222222211111xxx|xxxxxxxxx2222222211111xxx|xxxxxxxxx2222222211111xxx|xxxxxxxxx2222222222111xxx|xxxxxxxxx2222222222111xxx|xxxxxxxxx2222222222000xxx|xxxxxxxxx2222222222000xxx|xxxxxxxxx2222222222000xxx|xxxxxxxxx2222222222000xxx|x333333332222222222000xxx|x333333332222222222000xxx|x333333332222222222000xxx|x333333332222222222000xxx|x333333332222222222000xxx|x333332222222222222000xxx|x333332222222222222000xxx|x333332222222222222000xxx|x333332222222222222000xxx|x333333332222222222000xxx|xxxxx31111112222222000xxx|xxxxx31111111000000000xxx|xxxxx31111111000000000xxx|xxxxx31111111000000000xxx|xxxxx31111111000000000xxx|xxxxxxxxxxxxxxx00xxxxxxxx|xxxxxxxxxxxxxxx00xxxxxxxx|xxxxxxxxxxxxxxx00xxxxxxxx|xxxxxxxxxxxxxxx00xxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxx', 0),
-	('rooftop', 17, 12, 4, 0, '44xxxxxxxxxxxxxxxxxx|444xxxxxxxxxxx444444|4444xxxxxxxxxx444444|44444xxxx4xxxx444444|444444xxx44xxx444444|44444444444444444444|44444444444444444444|44444444444444444444|44444444xx44xx44xx44|44444444xx44xx44xx44|44444444444444444444|44444444444444444444|44444444444444444444|x444444x444444xx4444|x444444x444444xx333x|x444444x444444xx222x|x444444x444444xx11xx|x444444x444444xxxxxx', 0),
-	('rooftop_2', 4, 11, 0, 0, 'x0000x000|xxxxxx000|000000000|000000000|000000000|000000000|000000000|000000000|000000000|000000000|xxx000xxx|xxx000xxx', 0),
-	('snowwar_lobby_1', 41, 36, 1, 0, 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx11111xx1xxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx11111xx1111xxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxx111111xxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxx1111111111111111xxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxx1111111111111111xxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxx1111111111111111xxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxx1111111111111111xxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxx1111111111111111xxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxx1111111111111111xxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxx1111111111111111xxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxx1111111111111111xxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxx1111111111111111xxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxx1111111111111111xxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxx1111111111111111xxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxx111111111111111xxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxx1111111111111111xxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxx1111111111111111xxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxx1111111111111111xxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxx111111111111111xxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxx1111x1111111111xxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx', 0),
-	('space_cafe', 21, 17, 1, 0, 'x3333x333211111xxxxxxxxx|x3333x333211111xx3333333|xxxxxx333211111xx3333333|33333333xx11111xx3333333|33333333xx11111xx3333333|33x333xxxx11111xx3333333|xxx222xxx111111xx3333333|22222222xx11111xx3333333|22222222xxx1111xx3333333|22222222xxxx1111x2222222|22222222xxxx1111x1111111|22222222xxxx111111111111|22222222xxxx111111111111|xxx222xxxxx1111111111111|xxxx33xxxx11111111111111|xxx333321111111111111111|xxx333321111111111111111|xxx333321111111111111111|xxxxxxxxxxxxx1111xxxx11x|xxxxxxxxxxxxx0000xxxx11x|xxxxxxxxxx0000000xxxx11x|xxxxxxxxxx0000000xxxxxxx|xxxxxxxxxx0000000xxxxxxx|xxxxxxxxxx0000000xxxxxxx|xxxxxxxxxx0000000xxxxxxx|xxxxxxxxxx0000000xxxxxxx', 0),
-	('sport', 0, 0, 1, 2, '111222222222222222x2222|x11222222222222222x2222|x11222222222222222x2222|xx1x2222222222222211111|x11xx222222222222211111|x11xx222222x22222211111|x11xx222222x222222x1111|x11xx222222x222222x1111|x11xx2222222222222x1111|x11xxxxxxxxxxxxxxxx1111|x1111111111111111111111|x1111111111111111111111|x1111111111111111111111|x1111111111111111111111|xxxx1111111111111x1111x|111x1111111111111x1111x|111x1111111111111x1111x|111x1111111111111x1111x|111x11111xxxxxxxxxxxxxx|x11x1111xxxxxxxxxxxxxxx|xxxx111xxxxxxxxxxxxxxxx', 0),
-	('star_lounge', 36, 35, 0, 6, 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxx2222x4444442222xxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxx22222x444x32222xxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxx22222xx4xx22222xxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxx222222222222222xxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxx222222222222222xxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxx222222222222222xxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxx222222222222222xxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxx222222222222222xxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxx222222222222222xxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxx22222222222222211111xxxxxxxxx|xxxxxxxxxxxxxxxxxxxxx22222222222222211111xxxxxxxxx|xxxxxxxxxxxxxxxxxxxxx22222222222222211111xxxxxxxxx|xxxxxxxxxxxxxxxxxxxxx22222222222222211111xxxxxxxxx|xxxxxxxxxxxxxxxxxxxxx22222222222222222111xxxxxxxxx|xxxxxxxxxxxxxxxxxxxxx22222222222222222111xxxxxxxxx|xxxxxxxxxxxxxxxx3333x22222222222222xxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxx3333x22222222222222xxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxx3333x22222222221111xxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxx3333xx2x22222220000xxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxx333333332222222000000xxxxxxxxxxxxx|xxxxxxxxxxxxxxxx333333332222222x0000000xxxxxxxxxxx|xxxxxxxxxxxxxxxxx33333332222222x0000000xxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxx222222000000xxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx', 0),
-	('sunset_cafe', 34, 40, 0, 0, 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx000000xxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx0000000xxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxx00000xx00000000xxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxx000000000000000000xxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxx000000000000000000xxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxx000000000000000000xxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxx000000000000000000xxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxx00000000xxx0000000xxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxx00000000xxxx000000xxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxx00000000xxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxx0000000000000000xxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxx00000000000000000xxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxx00000000000000000xxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxx00000000000000000xxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxx00000000000000000xxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxx00000000000000000xxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx00000000xxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx0000000xxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx0000xxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx0000xxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx0000xxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx', 0),
-	('sun_terrace', 9, 17, 0, 2, 'xxxxxx21000000000xxxxxxxx|xxxxxx3xxx000xx000xxxxxxx|xxxxxx4xxx000xxx000xxxxxx|xxxxxx44xx000x00x000xxxxx|xxxxxx44xx0000xx00000xxxx|xxxxxx44xx000000000000xxx|xxxxxx44xx0000000000000xx|xxxxxxx4xxxxxxx00000000xx|xxxxxxx4xxxxxxx0000000xxx|xxxxxx444432222xxx00xxxxx|xxxxxx444432222x0000000xx|xxxxxx444432222x0000000xx|xxxxxx44400x222x0000000xx|xxxxxx444000x11x0000000xx|xxxxxx444000000x0000000xx|xxxxxx444000000x0000000xx|xxxxxx440000000000000000x|xxxxxx4400000000000000000|x8876x444000000x000000000|x8xx6x444000000x000000000|x9xx6x444000000x000000000|999x65444000000x000000000|999xxx444xxxxxxxxxx000000|999xxx444xxxxxxxxxxx00000|999xxx333xxxxxxxxxxxx0000|999xxx222222222222222x000|xxxxxx222222222222222xx00|xxxxxx222222222222222xxx0|xxxxxx222222222222222xxxx|xxxxxxx22222222222222xxxx|xxxxxxxx2222222222222xxxx', 0),
-	('tearoom', 21, 19, 1, 6, 'xxxxxxxxxxxxxxxxxxxxxx|xxxxxxxx3333x33333333x|333333xx3333x33333333x|3333333x3333x33333333x|3333333x3333x33333333x|3333333xxxxxx33333333x|333333333333333333333x|333333333333333333333x|333333333333333333333x|333333333333333333333x|33333333222x333333333x|33333333222x333333333x|33333333222x333333333x|33333333222x333333333x|33333333111x333333333x|33333333111x333333333x|33333333111x333333333x|xxxxxxxx111xxxxxxxxxxx|11111111111111111111xx|1111111111111111111111|1111111111111111111111|11111111111111111111xx', 0),
-	('theater', 20, 27, 0, 0, 'XXXXXXXXXXXXXXXXXXXXXXX|XXXXXXXXXXXXXXXXXXXXXXX|XXXXXXXXXXXXXXXXXXXXXXX|XXXXXXXXXXXXXXXXXXXXXXX|XXXXXXXXXXXXXXXXXXXXXXX|XXXXXXXXXXXXXXXXXXXXXXX|XXXXXXX111111111XXXXXXX|XXXXXXX11111111100000XX|XXXX00X11111111100000XX|XXXX00x11111111100000XX|4XXX00X11111111100000XX|4440000XXXXXXXXX00000XX|444000000000000000000XX|4XX000000000000000000XX|4XX0000000000000000000X|44400000000000000000000|44400000000000000000000|44X0000000000000000O000|44X11111111111111111000|44X11111111111111111000|33X11111111111111111000|22X11111111111111111000|22X11111111111111111000|22X11111111111111111000|22X11111111111111111000|22X11111111111111111000|22211111111111111111000|22211111111111111111000|XXXXXXXXXXXXXXXXXXXX00X|XXXXXXXXXXXXXXXXXXXX00X', 0),
-	('tv_studio', 16, 27, 4, 6, 'xxxxxxxxxxxxxxxxxxxx|xxxxx0x00000xxxxxxxx|xxxxx0x000000xxxxxxx|xxxxx0x000000xxxxxxx|xxxxx0x0xxx00000xx0x|xx0000x000000000xx00|xx00xxx000000000xx00|xxxxx00000000000xx00|x000000000000x000000|x0000000000000000000|x0000000000000000x00|00000000000000000x00|x000x000000000000x00|x0000000000000000x00|x0000000000000000x00|000x0000000000000000|000x0000000000000000|00000000000000xxx000|x0000000000000000000|xx00000000000000000x|xxx000000000000000xx|xxxxxxxxx1111xxxx0xx|xxxxxxxxx2222xxxxxxx|xxxxxxxxx3333xxxxxxx|xxxxxx44x4444x444xxx|xxxxx444444444444xxx|xxxxxx44444444444444|xxxxx4444x4444444444|xxxxx4444x4444444444|xxxxx4444x4444444xxx|xxxxx444444444444xxx|xxxxx444444444444xxx|xxxxxx44444444444xxx', 0);
-/*!40000 ALTER TABLE `room_models` ENABLE KEYS */;
+-- Dumping data for table helios.room_rights: ~0 rows (approximately)
+DELETE FROM `room_rights`;
 
 -- Dumping structure for table helios.server_settings
+DROP TABLE IF EXISTS `server_settings`;
 CREATE TABLE IF NOT EXISTS `server_settings` (
   `setting` text NOT NULL,
   `value` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Dumping data for table helios.server_settings: ~10 rows (approximately)
+-- Dumping data for table helios.server_settings: ~12 rows (approximately)
 DELETE FROM `server_settings`;
-/*!40000 ALTER TABLE `server_settings` DISABLE KEYS */;
 INSERT INTO `server_settings` (`setting`, `value`) VALUES
 	('catalogue.subscription.page', '63'),
 	('club.gift.interval', '1'),
@@ -5712,10 +7121,12 @@ INSERT INTO `server_settings` (`setting`, `value`) VALUES
 	('max.friends.vip', '1100'),
 	('max.rooms.allowed', '100'),
 	('max.rooms.allowed.subscribed', '200'),
-	('timer.speech.bubble', '15');
-/*!40000 ALTER TABLE `server_settings` ENABLE KEYS */;
+	('timer.speech.bubble', '15'),
+	('site.name', 'Habbo'),
+	('site.static.content.url', '');
 
 -- Dumping structure for table helios.site_articles
+DROP TABLE IF EXISTS `site_articles`;
 CREATE TABLE IF NOT EXISTS `site_articles` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(64) DEFAULT 'Undefined Title',
@@ -5731,34 +7142,31 @@ CREATE TABLE IF NOT EXISTS `site_articles` (
   `views` int(11) DEFAULT 0,
   `created_at` datetime NOT NULL DEFAULT current_timestamp(),
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Dumping data for table helios.site_articles: ~0 rows (approximately)
 DELETE FROM `site_articles`;
-/*!40000 ALTER TABLE `site_articles` DISABLE KEYS */;
-/*!40000 ALTER TABLE `site_articles` ENABLE KEYS */;
 
 -- Dumping structure for table helios.site_articles_categories
+DROP TABLE IF EXISTS `site_articles_categories`;
 CREATE TABLE IF NOT EXISTS `site_articles_categories` (
   `article_id` int(11) NOT NULL,
   `category_id` int(11) NOT NULL,
   KEY `article_id` (`article_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Dumping data for table helios.site_articles_categories: ~0 rows (approximately)
 DELETE FROM `site_articles_categories`;
-/*!40000 ALTER TABLE `site_articles_categories` DISABLE KEYS */;
-/*!40000 ALTER TABLE `site_articles_categories` ENABLE KEYS */;
 
 -- Dumping structure for table helios.subscription_gifts
+DROP TABLE IF EXISTS `subscription_gifts`;
 CREATE TABLE IF NOT EXISTS `subscription_gifts` (
   `sale_code` varchar(255) NOT NULL,
   `duration_requirement` int(11) NOT NULL DEFAULT 1
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Dumping data for table helios.subscription_gifts: ~22 rows (approximately)
 DELETE FROM `subscription_gifts`;
-/*!40000 ALTER TABLE `subscription_gifts` DISABLE KEYS */;
 INSERT INTO `subscription_gifts` (`sale_code`, `duration_requirement`) VALUES
 	('hcamme', 2),
 	('hc_tv', 1),
@@ -5782,77 +7190,67 @@ INSERT INTO `subscription_gifts` (`sale_code`, `duration_requirement`) VALUES
 	('hc_frplc', 21),
 	('mocchamaster', 4),
 	('hc_crpt', 5);
-/*!40000 ALTER TABLE `subscription_gifts` ENABLE KEYS */;
 
 -- Dumping structure for table helios.tags
+DROP TABLE IF EXISTS `tags`;
 CREATE TABLE IF NOT EXISTS `tags` (
-  `user_id` int(11) DEFAULT NULL,
+  `avatar_id` int(11) DEFAULT NULL,
   `room_id` int(11) DEFAULT NULL,
   `text` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Dumping data for table helios.tags: ~4 rows (approximately)
 DELETE FROM `tags`;
-/*!40000 ALTER TABLE `tags` DISABLE KEYS */;
-INSERT INTO `tags` (`user_id`, `room_id`, `text`) VALUES
+INSERT INTO `tags` (`avatar_id`, `room_id`, `text`) VALUES
 	(1, 1, 'cum'),
 	(1, 2, 'horseshit'),
 	(2, 3, 'piss'),
 	(2, 1, 'cum');
-/*!40000 ALTER TABLE `tags` ENABLE KEYS */;
 
 -- Dumping structure for table helios.user
+DROP TABLE IF EXISTS `user`;
 CREATE TABLE IF NOT EXISTS `user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `username` varchar(50) NOT NULL,
-  `password` varchar(100) NOT NULL,
   `email` varchar(2500) NOT NULL,
+  `password` varchar(100) NOT NULL,
   `birthday` varchar(2500) NOT NULL,
-  `figure` text NOT NULL DEFAULT 'hd-180-1.hr-100-61.ch-210-66.lg-270-82.sh-290-80',
-  `sex` varchar(1) NOT NULL DEFAULT 'M',
-  `rank` int(11) NOT NULL DEFAULT 1,
-  `credits` int(11) NOT NULL DEFAULT 0,
-  `motto` text NOT NULL DEFAULT '',
+  `direct_mail` tinyint(4) NOT NULL DEFAULT 0,
   `join_date` datetime NOT NULL DEFAULT current_timestamp(),
   `last_online` datetime NOT NULL DEFAULT current_timestamp(),
-  UNIQUE KEY `id` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
+  UNIQUE KEY `id` (`id`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC;
 
 -- Dumping data for table helios.user: ~0 rows (approximately)
 DELETE FROM `user`;
-/*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` (`id`, `username`, `password`, `email`, `birthday`, `figure`, `sex`, `rank`, `credits`, `motto`, `join_date`, `last_online`) VALUES
-	(1, 'Quackster', '123', 'test@test.com', '01.01.1991', 'hd-180-1.hr-100-61.ch-210-66.lg-270-82.sh-290-80', 'M', 1, 0, 'testing lol', '2022-11-15 21:45:18', '2022-11-20 19:14:57'),
-	(3, 'Nillus', '123', 'test@test.com', '01.01.1991', 'hd-180-1.hr-100-61.ch-210-66.lg-270-82.sh-290-80', 'M', 1, 66721, 'testing lol', '2022-11-15 21:45:18', '2022-11-20 11:09:21');
-/*!40000 ALTER TABLE `user` ENABLE KEYS */;
+INSERT INTO `user` (`id`, `email`, `password`, `birthday`, `direct_mail`, `join_date`, `last_online`) VALUES
+	(1, 'alexaccount@gmail.com', '123', '7.8.1992', 0, '2024-09-02 19:43:48', '2024-09-02 19:43:48');
 
 -- Dumping structure for table helios.user_effects
+DROP TABLE IF EXISTS `user_effects`;
 CREATE TABLE IF NOT EXISTS `user_effects` (
   `user_id` int(11) NOT NULL,
   `effect_id` int(11) NOT NULL,
   `expires_at` datetime DEFAULT NULL,
   `quantity` int(11) NOT NULL DEFAULT 1,
   `is_activated` tinyint(1) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Dumping data for table helios.user_effects: ~0 rows (approximately)
 DELETE FROM `user_effects`;
-/*!40000 ALTER TABLE `user_effects` DISABLE KEYS */;
-/*!40000 ALTER TABLE `user_effects` ENABLE KEYS */;
 
 -- Dumping structure for table helios.user_seasonal_currencies
+DROP TABLE IF EXISTS `user_seasonal_currencies`;
 CREATE TABLE IF NOT EXISTS `user_seasonal_currencies` (
   `user_id` int(11) NOT NULL,
   `seasonal_type` enum('PUMPKINS','PEANUTS','STARS','CLOUDS','DIAMONDS','LOYALTY_POINTS','DUCKETS') NOT NULL,
   `balance` int(11) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Dumping data for table helios.user_seasonal_currencies: ~0 rows (approximately)
 DELETE FROM `user_seasonal_currencies`;
-/*!40000 ALTER TABLE `user_seasonal_currencies` DISABLE KEYS */;
-/*!40000 ALTER TABLE `user_seasonal_currencies` ENABLE KEYS */;
 
 -- Dumping structure for table helios.user_settings
+DROP TABLE IF EXISTS `user_settings`;
 CREATE TABLE IF NOT EXISTS `user_settings` (
   `user_id` int(11) NOT NULL,
   `daily_respect_points` int(11) NOT NULL DEFAULT 0,
@@ -5862,17 +7260,13 @@ CREATE TABLE IF NOT EXISTS `user_settings` (
   `following_enabled` tinyint(1) NOT NULL DEFAULT 1,
   `online_time` bigint(11) NOT NULL DEFAULT 0,
   PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Dumping data for table helios.user_settings: ~2 rows (approximately)
+-- Dumping data for table helios.user_settings: ~0 rows (approximately)
 DELETE FROM `user_settings`;
-/*!40000 ALTER TABLE `user_settings` DISABLE KEYS */;
-INSERT INTO `user_settings` (`user_id`, `daily_respect_points`, `daily_respect_pet_points`, `respect_points`, `friend_requests_enabled`, `following_enabled`, `online_time`) VALUES
-	(1, 0, 0, 0, 1, 1, 223),
-	(3, 0, 0, 0, 1, 1, 13);
-/*!40000 ALTER TABLE `user_settings` ENABLE KEYS */;
 
 -- Dumping structure for table helios.user_subscriptions
+DROP TABLE IF EXISTS `user_subscriptions`;
 CREATE TABLE IF NOT EXISTS `user_subscriptions` (
   `user_id` int(11) NOT NULL,
   `subscribed_at` datetime NOT NULL,
@@ -5882,14 +7276,13 @@ CREATE TABLE IF NOT EXISTS `user_subscriptions` (
   `subscription_age` bigint(11) NOT NULL DEFAULT 0,
   `subscription_age_last_updated` datetime NOT NULL DEFAULT current_timestamp(),
   PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Dumping data for table helios.user_subscriptions: ~0 rows (approximately)
 DELETE FROM `user_subscriptions`;
-/*!40000 ALTER TABLE `user_subscriptions` DISABLE KEYS */;
-/*!40000 ALTER TABLE `user_subscriptions` ENABLE KEYS */;
 
 -- Dumping structure for table helios.wordfilter
+DROP TABLE IF EXISTS `wordfilter`;
 CREATE TABLE IF NOT EXISTS `wordfilter` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `word` varchar(100) NOT NULL,
@@ -5897,11 +7290,10 @@ CREATE TABLE IF NOT EXISTS `wordfilter` (
   `is_filterable` int(11) NOT NULL DEFAULT 1,
   PRIMARY KEY (`id`),
   UNIQUE KEY `word` (`word`)
-) ENGINE=InnoDB AUTO_INCREMENT=131 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=131 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Dumping data for table helios.wordfilter: ~127 rows (approximately)
 DELETE FROM `wordfilter`;
-/*!40000 ALTER TABLE `wordfilter` DISABLE KEYS */;
 INSERT INTO `wordfilter` (`id`, `word`, `is_bannable`, `is_filterable`) VALUES
 	(1, 'aaron', 0, 1),
 	(2, 'anal', 0, 1),
@@ -5958,14 +7350,14 @@ INSERT INTO `wordfilter` (`id`, `word`, `is_bannable`, `is_filterable`) VALUES
 	(54, 'habb0 ld', 1, 0),
 	(55, 'habb0.d', 1, 0),
 	(56, 'habb0.id', 1, 0),
-	(57, 'habb0.Ãƒâ€šÃ‚Â¡d', 1, 0),
+	(57, 'habb0.ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¡d', 1, 0),
 	(58, 'habbb0 id', 1, 0),
 	(59, 'habbb0 ld', 1, 0),
 	(60, 'habbb0.id', 1, 0),
-	(61, 'habbbo . Ãƒâ€šÃ‚Â¡d', 1, 0),
-	(62, 'habbbo .Ãƒâ€šÃ‚Â¡d', 1, 0),
+	(61, 'habbbo . ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¡d', 1, 0),
+	(62, 'habbbo .ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¡d', 1, 0),
 	(63, 'habbbo id', 1, 0),
-	(64, 'habbbo.Ãƒâ€šÃ‚Â¡d', 1, 0),
+	(64, 'habbbo.ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¡d', 1, 0),
 	(65, 'habbboid', 1, 0),
 	(66, 'habbbold', 1, 0),
 	(67, 'habbo .id', 1, 0),
@@ -5973,7 +7365,7 @@ INSERT INTO `wordfilter` (`id`, `word`, `is_bannable`, `is_filterable`) VALUES
 	(69, 'habbo dot id', 1, 0),
 	(70, 'habbo id', 1, 0),
 	(71, 'habbo ld', 1, 0),
-	(72, 'habbo Ãƒâ€šÃ‚Â¡d', 1, 0),
+	(72, 'habbo ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¡d', 1, 0),
 	(73, 'habbo(.)id', 1, 0),
 	(74, 'habbo,id', 1, 0),
 	(75, 'habbo,ld', 1, 0),
@@ -5981,18 +7373,18 @@ INSERT INTO `wordfilter` (`id`, `word`, `is_bannable`, `is_filterable`) VALUES
 	(77, 'habbo.1d', 1, 0),
 	(78, 'habbo.id', 1, 0),
 	(79, 'habbo.ld', 1, 0),
-	(80, 'habbo.Ãƒâ€šÃ‚Â¡d', 1, 0),
+	(80, 'habbo.ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¡d', 1, 0),
 	(81, 'habbo:id', 1, 0),
 	(82, 'habbo:ld', 1, 0),
 	(83, 'habboid', 1, 0),
 	(84, 'habbold', 1, 0),
 	(85, 'hard core', 0, 1),
 	(86, 'hardcore', 0, 1),
-	(87, 'haÃƒÅ½Ã‚Â²ÃƒÅ½Ã‚Â²o id', 1, 0),
-	(88, 'haÃƒÅ½Ã‚Â²ÃƒÅ½Ã‚Â²o,id', 1, 0),
-	(89, 'haÃƒÅ½Ã‚Â²ÃƒÅ½Ã‚Â²o.id', 1, 0),
-	(90, 'haÃƒÅ½Ã‚Â²ÃƒÅ½Ã‚Â²o:id', 1, 0),
-	(91, 'haÃƒÅ½Ã‚Â²ÃƒÅ½Ã‚Â²oid', 1, 0),
+	(87, 'haÃƒÆ’Ã†â€™Ãƒâ€¦Ã‚Â½ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â²ÃƒÆ’Ã†â€™Ãƒâ€¦Ã‚Â½ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â²o id', 1, 0),
+	(88, 'haÃƒÆ’Ã†â€™Ãƒâ€¦Ã‚Â½ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â²ÃƒÆ’Ã†â€™Ãƒâ€¦Ã‚Â½ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â²o,id', 1, 0),
+	(89, 'haÃƒÆ’Ã†â€™Ãƒâ€¦Ã‚Â½ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â²ÃƒÆ’Ã†â€™Ãƒâ€¦Ã‚Â½ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â²o.id', 1, 0),
+	(90, 'haÃƒÆ’Ã†â€™Ãƒâ€¦Ã‚Â½ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â²ÃƒÆ’Ã†â€™Ãƒâ€¦Ã‚Â½ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â²o:id', 1, 0),
+	(91, 'haÃƒÆ’Ã†â€™Ãƒâ€¦Ã‚Â½ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â²ÃƒÆ’Ã†â€™Ãƒâ€¦Ã‚Â½ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â²oid', 1, 0),
 	(92, 'homoerotic', 0, 1),
 	(93, 'hore', 0, 1),
 	(94, 'mother fucker', 0, 1),
@@ -6030,8 +7422,8 @@ INSERT INTO `wordfilter` (`id`, `word`, `is_bannable`, `is_filterable`) VALUES
 	(128, 'hab me.net', 1, 0),
 	(129, 'habme. net', 1, 0),
 	(130, 'habme .net', 1, 0);
-/*!40000 ALTER TABLE `wordfilter` ENABLE KEYS */;
 
+/*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IFNULL(@OLD_FOREIGN_KEY_CHECKS, 1) */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
