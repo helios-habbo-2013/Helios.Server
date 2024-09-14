@@ -135,8 +135,8 @@ namespace Helios
                 var guildelements = context.GroupBadgeElementData.Select(x => new
                 {
                     Id = x.Id,
-                    ExtraData1 = x.FirstValue,
-                    ExtraData2 = x.SecondValue,
+                    ExtraData1 = ((x.Type == "symbol" || x.Type == "base") && !string.IsNullOrEmpty(x.FirstValue)) ? "badgepart_" + x.FirstValue : x.FirstValue,
+                    ExtraData2 = ((x.Type == "symbol" || x.Type == "base") && !string.IsNullOrEmpty(x.SecondValue)) ? "badgepart_" + x.SecondValue : x.SecondValue,
                     Type = x.Type
                 }).ToList();
 
