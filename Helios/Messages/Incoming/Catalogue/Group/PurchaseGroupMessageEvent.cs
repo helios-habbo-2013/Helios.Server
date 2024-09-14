@@ -6,6 +6,7 @@ using Helios.Storage;
 using Helios.Storage.Access;
 using Helios.Storage.Models.Group;
 using Helios.Storage.Models.Room;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.Extensions.Primitives;
 using Newtonsoft.Json;
 using System.Collections.Generic;
@@ -90,12 +91,12 @@ namespace Helios.Messages.Incoming.Catalogue
                 context.SaveGroup(groupData);
 
                 room.Data.GroupId = groupData.Id;
-
                 context.SaveRoom(room.Data);
-
+                
                 avatar.Details.FavouriteGroupId = groupData.Id;
-
+                context.ChangeTracker.Clear();
                 context.Update(avatar.Details);
+                context.SaveChanges();
 
                 if (room != null)
                 {
@@ -112,7 +113,6 @@ namespace Helios.Messages.Incoming.Catalogue
                     }
 
                     room.Send(new GroupBadgesMessageComposer(groupData.Id, groupData.Name));
-
                     room.Send(new UserRemoveComposer(avatar.RoomUser.InstanceId));
                     room.Send(new UsersComposer(List.Create(avatar as IEntity)));
 

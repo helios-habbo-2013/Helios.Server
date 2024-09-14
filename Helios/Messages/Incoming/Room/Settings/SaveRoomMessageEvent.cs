@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Helios.Game;
 using Helios.Messages.Outgoing;
 using Helios.Network.Streams;
@@ -97,10 +98,11 @@ namespace Helios.Messages.Incoming
             {
                 context.DeleteRoomTags(room.Data.Id);
 
-                foreach (var tag in tags)
+                foreach (var tag in tags.Distinct())
                 {
                     context.SaveTag(new TagData
                     {
+                        AvatarId = room.Data.Id,
                         RoomId = room.Data.Id,
                         Text = tag
                     });
