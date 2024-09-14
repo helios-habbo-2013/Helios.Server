@@ -2,7 +2,7 @@
    <mysql>
       <hostname>localhost</hostname>
       <username>root</username>
-      <password>123</password>
+      <password>verysecret</password>
       <database>helios</database>
       <port>3306</port>
       <min_connections>5</min_connections>
