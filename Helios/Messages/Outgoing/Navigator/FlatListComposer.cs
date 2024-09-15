@@ -55,21 +55,23 @@ namespace Helios.Messages.Outgoing
             messageComposer.Data.Add(room.Rating);
             messageComposer.Data.Add(0);
             messageComposer.Data.Add(room.Category.Id);
-            messageComposer.Data.Add(room.GroupData != null ? room.GroupData.Id : 0);
 
             if (room.GroupData != null)
             {
+                messageComposer.Data.Add(room.GroupData.Id);
                 messageComposer.Data.Add(room.GroupData.Name);
                 messageComposer.Data.Add(room.GroupData.Badge);
+                messageComposer.Data.Add("");
             }
             else
             {
 
+                messageComposer.Data.Add(0);
+                messageComposer.Data.Add("");
                 messageComposer.Data.Add("");
                 messageComposer.Data.Add("");
             }
 
-            messageComposer.Data.Add("");
             messageComposer.Data.Add(room.Tags.Count);
 
             foreach (var tag in room.Tags)
