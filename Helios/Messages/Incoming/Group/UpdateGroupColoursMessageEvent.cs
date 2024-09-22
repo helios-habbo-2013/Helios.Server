@@ -30,7 +30,7 @@ namespace Helios.Messages.Incoming
 
             using (var context = new GameStorageContext())
             {
-                context.SaveGroup(group.Data);
+                context.UpdateGroup(group.Data);
             }
 
             var room = RoomManager.Instance.GetRoom(group.Data.RoomId);

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Helios.Game;
 
 namespace Helios.Messages.Outgoing
@@ -62,7 +63,7 @@ namespace Helios.Messages.Outgoing
             }
 
             _data.Add(group.Data.Badge);
-            _data.Add(group.Members.Count);
+            _data.Add(group.Members.Count - group.Members.Count(x => x.Data.MemberType == Storage.Models.Group.GroupMembershipType.PENDING));
         }
     }
 }

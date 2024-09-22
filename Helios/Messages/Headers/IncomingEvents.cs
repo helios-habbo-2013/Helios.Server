@@ -88,5 +88,15 @@
         public static readonly short UpdateGroupBadgeMessageEvent = 3381;
         public static readonly short UpdateGroupColoursMessageEvent = 1444;
         public static readonly short UpdateGroupSettingsMessageEvent = 3309;
+        public static readonly short GroupMembersMessageEvent = 2472;
+        public static readonly short AcceptGroupMembershipMessageEvent = 3127;
+        public static readonly short DeclineGroupMembershipMessageEvent = 3918;
+        public static readonly short JoinGroupMessageEvent = 471;
+        public static readonly short LeaveGroupMessageEvent = 2845;
+        public static readonly short GiveGroupAdminMessageEvent = 3341;
+        public static readonly short RevokeGroupAdminMessageEvent = 735;
+
+        /*[2024-09-22 21:06:56,618] DEBUG  Avatar Alex - Unknown: 3127 / [0][0][0][1][0][0][0][2]
+[2024-09-22 21:07:03,626] DEBUG  Avatar Alex - Unknown: 3918 / [0][0][0][1][0][0][0][2]*/
     }
 }

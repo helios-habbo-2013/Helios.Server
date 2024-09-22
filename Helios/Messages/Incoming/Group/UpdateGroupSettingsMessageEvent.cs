@@ -5,6 +5,7 @@ using Helios.Storage;
 using Helios.Storage.Access;
 using Helios.Storage.Models.Group;
 using MySql.Data.MySqlClient.Memcached;
+using System.Linq;
 using System.Text;
 
 namespace Helios.Messages.Incoming
@@ -27,6 +28,20 @@ namespace Helios.Messages.Incoming
 
             if (groupType >= 0 && groupType <= 2)
             {
+                if (groupType != (int)group.Data.GroupType)
+                {
+                    using (var context = new GameStorageContext())
+                    {
+                        var requests = group.Members
+                            .Where(x => x.Data.MemberType == GroupMembershipType.PENDING)
+                            .Select(x => x.Data)
+                            .ToList();
+
+                        context.GroupMembershipData.RemoveRange(requests);
+                        context.SaveChanges();
+                    }
+                }
+
                 group.Data.GroupType = (GroupType) groupType;
             }
 
@@ -37,7 +52,7 @@ namespace Helios.Messages.Incoming
 
             using (var context = new GameStorageContext())
             {
-                context.SaveGroup(group.Data);
+                context.UpdateGroup(group.Data);
             }
 
             var room = RoomManager.Instance.GetRoom(group.Data.RoomId);

@@ -88,7 +88,7 @@ namespace Helios.Messages.Incoming.Catalogue
                     Badge = badgeBuilder.ToString()
                 };
 
-                context.SaveGroup(groupData);
+                context.UpdateGroup(groupData);
 
                 room.Data.GroupId = groupData.Id;
                 context.SaveRoom(room.Data);

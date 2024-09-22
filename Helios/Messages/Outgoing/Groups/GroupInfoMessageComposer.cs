@@ -33,7 +33,7 @@ namespace Helios.Messages.Outgoing
             _data.Add(roomData != null ? roomData.Id : 0);
             _data.Add(roomData != null ? roomData.Name : "");
             _data.Add((int) group.GetMemberType(avatarData.Id)); // TODO: Membership type, 1 = is member, 2 is pending, 0 = none
-            _data.Add(group.Members.Count); // TODO: Membership
+            _data.Add(group.Members.Count - group.Members.Count(x => x.Data.MemberType == Storage.Models.Group.GroupMembershipType.PENDING)); // TODO: Membership
             _data.Add(false);
             _data.Add(group.Data.CreatedAt.ToString("dd-MM-yyyy"));
             _data.Add(group.Data.OwnerId == avatarData.Id); // TODO: Is owner

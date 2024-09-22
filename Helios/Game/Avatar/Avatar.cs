@@ -7,6 +7,7 @@ using Helios.Storage.Models.Avatar;
 using Helios.Storage.Models.Entity;
 using log4net;
 using System;
+using System.Collections.Generic;
 using System.Reflection;
 
 namespace Helios.Game
@@ -116,6 +117,11 @@ namespace Helios.Game
         /// </summary>
         public UserGroup UserGroup { get { return PermissionsManager.Instance.Ranks[Details.Rank]; } }
 
+        /// <summary>
+        /// Session attributes used for various temporarily stored variables
+        /// </summary>
+        public Dictionary<string, object> LocalStorage { get; private set; }
+
         #endregion
 
         #region Constructors
@@ -129,6 +135,7 @@ namespace Helios.Game
             Connection = connectionSession;
             RoomEntity = new RoomAvatar(this);
             log = LogManager.GetLogger(Assembly.GetExecutingAssembly(), $"Connection {connectionSession.Channel.Id}");
+            LocalStorage = new Dictionary<string, object>();
         }
 
         #endregion

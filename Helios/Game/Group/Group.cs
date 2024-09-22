@@ -15,7 +15,7 @@ namespace Helios.Game
         #region Properties
 
         public GroupData Data { get; }
-        public List<GroupMembership> Members { get; }
+        public List<GroupMembership> Members { get; private set; }
 
         #endregion
 
@@ -45,6 +45,21 @@ namespace Helios.Game
             else
             {
                 return GroupMembershipType.NONE;
+            }
+        }
+
+        public bool IsAdmin(int avatarId)
+        {
+             return this.Members.Any(x =>
+                    x.Data.MemberType == GroupMembershipType.ADMIN &&
+                    x.Data.AvatarId == avatarId) || this.Data.OwnerId == avatarId;
+        }
+
+        public void RefreshMembers()
+        {
+            using (var context = new GameStorageContext())
+            {
+                Members = context.GetGroupMembers(this.Data.Id).Select(x => new GroupMembership(x)).ToList();
             }
         }
 
