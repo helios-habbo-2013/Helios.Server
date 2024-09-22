@@ -14,17 +14,16 @@ namespace Helios.Messages.Incoming
             int groupId = request.ReadInt();
             bool flag = request.ReadBoolean();
 
-            using (var context = new GameStorageContext())
+
+            var groupData = GroupManager.Instance.GetGroup(groupId);
+
+            if (groupData == null)
             {
-                var groupData = context.GetGroup(groupId);
-
-                if (groupData == null)
-                {
-                    return;
-                }
-
-                avatar.Send(new GroupInfoMessageComposer(groupData, groupData.RoomData, flag, groupData.OwnerId == avatar.Details.Id));
+                return;
             }
+
+            avatar.Send(new GroupInfoMessageComposer(groupData, avatar.Details, groupData.Data.RoomData, flag));
         }
+
     }
 }

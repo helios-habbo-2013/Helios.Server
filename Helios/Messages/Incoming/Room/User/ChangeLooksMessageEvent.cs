@@ -28,7 +28,8 @@ namespace Helios.Messages.Incoming
 
             using (var context = new GameStorageContext())
             {
-                context.Update(avatar.Details);
+                context.AvatarData.Update(avatar.Details);
+                context.SaveChanges();
             }
 
             avatar.Send(new UserChangeMessageComposer(-1, avatar.Details.Figure, avatar.Details.Sex, avatar.Details.Motto, avatar.Details.AchievementPoints));

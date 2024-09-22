@@ -83,8 +83,8 @@ namespace Helios.Messages.Incoming.Catalogue
                     RoomId = roomId,
                     Name = name,
                     Description = desc,
-                    Colour1 = GroupManager.Instance.BadgeManager.Colour2[colour1].FirstValue,
-                    Colour2 = GroupManager.Instance.BadgeManager.Colour3[colour2].FirstValue,
+                    Colour1 = colour1,//GroupManager.Instance.BadgeManager.Colour2[colour1].FirstValue,
+                    Colour2 = colour2,//GroupManager.Instance.BadgeManager.Colour3[colour2].FirstValue,
                     Badge = badgeBuilder.ToString()
                 };
 
@@ -112,7 +112,7 @@ namespace Helios.Messages.Incoming.Catalogue
                         avatar.Send(new RemoveRightsMessageComposer(room.Data.Id, toRemove.AvatarData.Id));
                     }
 
-                    room.Send(new GroupBadgesMessageComposer(groupData.Id, groupData.Name));
+                    room.Send(new GroupBadgesMessageComposer(groupData.Id, groupData.Badge));
                     room.Send(new UserRemoveComposer(avatar.RoomUser.InstanceId));
                     room.Send(new UsersComposer(List.Create(avatar as IEntity)));
 

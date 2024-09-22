@@ -83,5 +83,10 @@
         public static readonly short RemoveAllRightsMessageEvent = 3020;
         public static readonly short GetRoomRightsMessageEvent = 308;
         public static readonly short GetGroupInfoMessageEvent = 539;
+        public static readonly short ManageGroupMessageEvent = 454;
+        public static readonly short UpdateGroupIdentityMessageEvent = 3892;
+        public static readonly short UpdateGroupBadgeMessageEvent = 3381;
+        public static readonly short UpdateGroupColoursMessageEvent = 1444;
+        public static readonly short UpdateGroupSettingsMessageEvent = 3309;
     }
 }

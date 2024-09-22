@@ -5,23 +5,20 @@ namespace Helios.Messages.Outgoing
 {
     class GroupBadgesMessageComposer : IMessageComposer
     {
-        private int? groupId;
-        private string groupName;
+        private int groupId;
+        private string badge;
 
-        public GroupBadgesMessageComposer(int id, string name)
+        public GroupBadgesMessageComposer(int id, string badge)
         {
             this.groupId = id;
-            this.groupName = name;
+            this.badge = badge;
         }
 
         public override void Write()
         {
-            if (this.groupId != null)
-            {
-                _data.Add(1);
-                _data.Add(this.groupId);
-                _data.Add(this.groupName);
-            }
+            _data.Add(1); // size: loop
+            _data.Add(this.groupId);
+            _data.Add(this.badge);
         }
     }
 }

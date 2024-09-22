@@ -96,5 +96,6 @@
         public static readonly short GroupBadgesMessageComposer = 2119;
         public static readonly short GroupRoomMessageComposer = 1644;
         public static readonly short GroupInfoMessageComposer = 3225;
+        public static readonly short ManageGroupMessageComposer = 858;
     }
 }

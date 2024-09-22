@@ -77,7 +77,6 @@ namespace Helios.Game
         /// </summary>
         public Room GetRoom(int roomId)
         {
-
             if (Rooms.TryGetValue(roomId, out var room))
                 return room;
 

@@ -33,7 +33,18 @@ namespace Helios.Game
 
         #region Public methods
 
-        
+        public Group GetGroup(int groupId)
+        {
+            using (var context = new GameStorageContext())
+            {
+                var data = GroupDao.GetGroup(context, groupId);
+
+                if (data != null)
+                    return new Group(data);
+            }
+
+            return null;
+        }
 
         #endregion
     }

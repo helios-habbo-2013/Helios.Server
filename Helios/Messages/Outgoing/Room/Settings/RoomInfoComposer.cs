@@ -9,6 +9,13 @@ namespace Helios.Messages.Outgoing
         private bool isLoading;
         private bool checkEntry;
 
+        public RoomInfoComposer(RoomData roomData)
+        {
+            this.roomData = roomData;
+            this.isLoading = true;
+            this.checkEntry = true;
+        }
+
         public RoomInfoComposer(RoomData roomData, bool isLoading, bool checkEntry)
         {
             this.roomData = roomData;
