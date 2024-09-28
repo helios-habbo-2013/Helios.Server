@@ -62,7 +62,6 @@ namespace Helios.Messages.Incoming
             }
 
             avatar.Inventory.RemoveItem(item);
-            avatar.Send(new FurniListRemoveComposer(item.Id));
         }
     }
 }

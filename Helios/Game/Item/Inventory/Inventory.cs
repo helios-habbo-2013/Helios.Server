@@ -1,4 +1,5 @@
-﻿using Helios.Storage;
+﻿using Helios.Messages.Outgoing;
+using Helios.Storage;
 using Helios.Storage.Access;
 using Helios.Util.Extensions;
 using System.Collections.Concurrent;
@@ -72,6 +73,7 @@ namespace Helios.Game
         public void RemoveItem(Item item)
         {
             Items.Remove(item.Id);
+            avatar.Send(new FurniListRemoveComposer(item.Id));
         }
 
         #endregion

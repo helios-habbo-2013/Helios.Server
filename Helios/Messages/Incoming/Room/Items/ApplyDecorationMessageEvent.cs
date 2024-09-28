@@ -40,7 +40,6 @@ namespace Helios.Messages.Incoming
             }
 
             avatar.Inventory.RemoveItem(item);
-            avatar.Send(new FurniListRemoveComposer(item.Id));
 
             using (var context = new GameStorageContext())
             {

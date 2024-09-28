@@ -27,7 +27,6 @@ namespace Helios.Messages.Incoming
             room.FurnitureManager.AddItem(item, wallPosition: wallPosition);
 
             avatar.Inventory.RemoveItem(item);
-            avatar.Send(new FurniListRemoveComposer(item.Id));
         }
     }
 }
