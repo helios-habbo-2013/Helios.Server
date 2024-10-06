@@ -28,7 +28,7 @@ namespace Helios.Messages.Outgoing
             if (mannequinName.Length > 30)
                 mannequinName = mannequinName.Substring(0, 30);
 
-            item.Interactor.SetJsonObject(new MannequinExtraData()
+            item.Interactor.SetExtraData(new MannequinExtraData()
             {
                 Figure = avatar.Details.Figure,
                 Gender = avatar.Details.Sex,

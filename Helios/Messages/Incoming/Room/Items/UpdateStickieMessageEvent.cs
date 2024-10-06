@@ -23,7 +23,7 @@ namespace Helios.Messages.Incoming
             if (item == null) // TODO: Staff check
                 return;
 
-            StickieExtraData stickieData = (StickieExtraData)item.Interactor.GetJsonObject();
+            StickieExtraData stickieData = item.Interactor.GetJsonObject<StickieExtraData>();
 
             string colour = request.ReadString();
             string text = request.ReadString().FilterInput(false);
@@ -32,7 +32,7 @@ namespace Helios.Messages.Incoming
                 if (!room.RightsManager.HasRights(avatar.Details.Id))
                     return; // TODO: Staff check
 
-            item.Interactor.SetJsonObject(new StickieExtraData
+            item.Interactor.SetExtraData(new StickieExtraData
             {
                 Colour = colour,
                 Message = text

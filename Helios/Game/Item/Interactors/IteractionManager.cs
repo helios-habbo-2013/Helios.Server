@@ -33,6 +33,7 @@ namespace Helios.Game
             Interactors[InteractorType.ROLLER] = typeof(RollerInteractor);
             Interactors[InteractorType.DICE] = typeof(DiceInteractor);
             Interactors[InteractorType.MANNEQUIN] = typeof(MannequinInteractor);
+            Interactors[InteractorType.GUILD] = typeof(GuildInteractor);
         }
 
         #endregion
@@ -55,17 +56,21 @@ namespace Helios.Game
             return (Interactor)Activator.CreateInstance(type, item);
         }
 
+        /*
         /// <summary>
         /// Write the relevant extra data to the packet
         /// </summary>
         public void WriteExtraData(IMessageComposer composer, Item item, bool inventoryView = false)
         {
             var interactor = item.Interactor;
-            composer.Data.Add((int)interactor.ExtraDataType);
-
             switch (interactor.ExtraDataType)
             {
                 case ExtraDataType.StringData:
+                    composer.Data.Add((int)interactor.ExtraDataType);
+                    composer.Data.Add((string)interactor.GetExtraData(inventoryView));
+                    break;
+                case ExtraDataType.GuildData:
+                    composer.Data.Add((int)interactor.ExtraDataType);
                     composer.Data.Add((string)interactor.GetExtraData(inventoryView));
                     break;
                 case ExtraDataType.StringArrayData:
@@ -80,7 +85,7 @@ namespace Helios.Game
 
                     break;
             }
-        }
+        }*/
 
         #endregion
     }

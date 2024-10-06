@@ -29,14 +29,14 @@ namespace Helios.Messages.Incoming
             if (preset <= 0 || preset > 3)
                 preset = 1;
 
-            var moodlightData = (MoodlightExtraData)moodlight.Interactor.GetJsonObject();
+            var moodlightData = moodlight.Interactor.GetJsonObject<MoodlightExtraData>();
 
             moodlightData.CurrentPreset = preset;
             moodlightData.Enabled = true;
             moodlightData.Presets[moodlightData.CurrentPreset - 1].ColorCode = colourCode;
             moodlightData.Presets[moodlightData.CurrentPreset - 1].ColorIntensity = intensity;
             moodlightData.Presets[moodlightData.CurrentPreset - 1].IsBackground = isBackground;
-            moodlight.Interactor.SetJsonObject(moodlightData);
+            moodlight.Interactor.SetExtraData(moodlightData);
 
             moodlight.Update();
             moodlight.Save();

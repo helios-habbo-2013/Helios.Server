@@ -1,4 +1,5 @@
-﻿using Helios.Messages.Outgoing;
+﻿using Helios.Messages;
+using Helios.Messages.Outgoing;
 using Helios.Storage;
 using Helios.Storage.Access;
 using Newtonsoft.Json;
@@ -8,11 +9,7 @@ namespace Helios.Game
 {
     public class MannequinInteractor : Interactor
     {
-        public override ExtraDataType ExtraDataType => ExtraDataType.StringArrayData;
-
-        public MannequinInteractor(Item item) : base(item) { }
-
-        public override object GetJsonObject()
+        public MannequinInteractor(Item item) : base(item)
         {
             MannequinExtraData extraData = null;
 
@@ -45,25 +42,7 @@ namespace Helios.Game
                 };
             }
 
-            return extraData;
-        }
-
-        public override object GetExtraData(bool inventoryView = false)
-        {
-            if (NeedsExtraDataUpdate)
-            {
-                var data = (MannequinExtraData)GetJsonObject();
-                var values = new Dictionary<string, string>();
-
-                values["GENDER"] = data.Gender;
-                values["FIGURE"] = GenerateMannequinFigure(data.Figure);
-                values["OUTFIT_NAME"] = data.OutfitName;
-
-                NeedsExtraDataUpdate = false;
-                ExtraData = values;
-            }
-
-            return ExtraData;
+            SetExtraData(extraData);
         }
 
         public override void OnInteract(IEntity entity, int requestData)
@@ -77,7 +56,7 @@ namespace Helios.Game
                 return;
 
             var avatar = (Avatar)entity;
-            var mannequinData = (MannequinExtraData)GetJsonObject();
+            var mannequinData = GetJsonObject<MannequinExtraData>();
 
             var strippedFigureData = ExcludedFigureParts(avatar.Details.Figure);
             var newFigureData = GenerateMannequinFigure(mannequinData.Figure);
@@ -93,6 +72,25 @@ namespace Helios.Game
 
             avatar.Send(new UserChangeMessageComposer(-1, avatar.Details.Figure, avatar.Details.Sex, avatar.Details.Motto, avatar.Details.AchievementPoints));
             room.Send(new UserChangeMessageComposer(avatar.RoomEntity.InstanceId, avatar.Details.Figure, avatar.Details.Sex, avatar.Details.Motto, avatar.Details.AchievementPoints));
+        }
+
+        public override void WriteExtraData(IMessageComposer composer, bool inventoryView = false)
+        {
+            var data = GetJsonObject<MannequinExtraData>();
+            var values = new Dictionary<string, string>();
+
+            values["GENDER"] = data.Gender;
+            values["FIGURE"] = GenerateMannequinFigure(data.Figure);
+            values["OUTFIT_NAME"] = data.OutfitName;
+
+            composer.Data.Add((int)ExtraDataType.StringArrayData);
+            composer.Data.Add(values.Count);
+
+            foreach (var kvp in values)
+            {
+                composer.Data.Add(kvp.Key);
+                composer.Data.Add(kvp.Value);
+            }
         }
 
 

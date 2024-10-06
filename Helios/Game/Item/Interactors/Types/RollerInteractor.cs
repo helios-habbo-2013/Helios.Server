@@ -10,7 +10,6 @@
 
         #region Overridden Properties
 
-        public override ExtraDataType ExtraDataType => ExtraDataType.StringData;
         public override ITaskObject TaskObject => taskObject;
 
         #endregion

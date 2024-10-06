@@ -6,7 +6,6 @@ namespace Helios.Game
     {
         #region Overridden Properties
 
-        public override ExtraDataType ExtraDataType => ExtraDataType.StringData;
 
         #endregion
 

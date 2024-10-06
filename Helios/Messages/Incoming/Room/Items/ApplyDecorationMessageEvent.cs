@@ -26,15 +26,15 @@ namespace Helios.Messages.Incoming
             switch (item.Definition.Data.Sprite)
             {
                 case "floor":
-                    room.Data.Floor = item.Interactor.GetExtraData().ToString();
+                    room.Data.Floor = item.Data.ExtraData.ToString();
                     room.Send(new RoomPropertyComposer("floor", room.Data.Floor));
                     break;
                 case "wallpaper":
-                    room.Data.Wallpaper = item.Interactor.GetExtraData().ToString();
+                    room.Data.Wallpaper = item.Data.ExtraData.ToString();
                     room.Send(new RoomPropertyComposer("wallpaper", room.Data.Wallpaper));
                     break;
                 case "landscape":
-                    room.Data.Landscape = item.Interactor.GetExtraData().ToString();
+                    room.Data.Landscape = item.Data.ExtraData.ToString();
                     room.Send(new RoomPropertyComposer("landscape", room.Data.Landscape));
                     break;
             }

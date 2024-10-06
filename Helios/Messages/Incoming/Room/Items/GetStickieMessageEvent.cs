@@ -23,7 +23,7 @@ namespace Helios.Messages.Incoming
             if (item == null) // TODO: Staff check
                 return;
 
-            StickieExtraData stickieData = (StickieExtraData)item.Interactor.GetJsonObject();
+            StickieExtraData stickieData = item.Interactor.GetJsonObject<StickieExtraData>();
 
             avatar.Send(new StickieComposer(item.Id, stickieData));
         }

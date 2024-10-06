@@ -85,10 +85,10 @@ namespace Helios.Game
                 return true;
 
             if (Definition.InteractorType == InteractorType.GATE || Definition.InteractorType == InteractorType.ONE_WAY_GATE)
-                return Interactor.GetExtraData().Equals("1");
+                return Data.ExtraData.Equals("1");
 
             if (Definition.InteractorType == InteractorType.TELEPORTER)
-                return Interactor.GetExtraData().Equals(TeleporterInteractor.TELEPORTER_OPEN);
+                return Interactor.GetJsonObject<TeleporterExtraData>().State.Equals(TeleporterInteractor.TELEPORTER_OPEN);
 
             return false;
         }
@@ -114,15 +114,14 @@ namespace Helios.Game
             switch (Definition.InteractorType)
             {
                 case InteractorType.TELEPORTER:
-                    var teleporterData = (TeleporterExtraData)Interactor.GetJsonObject();
+                    var teleporterData = Interactor.GetJsonObject<TeleporterExtraData>();
 
-                    Interactor.SetJsonObject(new TeleporterExtraData
+                    Interactor.SetExtraData(new TeleporterExtraData
                     {
                         LinkedItem = teleporterData.LinkedItem,
                         State = state
                     });
 
-                    Update();
                     break;
                 case InteractorType.BED:
                 case InteractorType.CHAIR:

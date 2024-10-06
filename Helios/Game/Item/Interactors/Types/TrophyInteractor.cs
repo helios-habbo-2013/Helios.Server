@@ -1,4 +1,5 @@
-﻿using Helios.Util.Extensions;
+﻿using Helios.Messages;
+using Helios.Util.Extensions;
 using Newtonsoft.Json;
 using System.Text;
 
@@ -8,7 +9,7 @@ namespace Helios.Game
     {
         #region Overridden Properties
 
-        public override ExtraDataType ExtraDataType => ExtraDataType.StringData;
+
 
         #endregion
 
@@ -17,28 +18,20 @@ namespace Helios.Game
 
         }
 
-        public override object GetJsonObject()
+
+        public override void WriteExtraData(IMessageComposer composer, bool inventoryView = false)
         {
-            return JsonConvert.DeserializeObject<TrophyExtraData>(Item.Data.ExtraData);
-        }
+            var trophyData = GetJsonObject<TrophyExtraData>();
 
-        public override object GetExtraData(bool inventoryView = false)
-        {
-            if (NeedsExtraDataUpdate)
-            {
-                NeedsExtraDataUpdate = false;
-                var trophyData = (TrophyExtraData)GetJsonObject();
+            StringBuilder builder = new StringBuilder();
+            builder.Append(AvatarManager.Instance.GetName(trophyData.AvatarId));
+            builder.Append((char)9);
+            builder.Append(trophyData.Date.ToDateTime().ToString("dd-MM-yyyy"));
+            builder.Append((char)9);
+            builder.Append(trophyData.Message.FilterInput(false));
 
-                StringBuilder builder = new StringBuilder();
-                builder.Append(AvatarManager.Instance.GetName(trophyData.AvatarId));
-                builder.Append((char)9);
-                builder.Append(trophyData.Date.ToDateTime().ToString("dd-MM-yyyy"));
-                builder.Append((char)9);
-                builder.Append(trophyData.Message.FilterInput(false));
-                ExtraData = builder.ToString();
-            }
-
-            return ExtraData;
+            composer.Data.Add((int)ExtraDataType.StringData);
+            composer.Data.Add(builder.ToString());
         }
     }
 }

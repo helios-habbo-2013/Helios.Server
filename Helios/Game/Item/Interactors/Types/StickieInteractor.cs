@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Helios.Messages;
+using Newtonsoft.Json;
 
 namespace Helios.Game
 {
@@ -6,19 +7,17 @@ namespace Helios.Game
     {
         #region Overridden Properties
 
-        public override ExtraDataType ExtraDataType => ExtraDataType.StringData;
+
 
         #endregion
 
-        public StickieInteractor(Item item) : base(item) { }
-
-        public override object GetJsonObject()
+        public StickieInteractor(Item item) : base(item) 
         {
             StickieExtraData extraData = null;
 
             try
             {
-                extraData =  JsonConvert.DeserializeObject<StickieExtraData>(Item.Data.ExtraData);
+                extraData = JsonConvert.DeserializeObject<StickieExtraData>(Item.Data.ExtraData);
             } catch { }
 
             if (extraData == null)
@@ -30,18 +29,13 @@ namespace Helios.Game
                 };
             }
 
-            return extraData;
+            SetExtraData(extraData);
         }
 
-        public override object GetExtraData(bool inventoryView = false)
+        public override void WriteExtraData(IMessageComposer composer, bool inventoryView = false)
         {
-            if (NeedsExtraDataUpdate)
-            {
-                NeedsExtraDataUpdate = false;
-                ExtraData = ((StickieExtraData)GetJsonObject()).Colour;
-            }
-
-            return ExtraData;
+            composer.Data.Add((int)ExtraDataType.StringData);
+            composer.Data.Add(GetJsonObject<StickieExtraData>().Colour);
         }
     }
 }

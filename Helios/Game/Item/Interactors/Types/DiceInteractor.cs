@@ -20,7 +20,6 @@ namespace Helios.Game
 
         #region Overridden Properties
 
-        public override ExtraDataType ExtraDataType => ExtraDataType.StringData;
         public override ITaskObject TaskObject => taskObject;
 
         #endregion
@@ -35,9 +34,9 @@ namespace Helios.Game
 
         #endregion
 
-        /// <summary>
-        /// Find closest sourrounding avaliable tile for avatar
-        /// </summary>
+            /// <summary>
+            /// Find closest sourrounding avaliable tile for avatar
+            /// </summary>
         public override bool OnWalkRequest(IEntity entity, Position goal)
         {
             var closestTile = Item.Position.ClosestTile(Item.Room, entity.RoomEntity.Position, entity);

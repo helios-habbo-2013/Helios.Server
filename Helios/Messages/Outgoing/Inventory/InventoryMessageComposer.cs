@@ -54,7 +54,7 @@ namespace Helios.Messages.Outgoing
                     break;
             }
 
-            InteractionManager.Instance.WriteExtraData(composer, item, true);
+            item.Interactor.WriteExtraData(composer, true);
 
             composer.Data.Add(item.Definition.Data.IsRecyclable);
             composer.Data.Add(item.Definition.Data.IsTradable);

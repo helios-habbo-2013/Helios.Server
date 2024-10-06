@@ -24,6 +24,7 @@
         DECORATION,
         FORTUNE,
         LERT,
-        MANNEQUIN
+        MANNEQUIN,
+        GUILD
     }
 }

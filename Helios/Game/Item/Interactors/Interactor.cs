@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Helios.Messages;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 
@@ -8,10 +9,7 @@ namespace Helios.Game
     {
         #region Properties 
 
-        protected bool NeedsExtraDataUpdate { get; set; }
-        protected object ExtraData { get; set; }
         public Item Item { get; }
-        public virtual ExtraDataType ExtraDataType { get; }
         public virtual ITaskObject TaskObject { get; set; }
 
         #endregion
@@ -21,25 +19,28 @@ namespace Helios.Game
         protected Interactor(Item item)
         {
             Item = item;
-            NeedsExtraDataUpdate = true;
         }
 
         #endregion
 
         #region Public methods
 
-        public void SetJsonObject(object jsonObject)
+        public void SetExtraData(object jsonObject)
         {
             if (jsonObject is string)
                 Item.Data.ExtraData = jsonObject.ToString();
             else
                 Item.Data.ExtraData = JsonConvert.SerializeObject(jsonObject);
-
-            NeedsExtraDataUpdate = true;
         }
 
-        public virtual object GetExtraData(bool inventoryView = false) { return Item.Data.ExtraData; }
-        public virtual object GetJsonObject() { return null; }
+        public virtual void WriteExtraData(IMessageComposer composer, bool inventoryView = false)
+        {
+            composer.Data.Add((int) ExtraDataType.StringData);
+            composer.Data.Add(Item.Data.ExtraData);
+        }
+
+        public virtual T GetJsonObject<T>() where T : class { return JsonConvert.DeserializeObject<T>(Item.Data.ExtraData); }
+        // public virtual void RefreshExtraData() { }
         public virtual void OnStop(IEntity entity) { }
         public virtual void OnInteract(IEntity entity, int requestData = 0) { }
         public virtual void OnPickup(IEntity entity) { TaskObject?.EventQueue.Clear(); }

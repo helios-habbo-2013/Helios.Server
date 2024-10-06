@@ -46,7 +46,7 @@ namespace Helios.Messages.Outgoing
             composer.Data.Add(item.Position.Rotation);
             composer.Data.Add(item.Position.Z.ToClientValue());
             composer.Data.Add(0);
-            InteractionManager.Instance.WriteExtraData(composer, item);
+            item.Interactor.WriteExtraData(composer);
             composer.Data.Add(-1);
             composer.Data.Add(item.Definition.Data.MaxStatus > 1 ? 1 : 0);
         }

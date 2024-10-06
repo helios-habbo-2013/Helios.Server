@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Helios.Messages;
+using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Text;
 
@@ -8,17 +9,13 @@ namespace Helios.Game
     {
         #region Overridden Properties
 
-        public override ExtraDataType ExtraDataType => ExtraDataType.StringData;
+
 
         #endregion
 
         public MoodlightInteractor(Item item) : base(item)
         {
 
-        }
-
-        public override object GetJsonObject()
-        {
             MoodlightExtraData extraData = null;
 
             try
@@ -41,32 +38,27 @@ namespace Helios.Game
                 };
             }
 
-            return extraData;
+            SetExtraData(extraData);
         }
 
-        public override object GetExtraData(bool inventoryView = false)
+        public override void WriteExtraData(IMessageComposer composer, bool inventoryView = false)
         {
-            if (NeedsExtraDataUpdate)
-            {
-                var data = (MoodlightExtraData)GetJsonObject();
-                var preset = data.Presets[data.CurrentPreset - 1];
+            var data = GetJsonObject<MoodlightExtraData>();
+            var preset = data.Presets[data.CurrentPreset - 1];
 
-                StringBuilder builder = new StringBuilder();
-                builder.Append(data.Enabled ? 2 : 1);
-                builder.Append(",");
-                builder.Append(data.CurrentPreset);
-                builder.Append(",");
-                builder.Append(preset.IsBackground ? 2 : 1);
-                builder.Append(",");
-                builder.Append(preset.ColorCode);
-                builder.Append(",");
-                builder.Append(preset.ColorIntensity);
+            StringBuilder builder = new StringBuilder();
+            builder.Append(data.Enabled ? 2 : 1);
+            builder.Append(",");
+            builder.Append(data.CurrentPreset);
+            builder.Append(",");
+            builder.Append(preset.IsBackground ? 2 : 1);
+            builder.Append(",");
+            builder.Append(preset.ColorCode);
+            builder.Append(",");
+            builder.Append(preset.ColorIntensity);
 
-                NeedsExtraDataUpdate = false;
-                ExtraData = builder.ToString();
-            }
-
-            return ExtraData;
+            composer.Data.Add((int)ExtraDataType.StringData);
+            composer.Data.Add(builder.ToString());
         }
     }
 }

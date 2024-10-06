@@ -22,7 +22,8 @@ namespace Helios.Messages.Incoming
             if (moodlight == null)
                 return;
 
-            MoodlightExtraData moodlightData = (MoodlightExtraData)moodlight.Interactor.GetJsonObject();
+            MoodlightExtraData moodlightData = moodlight.Interactor.GetJsonObject<MoodlightExtraData>();
+
             avatar.Send(new MoodlightConfigComposer(moodlightData));
         }
     }

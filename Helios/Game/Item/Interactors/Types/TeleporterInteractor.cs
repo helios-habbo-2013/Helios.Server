@@ -1,7 +1,9 @@
-﻿using Helios.Storage;
+﻿using Helios.Messages;
+using Helios.Storage;
 using Helios.Storage.Access;
 using Helios.Storage.Models.Item;
 using Newtonsoft.Json;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace Helios.Game
@@ -14,11 +16,20 @@ namespace Helios.Game
 
         #region Overridden Properties
 
-        public override ExtraDataType ExtraDataType => ExtraDataType.StringData;
 
         #endregion
 
-        public TeleporterInteractor(Item item) : base(item) { }
+        public TeleporterInteractor(Item item) : base(item)
+        {
+        }
+
+        public override void WriteExtraData(IMessageComposer composer, bool inventoryView = false)
+        {
+            var data = GetJsonObject<TeleporterExtraData>();
+
+            composer.Data.Add((int)ExtraDataType.StringData);
+            composer.Data.Add(data.State ?? "0");
+        }
 
         public override void OnInteract(IEntity entity, int requestData)
         {
@@ -36,9 +47,9 @@ namespace Helios.Game
                 return;
             }
 
-            var teleporterData = (TeleporterExtraData)GetJsonObject();
+            var teleporterData = GetJsonObject<TeleporterExtraData>();
+            string pairId = teleporterData.LinkedItem;
 
-            string pairId = ((TeleporterExtraData)GetJsonObject()).LinkedItem;
             ItemData targetTeleporterData = null;
 
             using (var context = new GameStorageContext())
@@ -78,7 +89,7 @@ namespace Helios.Game
 
             var targetTeleporter = ItemManager.Instance.ResolveItem(targetTeleporterData.Id.ToString());
             var pairedTeleporter = targetTeleporter ?? new Item(targetTeleporterData);
-            var pairedData = ((TeleporterExtraData)pairedTeleporter.Interactor.GetJsonObject());
+            var pairedData = pairedTeleporter.Interactor.GetJsonObject<TeleporterExtraData>();
 
             roomUser.AuthenticateTeleporterId = pairedTeleporter.Data.Id.ToString();
 
@@ -222,9 +233,9 @@ namespace Helios.Game
 
         public override void OnPickup(IEntity entity)
         {
-            var teleporterData = (TeleporterExtraData)GetJsonObject();
+            var teleporterData = GetJsonObject<TeleporterExtraData>();
 
-            Item.Interactor.SetJsonObject(new TeleporterExtraData
+            Item.Interactor.SetExtraData(new TeleporterExtraData
             {
                 LinkedItem = teleporterData.LinkedItem,
                 State = TELEPORTER_CLOSE
@@ -235,44 +246,15 @@ namespace Helios.Game
 
         public override void OnPlace(IEntity entity)
         {
-            var teleporterData = (TeleporterExtraData)GetJsonObject();
+            var teleporterData = GetJsonObject<TeleporterExtraData>();
 
-            Item.Interactor.SetJsonObject(new TeleporterExtraData
+            Item.Interactor.SetExtraData(new TeleporterExtraData
             {
                 LinkedItem = teleporterData.LinkedItem,
                 State = TELEPORTER_CLOSE
             });
 
             Item.Save();
-        }
-
-        public override object GetJsonObject()
-        {
-            TeleporterExtraData extraData = null;
-
-            try
-            {
-                extraData = JsonConvert.DeserializeObject<TeleporterExtraData>(Item.Data.ExtraData);
-            }
-            catch { }
-
-            return extraData;
-        }
-
-        public override object GetExtraData(bool inventoryView = false)
-        {
-            if (NeedsExtraDataUpdate)
-            {
-                var jsonObject = (TeleporterExtraData)GetJsonObject();
-
-                if (string.IsNullOrEmpty(jsonObject.State))
-                    jsonObject.State = TELEPORTER_CLOSE;
-
-                NeedsExtraDataUpdate = false;
-                ExtraData = jsonObject.State;
-            }
-
-            return ExtraData;
         }
     }
 }

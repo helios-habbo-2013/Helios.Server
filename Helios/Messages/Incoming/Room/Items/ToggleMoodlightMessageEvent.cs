@@ -21,9 +21,9 @@ namespace Helios.Messages.Incoming
             if (moodlight == null)
                 return;
 
-            var moodlightData = (MoodlightExtraData)moodlight.Interactor.GetJsonObject();
+            var moodlightData = moodlight.Interactor.GetJsonObject<MoodlightExtraData>();
             moodlightData.Enabled = !moodlightData.Enabled;
-            moodlight.Interactor.SetJsonObject(moodlightData);
+            moodlight.Interactor.SetExtraData(moodlightData);
 
             moodlight.Update();
             moodlight.Save();
