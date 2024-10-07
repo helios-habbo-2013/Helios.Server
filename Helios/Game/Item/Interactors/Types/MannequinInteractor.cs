@@ -83,7 +83,7 @@ namespace Helios.Game
             values["FIGURE"] = GenerateMannequinFigure(data.Figure);
             values["OUTFIT_NAME"] = data.OutfitName;
 
-            composer.Data.Add((int)ExtraDataType.StringArrayData);
+            composer.Data.Add((int)ExtraDataType.StringArray);
             composer.Data.Add(values.Count);
 
             foreach (var kvp in values)

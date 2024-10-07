@@ -35,7 +35,7 @@ namespace Helios.Game
 
         public virtual void WriteExtraData(IMessageComposer composer, bool inventoryView = false)
         {
-            composer.Data.Add((int) ExtraDataType.StringData);
+            composer.Data.Add((int) ExtraDataType.Legacy);
             composer.Data.Add(Item.Data.ExtraData);
         }
 

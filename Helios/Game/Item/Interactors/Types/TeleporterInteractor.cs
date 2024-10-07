@@ -27,7 +27,7 @@ namespace Helios.Game
         {
             var data = GetJsonObject<TeleporterExtraData>();
 
-            composer.Data.Add((int)ExtraDataType.StringData);
+            composer.Data.Add((int)ExtraDataType.Legacy);
             composer.Data.Add(data.State ?? "0");
         }
 

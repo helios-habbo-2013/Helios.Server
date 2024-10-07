@@ -46,6 +46,14 @@ namespace Helios.Game
             return null;
         }
 
+        public bool HasGroup(int groupId)
+        {
+            using (var context = new GameStorageContext())
+            {
+                return context.GroupData.Any(x => x.Id == groupId);
+            }
+        }
+
         #endregion
     }
 }

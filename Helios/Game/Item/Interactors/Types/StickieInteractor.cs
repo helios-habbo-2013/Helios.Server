@@ -34,7 +34,7 @@ namespace Helios.Game
 
         public override void WriteExtraData(IMessageComposer composer, bool inventoryView = false)
         {
-            composer.Data.Add((int)ExtraDataType.StringData);
+            composer.Data.Add((int)ExtraDataType.Legacy);
             composer.Data.Add(GetJsonObject<StickieExtraData>().Colour);
         }
     }

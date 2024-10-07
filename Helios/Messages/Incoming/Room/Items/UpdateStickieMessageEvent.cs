@@ -37,6 +37,7 @@ namespace Helios.Messages.Incoming
                 Colour = colour,
                 Message = text
             });
+
             item.Update();
             item.Save();
         }
