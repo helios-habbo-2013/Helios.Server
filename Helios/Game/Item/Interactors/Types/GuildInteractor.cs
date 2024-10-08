@@ -21,14 +21,18 @@ namespace Helios.Game
             GuildExtraData extraData = null;
             Group group = null;
 
+            bool saveGroup = false;
+
             try
             {
                 extraData = JsonConvert.DeserializeObject<GuildExtraData>(Item.Data.ExtraData);
             }
             catch { }
 
-            if (extraData == null)
+            if (extraData == null || extraData.Badge == null)
             {
+                extraData = null;
+
                 if (Item.Data.GroupId != null)
                 {
                     group = GroupManager.Instance.GetGroup(item.Data.GroupId.Value);
@@ -42,8 +46,10 @@ namespace Helios.Game
                             Colour1 = GroupManager.Instance.BadgeManager.Colour2[group.Data.Colour1].FirstValue,
                             Colour2 = GroupManager.Instance.BadgeManager.Colour3[group.Data.Colour2].FirstValue,
                         };
+
+                        saveGroup = true;
                     }
-                    
+
                 }
             }
 
@@ -56,6 +62,8 @@ namespace Helios.Game
                     Colour1 = null,
                     Colour2 = null,
                 };
+
+                saveGroup = true;
             }
 
             SetExtraData(extraData);
@@ -64,6 +72,11 @@ namespace Helios.Game
             if (Item.Data.GroupId != null && group == null)
             {
                 Item.Data.GroupId = null;
+                saveGroup = true;
+            }
+
+            if (saveGroup)
+            {
                 Item.Save();
             }
         }

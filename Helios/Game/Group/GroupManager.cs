@@ -46,6 +46,16 @@ namespace Helios.Game
             return null;
         }
 
+        public List<Group> GetGroupsByMembership(int avatarId)
+        {
+            using (var context = new GameStorageContext())
+            {
+                return GroupDao.GetGroupsByMembership(context, avatarId)
+                    .Select(group => new Group(group))
+                    .ToList();
+            }
+        }
+
         public bool HasGroup(int groupId)
         {
             using (var context = new GameStorageContext())

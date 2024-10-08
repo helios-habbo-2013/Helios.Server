@@ -96,6 +96,7 @@
         public static readonly short GiveGroupAdminMessageEvent = 3341;
         public static readonly short RevokeGroupAdminMessageEvent = 735;
         public static readonly short GroupFurnitureWidgetMessageEvent = 3979;
+        public static readonly short GroupFurnitureCatalogMessageEvent = 388;
 
         /*[2024-09-22 21:06:56,618] DEBUG  Avatar Alex - Unknown: 3127 / [0][0][0][1][0][0][0][2]
 [2024-09-22 21:07:03,626] DEBUG  Avatar Alex - Unknown: 3918 / [0][0][0][1][0][0][0][2]*/

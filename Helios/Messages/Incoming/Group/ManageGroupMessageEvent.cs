@@ -27,6 +27,7 @@ namespace Helios.Messages.Incoming
                 GroupManager.Instance.BadgeManager.Colour2,
                 GroupManager.Instance.BadgeManager.Colour3
             ));
+
             avatar.Send(new ManageGroupMessageComposer(group));
         }
 
