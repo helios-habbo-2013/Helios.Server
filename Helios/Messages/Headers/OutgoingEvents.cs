@@ -99,5 +99,6 @@
         public static readonly short ManageGroupMessageComposer = 858;
         public static readonly short GroupMembersMessageComposer = 326;
         public static readonly short GroupFurniConfigMessageComposer = 2049;
+        public static readonly short GroupFurnitureWidgetMessageComposer = 3682;
     }
 }

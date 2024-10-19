@@ -25,15 +25,9 @@ namespace Helios.Messages.Outgoing
                 _data.Add(group.Data.Id);
                 _data.Add(group.Data.Name);
                 _data.Add(group.Data.Badge);
-
-                var colour1 = GroupManager.Instance.BadgeManager.Colour2[group.Data.Colour1].FirstValue;
-                var colour2 = GroupManager.Instance.BadgeManager.Colour3[group.Data.Colour2].FirstValue;
-
-                _data.Add(colour1);
-                _data.Add(colour2);
-
-                _data.Add(this.avatarId == group.Data.OwnerId);
-                _data.Add(group.Data.OwnerId);
+                _data.Add(group.ColourA);
+                _data.Add(group.ColourB);
+                _data.Add(false); // Whether group is favourite
             }
         }
     }

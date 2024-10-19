@@ -70,7 +70,7 @@ namespace Helios.Game
         /// <summary>
         /// Get whether the item is walkable
         /// </summary>
-        public bool IsWalkable(Position position)
+        public bool IsWalkable(Position position, Position from = null)
         {
             if (Definition.HasBehaviour(ItemBehaviour.IS_WALKABLE))
                 return true;
@@ -84,7 +84,7 @@ namespace Helios.Game
             if (Definition.InteractorType == InteractorType.BED)
                 return true;
 
-            if (Definition.InteractorType == InteractorType.GATE || Definition.InteractorType == InteractorType.ONE_WAY_GATE)
+            if (Definition.InteractorType == InteractorType.GATE || Definition.InteractorType == InteractorType.ONE_WAY_GATE || Definition.InteractorType == InteractorType.GATE)
                 return Data.ExtraData.Equals("1");
 
             if (Definition.InteractorType == InteractorType.TELEPORTER)

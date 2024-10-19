@@ -98,6 +98,7 @@ namespace Helios.Messages.Incoming.Catalogue
                 context.Update(avatar.Details);
                 context.SaveChanges();
 
+                /*
                 if (room != null)
                 {
                     // if (avatar.RoomUser.Room == null || avatar.RoomUser.Room.Data.Id != roomId)
@@ -118,6 +119,7 @@ namespace Helios.Messages.Incoming.Catalogue
 
                     avatar.RoomUser.NeedsUpdate = true;
                 }
+                */
 
                 context.ClearRoomRights(room.Data.Id);
 

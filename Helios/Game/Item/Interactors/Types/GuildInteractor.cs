@@ -13,15 +13,16 @@ namespace Helios.Game
     {
         #region Overridden Properties
 
+        private DefaultInteractor DefaultInteractor { get; set; }
 
         #endregion
 
         public GuildInteractor(Item item) : base(item)
         {
-            GuildExtraData extraData = null;
-            Group group = null;
-
             bool saveGroup = false;
+            bool hasGroup = GroupManager.Instance.HasGroup(item.Data.GroupId.Value);
+
+            GuildExtraData extraData = null;
 
             try
             {
@@ -35,16 +36,16 @@ namespace Helios.Game
 
                 if (Item.Data.GroupId != null)
                 {
-                    group = GroupManager.Instance.GetGroup(item.Data.GroupId.Value);
-
-                    if (group != null)
+                    if (hasGroup)
                     {
+                        Group group = GroupManager.Instance.GetGroup(item.Data.GroupId.Value);
+
                         extraData = new GuildExtraData()
                         {
                             State = "0",
                             Badge = group.Data.Badge,
-                            Colour1 = GroupManager.Instance.BadgeManager.Colour2[group.Data.Colour1].FirstValue,
-                            Colour2 = GroupManager.Instance.BadgeManager.Colour3[group.Data.Colour2].FirstValue,
+                            Colour1 = group.ColourA,
+                            Colour2 = group.ColourB,
                         };
 
                         saveGroup = true;
@@ -69,7 +70,7 @@ namespace Helios.Game
             SetExtraData(extraData);
 
             // Sanity checking
-            if (Item.Data.GroupId != null && group == null)
+            if (Item.Data.GroupId != null && !hasGroup)
             {
                 Item.Data.GroupId = null;
                 saveGroup = true;
@@ -79,15 +80,16 @@ namespace Helios.Game
             {
                 Item.Save();
             }
-        }
 
+            this.DefaultInteractor = new DefaultInteractor(item);
+        }
 
         /// <summary>
         /// On interact group guild furni handler
         /// </summary>
         public override void OnInteract(IEntity entity, int requestData)
         {
-
+            this.DefaultInteractor.OnInteract(entity, requestData);
         }
 
         public override void WriteExtraData(IMessageComposer composer, bool inventoryView = false)

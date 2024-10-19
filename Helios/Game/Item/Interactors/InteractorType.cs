@@ -25,6 +25,7 @@
         FORTUNE,
         LERT,
         MANNEQUIN,
-        GUILD
+        GUILD,
+        GUILD_GATE
     }
 }

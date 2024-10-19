@@ -16,6 +16,8 @@ namespace Helios.Game
 
         public GroupData Data { get; }
         public List<GroupMembership> Members { get; private set; }
+        public string ColourA => GroupManager.Instance.BadgeManager.Colour2[Data.Colour1].FirstValue;
+        public string ColourB => GroupManager.Instance.BadgeManager.Colour3[Data.Colour2].FirstValue;
 
         #endregion
 

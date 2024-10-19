@@ -46,12 +46,21 @@ namespace Helios.Game
             return null;
         }
 
-        public List<Group> GetGroupsByMembership(int avatarId)
+        public List<Group> GetGroupsByMembership(int avatarId, params GroupMembershipType[] membershipTypes)
         {
+            var membershipTypeList = new List<GroupMembershipType>();
+
+            if (!membershipTypes.Any())
+            {
+                membershipTypeList.Add(GroupMembershipType.MEMBER);
+                membershipTypeList.Add(GroupMembershipType.ADMIN);
+            }
+
             using (var context = new GameStorageContext())
             {
                 return GroupDao.GetGroupsByMembership(context, avatarId)
                     .Select(group => new Group(group))
+                    .Where(x => x.Data.OwnerId == avatarId || x.Members.Any(x => x.Data.AvatarId == avatarId && membershipTypes.Any(membershipType => membershipType == x.Data.MemberType)))
                     .ToList();
             }
         }

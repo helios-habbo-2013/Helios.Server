@@ -24,6 +24,7 @@ namespace Helios.Game
         {
             Interactors = new Dictionary<InteractorType, Type>();
             Interactors[InteractorType.DEFAULT] = typeof(DefaultInteractor);
+            Interactors[InteractorType.GATE] = typeof(DefaultInteractor);
             Interactors[InteractorType.BED] = typeof(BedInteractor);
             Interactors[InteractorType.CHAIR] = typeof(ChairInteractor);
             Interactors[InteractorType.POST_IT] = typeof(StickieInteractor);
@@ -34,6 +35,7 @@ namespace Helios.Game
             Interactors[InteractorType.DICE] = typeof(DiceInteractor);
             Interactors[InteractorType.MANNEQUIN] = typeof(MannequinInteractor);
             Interactors[InteractorType.GUILD] = typeof(GuildInteractor);
+            Interactors[InteractorType.GUILD_GATE] = typeof(GuildInteractor);
         }
 
         #endregion

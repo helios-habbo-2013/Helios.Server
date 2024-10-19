@@ -7,6 +7,17 @@
 
         public override void OnInteract(IEntity entity, int requestData)
         {
+            if (Item.Definition.InteractorType == InteractorType.GATE ||
+                Item.Definition.InteractorType == InteractorType.GUILD_GATE)
+            {
+                var roomTile = Item.CurrentTile;
+
+                if (roomTile != null && roomTile.Entities.Count > 0)
+                {
+                    return;
+                }
+            }
+
             if (Item.Definition.Data.MaxStatus > 0)
             {
                 int.TryParse(Item.Data.ExtraData, out int currentMode);

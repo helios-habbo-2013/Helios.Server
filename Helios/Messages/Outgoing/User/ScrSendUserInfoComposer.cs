@@ -22,7 +22,7 @@ namespace Helios.Messages.Outgoing
             _data.Add(true);
             _data.Add(0); // unused ??
             _data.Add(subscription != null ? subscription.DaysLeft : 0); // unused ??
-            _data.Add(subscription != null ? subscription.DaysLeft : 0); // unused ??
+            _data.Add(subscription != null ? 1 : 0); // group membership purchase enabled / disabled
         }
     }
 }

@@ -28,24 +28,14 @@ namespace Helios.Messages.Incoming
 
             Item item = room.ItemManager.GetItem(itemId);
 
-            if (item == null)
+            if (item == null || item.Data.GroupId == null)
                 return;
 
+            Group group = GroupManager.Instance.GetGroup(item.Data.GroupId.GetValueOrDefault());
 
-            Group group = null;
-            
-            if (item.Data.GroupId is int groupId)
-                group = GroupManager.Instance.GetGroup(groupId);
+            var groupFurniData = item.Interactor.GetJsonObject<GuildExtraData>(); 
 
-            avatar.Send(new GroupFurnitureWidgetMessageComposer(item.Id, item.Data.GroupId ?? 0, group?.Data.Name ?? "", group?.Data.RoomId ?? 0));
-            /*
-                var group = GroupManager.Instance.GetGroup(groupId);
-
-                if (group == null)
-                {
-                    return;
-                }
-            */
+            avatar.Send(new GroupFurnitureWidgetMessageComposer(item.Id, group.Data.Id, group.Data.Name, group.Data.RoomId, group.Members.Any(x => x.Data.AvatarId == avatar.Details.Id)));
         }
     }
 }

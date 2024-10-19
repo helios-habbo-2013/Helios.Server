@@ -3,6 +3,7 @@ using Helios.Storage;
 using Helios.Storage.Access;
 using Helios.Storage.Models.Catalogue;
 using Helios.Storage.Models.Effect;
+using Helios.Storage.Models.Group;
 using Helios.Storage.Models.Item;
 using Newtonsoft.Json;
 using System;
@@ -52,7 +53,7 @@ namespace Helios.Game
         /// <summary>
         /// Handle item purchase
         /// </summary>
-        public void Purchase(int AvatarId, int itemId, int amount, string extraData, long datePurchase, bool isClubGift = false)
+        public void Purchase(int avatarId, int itemId, int amount, string extraData, long datePurchase, bool isClubGift = false)
         {
             CatalogueItem catalogueItem = Items.FirstOrDefault(x => x.Data.Id == itemId);
 
@@ -61,7 +62,7 @@ namespace Helios.Game
 
             if (catalogueItem.Definition != null && catalogueItem.Definition.HasBehaviour(ItemBehaviour.EFFECT))
             {
-                PurchaseEffect(AvatarId, catalogueItem, amount);
+                PurchaseEffect(avatarId, catalogueItem, amount);
                 return;
             }
 
@@ -71,7 +72,7 @@ namespace Helios.Game
             {
                 foreach (var cataloguePackage in catalogueItem.Packages)
                 {
-                    var dataList = GenerateItemData(AvatarId, cataloguePackage, extraData, datePurchase);
+                    var dataList = GenerateItemData(avatarId, cataloguePackage, extraData, datePurchase);
 
                     if (!dataList.Any())
                         continue;
@@ -89,7 +90,7 @@ namespace Helios.Game
             // Convert item data to item instance
             List<Item> items = purchaseQueue.Select(x => new Item(x)).ToList();
 
-            var avatar = AvatarManager.Instance.GetAvatarById(AvatarId);
+            var avatar = AvatarManager.Instance.GetAvatarById(avatarId);
 
             if (avatar == null)
                 return;
@@ -174,7 +175,7 @@ namespace Helios.Game
         /// <summary>
         /// Generate item data for purchasing item
         /// </summary>
-        private List<ItemData> GenerateItemData(int AvatarId, CataloguePackage cataloguePackage, string userInputMessage, long datePurchase)
+        private List<ItemData> GenerateItemData(int avatarId, CataloguePackage cataloguePackage, string userInputMessage, long datePurchase)
         {
             var definition = cataloguePackage.Definition;
 
@@ -184,15 +185,40 @@ namespace Helios.Game
             var items = new List<ItemData>();
             var itemsToGenerate = cataloguePackage.Data.Amount;
 
+            int? itemGroupId = null;
+
             object serializeable = null;
 
             switch (definition.InteractorType)
             {
+                case InteractorType.GUILD:
+                case InteractorType.GUILD_GATE:
+                    {
+                        if (int.TryParse(userInputMessage, out int groupId))
+                        {
+                            var groupList = GroupManager.Instance.GetGroupsByMembership(avatarId, GroupMembershipType.ADMIN, GroupMembershipType.MEMBER);
+
+                            if (groupList.Any(x => x.Data.Id == groupId))
+                            {
+                                itemGroupId = groupId;
+                            }
+                            else
+                            {
+                                return null;
+                            }
+                        }
+                        else
+                        {
+                            return null;
+                        }
+
+                        break;
+                    }
                 case InteractorType.TROPHY:
                     {
                         serializeable = new TrophyExtraData
                         {
-                            AvatarId = AvatarId,
+                            AvatarId = avatarId,
                             Message = userInputMessage,
                             Date = datePurchase
                         };
@@ -229,11 +255,11 @@ namespace Helios.Game
             if (definition.InteractorType == InteractorType.TELEPORTER)
             {
                 ItemData firstTeleporter = new ItemData();
-                firstTeleporter.OwnerId = AvatarId;
+                firstTeleporter.OwnerId = avatarId;
                 firstTeleporter.DefinitionId = cataloguePackage.Definition.Data.Id;
 
                 ItemData secondTeleporter = new ItemData();
-                secondTeleporter.OwnerId = AvatarId;
+                secondTeleporter.OwnerId = avatarId;
                 secondTeleporter.DefinitionId = cataloguePackage.Definition.Data.Id;
 
                 firstTeleporter.ExtraData = JsonConvert.SerializeObject(new TeleporterExtraData
@@ -254,9 +280,15 @@ namespace Helios.Game
                 for (int i = 0; i < itemsToGenerate; i++)
                 {
                     ItemData itemData = new ItemData();
-                    itemData.OwnerId = AvatarId;
+                    itemData.OwnerId = avatarId;
                     itemData.DefinitionId = cataloguePackage.Definition.Data.Id;
                     itemData.ExtraData = extraData;
+
+                    if (itemGroupId != null)
+                    {
+                        itemData.GroupId = itemGroupId;
+                    }
+
                     items.Add(itemData);
                 }
             }
