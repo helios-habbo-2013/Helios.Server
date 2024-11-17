@@ -15,6 +15,7 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 -- Dumping structure for table helios.article_categories
+DROP TABLE IF EXISTS `article_categories`;
 CREATE TABLE IF NOT EXISTS `article_categories` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `label` varchar(50) NOT NULL,
@@ -38,96 +39,165 @@ INSERT INTO `article_categories` (`id`, `label`, `category_index`) VALUES
 	(11, 'Other', 'other');
 
 -- Dumping structure for table helios.authentication_ticket
+DROP TABLE IF EXISTS `authentication_ticket`;
 CREATE TABLE IF NOT EXISTS `authentication_ticket` (
   `avatar_id` int(11) NOT NULL,
   `sso_ticket` varchar(250) NOT NULL DEFAULT '',
   `expires_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Dumping data for table helios.authentication_ticket: ~79 rows (approximately)
+-- Dumping data for table helios.authentication_ticket: ~124 rows (approximately)
 DELETE FROM `authentication_ticket`;
 INSERT INTO `authentication_ticket` (`avatar_id`, `sso_ticket`, `expires_at`) VALUES
-	(1, '123', NULL),
-	(3, 'kek', NULL),
-	(1, 'b23643fe-2a38-4255-b475-fc3510ae1587', NULL),
-	(1, '7a8bdbcb-903d-4949-abc1-6b279b648e85', NULL),
-	(1, 'e8cff775-f879-467e-9598-efa56ec72e1e', NULL),
-	(1, '94b3c2f5-4112-439b-bb10-0189ffa3a6b6', NULL),
-	(1, '4d5e12f0-310a-44f4-9803-a35008d291a6', NULL),
-	(1, 'dbe452a2-bcb4-4697-8299-97a9a199bb1c', NULL),
-	(1, '393f9693-21da-4e12-963d-efda45b583dc', NULL),
-	(1, '793a5fc9-3b1f-445c-89ab-1e5d6b5ad957', NULL),
-	(1, '35757191-094b-4192-9441-df8124d2b3ba', NULL),
-	(1, '6b0def29-8def-47c0-8b4e-12d819a9ce90', NULL),
-	(1, 'b2a19b44-c439-478f-973a-b5e6c772cbf0', NULL),
-	(2, '81b5ef05-4ecc-4d99-9e47-a85dd9720e84', NULL),
-	(2, '62d40885-46af-4b7a-9ba1-1348d6bc16b5', NULL),
-	(2, 'fff2263e-8df1-4d29-a377-0aa2266ce4e0', NULL),
-	(2, 'e84cd29e-7a57-4c72-abcf-4cf80f039c87', NULL),
-	(2, '16d50be2-c0c6-4532-8687-7e3790dc9bec', NULL),
-	(2, 'b3506e71-2493-4242-9ff5-e67cdc324364', NULL),
-	(2, '18cb05ec-1957-4f9f-b669-ea620a7a0ece', NULL),
-	(2, 'af0fba01-9497-4084-afbc-f52f2e149ec1', NULL),
-	(2, 'fdd80a4b-e34a-4ae2-8fcc-965a1e1024c1', NULL),
-	(2, 'b9249ce3-d726-4b92-82d4-0b5c9793aea9', NULL),
-	(2, '5b47a783-da83-4272-8435-f658a89c5e61', NULL),
-	(2, '9e4fa74f-606c-4eaf-8409-7ff57f9b846b', NULL),
-	(2, '5f53ea3f-8de2-4733-a438-e2aa19a59364', NULL),
-	(2, '7a4ca14e-cd71-4f5a-8eb6-05b6300b79e7', NULL),
-	(2, '13d020aa-4e7d-42eb-8549-af8dd5c22836', NULL),
-	(2, '3962862b-9e26-4f9a-a39e-70ac82fd102f', NULL),
-	(2, 'a51206eb-53bb-4e92-b06a-f4c490c55142', NULL),
-	(2, '829725a3-e3e9-4553-8055-84e9dfc59501', NULL),
-	(2, '3dc1c991-c750-40f5-82f2-bfe79ccde19d', NULL),
-	(2, 'b898fa89-264a-4e78-bbfe-14a039c9d694', NULL),
-	(2, 'af953e6c-7624-4557-abb4-a2c59eeb0f1f', NULL),
-	(2, 'ab5f4406-1199-4866-8ee9-948476966d3b', NULL),
-	(2, 'defe1a88-3a64-4e8d-a4d2-b8a939aa3d4d', NULL),
-	(2, 'b06374ba-b00e-4282-80ff-c6cda859789e', NULL),
-	(2, 'e9380707-3ed8-4b8e-bea3-8de78f78c22e', NULL),
-	(2, '1343028e-5eaf-45de-b749-25617c3dd36e', NULL),
-	(2, '0fadef8a-b4df-4f43-89a9-b5e0f497888d', NULL),
-	(2, '76861e5a-c890-4ecc-939d-cd6c589a72b6', NULL),
-	(2, '8b6d9fe6-2f15-4161-a04b-18dbb6ba7a70', NULL),
-	(2, '1f7c27d1-a7b6-47a6-923b-d6335d265373', NULL),
-	(2, '571acb76-a80f-423f-9bcb-0a033a106b9a', NULL),
-	(2, '85780bf4-e7ad-4a7e-aa4c-54f672cc69f9', NULL),
-	(2, '1b7f78ed-26e7-41df-a5f3-2bc87ec18817', NULL),
-	(2, '4f57cc76-ea69-4dab-85c6-94cf69d106f6', NULL),
-	(2, 'd7623dc0-357c-471e-b37d-e5faa2394788', NULL),
-	(2, 'e0a95a74-60f0-4118-be48-d112a5baf59d', NULL),
-	(2, '7e546c3b-fc42-456b-b10a-3759298dab43', NULL),
-	(2, '5174829e-2dd1-46e9-9825-2420e114151d', NULL),
-	(2, '37eb79e0-7453-4a94-8275-9e589079393a', NULL),
-	(2, 'e7215cce-8e74-4c8c-9c1e-663f5e076e49', NULL),
-	(2, 'e953c106-3f2a-4f98-ac22-67190381675d', NULL),
-	(2, '8ff1975d-e23d-4f0d-af56-83da4007132c', NULL),
-	(2, '402bd71b-ce23-4a09-ac4a-5b773546c96e', NULL),
-	(2, 'c3e800d0-fadc-4e58-8a0d-a4c525fff67e', NULL),
-	(2, '518b6cd8-01f8-4311-ab03-1a00d4ac2208', NULL),
-	(2, '55898c0c-9d60-48d2-b37a-d502f18ce42f', NULL),
-	(2, '0b773ba7-eba1-40a1-83ff-008fc4c67902', NULL),
-	(2, '6114cb03-89c0-4370-9625-2d3e3230f54d', NULL),
-	(2, '5a75fe3a-6413-4d89-ad3d-d480ea1455f5', NULL),
-	(2, '381e4323-f5bd-4afc-9a13-80a683c98ba2', NULL),
-	(2, '05d89332-d5e3-43ad-bf9d-0c9f1b669232', NULL),
-	(2, '78e6dc6b-acda-49df-bdf7-645f7fc954f4', NULL),
-	(2, 'f2291896-a161-4936-a42c-ec3d4e28ea06', NULL),
-	(2, '78198813-ec10-44f2-8c33-e64b7ec1031f', NULL),
-	(2, '20df2aa9-8493-4843-ac65-4a4d7ba666aa', NULL),
-	(2, 'd54554a8-2092-47ec-9de3-e1a81a1a8a3d', NULL),
-	(2, 'a3906191-5eb9-41a4-ab56-fd2cfee7f060', NULL),
-	(2, '90e7a42d-ec93-4c7b-8d57-10f285adeea0', NULL),
-	(2, 'ba881a3a-48cc-43c2-a70b-f2980f312c27', NULL),
-	(2, '7fa65e59-18a7-4a9b-ba39-e11ccce22050', NULL),
-	(2, '39764569-2e86-403a-b442-a354f861c2a3', NULL),
-	(2, '4f365c8e-545a-41db-9240-3203f6aa0959', NULL),
-	(2, 'e3817741-107f-40d4-8ecc-b4122880d73d', NULL),
-	(2, 'fc85e105-a947-4098-bc0f-a8ca54561b53', NULL),
-	(2, 'ac0a865c-cca0-4a8e-92e3-a90a67d4990c', NULL),
-	(2, 'f9626454-77f4-4727-8ca4-2b5fe2b133aa', NULL);
+	(1, '698838e8-9654-4b8b-8ac4-4cc7471e4c9d', NULL),
+	(1, 'c9d65605-9216-4934-a498-78f810d8cd02', NULL),
+	(1, '29efab2a-fbe9-4127-89e7-4019e1838aa2', NULL),
+	(1, 'e7062f45-80d8-462e-96e9-64d052868789', NULL),
+	(1, '90d81b06-0679-46bd-be40-c84990868ca4', NULL),
+	(1, 'a9c33bd0-ed83-4634-baa6-5d19200a7b47', NULL),
+	(1, '8f57a8e2-b5b2-4631-a1fe-a6875a13842d', NULL),
+	(1, '4f071134-cf32-4462-baad-b63fa211a70d', NULL),
+	(1, 'fe6370ab-064c-4c69-90a0-8a35f9b16121', NULL),
+	(1, 'bef4dc6d-4c86-4c9f-82c0-3a3333748596', NULL),
+	(1, '71da6afe-df4d-49ca-a375-fec3903e4ce1', NULL),
+	(1, 'f6a33eb8-74c5-4b77-8abd-91d0325b9dc0', NULL),
+	(1, 'fda6ab1f-6b15-4e2c-9773-5e175f634f7f', NULL),
+	(1, 'f9efd42e-2b70-4572-ba16-8c76a2408a4b', NULL),
+	(1, 'ce21649f-f092-4731-8fce-ddf63e3dbcf2', NULL),
+	(1, '20291216-381e-4a06-b914-dfbb319c6c95', NULL),
+	(1, '6a89435e-7326-42a8-913d-3de331d96492', NULL),
+	(1, 'ea7ec181-c4b9-4807-84b4-ee022253aff1', NULL),
+	(1, '54028c5d-9872-4794-ad1d-636ef17758e4', NULL),
+	(1, 'b510040e-c286-458a-ac52-143b27ce1c40', NULL),
+	(1, '53c999b6-cb7a-4875-9966-7c2b3eec0582', NULL),
+	(1, '76a6f995-d66f-4b47-9df0-310d2647b382', NULL),
+	(1, '635721fc-9c1d-44e8-b91f-174e2a5f50a9', NULL),
+	(1, 'a3e2e176-3325-43d3-9e12-aa4d027fd84f', NULL),
+	(1, '61f048f1-705a-401d-a981-f3d220336120', NULL),
+	(1, 'c25209e3-f26e-4f35-a46d-2e6596d64f97', NULL),
+	(1, '7d43b262-9eca-4e6a-b528-86d630c7b87d', NULL),
+	(1, '268ae2bb-b57f-4dee-99b8-aa3d8ae1b9d2', NULL),
+	(1, '55d7bf18-790d-452f-98ae-0f45fec3fee9', NULL),
+	(1, 'b9185944-dc02-4ae2-ad53-de80d2472e0d', NULL),
+	(1, '5fd31656-91ae-4177-aecb-439d8b636bf4', NULL),
+	(1, '894a766d-61d2-446b-9c79-b5090b868efa', NULL),
+	(1, 'b89ea39c-eff2-4e89-946c-4b34c8dfcd80', NULL),
+	(1, '35b947ed-50e7-45ee-8d55-aa960502404b', NULL),
+	(1, '646e768e-4b10-4858-9dc5-c13523f05033', NULL),
+	(1, 'e1b99916-2dfb-4a7b-bc9f-73eb9a9982a5', NULL),
+	(1, 'e7d48aec-c174-4ce2-864b-937315f0bbf0', NULL),
+	(1, 'cd36b4bb-3a82-4a72-a6eb-76725883aca7', NULL),
+	(1, '4c2f5550-3915-45c6-b725-13d039ae6a49', NULL),
+	(1, 'ae5e7ba9-76a2-4206-b829-ab52d109b225', NULL),
+	(1, '07044d6f-1d6a-4b2a-ac9e-43eef050dcf0', NULL),
+	(1, '9cae376b-a754-4204-ba11-ef86b09891b4', NULL),
+	(1, '2b67239b-85be-4930-972d-5ad27a047a0c', NULL),
+	(1, 'b3a0c979-40f1-4c6c-ad95-4b3c84da7fdc', NULL),
+	(1, 'b684df10-04b8-44c6-9a64-f5f40bba5df8', NULL),
+	(1, 'e6309a27-e552-4830-bec0-f1a88aec4578', NULL),
+	(1, '48a9951c-b31c-4589-98c8-ea75d7e660fd', NULL),
+	(1, '08ec6a42-0975-4e7c-b81e-c449447b0b0b', NULL),
+	(1, '89231249-909a-4004-8df5-68d7deb3d41c', NULL),
+	(1, '66c28ab8-b8c0-4fb4-b08f-a4c04ba23066', NULL),
+	(1, '8a83e92f-4f9c-4367-b00c-139623f40617', NULL),
+	(1, '2d0a9b25-b2b7-41d7-a051-a8fc338a0e07', NULL),
+	(1, '6ea3be08-2375-4705-b361-c3944dbfb3a8', NULL),
+	(1, '7f286d73-d4fb-4ed5-a0cc-e2fe58ec9d44', NULL),
+	(1, '66f19157-bc0d-4eab-9bc5-39369e00049b', NULL),
+	(1, '512257bb-ef8b-4b3c-a713-de0e58578008', NULL),
+	(1, 'c1a66e45-e25c-4ca8-926c-5d81b868f21a', NULL),
+	(1, 'f5dbc7d7-9374-47f6-b55f-0de19a8fb6dc', NULL),
+	(1, '96d39969-c7e7-48ef-bf0e-9e65e27add67', NULL),
+	(1, 'cc0fbc8e-e6a7-493e-a4a5-46822f52eb12', NULL),
+	(2, '96e34506-0b9b-4a8f-9da5-574b12d366a6', NULL),
+	(2, '45111e42-0ec5-43c3-99a5-d996318f5af6', NULL),
+	(1, 'd7d356c6-fce3-4a9b-9eb0-7a7dfe8de4ef', NULL),
+	(2, '5bfa1e3a-a88f-4f2b-8dee-fc42221eec44', NULL),
+	(2, '020b5d8e-214c-4f0f-84f4-af2173ee8c34', NULL),
+	(1, '2ba95baa-5f60-4e98-8bc3-3ccaed043fc9', NULL),
+	(1, '76602c6b-9ea0-47cf-b846-299696159d8d', NULL),
+	(1, '28384fee-7297-4f17-8558-9274d9da6bcb', NULL),
+	(1, '11fdee8a-f442-45b6-b907-d33ae6d45d30', NULL),
+	(2, '1be86ab9-b124-427a-9267-6e8015a23285', NULL),
+	(1, '5413d338-9efc-417d-8b7f-f43b8562d85f', NULL),
+	(1, '16d83726-e7c4-4ed2-9fe1-4de026ef1d4f', NULL),
+	(1, '06816973-0ab5-42cb-b1f3-f4e0c58061b1', NULL),
+	(2, '311e38e7-2ad2-4b0a-ab6f-2a20f42d3649', NULL),
+	(1, '20beeb43-6356-43c0-9cba-31dc33b5c0a1', NULL),
+	(1, 'a2b6cd8f-1ea6-464d-9977-393be80c8aed', NULL),
+	(1, '6c9ce27c-77f3-4046-8ee2-d9fc42eff4c4', NULL),
+	(1, '8d1ac5ab-0867-4a26-ba2f-ea88417d8bfe', NULL),
+	(1, 'cce0715a-fcce-4e45-8805-62227d8c6e11', NULL),
+	(1, '86c408dd-9281-4725-8924-d300604cf16b', NULL),
+	(1, '61b5d6bb-ed3d-42e3-8f19-1ae96b51ab5c', NULL),
+	(1, 'daa5c276-97ee-4ae0-8b70-41cf49d04732', NULL),
+	(1, 'b81a2e3e-bba6-4a05-81ae-7e2bab453748', NULL),
+	(1, '64c73ed8-1f5a-40db-93e1-f556f9226bb1', NULL),
+	(1, '8d89aee2-bb99-4c39-b4de-8fbc66905f61', NULL),
+	(1, 'a67d742d-f45c-4f84-99e5-037c13e809dc', NULL),
+	(1, '9763579c-41d0-4b50-a232-e091577de685', NULL),
+	(1, '781d25a8-b20a-445a-8800-766cfa5c71ed', NULL),
+	(1, '8a2a76bc-1357-41f6-837e-d9e943501313', NULL),
+	(1, '7f4d15c1-b975-44d4-a766-4e591c1659f8', NULL),
+	(1, '2b5d4d73-c626-431a-9a3e-6e4a9f573708', NULL),
+	(1, '73198ee6-9dae-4f1d-bc33-04aa4cddb837', NULL),
+	(1, '2a479099-3cf4-407a-8dbf-073ca6db2e5b', NULL),
+	(1, '38aeb119-ebb6-4220-a309-9c1535ac33c2', NULL),
+	(1, '2231e705-a3f5-4d35-8505-64f97441336e', NULL),
+	(1, 'b3879a39-c8fb-4d9f-bf54-7254253898f3', NULL),
+	(1, 'a2f62dc5-813d-4c0e-bba0-56de471c3dec', NULL),
+	(1, '9e3b0020-9ca6-4548-8a2c-3f4951fe1719', NULL),
+	(1, '005174c0-1334-4c67-a946-f069fadc15ab', NULL),
+	(1, 'cef5cca4-71c6-4371-95fa-b62f12283343', NULL),
+	(1, 'd0f7e812-cc08-418e-b1b8-be5207acc2eb', NULL),
+	(1, '6d562dbf-8fb5-413a-9957-1e03de0c3e61', NULL),
+	(1, '00bf92af-5e97-4160-be1d-9502089c342a', NULL),
+	(1, 'a854ba9b-059d-4df1-887b-76c490c6e51f', NULL),
+	(1, 'f77e8341-ca0a-4e74-a47a-d3b5c6384cb4', NULL),
+	(1, 'dbdd29bb-6095-4876-906f-3ff468977c60', NULL),
+	(1, '1cc38c06-590b-44f9-8113-cd2b0c921f30', NULL),
+	(1, 'fe0fbe34-313b-4cfe-84f1-5202533c0e34', NULL),
+	(1, '62703563-723c-4a5b-a243-bb77baa88ac8', NULL),
+	(1, 'c8d4d9fb-de60-4895-ac5f-9c43387da797', NULL),
+	(1, 'bbae5c7a-8ea2-40d5-a95d-736568d74499', NULL),
+	(1, '0657af18-8f17-4647-b19e-9257a00ec022', NULL),
+	(1, 'ddbaae62-add7-452f-ac57-915b57c85088', NULL),
+	(1, '31ba4b0f-99ee-404f-a9cc-5cf8def67688', NULL),
+	(1, '50881ee2-7587-41eb-8875-da3ce11efad8', NULL),
+	(1, '60f3c81d-3183-4a67-b795-ee80f6a21d36', NULL),
+	(1, '79042613-0833-418d-81c1-d8fabda73ad6', NULL),
+	(1, '6761c465-5a7d-4335-a0cc-27617955fa47', NULL),
+	(1, 'f8f0df6a-ad5c-4ffd-834a-e69ac484294f', NULL),
+	(1, 'cd6119a4-8f90-4677-9c4f-7dceb18ca1aa', NULL),
+	(1, 'f58900ef-d0e6-48b5-a748-01a53db8b67e', NULL),
+	(1, '39b881f7-e618-4249-ad46-e8e49955e585', NULL),
+	(1, '69f0ac40-b276-4834-8920-2637ec089cfa', NULL),
+	(1, 'da56af06-7e0d-4961-b567-03681e1929fe', NULL),
+	(1, '39d6bd28-bbb6-4beb-a98f-7da3ce6a130c', NULL),
+	(1, '59105e48-eca3-46e3-844a-211b0e74ca9d', NULL),
+	(1, '7ad15e16-970f-4af7-a717-b1921ff2241f', NULL),
+	(1, 'd4732fb3-3e89-4a61-8093-cbb38b164f9a', NULL),
+	(1, '35c8c7c6-cf9a-4993-be80-65ba3fb58420', NULL),
+	(1, '96103b57-e0d9-4883-916a-3a513408fda4', NULL),
+	(1, 'cd9abf83-8ca9-4d77-af37-b71d8b4ee513', NULL),
+	(1, '44938425-5f83-48b0-9e74-aa27cf7e0550', NULL),
+	(1, '66a235f6-e82b-45a7-868b-a4d30568f494', NULL),
+	(1, 'b1dc33c9-5a36-4d94-be1e-146b5ce5289b', NULL),
+	(1, '0818a76d-eb90-4bc2-b9bf-9951b3cb6029', NULL),
+	(1, '5a21d043-47f1-43c7-a6e9-3e2b035ac754', NULL),
+	(1, '70b7448e-a456-4de7-b849-a44182603a6e', NULL),
+	(1, '79f2afc7-624c-4d3b-805b-ce9a4e01deb1', NULL),
+	(1, 'a566c795-15bf-4954-9db6-d913dc47736a', NULL),
+	(1, '54edb435-6916-4780-8f68-a07a8c6d4ea5', NULL),
+	(1, '82702e54-25d1-442c-b82a-e3892e9f0aa9', NULL),
+	(1, '12f5fd84-7324-4ec1-917f-6695a10ef0b3', NULL),
+	(1, '6491badf-010f-438b-ae70-90bab8f31af5', NULL),
+	(1, '35a00955-457d-4c50-b587-748bd633eadb', NULL),
+	(1, 'd3afae59-5161-4584-968c-3ca80ac82e9c', NULL),
+	(1, '932a3e20-c00d-4cca-9daa-8d8c85666f25', NULL);
 
 -- Dumping structure for table helios.avatar
+DROP TABLE IF EXISTS `avatar`;
 CREATE TABLE IF NOT EXISTS `avatar` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
@@ -142,15 +212,16 @@ CREATE TABLE IF NOT EXISTS `avatar` (
   `favourite_group_id` int(11) DEFAULT NULL,
   UNIQUE KEY `id` (`id`),
   KEY `user_id` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Dumping data for table helios.avatar: ~2 rows (approximately)
 DELETE FROM `avatar`;
 INSERT INTO `avatar` (`id`, `user_id`, `username`, `figure`, `sex`, `rank`, `credits`, `motto`, `created_date`, `last_online`, `favourite_group_id`) VALUES
-	(1, 1, 'Alex', 'hr-555-34.hd-605-1018.ch-685-1314.lg-700-1190.sh-730-1247', 'F', 1, 64534, '', '2024-09-08 14:39:20', '2024-09-14 19:21:27', 1),
+	(1, 1, 'Alex', 'hd-605-1.lg-700-64.hr-3195-45-45.sh-730-1329.ea-3107-62-62.ch-824-110', 'F', 1, 64477, '', '2024-09-08 14:39:20', '2024-10-08 14:18:16', 1339),
 	(2, 1, 'EvilAlex', 'hr-105-1158.hd-207-1006.ch-3030-1202.lg-280-1289.ha-1001-1', 'M', 1, 656314, '', '2024-09-07 23:01:56', '2024-09-07 23:01:56', NULL);
 
 -- Dumping structure for table helios.avatar_effects
+DROP TABLE IF EXISTS `avatar_effects`;
 CREATE TABLE IF NOT EXISTS `avatar_effects` (
   `avatar_id` int(11) NOT NULL,
   `effect_id` int(11) NOT NULL,
@@ -163,6 +234,7 @@ CREATE TABLE IF NOT EXISTS `avatar_effects` (
 DELETE FROM `avatar_effects`;
 
 -- Dumping structure for table helios.avatar_seasonal_currencies
+DROP TABLE IF EXISTS `avatar_seasonal_currencies`;
 CREATE TABLE IF NOT EXISTS `avatar_seasonal_currencies` (
   `avatar_id` int(11) NOT NULL,
   `seasonal_type` enum('PUMPKINS','PEANUTS','STARS','CLOUDS','DIAMONDS','LOYALTY_POINTS','DUCKETS') NOT NULL,
@@ -195,6 +267,7 @@ INSERT INTO `avatar_seasonal_currencies` (`avatar_id`, `seasonal_type`, `balance
 	(2, 'DIAMONDS', 0);
 
 -- Dumping structure for table helios.avatar_settings
+DROP TABLE IF EXISTS `avatar_settings`;
 CREATE TABLE IF NOT EXISTS `avatar_settings` (
   `avatar_id` int(11) NOT NULL,
   `daily_respect_points` int(11) NOT NULL DEFAULT 0,
@@ -215,6 +288,7 @@ INSERT INTO `avatar_settings` (`avatar_id`, `daily_respect_points`, `daily_respe
 	(3, 0, 0, 0, 1, 1, 13, 0);
 
 -- Dumping structure for table helios.avatar_subscriptions
+DROP TABLE IF EXISTS `avatar_subscriptions`;
 CREATE TABLE IF NOT EXISTS `avatar_subscriptions` (
   `avatar_id` int(11) NOT NULL,
   `subscribed_at` datetime NOT NULL,
@@ -226,12 +300,14 @@ CREATE TABLE IF NOT EXISTS `avatar_subscriptions` (
   PRIMARY KEY (`avatar_id`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Dumping data for table helios.avatar_subscriptions: ~1 rows (approximately)
+-- Dumping data for table helios.avatar_subscriptions: ~2 rows (approximately)
 DELETE FROM `avatar_subscriptions`;
 INSERT INTO `avatar_subscriptions` (`avatar_id`, `subscribed_at`, `expire_at`, `gift_at`, `gifts_redeemable`, `subscription_age`, `subscription_age_last_updated`) VALUES
-	(2, '2024-09-11 20:27:39', '2024-12-11 20:27:39', '2024-10-11 20:27:39', 0, 63861938483, '2024-09-14 19:21:27');
+	(1, '2024-09-15 20:19:00', '2024-12-15 20:19:00', '2024-10-15 20:19:00', 0, 63865740901, '2024-10-28 19:35:20'),
+	(2, '2024-09-11 20:27:39', '2024-12-11 20:27:39', '2024-10-11 20:27:39', 0, 63862639760, '2024-09-22 22:09:24');
 
 -- Dumping structure for table helios.catalogue_discounts
+DROP TABLE IF EXISTS `catalogue_discounts`;
 CREATE TABLE IF NOT EXISTS `catalogue_discounts` (
   `page_id` int(11) NOT NULL,
   `purchase_limit` int(11) NOT NULL DEFAULT 100,
@@ -249,6 +325,7 @@ INSERT INTO `catalogue_discounts` (`page_id`, `purchase_limit`, `item_count_requ
 	(16, 100, 5, 2, 1, '2020-07-20 19:54:58');
 
 -- Dumping structure for table helios.catalogue_items
+DROP TABLE IF EXISTS `catalogue_items`;
 CREATE TABLE IF NOT EXISTS `catalogue_items` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `sale_code` varchar(255) DEFAULT NULL,
@@ -265,7 +342,7 @@ CREATE TABLE IF NOT EXISTS `catalogue_items` (
   `allow_bulk_purchase` tinyint(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`),
   KEY `id` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2560 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB AUTO_INCREMENT=2562 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=COMPACT;
 
 -- Dumping data for table helios.catalogue_items: ~2,443 rows (approximately)
 DELETE FROM `catalogue_items`;
@@ -2807,9 +2884,12 @@ INSERT INTO `catalogue_items` (`id`, `sale_code`, `page_id`, `order_id`, `price_
 	(2556, 'floor', '3', 1, 2, 0, 'DUCKETS', 0, 1, 249, '609', 0, 1),
 	(2557, 'floor', '3', 1, 2, 0, 'DUCKETS', 0, 1, 249, '610', 0, 1),
 	(2558, 'boutique_mannequin1', '19', 1, 2, 0, 'DUCKETS', 0, 1, 2383, '', 0, 1),
-	(2559, 'note_tag', '19', 1, 2, 0, 'DUCKETS', 0, 1, 2382, '0', 0, 1);
+	(2559, 'note_tag', '19', 1, 2, 0, 'DUCKETS', 0, 1, 2382, '0', 0, 1),
+	(2560, 'gld_sofa1', '141', 0, 3, 0, 'DUCKETS', 0, 1, 2384, '', 0, 0),
+	(2561, 'gld_gate', '141', 0, 3, 0, 'DUCKETS', 0, 1, 2385, '', 0, 0);
 
 -- Dumping structure for table helios.catalogue_packages
+DROP TABLE IF EXISTS `catalogue_packages`;
 CREATE TABLE IF NOT EXISTS `catalogue_packages` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `salecode` varchar(255) DEFAULT NULL,
@@ -2856,6 +2936,7 @@ INSERT INTO `catalogue_packages` (`id`, `salecode`, `definition_id`, `special_sp
 	(35, 'garden_wall_deal5', 2248, '', 5);
 
 -- Dumping structure for table helios.catalogue_pages
+DROP TABLE IF EXISTS `catalogue_pages`;
 CREATE TABLE IF NOT EXISTS `catalogue_pages` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `parent_id` int(11) NOT NULL DEFAULT -1,
@@ -2873,7 +2954,7 @@ CREATE TABLE IF NOT EXISTS `catalogue_pages` (
   `texts` text NOT NULL,
   PRIMARY KEY (`id`),
   KEY `id` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=141 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB AUTO_INCREMENT=142 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=COMPACT;
 
 -- Dumping data for table helios.catalogue_pages: ~130 rows (approximately)
 DELETE FROM `catalogue_pages`;
@@ -3008,9 +3089,11 @@ INSERT INTO `catalogue_pages` (`id`, `parent_id`, `order_id`, `min_rank`, `is_na
 	(136, 138, 0, 1, 1, 1, 0, 'Easter', 'easter', 25, 3, 'default_3x3', '["catalog_easter_headline1","catalog_easter_teaser1","catalog_special_txtbg2"]', '["\'Egg\'cellent furni - Bouncing bunnies, fluffy chicks, choccy eggs... Yep, it\'s Easter!\\rCelebrate with something \'eggs\'tra special from our Easter range. But hurry - it\'s not here for long this year!","Click on the item you want for more information","\'Egg\'-Tastic!"]'),
 	(137, -1, 2000, 1, 0, 1, 0, 'Furni By Line', 'furni_by_line', 121, 2, '', '[]', '[]'),
 	(138, -1, 3000, 1, 0, 1, 0, 'Furni By Theme', 'furni_by_theme', 64, 2, '', '[]', '[]'),
-	(140, -1, 900, 1, 1, 1, 0, 'Habbo Groups', 'habbo_groups', 1, 0, 'guild_frontpage', '["catalog_groups_en","catalog_groupsteaser_en"]', '[]');
+	(140, -1, 900, 1, 1, 1, 0, 'Habbo Groups', 'habbo_groups', 61, 0, 'guild_frontpage', '["catalog_groups_en","catalog_groupsteaser_en"]', '["Habbo Groups are a great way to stay in touch with your friends and share your interests with others. Each Group has a homeroom that can be decorated by other Group members, members can also purchase exclusive Group Furni that can be customised with your Group colours!", " * Get together with people you get together with!\\n * Co-op room decorating for group members\\n * Show off your group badge!\\n * Get some neat Furni in your group\'s colors", "What\'s so great about habbo retros"]'),
+	(141, 140, 1, 1, 1, 1, 0, 'Group Furni', 'group_furni', 28, 0, 'guild_custom_furni', '["catalog_groups_en"]', '["Show off your Group spirit with the new customisable Furni. Select your Group and then get your furni in your Groups colours.", "Select a Furni or Group"]');
 
 -- Dumping structure for table helios.catalogue_subscriptions
+DROP TABLE IF EXISTS `catalogue_subscriptions`;
 CREATE TABLE IF NOT EXISTS `catalogue_subscriptions` (
   `id` int(11) NOT NULL,
   `page_id` int(11) NOT NULL DEFAULT 5,
@@ -3029,6 +3112,7 @@ INSERT INTO `catalogue_subscriptions` (`id`, `page_id`, `price_coins`, `price_se
 	(3, 63, 60, 0, 'DUCKETS', 6);
 
 -- Dumping structure for table helios.cms_pages
+DROP TABLE IF EXISTS `cms_pages`;
 CREATE TABLE IF NOT EXISTS `cms_pages` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `parent_id` int(11) NOT NULL,
@@ -3055,6 +3139,7 @@ INSERT INTO `cms_pages` (`id`, `parent_id`, `order_id`, `label`, `page`, `link`,
 	(8, 3, 1, 'Community', 'community', '/community', 'BLUE', 1, 0, 0);
 
 -- Dumping structure for table helios.cms_pages_habblets
+DROP TABLE IF EXISTS `cms_pages_habblets`;
 CREATE TABLE IF NOT EXISTS `cms_pages_habblets` (
   `page` varchar(250) NOT NULL,
   `order_id` int(11) NOT NULL DEFAULT 0,
@@ -3079,6 +3164,7 @@ INSERT INTO `cms_pages_habblets` (`page`, `order_id`, `widget`, `column`) VALUES
 	('me', 2, 'HotelPicks', 'column2');
 
 -- Dumping structure for table helios.effects
+DROP TABLE IF EXISTS `effects`;
 CREATE TABLE IF NOT EXISTS `effects` (
   `effect_id` int(11) NOT NULL,
   `duration` int(11) NOT NULL,
@@ -3193,6 +3279,7 @@ INSERT INTO `effects` (`effect_id`, `duration`, `is_costume`) VALUES
 	(140, 3600, 0);
 
 -- Dumping structure for event helios.event_club_gifts
+DROP EVENT IF EXISTS `event_club_gifts`;
 DELIMITER //
 CREATE EVENT `event_club_gifts` ON SCHEDULE EVERY 1 MINUTE STARTS '2020-05-03 19:17:59' ON COMPLETION NOT PRESERVE ENABLE DO BEGIN
 	SET @gift_interval = (SELECT `value` FROM `server_settings` WHERE `setting` = 'club.gift.interval');
@@ -3217,6 +3304,7 @@ END//
 DELIMITER ;
 
 -- Dumping structure for event helios.event_respect_points
+DROP EVENT IF EXISTS `event_respect_points`;
 DELIMITER //
 CREATE EVENT `event_respect_points` ON SCHEDULE EVERY 1 MINUTE STARTS '2020-05-03 14:29:37' ON COMPLETION PRESERVE ENABLE DO BEGIN
 	UPDATE user_settings SET daily_respect_points = 3, daily_respect_pet_points = 3;
@@ -3224,6 +3312,7 @@ END//
 DELIMITER ;
 
 -- Dumping structure for event helios.event_ticket_expire
+DROP EVENT IF EXISTS `event_ticket_expire`;
 DELIMITER //
 CREATE EVENT `event_ticket_expire` ON SCHEDULE EVERY 1 MINUTE STARTS '2020-05-03 14:26:20' ON COMPLETION PRESERVE ENABLE DO BEGIN
 	DELETE FROM authentication_ticket WHERE expires_at IS NOT NULL AND CURRENT_TIMESTAMP() > expires_at;
@@ -3231,6 +3320,7 @@ END//
 DELIMITER ;
 
 -- Dumping structure for table helios.group
+DROP TABLE IF EXISTS `group`;
 CREATE TABLE IF NOT EXISTS `group` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `name` varchar(45) NOT NULL,
@@ -3238,38 +3328,39 @@ CREATE TABLE IF NOT EXISTS `group` (
   `owner_id` int(10) NOT NULL,
   `room_id` int(10) NOT NULL DEFAULT 0,
   `badge` mediumtext NOT NULL DEFAULT 'b0503Xs09114s05013s05015',
+  `colour1` int(11) NOT NULL,
+  `colour2` int(11) NOT NULL,
   `recommended` tinyint(4) NOT NULL DEFAULT 0,
   `background` varchar(255) NOT NULL DEFAULT 'bg_colour_08',
   `views` int(11) NOT NULL DEFAULT 0,
   `topics` int(11) NOT NULL DEFAULT 0,
-  `group_type` tinyint(4) NOT NULL DEFAULT 0,
+  `group_type` enum('OPEN','LOCKED','PRIVATE') NOT NULL DEFAULT 'OPEN',
   `forum_type` tinyint(4) NOT NULL DEFAULT 0,
   `forum_permission_type` tinyint(4) NOT NULL DEFAULT 0,
+  `allow_members_decorate` varchar(50) NOT NULL DEFAULT '0',
   `alias` varchar(45) DEFAULT NULL,
   `created_at` datetime NOT NULL DEFAULT current_timestamp(),
-  `colour1` varchar(50) DEFAULT NULL,
-  `colour2` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `alias` (`alias`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Dumping data for table helios.group: ~1 rows (approximately)
 DELETE FROM `group`;
-INSERT INTO `group` (`id`, `name`, `description`, `owner_id`, `room_id`, `badge`, `recommended`, `background`, `views`, `topics`, `group_type`, `forum_type`, `forum_permission_type`, `alias`, `created_at`, `colour1`, `colour2`) VALUES
-	(1, 'Nerd Group', 'NERDZ', 2, 67, 'b0121s077177s089115s089113s031131', 0, 'bg_colour_08', 0, 0, 0, 0, 0, NULL, '2024-09-14 19:24:31', '7a7a7a', 'e5c001');
+INSERT INTO `group` (`id`, `name`, `description`, `owner_id`, `room_id`, `badge`, `colour1`, `colour2`, `recommended`, `background`, `views`, `topics`, `group_type`, `forum_type`, `forum_permission_type`, `allow_members_decorate`, `alias`, `created_at`) VALUES
+	(1, 'Nerd Group', 'NERDZ', 1, 63, 'b0121s07777s089115s089113s031131', 47, 26, 0, 'bg_colour_08', 0, 0, 'OPEN', 0, 0, '0', NULL, '2024-09-14 19:24:31');
 
 -- Dumping structure for table helios.group_badge_elements
+DROP TABLE IF EXISTS `group_badge_elements`;
 CREATE TABLE IF NOT EXISTS `group_badge_elements` (
   `id` int(255) NOT NULL,
-  `first_value` varchar(255) NOT NULL,
-  `second_value` varchar(255) NOT NULL DEFAULT '',
-  `type` varchar(255) NOT NULL,
+  `first_value` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
+  `second_value` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL DEFAULT '',
+  `type` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
   `enabled` tinyint(1) NOT NULL DEFAULT 1
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Dumping data for table helios.group_badge_elements: 480 rows
+-- Dumping data for table helios.group_badge_elements: ~480 rows (approximately)
 DELETE FROM `group_badge_elements`;
-/*!40000 ALTER TABLE `group_badge_elements` DISABLE KEYS */;
 INSERT INTO `group_badge_elements` (`id`, `first_value`, `second_value`, `type`, `enabled`) VALUES
 	(1, 'base_basic_1.gif', '', 'base', 1),
 	(2, 'base_basic_2.gif', '', 'base', 1),
@@ -3751,30 +3842,30 @@ INSERT INTO `group_badge_elements` (`id`, `first_value`, `second_value`, `type`,
 	(106, '494949', '', 'colour3', 1),
 	(107, '373737', '', 'colour3', 1),
 	(108, '242424', '', 'colour3', 1);
-/*!40000 ALTER TABLE `group_badge_elements` ENABLE KEYS */;
 
 -- Dumping structure for table helios.group_memberships
+DROP TABLE IF EXISTS `group_memberships`;
 CREATE TABLE IF NOT EXISTS `group_memberships` (
-  `user_id` int(10) NOT NULL,
+  `avatar_id` int(10) NOT NULL,
   `group_id` int(10) NOT NULL,
-  `member_rank` enum('3','2','1') NOT NULL DEFAULT '1',
-  `is_pending` bit(1) NOT NULL DEFAULT b'0',
+  `member_type` enum('ADMIN','MEMBER','PENDING') NOT NULL DEFAULT 'PENDING',
   `created_at` datetime NOT NULL DEFAULT current_timestamp(),
-  KEY `userid` (`user_id`),
-  KEY `groupid` (`group_id`),
+  UNIQUE KEY `unique_key_avatar_id_group_id` (`avatar_id`,`group_id`),
   KEY `group_id` (`group_id`),
-  KEY `user_id` (`user_id`)
+  KEY `avatar_id` (`avatar_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Dumping data for table helios.group_memberships: ~0 rows (approximately)
 DELETE FROM `group_memberships`;
 
 -- Dumping structure for table helios.item
+DROP TABLE IF EXISTS `item`;
 CREATE TABLE IF NOT EXISTS `item` (
   `id` char(36) NOT NULL DEFAULT '0',
   `order_id` int(11) NOT NULL DEFAULT -1,
   `avatar_id` int(11) NOT NULL,
   `room_id` int(11) DEFAULT NULL,
+  `group_id` int(11) DEFAULT NULL,
   `definition_id` int(11) NOT NULL,
   `x` varchar(255) NOT NULL DEFAULT '0',
   `y` varchar(255) NOT NULL DEFAULT '0',
@@ -3790,19 +3881,13 @@ CREATE TABLE IF NOT EXISTS `item` (
   KEY `user_id` (`avatar_id`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Dumping data for table helios.item: ~8 rows (approximately)
+-- Dumping data for table helios.item: ~1 rows (approximately)
 DELETE FROM `item`;
-INSERT INTO `item` (`id`, `order_id`, `avatar_id`, `room_id`, `definition_id`, `x`, `y`, `z`, `wall_position`, `rotation`, `custom_data`, `expire_time`, `created_at`, `updated_at`) VALUES
-	('0b6e0ed0-66ed-400b-8bba-038eb05bf621', 0, 1, NULL, 249, '0', '0', '0', '', 0, '102', -1, '2024-09-08 00:30:34', '2024-09-08 00:30:34'),
-	('241d4ad1-e66b-4347-b34e-efd2e6ec24ca', 0, 1, 66, 1651, '8', '4', '0', '', 0, '', -1, '2024-09-08 00:29:31', '2024-09-08 00:29:44'),
-	('4dffc4ca-a7ac-492d-ac5e-6a9c5eeba11b', 0, 1, 66, 1669, '2', '8', '1', '', 2, '', -1, '2024-09-08 00:29:09', '2024-09-08 00:29:21'),
-	('6cc9c0d7-dc31-4097-b647-49b33afdeb55', 0, 1, 66, 1652, '8', '7', '0', '', 0, '', -1, '2024-09-08 00:29:32', '2024-09-08 00:29:42'),
-	('90bbc7cb-4739-4dfa-a8ae-9cf301de13d9', 0, 1, 66, 1648, '8', '7', '0.001', '', 2, '', -1, '2024-09-08 00:29:28', '2024-09-08 00:29:52'),
-	('96408807-b15b-45a6-a9cf-3f678d828507', 0, 1, 66, 1666, '4', '5', '1', '', 0, '', -1, '2024-09-08 00:29:36', '2024-09-08 00:29:40'),
-	('ebdb16f1-fedc-43f3-aab0-5639089f76a4', 0, 1, NULL, 250, '0', '0', '0', '', 0, '108', -1, '2024-09-08 00:30:21', '2024-09-08 00:30:21'),
-	('f1d048ed-2295-4438-b0e0-ccf19a653c74', 0, 1, NULL, 249, '0', '0', '0', '', 0, '205', -1, '2024-09-08 00:30:27', '2024-09-08 00:30:27');
+INSERT INTO `item` (`id`, `order_id`, `avatar_id`, `room_id`, `group_id`, `definition_id`, `x`, `y`, `z`, `wall_position`, `rotation`, `custom_data`, `expire_time`, `created_at`, `updated_at`) VALUES
+	('7ff326f1-4ed8-43f5-83ff-40806711d6d1', 0, 1, 63, 1, 2385, '4', '8', '1', '', 2, '{"State":"1","Badge":"b0121s07777s089115s089113s031131","Colour1":"005cac","Colour2":"3c91bc"}', -1, '2024-10-08 18:41:34', '2024-10-28 19:35:39');
 
 -- Dumping structure for table helios.item_definitions
+DROP TABLE IF EXISTS `item_definitions`;
 CREATE TABLE IF NOT EXISTS `item_definitions` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `sprite` varchar(50) DEFAULT NULL,
@@ -3824,7 +3909,7 @@ CREATE TABLE IF NOT EXISTS `item_definitions` (
   `allowed_rotations` tinytext NOT NULL DEFAULT '',
   PRIMARY KEY (`id`),
   KEY `id` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2384 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB AUTO_INCREMENT=2386 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=COMPACT;
 
 -- Dumping data for table helios.item_definitions: ~2,162 rows (approximately)
 DELETE FROM `item_definitions`;
@@ -5976,9 +6061,12 @@ INSERT INTO `item_definitions` (`id`, `sprite`, `name`, `description`, `sprite_i
 	(2380, 'avatar_effect140', NULL, NULL, 140, 0, 0, 0, '0', 'effect,requires_rights_for_interaction', 'default', 1, 1, 1, 1, '', -1, ''),
 	(2381, 'room_ad_plus_badge', NULL, NULL, -1, 0, 0, 0, '0', '', 'default', 1, 1, 1, 1, NULL, -1, ''),
 	(2382, 'note_tag', NULL, NULL, 3983, 1, 1, 0, '0', 'solid,sticky_pole', 'default', 1, 1, 1, 1, NULL, -1, ''),
-	(2383, 'boutique_mannequin1', NULL, NULL, 4170, 1, 1, 0, '0', 'solid', 'mannequin', 1, 1, 1, 1, NULL, -1, '');
+	(2383, 'boutique_mannequin1', NULL, NULL, 4170, 1, 1, 0, '0', 'solid', 'mannequin', 1, 1, 1, 1, NULL, -1, ''),
+	(2384, 'gld_sofa1', '', '', 4254, 1, 1, 0, '0', 'solid', 'guild', 1, 1, 1, 1, '', -1, '0,2,4,6'),
+	(2385, 'gld_gate', '', '', 4389, 1, 1, 0, '2', 'solid', 'guild_gate', 1, 1, 1, 1, '', -1, '0,2,4,6');
 
 -- Dumping structure for table helios.messenger_category
+DROP TABLE IF EXISTS `messenger_category`;
 CREATE TABLE IF NOT EXISTS `messenger_category` (
   `avatar_id` int(11) NOT NULL,
   `label` varchar(100) NOT NULL DEFAULT '',
@@ -5990,6 +6078,7 @@ CREATE TABLE IF NOT EXISTS `messenger_category` (
 DELETE FROM `messenger_category`;
 
 -- Dumping structure for table helios.messenger_chat_history
+DROP TABLE IF EXISTS `messenger_chat_history`;
 CREATE TABLE IF NOT EXISTS `messenger_chat_history` (
   `avatar_id` int(11) NOT NULL,
   `friend_id` int(11) NOT NULL,
@@ -6004,6 +6093,7 @@ INSERT INTO `messenger_chat_history` (`avatar_id`, `friend_id`, `message`, `has_
 	(1, 3, 'hello!', 1, '2023-04-20 22:55:01');
 
 -- Dumping structure for table helios.messenger_friend
+DROP TABLE IF EXISTS `messenger_friend`;
 CREATE TABLE IF NOT EXISTS `messenger_friend` (
   `avatar_id` int(11) NOT NULL,
   `friend_id` int(11) NOT NULL
@@ -6016,6 +6106,7 @@ INSERT INTO `messenger_friend` (`avatar_id`, `friend_id`) VALUES
 	(3, 1);
 
 -- Dumping structure for table helios.messenger_request
+DROP TABLE IF EXISTS `messenger_request`;
 CREATE TABLE IF NOT EXISTS `messenger_request` (
   `avatar_id` int(11) NOT NULL,
   `friend_id` int(11) NOT NULL
@@ -6025,6 +6116,7 @@ CREATE TABLE IF NOT EXISTS `messenger_request` (
 DELETE FROM `messenger_request`;
 
 -- Dumping structure for table helios.navigator_official_rooms
+DROP TABLE IF EXISTS `navigator_official_rooms`;
 CREATE TABLE IF NOT EXISTS `navigator_official_rooms` (
   `banner_id` int(11) NOT NULL AUTO_INCREMENT,
   `parent_id` int(11) NOT NULL DEFAULT 1,
@@ -6084,6 +6176,7 @@ INSERT INTO `navigator_official_rooms` (`banner_id`, `parent_id`, `banner_type`,
 	(61, 1, 'PUBLIC_FLAT', 61, 'EXTERNAL', '', 'emperors', 0, 'officialrooms_defaults/hh_room_emperors.png', '1');
 
 -- Dumping structure for table helios.room
+DROP TABLE IF EXISTS `room`;
 CREATE TABLE IF NOT EXISTS `room` (
   `id` int(100) NOT NULL AUTO_INCREMENT,
   `owner_id` int(11) NOT NULL,
@@ -6115,9 +6208,9 @@ CREATE TABLE IF NOT EXISTS `room` (
   `who_can_kick` enum('NONE','USERS_WITH_RIGHTS','ALL_USERS') NOT NULL DEFAULT 'USERS_WITH_RIGHTS',
   `who_can_ban` enum('NONE','USERS_WITH_RIGHTS') NOT NULL DEFAULT 'USERS_WITH_RIGHTS',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=70 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=64 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Dumping data for table helios.room: ~67 rows (approximately)
+-- Dumping data for table helios.room: ~64 rows (approximately)
 DELETE FROM `room`;
 INSERT INTO `room` (`id`, `owner_id`, `name`, `description`, `category_id`, `group_id`, `visitors_now`, `visitors_max`, `status`, `password`, `model`, `model_id`, `ccts`, `wallpaper`, `floor`, `landscape`, `rating`, `allow_pets`, `allow_pets_eat`, `allow_walkthrough`, `hidewall`, `wall_thickness`, `floor_thickness`, `is_owner_hidden`, `trade_setting`, `is_muted`, `who_can_mute`, `who_can_kick`, `who_can_ban`) VALUES
 	(1, 0, 'Welcome Lounge', 'welcome_lounge', 3, NULL, 0, 40, 'OPEN', '', 'newbie_lobby', 19, 'hh_room_nlobby', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
@@ -6181,15 +6274,10 @@ INSERT INTO `room` (`id`, `owner_id`, `name`, `description`, `category_id`, `gro
 	(60, 0, 'Club Orient', 'orient', 8, NULL, 0, 35, 'OPEN', '', 'orient', 83, 'hh_room_orient', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 1, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
 	(61, 0, 'Imperial Palace', 'emperors', 5, NULL, 0, 30, 'OPEN', '', 'emperors', 90, 'hh_room_emperors', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
 	(62, 0, 'Beauty Salon II', 'beauty_salon_loreal', 5, NULL, 0, 25, 'OPEN', '', 'beauty_salon1', 91, 'hh_room_beauty_salon_general', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(63, 1, 'Room 1', '', 14, NULL, 0, 25, 'OPEN', '', 'model_a', 1, '', '0', '0', '0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(64, 1, 'Room 2', '', 14, NULL, 0, 25, 'OPEN', '', 'model_c', 3, '', '0', '0', '0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(65, 1, 'Room 3', '', 14, NULL, 0, 25, 'OPEN', '', 'model_g', 7, '', '0', '0', '0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(66, 2, 'Room 4', ' ', 14, NULL, 0, 25, 'OPEN', '', 'model_g', 7, '', '108', '102', '0', 34, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(67, 2, 'Room 5', ' ', 14, 1, 0, 25, 'OPEN', '', 'model_g', 7, '', '1701', '504', '0', 54, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(68, 2, 'Room 6', '', 14, NULL, 0, 25, 'OPEN', '', '', 3, '', '0', '0', '0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(69, 2, 'Room 7', '', 14, NULL, 0, 25, 'OPEN', '', '', 6, '', '0', '0', '0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS');
+	(63, 1, 'test', '', 14, 1, 0, 25, 'OPEN', '', '', 7, '', '0', '0', '0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS');
 
 -- Dumping structure for table helios.room_category
+DROP TABLE IF EXISTS `room_category`;
 CREATE TABLE IF NOT EXISTS `room_category` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `caption` varchar(100) NOT NULL,
@@ -6218,6 +6306,7 @@ INSERT INTO `room_category` (`id`, `caption`, `enabled`, `min_rank`) VALUES
 	(15, 'No Category', 1, 1);
 
 -- Dumping structure for table helios.room_models
+DROP TABLE IF EXISTS `room_models`;
 CREATE TABLE IF NOT EXISTS `room_models` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `model` varchar(255) NOT NULL,
@@ -6328,6 +6417,7 @@ INSERT INTO `room_models` (`id`, `model`, `door_x`, `door_y`, `door_z`, `door_di
 	(91, 'beauty_salon1', 14, 3, 0, 1, 'xxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxx0xxxxxxxxx|xxxxxxx000000000000000xx|xxxxxx0000000000000000xx|xxxxx000000000000xxxxxxx|xxxx000000000000000000xx|xxx0000000000000000000xx|xxx0000000000000000000xx|xxx0000000000000000000xx|xxxxxxxxxxxxxxxx000000xx|xx0000000000000x000000xx|000000000000000x000000xx|000000000000000x000000xx|000000000000000x000000xx|00x000000000000x000000xx|00xxxxxxxxxxxxxx000000xx|00xxxxxxxxxxxxxx000000xx|00x0000000000000000000xx|00x0000000000000000000xx|00x0000000000000000000xx|0000000000000000000000xx|x000000000000000000000xx|xxx0000000000000000000xx', 'none', 0);
 
 -- Dumping structure for table helios.room_rights
+DROP TABLE IF EXISTS `room_rights`;
 CREATE TABLE IF NOT EXISTS `room_rights` (
   `avatar_id` int(11) NOT NULL,
   `room_id` int(11) NOT NULL
@@ -6337,6 +6427,7 @@ CREATE TABLE IF NOT EXISTS `room_rights` (
 DELETE FROM `room_rights`;
 
 -- Dumping structure for table helios.server_settings
+DROP TABLE IF EXISTS `server_settings`;
 CREATE TABLE IF NOT EXISTS `server_settings` (
   `setting` text NOT NULL,
   `value` text NOT NULL
@@ -6359,6 +6450,7 @@ INSERT INTO `server_settings` (`setting`, `value`) VALUES
 	('site.static.content.url', '');
 
 -- Dumping structure for table helios.site_articles
+DROP TABLE IF EXISTS `site_articles`;
 CREATE TABLE IF NOT EXISTS `site_articles` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(64) DEFAULT 'Undefined Title',
@@ -6380,6 +6472,7 @@ CREATE TABLE IF NOT EXISTS `site_articles` (
 DELETE FROM `site_articles`;
 
 -- Dumping structure for table helios.site_articles_categories
+DROP TABLE IF EXISTS `site_articles_categories`;
 CREATE TABLE IF NOT EXISTS `site_articles_categories` (
   `article_id` int(11) NOT NULL,
   `category_id` int(11) NOT NULL,
@@ -6390,6 +6483,7 @@ CREATE TABLE IF NOT EXISTS `site_articles_categories` (
 DELETE FROM `site_articles_categories`;
 
 -- Dumping structure for table helios.subscription_gifts
+DROP TABLE IF EXISTS `subscription_gifts`;
 CREATE TABLE IF NOT EXISTS `subscription_gifts` (
   `sale_code` varchar(255) NOT NULL,
   `duration_requirement` int(11) NOT NULL DEFAULT 1
@@ -6422,6 +6516,7 @@ INSERT INTO `subscription_gifts` (`sale_code`, `duration_requirement`) VALUES
 	('hc_crpt', 5);
 
 -- Dumping structure for table helios.tags
+DROP TABLE IF EXISTS `tags`;
 CREATE TABLE IF NOT EXISTS `tags` (
   `avatar_id` int(11) NOT NULL DEFAULT 0,
   `room_id` int(11) NOT NULL DEFAULT 0,
@@ -6431,12 +6526,15 @@ CREATE TABLE IF NOT EXISTS `tags` (
   KEY `tag_key` (`avatar_id`,`room_id`,`group_id`,`text`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Dumping data for table helios.tags: ~1 rows (approximately)
+-- Dumping data for table helios.tags: ~3 rows (approximately)
 DELETE FROM `tags`;
 INSERT INTO `tags` (`avatar_id`, `room_id`, `group_id`, `text`) VALUES
+	(63, 63, 0, '123'),
+	(63, 63, 0, 'test'),
 	(67, 67, 0, '657');
 
 -- Dumping structure for table helios.user
+DROP TABLE IF EXISTS `user`;
 CREATE TABLE IF NOT EXISTS `user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `email` varchar(2500) NOT NULL,
@@ -6451,9 +6549,10 @@ CREATE TABLE IF NOT EXISTS `user` (
 -- Dumping data for table helios.user: ~0 rows (approximately)
 DELETE FROM `user`;
 INSERT INTO `user` (`id`, `email`, `password`, `birthday`, `direct_mail`, `join_date`, `last_online`) VALUES
-	(1, 'alexaccount@gmail.com', '123', '7.8.1992', 0, '2024-09-02 19:43:48', '2024-09-14 19:21:27');
+	(1, 'alexaccount@gmail.com', '123', '7.8.1992', 0, '2024-09-02 19:43:48', '2024-10-08 14:18:16');
 
 -- Dumping structure for table helios.user_effects
+DROP TABLE IF EXISTS `user_effects`;
 CREATE TABLE IF NOT EXISTS `user_effects` (
   `user_id` int(11) NOT NULL,
   `effect_id` int(11) NOT NULL,
@@ -6466,6 +6565,7 @@ CREATE TABLE IF NOT EXISTS `user_effects` (
 DELETE FROM `user_effects`;
 
 -- Dumping structure for table helios.user_seasonal_currencies
+DROP TABLE IF EXISTS `user_seasonal_currencies`;
 CREATE TABLE IF NOT EXISTS `user_seasonal_currencies` (
   `user_id` int(11) NOT NULL,
   `seasonal_type` enum('PUMPKINS','PEANUTS','STARS','CLOUDS','DIAMONDS','LOYALTY_POINTS','DUCKETS') NOT NULL,
@@ -6476,6 +6576,7 @@ CREATE TABLE IF NOT EXISTS `user_seasonal_currencies` (
 DELETE FROM `user_seasonal_currencies`;
 
 -- Dumping structure for table helios.user_sessions
+DROP TABLE IF EXISTS `user_sessions`;
 CREATE TABLE IF NOT EXISTS `user_sessions` (
   `session_id` uuid NOT NULL,
   `user_id` int(11) NOT NULL,
@@ -6483,10 +6584,19 @@ CREATE TABLE IF NOT EXISTS `user_sessions` (
   PRIMARY KEY (`session_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Dumping data for table helios.user_sessions: ~0 rows (approximately)
+-- Dumping data for table helios.user_sessions: ~3 rows (approximately)
 DELETE FROM `user_sessions`;
+INSERT INTO `user_sessions` (`session_id`, `user_id`, `expiry_date`) VALUES
+	('c5a7f945-bfe4-46d4-81a8-2ad27d667783', 1, '2024-11-11 16:54:41'),
+	('6dbfa050-56e4-4d2f-ab86-4c76b0a20baa', 1, '2024-11-18 20:56:11'),
+	('d012d320-a6da-4cce-8406-86e561fd609f', 1, '2024-10-15 19:57:46'),
+	('8d47d98f-dbdd-4760-a334-94aa94e3c7db', 1, '2024-10-21 14:00:35'),
+	('7787f33c-fbe9-4862-95a4-a1474817401c', 1, '2024-11-04 20:53:43'),
+	('4ee0a0d3-db24-4d2b-8974-d943cbcad13b', 1, '2024-10-21 14:02:58'),
+	('213f04d8-c838-43ba-adab-fc0d40f7b8f9', 1, '2024-10-21 09:14:58');
 
 -- Dumping structure for table helios.user_settings
+DROP TABLE IF EXISTS `user_settings`;
 CREATE TABLE IF NOT EXISTS `user_settings` (
   `user_id` int(11) NOT NULL,
   `daily_respect_points` int(11) NOT NULL DEFAULT 0,
@@ -6502,6 +6612,7 @@ CREATE TABLE IF NOT EXISTS `user_settings` (
 DELETE FROM `user_settings`;
 
 -- Dumping structure for table helios.user_subscriptions
+DROP TABLE IF EXISTS `user_subscriptions`;
 CREATE TABLE IF NOT EXISTS `user_subscriptions` (
   `user_id` int(11) NOT NULL,
   `subscribed_at` datetime NOT NULL,
@@ -6517,6 +6628,7 @@ CREATE TABLE IF NOT EXISTS `user_subscriptions` (
 DELETE FROM `user_subscriptions`;
 
 -- Dumping structure for table helios.wordfilter
+DROP TABLE IF EXISTS `wordfilter`;
 CREATE TABLE IF NOT EXISTS `wordfilter` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `word` varchar(100) NOT NULL,

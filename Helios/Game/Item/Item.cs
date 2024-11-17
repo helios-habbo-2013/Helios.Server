@@ -129,6 +129,19 @@ namespace Helios.Game
                 case InteractorType.DICE:
                     Data.ExtraData = state;
                     break;
+                case InteractorType.GUILD:
+                case InteractorType.GUILD_GATE:
+                    var guildExtraData = Interactor.GetJsonObject<GuildExtraData>();
+
+                    Interactor.SetExtraData(new GuildExtraData
+                    {
+                        State = state,
+                        Badge = guildExtraData.Badge,
+                        Colour1 = guildExtraData.Colour1,
+                        Colour2 = guildExtraData.Colour2,
+                    });
+
+                    break;
             }
 
             Update();
