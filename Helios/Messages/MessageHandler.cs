@@ -6,6 +6,7 @@ using log4net;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Reflection;
 
 namespace Helios.Messages
@@ -22,8 +23,8 @@ namespace Helios.Messages
 
         #region Properties
 
-        private Dictionary<short, List<IMessageEvent>> Events { get; }
-        private Dictionary<string, short> Composers { get; }
+        private Dictionary<int, List<IMessageEvent>> Events { get; }
+        private Dictionary<string, int> Composers { get; }
 
 
         #endregion
@@ -32,8 +33,8 @@ namespace Helios.Messages
 
         public MessageHandler()
         {
-            Events = new Dictionary<short, List<IMessageEvent>>();
-            Composers = new Dictionary<string, short>();
+            Events = new Dictionary<int, List<IMessageEvent>>();
+            Composers = new Dictionary<string, int>();
         }
 
         public void Load()
@@ -93,9 +94,9 @@ namespace Helios.Messages
         /// <summary>
         /// Get composer id for type
         /// </summary>
-        internal short? GetComposerId(IMessageComposer composer)
+        internal int? GetComposerId(IMessageComposer composer)
         {
-            short header;
+            int header;
 
             if (Composers.TryGetValue(composer.GetType().Name, out header))
                 return header;
@@ -112,16 +113,16 @@ namespace Helios.Messages
         {
             try
             {
-                if (Events.ContainsKey(request.Header))
+                if (Events.ContainsKey(request.HeaderId))
                 {
-                    avatar.Log.Debug($"RECEIVED {Events[request.Header][0].GetType().Name}: {request.Header} / {request.MessageBody}");
+                    avatar.Log.Debug($"RECEIVED {Events[request.HeaderId][0].GetType().Name}: {request.Header} / {request.MessageBody}");
 
-                    foreach (IMessageEvent handler in Events[request.Header])
+                    foreach (IMessageEvent handler in Events[request.HeaderId])
                     {
-                        if (Events[request.Header].Count > 1)
+                        if (Events[request.HeaderId].Count > 1)
                         {
                             var copyBuffer = request.Buffer.Copy();
-                            handler.Handle(avatar, new Request(request.Length, request.Header, copyBuffer));
+                            handler.Handle(avatar, new Request(copyBuffer)); 
                             copyBuffer.Release();
                         }
                         else
@@ -134,7 +135,7 @@ namespace Helios.Messages
                 } 
                 else
                 {
-                    avatar.Log.Debug($"Unknown: {request.Header} / {request.MessageBody}");
+                    avatar.Log.Debug($"Unknown: [{request.HeaderId}] {request.Header} / {request.MessageBody}");
                 }
             }
             catch (Exception ex)

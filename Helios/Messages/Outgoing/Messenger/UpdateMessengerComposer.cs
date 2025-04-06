@@ -52,10 +52,10 @@ namespace Helios.Messages.Outgoing
                             _data.Add(messengerUpdate.Friend.AvatarData.Motto); // motto
                             _data.Add(messengerUpdate.Friend.AvatarData.RealName); // real name
                             _data.Add(messengerUpdate.Friend.AvatarData.LastOnline.ToString("MM-dd-yyyy HH:mm:ss")); // unknown??
-                            _data.Add(false);
-                            _data.Add(false);
-                            _data.Add(false);
-                            _data.Add((short)0); // relationship status
+                            //_data.Add(false);
+                            //_data.Add(false);
+                            //_data.Add(false);
+                            //_data.Add((short)0); // relationship status
                             break;
                         }
                 }

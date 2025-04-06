@@ -87,7 +87,8 @@ namespace Helios.Game
         /// </summary>
         public void UpdateCurrencies()
         {
-            avatar.Send(new ActivityPointsComposer(Currencies));
+            avatar.Send(new ActivityPointsNotificationComposer(this.GetBalance(SeasonalCurrencyType.DEFAULT), ActivityPointsNotificationComposer.ActivityPointAlertType.NO_SOUND));
+            //avatar.Send(new ActivityPointsComposer(Currencies));
         }
 
         /// <summary>
@@ -95,8 +96,8 @@ namespace Helios.Game
         /// </summary>
         public void UpdateCurrency(SeasonalCurrencyType seasonalCurrency, bool notify = true)
         {
-            if (Currencies.TryGetValue(seasonalCurrency, out var balance))
-                avatar.Send(new ActivityPointsNotificationComposer(seasonalCurrency, balance, notify));
+            // if (Currencies.TryGetValue(seasonalCurrency, out var balance))
+            //    avatar.Send(new ActivityPointsNotificationComposer(seasonalCurrency, balance, notify));
         }
 
         /// <summary>

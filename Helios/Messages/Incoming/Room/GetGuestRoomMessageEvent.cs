@@ -13,8 +13,8 @@ namespace Helios.Messages.Incoming
             if (room == null)
                 return;
 
-            bool isLoading = request.ReadIntAsBool();
-            bool checkEntry = request.ReadIntAsBool();
+            bool isLoading = request.ReadBool();
+            bool checkEntry = request.ReadBool();
 
             avatar.Send(new RoomInfoComposer(room.Data, isLoading, checkEntry));
         }

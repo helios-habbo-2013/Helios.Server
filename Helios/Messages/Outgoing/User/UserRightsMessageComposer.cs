@@ -1,20 +1,24 @@
-﻿namespace Helios.Messages.Outgoing
+﻿using System.Collections.Generic;
+
+namespace Helios.Messages.Outgoing
 {
     class UserRightsMessageComposer : IMessageComposer
     {
-        private int clubLevel;
-        private int rank;
+        private List<string> fuseRights;
 
-        public UserRightsMessageComposer(int clubLevel, int rank)
+        public UserRightsMessageComposer(List<string> list)
         {
-            this.clubLevel = clubLevel;
-            this.rank = rank;
+            this.fuseRights = list;
         }
 
         public override void Write()
         {
-            _data.Add(clubLevel);
-            _data.Add(rank);
+            _data.Add(fuseRights.Count);
+
+            foreach (var fuse in fuseRights)
+            {
+                _data.Add(fuse);
+            }
         }
     }
 }

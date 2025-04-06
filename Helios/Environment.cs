@@ -15,7 +15,7 @@ using Newtonsoft.Json;
 
 namespace Helios
 {
-    class Helios
+    class Environment
     {
         #region Fields
 
@@ -43,7 +43,7 @@ namespace Helios
 
         #endregion
 
-        static void Main(string[] args)
+        public static void Boot()
         {
             var logRepository = LogManager.GetRepository(Assembly.GetEntryAssembly());
             XmlConfigurator.Configure(logRepository, new FileInfo("log4net.config"));
@@ -78,7 +78,7 @@ namespace Helios
         /// </summary>
         private static void tryDatabaseConnection()
         {
-            log.Warn("Attempting to connect to MySQL database");
+            log.Info("Attempting to connect to MySQL database");
             using var context = new GameStorageContext();
             log.Info("Connection using Entity Framework is successful!");
         }
@@ -117,6 +117,7 @@ namespace Helios
             }*/
 
             PermissionsManager.Instance.Load();
+            FuserightManager.Instance.Load();
             ValueManager.Instance.Load();
             InteractionManager.Instance.Load();
             ItemManager.Instance.Load();
@@ -165,7 +166,7 @@ namespace Helios
         /// </summary>
         private static void tryCreateServer()
         {
-            GameServer.Logger.Warn("Starting server");
+            GameServer.Logger.Info("Starting server");
 
             GameServer.Instance.CreateServer(ServerConfig.Instance.GetString("server", "ip"), ServerConfig.Instance.GetInt("server", "port"));
             GameServer.Instance.InitialiseServer();

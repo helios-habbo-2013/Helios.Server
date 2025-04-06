@@ -1,25 +1,42 @@
-﻿using Helios.Storage.Models.Catalogue;
+﻿using Helios.Network.Streams;
+using Helios.Storage.Models.Catalogue;
 
 namespace Helios.Messages.Outgoing
 {
     class ActivityPointsNotificationComposer : IMessageComposer
     {
-        private SeasonalCurrencyType currencyType;
-        private int balance;
-        private bool notifyClient;
-
-        public ActivityPointsNotificationComposer(SeasonalCurrencyType currencyType, int balance, bool notifyClient)
+        public enum ActivityPointAlertType
         {
-            this.currencyType = currencyType;
-            this.balance = balance;
-            this.notifyClient = notifyClient;
+            PIXELS_RECEIVED,
+            PIXELS_SOUND,
+            NO_SOUND
+        }
+
+        private readonly int pixels;
+        private readonly ActivityPointAlertType alertType;
+
+        public ActivityPointsNotificationComposer(int pixels, ActivityPointAlertType alertType)
+        {
+            this.pixels = pixels;
+            this.alertType = alertType;
         }
 
         public override void Write()
-        {        
-            _data.Add(balance);
-            _data.Add(notifyClient ? 1 : 0);
-            _data.Add((int)currencyType);
+        {
+            _data.Add(this.pixels);
+
+            if (this.alertType == ActivityPointAlertType.PIXELS_RECEIVED)
+            {
+                _data.Add(15);
+            }
+            else if (this.alertType == ActivityPointAlertType.PIXELS_SOUND)
+            {
+                _data.Add(-1);
+            }
+            else if (this.alertType == ActivityPointAlertType.NO_SOUND)
+            {
+                _data.Add(0);
+            }
         }
     }
 }

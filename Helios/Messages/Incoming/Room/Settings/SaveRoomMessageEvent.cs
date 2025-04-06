@@ -34,10 +34,10 @@ namespace Helios.Messages.Incoming
                 tags.Add(request.ReadString().ToLower());
 
             int tradeSettings = request.ReadInt();
-            bool allowPets = request.ReadBoolean();
-            bool allowPetsEat = request.ReadBoolean();
-            bool roomBlockingEnabled = request.ReadBoolean();
-            bool hidewall = request.ReadBoolean();
+            bool allowPets = request.ReadBool();
+            bool allowPetsEat = request.ReadBool();
+            bool roomBlockingEnabled = request.ReadBool();
+            bool hidewall = request.ReadBool();
             int wallThickness = request.ReadInt();
             int floorThickness = request.ReadInt();
             int whoMute = request.ReadInt();

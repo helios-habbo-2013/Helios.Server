@@ -20,8 +20,9 @@ namespace Helios.Messages.Outgoing
             {
                 _data.Add(category.Id);
                 _data.Add(category.Caption);
-                _data.Add(category.IsEnabled);
             }
+
+            _data.Add(string.Empty);
         }
     }
 }

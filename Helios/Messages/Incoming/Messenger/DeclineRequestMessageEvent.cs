@@ -11,7 +11,7 @@ namespace Helios.Messages.Incoming
         {
             using (var context = new GameStorageContext())
             {
-                bool mode = request.ReadBoolean();
+                bool mode = request.ReadBool();
                 int amount = request.ReadInt();
 
                 if (!mode)

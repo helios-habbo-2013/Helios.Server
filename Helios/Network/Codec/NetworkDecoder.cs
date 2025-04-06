@@ -3,6 +3,7 @@ using DotNetty.Codecs;
 using DotNetty.Transport.Channels;
 using Helios.Network.Streams;
 using Helios.Util;
+using Helios.Util.Specialised;
 using System.Collections.Generic;
 
 namespace Helios.Network
@@ -35,7 +36,8 @@ namespace Helios.Network
             else
             {
                 buffer.MarkReaderIndex();
-                int length = buffer.ReadInt();
+
+                int length = Base64Encoding.DecodeInt32(new byte[] { buffer.ReadByte(), buffer.ReadByte(), buffer.ReadByte() });
 
                 if (buffer.ReadableBytes < length)
                 {
@@ -48,8 +50,7 @@ namespace Helios.Network
                     return;
                 }
 
-                var messageBuffer = buffer.ReadBytes(length);
-                output.Add(new Request(length, messageBuffer.ReadShort(), messageBuffer));
+                output.Add(new Request(buffer.ReadBytes(length)));
             }
         }
     }

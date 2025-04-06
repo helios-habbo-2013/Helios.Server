@@ -1,0 +1,31 @@
+fuserights:
+  ranks:
+    '1':
+      - 'fuse_room_queue_default'
+      - 'fuse_club_dances'
+      - 'fuse_trade'
+      - 'default'
+      - 'fuse_login'
+      - 'fuse_buy_credits'
+    '3':
+      - 'fuse_roomkick'
+      - 'fuse_kick'
+      - 'fuse_alert'
+      - 'fuse_roomalert'
+      - 'fuse_housekeeping_login'
+      - 'fuse_enter_any_room'
+      - 'fuse_mod'
+    '4':
+      - 'fuse_chatlogs'
+      - 'fuse_mute'
+      - 'fuse_any_room_rights'
+      - 'fuse_enter_full_rooms'
+      - 'fuse_housekeeping_moderation'
+      - 'fuse_ban'
+    '6':
+      - 'fuse_housekeeping_catalog'
+      - 'fuse_ignore_maintenance'
+      - 'fuse_admin'
+      - 'fuse_housekeeping_sitemanagement'
+    '7':
+      - 'fuse_sysadmin'

@@ -70,9 +70,10 @@ namespace Helios.Messages.Incoming
                 return;
             }
 
-            if (priceSeasonal > avatar.Currency.GetBalance(catalogueItem.Data.SeasonalType))
+            if (catalogueItem.Data.SeasonalType is Storage.Models.Catalogue.SeasonalCurrencyType currency &&
+                priceSeasonal > avatar.Currency.GetBalance(currency))
             {
-                avatar.Send(new NoCreditsComposer(false, true, catalogueItem.Data.SeasonalType));
+                avatar.Send(new NoCreditsComposer(false, true, currency));
                 return;
             }
 
@@ -84,10 +85,11 @@ namespace Helios.Messages.Incoming
             }
 
             // Update seasonal currency
-            if (priceSeasonal > 0)
+            if (catalogueItem.Data.SeasonalType is Storage.Models.Catalogue.SeasonalCurrencyType currency2 &&
+                priceSeasonal > 0)
             {
-                avatar.Currency.AddBalance(catalogueItem.Data.SeasonalType, -priceSeasonal);
-                avatar.Currency.UpdateCurrency(catalogueItem.Data.SeasonalType, false);
+                avatar.Currency.AddBalance(currency2, -priceSeasonal);
+                avatar.Currency.UpdateCurrency(currency2, false);
                 avatar.Currency.SaveCurrencies();
             }
 

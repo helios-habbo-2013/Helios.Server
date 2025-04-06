@@ -9,7 +9,7 @@ namespace Helios.Messages.Incoming
         public void Handle(Avatar avatar, Request request)
         {
             int groupId = request.ReadInt();
-            bool flag = request.ReadBoolean();
+            bool flag = request.ReadBool();
 
 
             var groupData = GroupManager.Instance.GetGroup(groupId);

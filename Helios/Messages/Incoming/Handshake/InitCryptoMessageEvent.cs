@@ -14,7 +14,7 @@ namespace Helios.Messages.Incoming
                 return;
             }
 
-            avatar.Send(new InitCryptoComposer("1e9d1203d2203d3dd9ddcb192ccf0a01"));
+            avatar.Send(new SessionParametersComposer(avatar));
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using DotNetty.Buffers;
 using Helios.Util;
+using Helios.Util.Specialised;
 using System;
 
 namespace Helios.Network.Streams
@@ -8,8 +9,8 @@ namespace Helios.Network.Streams
     {
         #region Fields
 
-        private short m_Header;
-        private int m_Length;
+        private string m_Header;
+        private int m_HeaderId;
         private IByteBuffer m_Buffer;
 
         #endregion
@@ -17,17 +18,17 @@ namespace Helios.Network.Streams
         /// <summary>
         /// Get the message header
         /// </summary>
-        public short Header
+        public string Header
         {
             get { return m_Header; }
         }
 
         /// <summary>
-        /// Get the message length
+        /// Get the message header id
         /// </summary>
-        public int Length
+        public int HeaderId
         {
-            get { return m_Length; }
+            get { return m_HeaderId; }
         }
 
         /// <summary>
@@ -71,6 +72,17 @@ namespace Helios.Network.Streams
             }
         }
 
+        /// <summary>
+        /// Get the content of the packet
+        /// </summary>
+        public string Content
+        {
+            get
+            {
+                return StringUtil.GetEncoding().GetString(ReadableBytes);
+            }
+        }
+
         #region Constructors
 
         /// <summary>
@@ -78,44 +90,81 @@ namespace Helios.Network.Streams
         /// </summary>
         /// <param name="length"></param>
         /// <param name="buffer"></param>
-        public Request(int length, short header, IByteBuffer buffer)
+        public Request(IByteBuffer buffer)
         {
-            this.m_Length = length;
             this.m_Buffer = buffer;
-            this.m_Header = header;
+            this.m_Header = StringUtil.GetEncoding().GetString(new byte[] { buffer.ReadByte(), buffer.ReadByte() });
+            this.m_HeaderId = Base64Encoding.DecodeInt32(StringUtil.GetEncoding().GetBytes(this.m_Header));
         }
 
         #endregion
 
         /// <summary>
-        /// Read integer
+        /// Read VL64 integer
         /// </summary>
         /// <returns>the integer from client</returns>
         public int ReadInt()
         {
             try
             {
-                return this.m_Buffer.ReadInt();
+                if (ReadableBytes.Length == 0)
+                    return 0;
+
+                byte[] bzData = this.ReadableBytes;
+                int totalBytes = 0;
+                int i = WireEncoding.DecodeInt32(bzData, out totalBytes);
+                this.ReadBytes(totalBytes);
+
+                return i;
             }
-            catch 
+            catch
             {
                 return 0;
             }
         }
 
         /// <summary>
-        /// Read integer as boolean
+        /// Read B64 integer
         /// </summary>
-        /// <returns>the boolean from client</returns>
-        public bool ReadIntAsBool()
+        /// <returns>the integer from client</returns>
+        public int ReadBase64Int()
         {
             try
             {
-                return this.m_Buffer.ReadInt() == 1;
+                if (ReadableBytes.Length < 2)
+                    return 0;
+
+                int i = Base64Encoding.DecodeInt32(this.ReadBytes(2));
+                return i;
             }
             catch
             {
-                return false;
+                return 0;
+            }
+        }
+
+        /// <summary>
+        /// Read base64 integer
+        /// </summary>
+        /// <returns>the integer from client</returns>
+        public string ReadString()
+        {
+            try
+            {
+                if (ReadableBytes.Length < 2)
+                    return null;
+
+                int totalBytes = Base64Encoding.DecodeInt32(this.ReadBytes(2));
+
+                if (ReadableBytes.Length < totalBytes)
+                    return null;
+
+                string value = StringUtil.GetEncoding().GetString(this.ReadBytes(totalBytes));
+                return value;
+            }
+            catch
+            {
+                return null;
             }
         }
 
@@ -124,35 +173,15 @@ namespace Helios.Network.Streams
         /// </summary>
         /// <returns>the boolean
         /// from client</returns>
-        public bool ReadBoolean()
+        public bool ReadBool()
         {
-
             try
             {
-                return m_Buffer.ReadByte() == 1;
+                return m_Buffer.ReadByte() == 'I';
             }
             catch
             {
                 return false;
-            }
-        }
-
-        /// <summary>
-        /// Read string
-        /// </summary>
-        /// <returns>the string from client</returns>
-        public string ReadString()
-        {
-            try
-            {
-                int length = m_Buffer.ReadShort();
-                byte[] data = this.ReadBytes(length);
-
-                return StringUtil.GetEncoding().GetString(data);
-            }
-            catch
-            {
-                return null;
             }
         }
 

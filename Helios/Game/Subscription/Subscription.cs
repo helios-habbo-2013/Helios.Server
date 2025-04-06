@@ -1,6 +1,7 @@
 ﻿using Helios.Messages.Outgoing;
 using Helios.Storage;
 using Helios.Storage.Access;
+using Helios.Storage.Models.Avatar;
 using Helios.Storage.Models.Subscription;
 using System;
 
@@ -92,7 +93,7 @@ namespace Helios.Game
         /// </summary>
         public void Update()
         {
-            avatar.Send(new UserRightsMessageComposer(avatar.IsSubscribed ? 2 : 0, 1));
+            avatar.Send(new UserRightsMessageComposer(FuserightManager.Instance.GetRights(avatar.Details.Rank)));
             avatar.Send(new ScrSendUserInfoComposer(avatar.Subscription.Data));
         }
 

@@ -1,4 +1,6 @@
-﻿using Helios.Storage.Models.Subscription;
+﻿using Helios.Game;
+using Helios.Network.Streams;
+using Helios.Storage.Models.Subscription;
 
 namespace Helios.Messages.Outgoing
 {
@@ -13,16 +15,24 @@ namespace Helios.Messages.Outgoing
 
         public override void Write()
         {
-            _data.Add("habbo_club"); // Which product/widget to assign the value
-            _data.Add(subscription != null ? subscription.DaysLeft : 0); // DAYS LEFT
-            _data.Add(2); // unused ??
-            _data.Add(subscription != null ? subscription.MonthsLeft : 0); // MONTHS LEFT
-            _data.Add(1); // unused ??
-            _data.Add(subscription != null); // unused ??
+            _data.Add("habbo_club");
+            _data.Add(subscription != null ? subscription.DaysLeft : 0);
             _data.Add(true);
-            _data.Add(0); // unused ??
-            _data.Add(subscription != null ? subscription.DaysLeft : 0); // unused ??
-            _data.Add(subscription != null ? 1 : 0); // group membership purchase enabled / disabled
+            _data.Add(subscription != null ? subscription.MonthsLeft : 0);
         }
+
+
+        /*
+        _data.Add("habbo_club"); // Which product/widget to assign the value
+        _data.Add(subscription != null ? subscription.DaysLeft : 0); // DAYS LEFT
+        _data.Add(2); // unused ??
+        _data.Add(subscription != null ? subscription.MonthsLeft : 0); // MONTHS LEFT
+        _data.Add(1); // unused ??
+        _data.Add(subscription != null); // unused ??
+        _data.Add(true);
+        _data.Add(0); // unused ??
+        _data.Add(subscription != null ? subscription.DaysLeft : 0); // unused ??
+        _data.Add(subscription != null ? 1 : 0); // group membership purchase enabled / disabled
+        */
     }
 }

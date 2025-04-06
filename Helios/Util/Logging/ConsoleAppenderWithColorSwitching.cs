@@ -9,11 +9,11 @@ namespace Helios.Util.Logging
     {
         private string ReplaceLogLevel(string renderedLayout)
         {
-            renderedLayout = renderedLayout.Replace(" INFO ", " |Cyan|INFO|Gray| ");
-            renderedLayout = renderedLayout.Replace(" DEBUG ", " |DarkYellow|DEBUG|Gray|  ");
-            renderedLayout = renderedLayout.Replace(" WARN ", " |Yellow|WARN|Gray|  ");
-            renderedLayout = renderedLayout.Replace(" ERROR ", " |DarkYellow|ERROR|Gray|  ");
-            renderedLayout = renderedLayout.Replace(" FATAL ", " |DarkRed|FATAL|Gray|  ");
+            renderedLayout = renderedLayout.Replace(" INFO ", " |Green|INFO|Gray| ");
+            renderedLayout = renderedLayout.Replace(" DEBUG ", " |DarkYellow|DEBUG|Gray| ");
+            renderedLayout = renderedLayout.Replace(" WARN ", " |Yellow|WARN|Gray| ");
+            renderedLayout = renderedLayout.Replace(" ERROR ", " |DarkYellow|ERROR|Gray| ");
+            renderedLayout = renderedLayout.Replace(" FATAL ", " |DarkRed|FATAL|Gray  ");
             return renderedLayout;
         }
 

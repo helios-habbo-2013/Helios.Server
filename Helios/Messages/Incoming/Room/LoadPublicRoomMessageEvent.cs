@@ -8,7 +8,7 @@ namespace Helios.Messages.Incoming
     {
         public void Handle(Avatar avatar, Request request)
         {
-            request.ReadBoolean();
+            request.ReadBool();
             var room = RoomManager.Instance.GetRoom(request.ReadInt());
 
             if (room == null)

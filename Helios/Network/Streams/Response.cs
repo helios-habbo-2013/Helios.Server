@@ -1,5 +1,6 @@
 ﻿using DotNetty.Buffers;
 using Helios.Util;
+using Helios.Util.Specialised;
 using System;
 
 namespace Helios.Network.Streams
@@ -17,15 +18,7 @@ namespace Helios.Network.Streams
         /// <summary>
         /// Get the message header
         /// </summary>
-        public short Header { get; private set; }
-
-        /// <summary>
-        /// Get whether the length has been set
-        /// </summary>
-        public bool HasLength
-        {
-            get { return m_Buffer.GetInt(0) > -1; }
-        }
+        public int Header { get; private set; }
 
         /// <summary>
         /// Get the message body with characters replaced
@@ -36,7 +29,7 @@ namespace Helios.Network.Streams
             {
                 string consoleText = m_Buffer.ToString(StringUtil.GetEncoding());
 
-                for (int i = 0; i < 13; i++)
+                for (int i = 0; i < 14; i++)
                     consoleText = consoleText.Replace(Convert.ToString((char)i), "[" + i + "]");
 
                 return consoleText;
@@ -52,12 +45,11 @@ namespace Helios.Network.Streams
         /// </summary>
         /// <param name="header"></param>
         /// <param name="buffer"></param>
-        public Response(short header, IByteBuffer buffer)
+        public Response(int header, IByteBuffer buffer)
         {
             this.Header = header;
             this.m_Buffer = buffer;
-            this.m_Buffer.WriteInt(0);
-            this.m_Buffer.WriteShort(Header);
+            this.m_Buffer.WriteBytes(Base64Encoding.EncodeInt32(Header, 2));
         }
 
         #endregion
@@ -68,9 +60,17 @@ namespace Helios.Network.Streams
         /// Write string for client
         /// </summary>
         /// <param name="obj"></param>
-        public void writeString(object obj)
+        public void WriteString(object obj)
         {
-            m_Buffer.WriteShort(obj.ToString().Length);
+            m_Buffer.WriteBytes(StringUtil.GetEncoding().GetBytes(obj.ToString()));
+            m_Buffer.WriteByte(2);
+        }
+
+        /// <summary>
+        /// Write raw object to buffer
+        /// </summary>
+        public void Write(object obj)
+        {
             m_Buffer.WriteBytes(StringUtil.GetEncoding().GetBytes(obj.ToString()));
         }
 
@@ -78,27 +78,18 @@ namespace Helios.Network.Streams
         /// Write int for client
         /// </summary>
         /// <param name="obj"></param>
-        public void writeInt(int obj)
+        public void WriteInt(int obj)
         {
-            m_Buffer.WriteInt(obj);
-        }
-
-        /// <summary>
-        /// Write short for clients
-        /// </summary>
-        /// <param name="obj">short value</param>
-        public void writeShort(short obj)
-        {
-            m_Buffer.WriteShort(obj);
+            m_Buffer.WriteBytes(WireEncoding.EncodeInt32(obj));
         }
 
         /// <summary>
         /// Write boolean for client
         /// </summary>
         /// <param name="obj"></param>
-        public void writeBool(bool obj)
+        public void WriteBool(bool obj)
         {
-            m_Buffer.WriteBoolean(obj);
+            WriteInt(obj ? 1 : 0);
         }
 
         #endregion

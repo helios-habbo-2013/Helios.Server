@@ -83,26 +83,29 @@ namespace Helios.Game
                 return;
             }
 
-            if (priceSeasonal > avatar.Currency.GetBalance(subscriptionData.SeasonalType))
+            if (subscriptionData.SeasonalType is SeasonalCurrencyType currencyType)
             {
-                avatar.Send(new NoCreditsComposer(false, true, subscriptionData.SeasonalType));
-                return;
+                if (priceSeasonal > avatar.Currency.GetBalance(currencyType))
+                {
+                    avatar.Send(new NoCreditsComposer(false, true, currencyType));
+                    return;
+                }
+
+                if (priceSeasonal > 0)
+                {
+                    avatar.Currency.AddBalance(currencyType, -priceSeasonal);
+                    avatar.Currency.UpdateCurrency(currencyType, false);
+                    avatar.Currency.SaveCurrencies();
+                }
             }
 
-            // Update credits of user
+            // Update credits if needed
             if (priceCoins > 0)
             {
                 avatar.Currency.ModifyCredits(-priceCoins);
                 avatar.Currency.UpdateCredits();
             }
 
-            // Update seasonal currency
-            if (priceSeasonal > 0)
-            {
-                avatar.Currency.AddBalance(subscriptionData.SeasonalType, -priceSeasonal);
-                avatar.Currency.UpdateCurrency(subscriptionData.SeasonalType, false);
-                avatar.Currency.SaveCurrencies();
-            }
 
             avatar.Subscription.AddMonths(subscriptionData.Months);
         }

@@ -191,10 +191,11 @@ namespace Helios.Game
             Authenticated = true;
             AuthenticationTime = DateTime.Now;
 
-
-            Send(new AuthenticationOKComposer());
             Send(new AvailabilityStatusComposer());
-            Send(new UserRightsMessageComposer(IsSubscribed ? 2 : 0, UserGroup.HasPermission("room.addstaffpicks") ? 7 : avatarData.Rank));
+            Send(new UserRightsMessageComposer(FuserightManager.Instance.GetRights(avatarData.Rank)));
+            Send(new AuthenticationOKComposer());
+            Send(new NavigatorSettingsComposer(0));
+            // Send(new AvailabilityStatusComposer());
 
             return true;
         }

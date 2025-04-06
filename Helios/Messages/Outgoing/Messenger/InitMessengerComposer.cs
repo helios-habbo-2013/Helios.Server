@@ -47,16 +47,16 @@ namespace Helios.Messages.Outgoing
                 _data.Add(friend.AvatarData.Name);
                 _data.Add(1);
                 _data.Add(friend.IsOnline);
-                _data.Add(friend.Avatar != null ? (friend.Avatar.Settings.FollowingEnabled && friend.InRoom) : false);
-                _data.Add(friend.IsOnline ? friend.AvatarData.Figure : "");
+                _data.Add(friend.IsOnline ? friend.InRoom : false);
+                _data.Add(friend.AvatarData.Figure);
                 _data.Add(0); // category id
                 _data.Add(friend.AvatarData.Motto); // motto
-                _data.Add(friend.AvatarData.RealName); // real name
                 _data.Add(friend.AvatarData.LastOnline.ToString("MM-dd-yyyy HH:mm:ss")); // unknown??
-                _data.Add(false);
-                _data.Add(false);
-                _data.Add(false); // is using pocket habbo
-                _data.Add((short)0); // relationship status
+                _data.Add(friend.AvatarData.RealName); // real name
+                //_data.Add(false);
+                //_data.Add(false);
+                //_data.Add(false); // is using pocket habbo
+                //_data.Add((short)0); // relationship status
             }
         }
     }
