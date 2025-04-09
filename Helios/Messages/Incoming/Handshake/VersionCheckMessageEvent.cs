@@ -1,5 +1,6 @@
 ﻿using Helios.Game;
 using Helios.Network.Streams;
+using Serilog;
 
 namespace Helios.Messages.Incoming
 {
@@ -16,7 +17,7 @@ namespace Helios.Messages.Incoming
             var clientVersion = request.ReadString();
 
             if (clientVersion == Environment.ClientVersion)
-                avatar.Log.Debug($"Received version: {clientVersion}");
+                Log.Debug($"Received version: {clientVersion}");
             else
                 avatar.Connection.Close();
         }

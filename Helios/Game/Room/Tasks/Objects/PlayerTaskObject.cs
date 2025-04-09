@@ -1,9 +1,7 @@
 ﻿using Helios.Messages.Outgoing;
-using Helios.Storage;
 using Helios.Storage.Access;
 using Helios.Util;
 using Helios.Util.Extensions;
-using log4net;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,8 +19,7 @@ namespace Helios.Game
 
         #region Fields
 
-        private static readonly ILog log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
-
+  
         #endregion
 
         #region Constructor

@@ -21,7 +21,7 @@
         public static readonly short InstantChatComposer = 134; // -- R49
         public static readonly short InstantChatErrorComposer = 261; // -- R49
         public static readonly short PublicItemsComposer = 450; // -- R49
-        public static readonly short FlatListComposer = -1019;
+        public static readonly short FlatListComposer = 451; // -- R49
         public static readonly short UserFlatCatsComposer = 221; // -- R49
         public static readonly short CanCreateRoomComposer = -3710;
         public static readonly short ScrSendUserInfoComposer = 7; // -- R49

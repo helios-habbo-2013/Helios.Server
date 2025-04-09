@@ -1,8 +1,7 @@
 ﻿using System.Linq;
 using System.Collections.Generic;
 using System.IO;
-using log4net;
-using System.Reflection;
+using Serilog;
 
 namespace Helios.Game
 {
@@ -13,8 +12,6 @@ namespace Helios.Game
         public static readonly PluginManager Instance = new PluginManager();
         private List<PluginProxy> plugins;
         private string pluginDictionary = "plugins";
-
-        private static readonly ILog log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
         #endregion
 
@@ -60,7 +57,7 @@ namespace Helios.Game
                     if (Path.GetExtension(file) != ".dll")
                         continue;
 
-                    log.Info($"Loading {Path.GetFileName(file)} as a plugin");
+                    Log.Information($"Loading {Path.GetFileName(file)} as a plugin");
                     plugins.Add(new PluginProxy(file));
                 }
             }

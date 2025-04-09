@@ -1,4 +1,4 @@
-﻿using log4net.Appender;
+﻿/*using log4net.Appender;
 using log4net.Core;
 
 namespace Helios.Util.Logging
@@ -12,3 +12,4 @@ namespace Helios.Util.Logging
         }
     }
 }
+*/

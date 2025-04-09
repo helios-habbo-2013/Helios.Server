@@ -1,11 +1,10 @@
 ﻿using Helios.Messages;
 using Helios.Messages.Outgoing;
 using Helios.Network.Session;
-using Helios.Storage;
 using Helios.Storage.Access;
 using Helios.Storage.Models.Avatar;
 using Helios.Storage.Models.Entity;
-using log4net;
+using Serilog;
 using System;
 using System.Collections.Generic;
 using System.Reflection;
@@ -16,7 +15,6 @@ namespace Helios.Game
     {
         #region Fields
 
-        private ILog log = LogManager.GetLogger(typeof(Avatar));
         private AvatarData avatarData;
         private AvatarSettingsData settings;
 
@@ -42,11 +40,6 @@ namespace Helios.Game
         /// Get the connection session
         /// </summary>
         public ConnectionSession Connection { get; private set; }
-
-        /// <summary>
-        /// Get the logging
-        /// </summary>
-        public ILog Log => log;
 
         /// <summary>
         /// Get messenger
@@ -134,7 +127,6 @@ namespace Helios.Game
         {
             Connection = connectionSession;
             RoomEntity = new RoomAvatar(this);
-            log = LogManager.GetLogger(Assembly.GetExecutingAssembly(), $"Connection {connectionSession.Channel.Id}");
             LocalStorage = new Dictionary<string, object>();
         }
 
@@ -156,8 +148,7 @@ namespace Helios.Game
                 if (avatarData == null)
                     return false;
 
-                log = LogManager.GetLogger(Assembly.GetExecutingAssembly(), $"Avatar {avatarData.Name}");
-                log.Debug($"Avatar {avatarData.Name} has logged in");
+                Log.Debug($"Avatar {avatarData.Name} has logged in");
 
                 context.CreateOrUpdate(out settings, avatarData.Id);
 

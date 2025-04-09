@@ -2,7 +2,7 @@
 using DotNetty.Transport.Bootstrapping;
 using DotNetty.Transport.Channels;
 using DotNetty.Transport.Channels.Sockets;
-using log4net;
+using Serilog;
 using System;
 using System.Net;
 using System.Reflection;
@@ -13,7 +13,6 @@ namespace Helios.Network
     {
         #region Fields
 
-        private static readonly ILog m_Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
         private static readonly GameServer m_GameServer = new GameServer();
 
         private MultithreadEventLoopGroup m_BossGroup;
@@ -34,17 +33,6 @@ namespace Helios.Network
             get
             {
                 return m_GameServer;
-            }
-        }
-
-        /// <summary>
-        /// Get the logger
-        /// </summary>
-        public static ILog Logger
-        {
-            get
-            {
-                return m_Log;
             }
         }
 
@@ -110,7 +98,7 @@ namespace Helios.Network
             }
             catch (Exception e)
             {
-                m_Log.Error($"Failed to setup network listener... {e}");
+                Log.Error($"Failed to setup network listener... {e}");
             }
         }
 

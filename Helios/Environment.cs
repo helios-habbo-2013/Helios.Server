@@ -1,6 +1,4 @@
 ﻿using Helios.Util;
-using log4net;
-using log4net.Config;
 using System;
 using System.IO;
 using System.Reflection;
@@ -9,9 +7,9 @@ using Helios.Game;
 using Helios.Messages;
 using System.Threading;
 using Helios.Storage.Access;
-using Helios.Storage;
 using System.Linq;
 using Newtonsoft.Json;
+using Serilog;
 
 namespace Helios
 {
@@ -19,19 +17,10 @@ namespace Helios
     {
         #region Fields
 
-        private static readonly ILog log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
-
+    
         #endregion
 
         #region Properties
-
-        /// <summary>
-        /// Get the logger instance.
-        /// </summary>
-        public static ILog Logger
-        {
-            get { return log; }
-        }
 
         /// <summary>
         /// Get the official release supported
@@ -45,13 +34,10 @@ namespace Helios
 
         public static void Boot()
         {
-            var logRepository = LogManager.GetRepository(Assembly.GetEntryAssembly());
-            XmlConfigurator.Configure(logRepository, new FileInfo("log4net.config"));
-
             Console.Title = "Helios - Habbo Hotel Emulation";
 
-            log.Info("Booting Helios - Written by Quackster");
-            log.Info("Emulation of Habbo Hotel 2013 flash client");
+            Log.Information("Booting Helios - Written by Quackster");
+            Log.Information("Emulation of Habbo Hotel 2013 flash client");
 
 
             try
@@ -62,7 +48,7 @@ namespace Helios
             }
             catch (Exception ex)
             {
-                log.Error(ex);
+                Log.Error(ex.ToString());
             }
 
 #if DEBUG
@@ -78,9 +64,9 @@ namespace Helios
         /// </summary>
         private static void tryDatabaseConnection()
         {
-            log.Info("Attempting to connect to MySQL database");
+            Log.Information("Attempting to connect to MySQL database");
             using var context = new GameStorageContext();
-            log.Info("Connection using Entity Framework is successful!");
+            Log.Information("Connection using Entity Framework is successful!");
         }
 
         /// <summary>
@@ -166,12 +152,12 @@ namespace Helios
         /// </summary>
         private static void tryCreateServer()
         {
-            GameServer.Logger.Info("Starting server");
+            Log.Information("Starting server");
 
             GameServer.Instance.CreateServer(ServerConfig.Instance.GetString("server", "ip"), ServerConfig.Instance.GetInt("server", "port"));
             GameServer.Instance.InitialiseServer();
 
-            GameServer.Logger.Info($"Server is now listening on port: {GameServer.Instance.IpAddress}:{GameServer.Instance.Port}!");
+            Log.Information($"Server is now listening on port: {GameServer.Instance.IpAddress}:{GameServer.Instance.Port}!");
 
             while (true)
             {

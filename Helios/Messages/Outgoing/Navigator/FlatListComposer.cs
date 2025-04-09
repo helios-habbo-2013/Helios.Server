@@ -41,21 +41,21 @@ namespace Helios.Messages.Outgoing
 
         public static void Compose(IMessageComposer messageComposer, RoomData room)
         {
-            messageComposer.Data.Add(room.Id);
-            messageComposer.Data.Add(room.Name);
-            messageComposer.Data.Add(true);
-            messageComposer.Data.Add(room.OwnerId);
-            messageComposer.Data.Add(room.OwnerData == null ? string.Empty : room.OwnerData.Name);
-            messageComposer.Data.Add((int)room.Status);
-            messageComposer.Data.Add(room.UsersNow);
-            messageComposer.Data.Add(room.UsersMax);
-            messageComposer.Data.Add(room.Description);
-            messageComposer.Data.Add(0);
-            messageComposer.Data.Add(room.TradeSetting);// room.TradeSetting);
-            messageComposer.Data.Add(room.Rating);
-            messageComposer.Data.Add(0);
-            messageComposer.Data.Add(room.Category.Id);
+            messageComposer.AppendInt32(room.Id);
+            messageComposer.AppendBoolean(false);
+            messageComposer.AppendStringWithBreak(room.Name);
+            messageComposer.AppendStringWithBreak(room.OwnerData == null ? string.Empty : room.OwnerData.Name);
+            messageComposer.AppendInt32((int)room.Status);
+            messageComposer.AppendInt32(room.UsersNow);
+            messageComposer.AppendInt32(room.UsersMax);
+            messageComposer.AppendStringWithBreak(room.Description);
+            messageComposer.AppendBoolean(true);
+            messageComposer.AppendBoolean(room.TradeSetting == 1);// room.TradeSetting);
+            messageComposer.AppendInt32(room.Rating);
+            messageComposer.AppendInt32(room.Category.Id);
+            messageComposer.AppendString("");
 
+            /*
             if (room.GroupData != null)
             {
                 messageComposer.Data.Add(room.GroupData.Id);
@@ -70,15 +70,16 @@ namespace Helios.Messages.Outgoing
                 messageComposer.Data.Add("");
                 messageComposer.Data.Add("");
                 messageComposer.Data.Add("");
-            }
+            }*/
 
-            messageComposer.Data.Add(room.Tags.Count);
+            messageComposer.AppendInt32(room.Tags.Count);
 
             foreach (var tag in room.Tags)
             {
-                messageComposer.Data.Add(tag.Text);
+                messageComposer.AppendString(tag.Text);
             }
 
+            /*
             messageComposer.Data.Add(0);
             messageComposer.Data.Add(0);
             messageComposer.Data.Add(0);
@@ -86,6 +87,7 @@ namespace Helios.Messages.Outgoing
             messageComposer.Data.Add(true);
             messageComposer.Data.Add(0);
             messageComposer.Data.Add(0);
+            */
 
             /*
             this._SafeStr_14029 = new _SafeStr_2759(k);

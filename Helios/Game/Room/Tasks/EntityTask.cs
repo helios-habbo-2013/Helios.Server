@@ -1,16 +1,15 @@
-﻿using log4net;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using Helios.Util.Extensions;
 using Helios.Messages.Outgoing;
 using System.Linq;
 using System.Timers;
+using Serilog;
 
 namespace Helios.Game
 {
     public class EntityTask : IRoomTask
     {
-        private static readonly ILog log = LogManager.GetLogger(typeof(EntityTask));
         private Room room;
 
         /// <summary>
@@ -55,7 +54,7 @@ namespace Helios.Game
             }
             catch (Exception ex)
             {
-                log.Error(ex);
+                Log.Error(ex.ToString());
             }
         }
 

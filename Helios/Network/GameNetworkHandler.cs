@@ -3,7 +3,7 @@ using DotNetty.Transport.Channels;
 using Helios.Messages;
 using Helios.Network.Session;
 using Helios.Network.Streams;
-using log4net;
+using Serilog;
 using System;
 
 namespace Helios.Network
@@ -13,8 +13,7 @@ namespace Helios.Network
         #region Fields
 
         public static AttributeKey<ConnectionSession> CONNECTION_KEY = AttributeKey<ConnectionSession>.NewInstance("CONNECTION_KEY");
-        public static readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-
+  
         #endregion
 
         #region Public methods
@@ -31,7 +30,7 @@ namespace Helios.Network
 
             if (connection != null)
             {
-                log.Debug($"Client connected to server: {connection.IpAddress}");
+                Log.Debug($"Client connected to server: {connection.IpAddress}");
                 ctx.Channel.GetAttribute(CONNECTION_KEY).SetIfAbsent(connection);
             }
         }
@@ -50,7 +49,7 @@ namespace Helios.Network
 
             connection.Disconnect();
 
-            log.Debug($"Client disconnected from server: {connection.IpAddress}");
+            Log.Debug($"Client disconnected from server: {connection.IpAddress}");
         }
 
         /// <summary>
@@ -86,7 +85,7 @@ namespace Helios.Network
         /// <param name="context">the channel context</param>
         /// <param name="exception">the exception</param>
         public override void ExceptionCaught(IChannelHandlerContext context, Exception exception) =>
-            log.Error(exception.ToString());
+            Log.Error(exception.ToString());
 
         #endregion
     }

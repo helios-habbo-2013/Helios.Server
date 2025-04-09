@@ -7,6 +7,7 @@ using Helios.Messages;
 using Helios.Network.Session;
 using Helios.Network.Streams;
 using Helios.Network.Streams.Util;
+using Serilog;
 
 namespace Helios.Network.Codec
 {
@@ -22,7 +23,7 @@ namespace Helios.Network.Codec
 
                 if (header == null)
                 {
-                    connection.Avatar.Log.Error("No header found for composer class {composer.GetType().Name}");
+                    Log.Error($"No header found for composer class {composer.GetType().Name}");
                     return;
                 }
 
@@ -61,13 +62,13 @@ namespace Helios.Network.Codec
                 buffer.WriteByte((char)1);
 
                 if (connection != null)
-                    connection.Avatar.Log.Debug($"SENT {composer.GetType().Name}: " + response.Header + " / " + response.MessageBody);
+                    Log.Debug($"SENT {composer.GetType().Name}: " + response.Header + " / " + response.MessageBody);
 
                 output.Add(buffer);
             }
             catch (Exception ex)
             {
-                connection.Avatar.Log.Error("Error occurred: ", ex);
+                Log.Error("Error occurred: ", ex);
             }
         }
     }

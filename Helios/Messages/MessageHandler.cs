@@ -1,12 +1,10 @@
 ﻿using Helios.Game;
 using Helios.Messages.Headers;
-using Helios.Messages.Incoming;
 using Helios.Network.Streams;
-using log4net;
+using Serilog;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Numerics;
 using System.Reflection;
 
 namespace Helios.Messages
@@ -14,8 +12,6 @@ namespace Helios.Messages
     public class MessageHandler : ILoadable
     {
         #region Fields
-
-        private static readonly ILog log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
         public static readonly MessageHandler Instance = new MessageHandler();
 
@@ -76,7 +72,7 @@ namespace Helios.Messages
                     }
 
                     else
-                        log.Error($"Event {packetType.Name} has no header defined");
+                        Log.Error($"Event {packetType.Name} has no header defined");
                 }
 
                 if (typeof(IMessageComposer).IsAssignableFrom(packetType)) {
@@ -85,7 +81,7 @@ namespace Helios.Messages
                     if (composerField != null)
                         Composers[packetType.Name] = Convert.ToInt16(composerField.GetValue(null));
                     else
-                        log.Error($"Composer {packetType.Name} has no header defined");
+                        Log.Error($"Composer {packetType.Name} has no header defined");
                 }
                 /**/
             }
@@ -115,7 +111,7 @@ namespace Helios.Messages
             {
                 if (Events.ContainsKey(request.HeaderId))
                 {
-                    avatar.Log.Debug($"RECEIVED {Events[request.HeaderId][0].GetType().Name}: {request.Header} / {request.MessageBody}");
+                    Log.Debug($"RECEIVED {Events[request.HeaderId][0].GetType().Name}: {request.Header} / {request.MessageBody}");
 
                     foreach (IMessageEvent handler in Events[request.HeaderId])
                     {
@@ -135,12 +131,12 @@ namespace Helios.Messages
                 } 
                 else
                 {
-                    avatar.Log.Debug($"Unknown: [{request.HeaderId}] {request.Header} / {request.MessageBody}");
+                    Log.Debug($"Unknown: [{request.HeaderId}] {request.Header} / {request.MessageBody}");
                 }
             }
             catch (Exception ex)
             {
-                log.Error("Error occurred: ", ex);
+                Log.Error("Error occurred: ", ex);
             }
         }
 

@@ -6,7 +6,7 @@ namespace Helios.Game
     {
         #region Properties
 
-        public Timer Task { get; private set; }
+        public System.Timers.Timer Task { get; private set; }
         public abstract int Interval { get; }
 
         #endregion
@@ -21,7 +21,7 @@ namespace Helios.Game
             if (Task != null)
                 return;
 
-            Task = new Timer();
+            Task = new System.Timers.Timer();
             Task.Interval = Interval;
             Task.Elapsed += Run;
             Task.Enabled = true;

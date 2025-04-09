@@ -1,19 +1,17 @@
-﻿using log4net;
-using System;
+﻿using System;
 using Helios.Util.Extensions;
 using System.Collections.Concurrent;
 using System.Reflection;
 using System.Collections.Generic;
 using System.Linq;
 using System.Timers;
+using Serilog;
 
 namespace Helios.Game
 {
     public class ItemTickTask : IRoomTask
     {
         #region Fields
-
-        private static readonly ILog log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
         #endregion
 
@@ -69,7 +67,7 @@ namespace Helios.Game
             }
             catch (Exception ex)
             {
-                log.Error("Item tick task crashed: ", ex);
+                Log.Error("Item tick task crashed: ", ex);
             }
         }
     }

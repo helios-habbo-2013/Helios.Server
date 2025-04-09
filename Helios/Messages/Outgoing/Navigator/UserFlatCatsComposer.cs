@@ -14,12 +14,13 @@ namespace Helios.Messages.Outgoing
 
         public override void Write()
         {
-            _data.Add(categories.Count);
+            AppendInt32(categories.Count);
 
             foreach (var category in categories)
             {
-                _data.Add(category.Id);
-                _data.Add(category.Caption);
+                AppendBoolean(true);
+                AppendInt32(category.Id);
+                AppendStringWithBreak(category.Caption);
             }
 
             _data.Add(string.Empty);

@@ -17,7 +17,7 @@
         public static readonly short RemoveFriendMessageEvent = 40; // -- R49
         public static readonly short InstantChatMessageEvent = 33; // -- R49
         public static readonly short PublicItemsMessageEvent = 380; // -- R49
-        public static readonly short UserFlatsMessageEvent = -1907;
+        public static readonly short UserFlatsMessageEvent = 434; // -- R49
         public static readonly short UserFlatCatsMessageEvent = 151; // -- R49
         public static readonly short CanCreateRoomMessageEvent = -2274;
         public static readonly short ScrGetUserInfoMessageEvent = 26; // -- R49

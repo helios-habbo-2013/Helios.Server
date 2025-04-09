@@ -1,14 +1,13 @@
-﻿using log4net;
-using System;
+﻿using System;
 using Helios.Messages.Outgoing;
 using Helios.Util;
 using System.Timers;
+using Serilog;
 
 namespace Helios.Game
 {
     public class StatusTask : IRoomTask
     {
-        private static readonly ILog log = LogManager.GetLogger(typeof(StatusTask));
         private Room room;
 
         /// <summary>
@@ -42,7 +41,7 @@ namespace Helios.Game
             }
             catch (Exception ex)
             {
-                log.Error(ex);
+                Log.Error(ex.ToString());
             }
         }
 

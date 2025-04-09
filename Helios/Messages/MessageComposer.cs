@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Helios.Network.Streams.Util;
+using System.Collections.Generic;
 
 namespace Helios.Messages
 {
@@ -31,9 +32,28 @@ namespace Helios.Messages
 
         public abstract void Write();
 
-        public object[] GetMessageArray()
+        public IMessageComposer AppendStringWithBreak(string str)
         {
-            return _data.ToArray();
+            _data.Add(str);
+            return this;
+        }
+
+        public IMessageComposer AppendInt32(int i)
+        {
+            _data.Add(i);
+            return this;
+        }
+
+        public IMessageComposer AppendString(string str)
+        {
+            _data.Add(new TextEntry(str));
+            return this;
+        }
+
+        public IMessageComposer AppendBoolean(bool b)
+        {
+            _data.Add(b);
+            return this;
         }
     }
 }
