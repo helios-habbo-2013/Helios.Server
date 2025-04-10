@@ -4,6 +4,7 @@ using Helios.Util.Extensions;
 using Helios.Storage.Access;
 using Helios.Storage.Models.Navigator;
 using Helios.Storage;
+using Serilog;
 
 namespace Helios.Game
 {
@@ -25,10 +26,14 @@ namespace Helios.Game
 
         public void Load()
         {
+            Log.ForContext<NavigatorManager>().Information("Loading Navigator Categories");
+
             using (var context = new StorageContext())
             {
                 Categories = context.GetCategories();
             }
+
+            Log.ForContext<NavigatorManager>().Information("Loaded {Count} of Navigator Categories", Categories.Count);
         }
 
         #endregion

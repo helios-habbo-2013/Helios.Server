@@ -35,7 +35,11 @@ namespace Helios.Messages
 
         public void Load()
         {
+            Log.ForContext<MessageHandler>().Information("Loading message handler");
+
             ResolveMessages();
+
+            Log.ForContext<MessageHandler>().Information("Loaded {EventCount} events and {ComposerCount} composers", Events.Count, Composers.Count);
         }
 
         #endregion

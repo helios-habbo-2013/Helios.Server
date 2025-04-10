@@ -17,13 +17,13 @@ namespace Helios
 
             if (OperatingSystem.IsWindows())
             {
-                Console.WindowHeight = Console.LargestWindowHeight - 25;
-                Console.WindowWidth = Console.LargestWindowWidth - 25;
+                Console.WindowHeight = (int)(Console.LargestWindowHeight * 0.95);
+                Console.WindowWidth = (int)(Console.LargestWindowWidth * 0.95);
             }
 
             Console.WriteLine("HELIOS EMULATOR");
-            Console.WriteLine("THE PRIVATE HABBO HOTEL EMULATOR");
-            Console.WriteLine("COPYRIGHT (C) 2020-2025 BY OLDSKOOLER TEAM");
+            Console.WriteLine("THE FLASH HABBO HOTEL EMULATOR");
+            Console.WriteLine("COPYRIGHT (C) 2020-2025 BY QUACKSTER");
             Console.WriteLine("FOR MORE DETAILS CHECK LEGAL.TXT");
             Console.WriteLine();
             Console.WriteLine("BUILD");

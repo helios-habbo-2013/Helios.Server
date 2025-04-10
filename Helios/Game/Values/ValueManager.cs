@@ -1,6 +1,7 @@
 ﻿using Helios.Storage;
 using Helios.Storage.Access;
 using Helios.Util.Extensions;
+using Serilog;
 using System;
 using System.Collections.Generic;
 
@@ -28,6 +29,8 @@ namespace Helios.Game
 
         public void Load()
         {
+            Log.ForContext<ValueManager>().Information("Loading settings");
+
             using (var context = new StorageContext())
             {
                 context.GetSettings(out _clientValues);
@@ -41,6 +44,8 @@ namespace Helios.Game
                     }
                 }
             }
+
+            Log.ForContext<ValueManager>().Information("Loaded {Count} setting values", _clientValues.Count);
         }
 
         /// <summary>

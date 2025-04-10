@@ -1,4 +1,6 @@
 ﻿using Helios.Messages;
+using Helios.Storage;
+using Serilog;
 using System;
 using System.Collections.Generic;
 
@@ -36,6 +38,7 @@ namespace Helios.Game
             Interactors[InteractorType.MANNEQUIN] = typeof(MannequinInteractor);
             Interactors[InteractorType.GUILD] = typeof(GuildInteractor);
             Interactors[InteractorType.GUILD_GATE] = typeof(GuildInteractor);
+
         }
 
         #endregion

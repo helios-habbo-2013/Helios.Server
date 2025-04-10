@@ -2,6 +2,7 @@
 using Helios.Storage;
 using Helios.Storage.Access;
 using Helios.Storage.Models.Catalogue;
+using Serilog;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -26,6 +27,8 @@ namespace Helios.Game
 
         public void Load()
         {
+            Log.ForContext<SubscriptionManager>().Information("Loading Habbo Club subscription data");
+
             using (var context = new StorageContext())
             {
                 Subscriptions = context.GetSubscriptionData();
@@ -35,6 +38,9 @@ namespace Helios.Game
                     .OrderBy(x => x.Data.DurationRequirement)
                     .ToList();
             }
+
+            Log.ForContext<SubscriptionManager>().Information("Loaded {Count} of Habbo Club subscriptions", Subscriptions.Count);
+            Log.ForContext<SubscriptionManager>().Information("Loaded {Count} of Habbo Club gifts", Gifts.Count);
         }
 
         #endregion

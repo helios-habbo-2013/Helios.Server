@@ -83,7 +83,7 @@ namespace Helios.Network
         {
             try
             {
-                Log.ForContext<Helios>().Information("Starting server");
+                Log.ForContext<GameServer>().Information("Starting main game server");
 
                 ServerBootstrap bootstrap = new ServerBootstrap()
                     .Group(m_BossGroup, m_WorkerGroup)

@@ -6,6 +6,7 @@ using Helios.Storage.Models.Effect;
 using Helios.Storage.Models.Group;
 using Helios.Storage.Models.Item;
 using Newtonsoft.Json;
+using Serilog;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,7 +34,9 @@ namespace Helios.Game
         #region Constructors
 
         public void Load()
-        {
+        { 
+            Log.ForContext<CatalogueManager>().Information("Loading Catalogue data");
+            
             using (var context = new StorageContext())
             {
                 Pages = context.GetPages().Select(x => new CataloguePage(x)).ToList();
@@ -44,6 +47,8 @@ namespace Helios.Game
             }
 
             DeserialisePageData();
+
+            Log.ForContext<CatalogueManager>().Information("Loaded {Count} of Catalogue items", Pages.Count);
         }
 
         #endregion

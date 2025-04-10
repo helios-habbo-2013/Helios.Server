@@ -32,7 +32,7 @@ namespace Helios.Game
         {
             Ranks = [];
 
-            Log.ForContext<PermissionsManager>().Information("Loading Ranks");
+            //Log.ForContext<PermissionsManager>().Information("Loading Ranks");
 
 
             var input = new StringReader(File.ReadAllText("permissions.yml"));
@@ -94,8 +94,7 @@ namespace Helios.Game
                 rank.BuildPermissions([.. Ranks.Values]);
             }
 
-            Log.ForContext<PermissionsManager>().Information("Loaded {Count} of Ranks", Ranks.Count);
-            Log.ForContext<Helios>().Information("");
+            //Log.ForContext<PermissionsManager>().Information("Loaded {Count} of Ranks", Ranks.Count);
         }
 
         #endregion

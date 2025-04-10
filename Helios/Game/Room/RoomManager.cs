@@ -5,6 +5,7 @@ using Helios.Storage;
 using Helios.Storage.Access;
 using Helios.Storage.Models.Room;
 using Helios.Util.Extensions;
+using Serilog;
 
 namespace Helios.Game
 {
@@ -32,10 +33,14 @@ namespace Helios.Game
 
         public void Load()
         {
+            Log.ForContext<RoomManager>().Information("Loading Room Models");
+
             using (var context = new StorageContext())
             {
                 RoomModels = context.GetModels().Select(x => new RoomModel(x)).ToList();
             }
+
+            Log.ForContext<RoomManager>().Information("Loaded {Count} of Room Models", RoomModels.Count);
         }
 
         #endregion

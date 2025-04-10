@@ -1,6 +1,7 @@
 ﻿using Helios.Storage;
 using Helios.Storage.Access;
 using Helios.Storage.Models.Item;
+using Serilog;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
@@ -27,12 +28,16 @@ namespace Helios.Game
 
         public void Load()
         {
+            Log.ForContext<ItemManager>().Information("Loading Item Definitions");
             ItemCounter = 1;
 
             using (var context = new StorageContext())
             {
                 Definitions = context.GetDefinitions().Select(x => new ItemDefinition(x)).ToDictionary(x => x.Data.Id, x => x);
             }
+
+            Log.ForContext<ItemManager>().Information("Loaded {Count} of Item Definitions", Definitions.Count);
+            Log.ForContext<ItemManager>().Information("Loaded {Count} of Item Interactors", InteractionManager.Instance.Interactors.Count);
         }
 
         #endregion

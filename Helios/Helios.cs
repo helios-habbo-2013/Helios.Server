@@ -123,14 +123,30 @@ namespace Helios
             {
                 PermissionsManager.Instance.Load();
                 FuserightManager.Instance.Load();
+
                 ValueManager.Instance.Load();
+                Log.ForContext<Helios>().Information("");
+
                 InteractionManager.Instance.Load();
                 ItemManager.Instance.Load();
+                
+                Log.ForContext<Helios>().Information("");
+
                 CatalogueManager.Instance.Load();
+                Log.ForContext<Helios>().Information("");
+
                 RoomManager.Instance.Load();
+                Log.ForContext<Helios>().Information("");
+
                 SubscriptionManager.Instance.Load();
+                Log.ForContext<Helios>().Information("");
+
                 NavigatorManager.Instance.Load();
+                Log.ForContext<Helios>().Information("");
+
                 MessageHandler.Instance.Load();
+                Log.ForContext<Helios>().Information("");
+
                 PluginManager.Instance.Load();
                 GroupManager.Instance.Load();
             }
@@ -140,7 +156,6 @@ namespace Helios
                 return false;
             }
 
-            Log.ForContext<Helios>().Information("");
             return true;
         }
 

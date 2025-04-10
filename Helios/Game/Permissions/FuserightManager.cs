@@ -45,8 +45,7 @@ namespace Helios.Game
         {
             FuserightRanks = new Dictionary<int, List<string>>();
 
-            Log.ForContext<PermissionsManager>().Information("Loading Fuserights");
-
+            //Log.ForContext<FuserightManager>().Information("Loading Fuserights");
 
             var input = new StringReader(File.ReadAllText("fuserights.yml"));
             var deserializer = new DeserializerBuilder().Build();
@@ -76,8 +75,7 @@ namespace Helios.Game
                 inheritedRights = combinedRights;
             }
 
-            Log.ForContext<PermissionsManager>().Information("Loaded {Count} of Fuserights", FuserightRanks.Count);
-            Log.ForContext<Helios>().Information("");
+            //Log.ForContext<FuserightManager>().Information("Loaded {Count} of Fuserights", FuserightRanks.Count);
         }
 
         #endregion
