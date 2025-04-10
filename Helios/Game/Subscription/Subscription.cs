@@ -30,7 +30,7 @@ namespace Helios.Game
 
         public void Load()
         {
-            using (var context = new GameStorageContext())
+            using (var context = new StorageContext())
             {
                 this.Data = context.GetSubscription(avatar.Details.Id);
             }
@@ -52,7 +52,7 @@ namespace Helios.Game
             else
                 startTime = DateTime.Now;
 
-            using (var context = new GameStorageContext())
+            using (var context = new StorageContext())
             {
                 if (Data == null)
                 {
@@ -102,7 +102,7 @@ namespace Helios.Game
         /// </summary>
         public void Refresh()
         {
-            using (var context = new GameStorageContext())
+            using (var context = new StorageContext())
             {
                 context.Refresh(Data);
             }
@@ -118,7 +118,7 @@ namespace Helios.Game
                 Data.SubscriptionAge += (long)DateTime.Now.Subtract(Data.SubscriptionAgeLastUpdated).TotalSeconds;
                 Data.SubscriptionAgeLastUpdated = DateTime.Now;
 
-                using (var context = new GameStorageContext())
+                using (var context = new StorageContext())
                 {
                     context.SaveSubscriptionAge(avatar.Details.Id, Data.SubscriptionAge, Data.SubscriptionAgeLastUpdated);
                 }

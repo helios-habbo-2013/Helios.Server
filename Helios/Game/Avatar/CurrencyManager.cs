@@ -26,7 +26,7 @@ namespace Helios.Game
 
         public void Load()
         {
-            using (var context = new GameStorageContext())
+            using (var context = new StorageContext())
             {
                 this.Currencies = context.GetCurrencies(avatar.Details.Id).ToDictionary(x => x.SeasonalType, x => x.Balance < 0 ? 0 : x.Balance);
             }
@@ -57,7 +57,7 @@ namespace Helios.Game
         /// </summary>
         public void AddBalance(SeasonalCurrencyType currencyType, int newBalance)
         {
-            using (var context = new GameStorageContext())
+            using (var context = new StorageContext())
             {
                 Currencies[currencyType] = context.GetCurrency(avatar.Details.Id, currencyType).Balance + newBalance;
             }
@@ -68,7 +68,7 @@ namespace Helios.Game
         /// </summary>
         public void ModifyCredits(int creditsChanged)
         {
-            using (var context = new GameStorageContext())
+            using (var context = new StorageContext())
             {
                 avatar.Details.Credits = context.SaveCredits(avatar.Details.Id, creditsChanged);
             }
@@ -109,7 +109,7 @@ namespace Helios.Game
                 .Select(kvp => new CurrencyData { AvatarId = avatar.Details.Id, SeasonalType = kvp.Key, Balance = kvp.Value })
                 .ToList();
 
-            using (var context = new GameStorageContext())
+            using (var context = new StorageContext())
             {
                 context.SaveCurrencies(currencyList);
             }

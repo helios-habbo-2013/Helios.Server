@@ -16,8 +16,8 @@ namespace Helios.Messages.Incoming
 
             var clientVersion = request.ReadString();
 
-            if (clientVersion == Environment.ClientVersion)
-                Log.Debug($"Received version: {clientVersion}");
+            if (clientVersion == Helios.ClientVersion)
+                Log.ForContext<VersionCheckMessageEvent>().Debug($"Received version: {clientVersion}");
             else
                 avatar.Connection.Close();
         }

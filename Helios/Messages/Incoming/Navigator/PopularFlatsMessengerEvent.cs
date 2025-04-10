@@ -10,13 +10,13 @@ namespace Helios.Messages.Incoming
     {
         public void Handle(Avatar avatar, Request request)
         {
-            using (var context = new GameStorageContext())
+            using (var context = new StorageContext())
             {
                 var roomList = RoomManager.Instance.ReplaceQueryRooms(
                     context.GetPopularFlats()
                 );
 
-                avatar.Send(new FlatListComposer(2, roomList, NavigatorManager.Instance.GetPopularPromotion()));
+                avatar.Send(new FlatListComposer(2, roomList, NavigatorManager.GetPopularPromotion()));
             }
         }
     }

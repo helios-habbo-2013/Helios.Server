@@ -10,7 +10,7 @@ namespace Helios.Messages.Incoming
     {
         public void Handle(Avatar avatar, Request request)
         {
-            using (var context = new GameStorageContext())
+            using (var context = new StorageContext())
             {
                 var roomList = RoomManager.SortRooms(
                     RoomManager.Instance.ReplaceQueryRooms(context.SearchRooms(request.ReadString()))

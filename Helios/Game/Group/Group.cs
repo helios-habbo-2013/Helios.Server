@@ -1,4 +1,5 @@
-﻿using Helios.Storage.Access;
+﻿using Helios.Storage;
+using Helios.Storage.Access;
 using Helios.Storage.Models.Catalogue;
 using Helios.Storage.Models.Group;
 using Microsoft.EntityFrameworkCore;
@@ -59,7 +60,7 @@ namespace Helios.Game
 
         public void RefreshMembers()
         {
-            using (var context = new GameStorageContext())
+            using (var context = new StorageContext())
             {
                 Members = context.GetGroupMembers(this.Data.Id).Select(x => new GroupMembership(x)).ToList();
             }

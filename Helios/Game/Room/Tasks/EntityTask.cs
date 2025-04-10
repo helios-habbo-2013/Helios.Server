@@ -8,10 +8,8 @@ using Serilog;
 
 namespace Helios.Game
 {
-    public class EntityTask : IRoomTask
+    public class EntityTask : RoomTask
     {
-        private Room room;
-
         /// <summary>
         /// Set task interval, which is 500ms for walking
         /// </summary>
@@ -20,10 +18,7 @@ namespace Helios.Game
         /// <summary>
         /// Constructor for the entity task
         /// </summary>
-        public EntityTask(Room room)
-        {
-            this.room = room;
-        }
+        public EntityTask(Room room) : base(room) { }
 
         /// <summary>
         /// Run method called every 500ms
@@ -35,9 +30,9 @@ namespace Helios.Game
             {
                 var entityUpdates = new List<IEntity>();
 
-                foreach (IEntity entity in room.Entities.Values)
+                foreach (IEntity entity in Room.Entities.Values)
                 {
-                    if (entity.RoomEntity.RoomId != room.Data.Id)
+                    if (entity.RoomEntity.RoomId != Room.Data.Id)
                         continue;
 
                     ProcessUser(entity);
@@ -50,11 +45,11 @@ namespace Helios.Game
                 }
 
                 if (entityUpdates.Count > 0)
-                    room.Send(new UsersStatusComposer(entityUpdates));
+                    Room.Send(new UsersStatusComposer(entityUpdates));
             }
             catch (Exception ex)
             {
-                Log.Error(ex.ToString());
+                Log.ForContext<EntityTask>().Error(ex, "Exception occurred in EntityTask");
             }
         }
 
@@ -73,7 +68,7 @@ namespace Helios.Game
                 {
                     entity.RoomEntity.Position.X = entity.RoomEntity.Next.X;
                     entity.RoomEntity.Position.Y = entity.RoomEntity.Next.Y;
-                    entity.RoomEntity.Position.Z = entity.RoomEntity.Position.GetTile(room).GetWalkingHeight();
+                    entity.RoomEntity.Position.Z = entity.RoomEntity.Position.GetTile(Room).GetWalkingHeight();
                 }
 
                 if (entity.RoomEntity.PathList.Count > 0)
@@ -82,14 +77,12 @@ namespace Helios.Game
                     entity.RoomEntity.PathList.Remove(next);
 
                     var previousTile = entity.RoomEntity.CurrentTile;
+                    previousTile?.RemoveEntity(entity);
 
-                    if (previousTile != null)
-                        previousTile.RemoveEntity(entity);
+                    RoomTile nextTile = next.GetTile(Room);
 
-                    RoomTile nextTile = next.GetTile(room);
-
-                    if (nextTile == null || !RoomTile.IsValidTile(room, entity, next, 
-                        lastStep: !entity.RoomEntity.PathList.Any()))
+                    if (nextTile == null || !RoomTile.IsValidTile(Room, entity, next, 
+                        lastStep: entity.RoomEntity.PathList.Count == 0))
                     {
                         entity.RoomEntity.PathList.Clear();
                         ProcessUser(entity);
@@ -100,7 +93,7 @@ namespace Helios.Game
                     nextTile.AddEntity(entity);
 
                     int rotation = Rotation.CalculateDirection(position.X, position.Y, next.X, next.Y);
-                    double height = next.GetTile(room).GetWalkingHeight();
+                    double height = next.GetTile(Room).GetWalkingHeight();
 
                     entity.RoomEntity.RemoveStatus("mv");
                     entity.RoomEntity.RemoveStatus("sit");

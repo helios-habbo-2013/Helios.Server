@@ -54,7 +54,7 @@ namespace Helios.Game
             Data.IsActivated = true;
             Data.ExpiresAt = DateTime.Now.AddSeconds(Duration);
 
-            using (var context = new GameStorageContext())
+            using (var context = new StorageContext())
             {
                 context.UpdateEffect(Data);
             }

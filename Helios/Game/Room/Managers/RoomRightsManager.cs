@@ -25,7 +25,7 @@ namespace Helios.Game
         {
             this.room = room;
 
-            using (var context = new GameStorageContext())
+            using (var context = new StorageContext())
             {
                 this.rights = context.GetRoomRights(room.Data.Id).Select(x => x.AvatarId).ToList();
             }
@@ -87,7 +87,7 @@ namespace Helios.Game
 
             if (databaseChange)
             {
-                using (var context = new GameStorageContext())
+                using (var context = new StorageContext())
                 {
                     context.AddRights(room.Data.Id, avatarId);
                 }
@@ -114,7 +114,7 @@ namespace Helios.Game
 
             if (databaseChange)
             {
-                using (var context = new GameStorageContext())
+                using (var context = new StorageContext())
                 {
                     context.RemoveRights(room.Data.Id, avatarId);
                 }

@@ -26,7 +26,7 @@ namespace Helios.Messages.Incoming
 
             room.FurnitureManager.RemoveItem(item, avatar);
 
-            using (var context = new GameStorageContext())
+            using (var context = new StorageContext())
             {
                 context.DeleteItem(item.Data);
             }

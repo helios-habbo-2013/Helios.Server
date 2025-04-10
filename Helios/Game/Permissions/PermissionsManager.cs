@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using YamlDotNet.Serialization;
+using Serilog;
 
 namespace Helios.Game
 {
@@ -29,7 +30,10 @@ namespace Helios.Game
 
         public void Load()
         {
-            Ranks = new Dictionary<int, UserGroup>();
+            Ranks = [];
+
+            Log.ForContext<PermissionsManager>().Information("Loading Ranks");
+
 
             var input = new StringReader(File.ReadAllText("permissions.yml"));
             var deserializer = new DeserializerBuilder().Build();
@@ -43,7 +47,11 @@ namespace Helios.Game
                 var groupData = kvp.Value;
 
                 var rank = int.Parse(groupData["rank"]);
-                var userGroup = new UserGroup(groupName, rank);
+                var userGroup = new UserGroup
+                {
+                    Name = groupName,
+                    Rank = rank,
+                };
 
                 try
                 {
@@ -83,9 +91,11 @@ namespace Helios.Game
 
             foreach (var rank in Ranks.Values.ToArray())
             {
-                rank.BuildPermissions(Ranks.Values.ToArray());
+                rank.BuildPermissions([.. Ranks.Values]);
             }
 
+            Log.ForContext<PermissionsManager>().Information("Loaded {Count} of Ranks", Ranks.Count);
+            Log.ForContext<Helios>().Information("");
         }
 
         #endregion

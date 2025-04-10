@@ -29,7 +29,7 @@ namespace Helios.Game
         {
             ItemCounter = 1;
 
-            using (var context = new GameStorageContext())
+            using (var context = new StorageContext())
             {
                 Definitions = context.GetDefinitions().Select(x => new ItemDefinition(x)).ToDictionary(x => x.Data.Id, x => x);
             }
@@ -78,7 +78,7 @@ namespace Helios.Game
         {
             if (itemData == null)
             {
-                using (var context = new GameStorageContext())
+                using (var context = new StorageContext())
                 {
                     itemData = context.GetItem(itemId);
                 }

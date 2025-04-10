@@ -1,6 +1,7 @@
 ﻿using Helios.Game;
 using Helios.Messages.Outgoing;
 using Helios.Network.Streams;
+using Helios.Storage;
 using Helios.Storage.Access;
 
 namespace Helios.Messages.Incoming
@@ -24,7 +25,7 @@ namespace Helios.Messages.Incoming
             group.Data.Colour1 = colour1;
             group.Data.Colour2 = colour2;
 
-            using (var context = new GameStorageContext())
+            using (var context = new StorageContext())
             {
                 context.UpdateGroup(group.Data);
             }

@@ -32,7 +32,7 @@ namespace Helios.Game
 
         public void Load()
         {
-            using (var context = new GameStorageContext())
+            using (var context = new StorageContext())
             {
                 RoomModels = context.GetModels().Select(x => new RoomModel(x)).ToList();
             }
@@ -80,7 +80,7 @@ namespace Helios.Game
             if (Rooms.TryGetValue(roomId, out var room))
                 return room;
 
-            using (var context = new GameStorageContext())
+            using (var context = new StorageContext())
             {
                 var data = context.GetRoomData(roomId);
 

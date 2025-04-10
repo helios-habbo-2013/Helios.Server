@@ -64,7 +64,7 @@ namespace Helios.Messages.Incoming.Catalogue
                 //}
             }
 
-            using (var context = new GameStorageContext())
+            using (var context = new StorageContext())
             {
                 var roomList = RoomManager.Instance.ReplaceQueryRooms(
                     new List<RoomData>() { context.GetRoomData(roomId) }

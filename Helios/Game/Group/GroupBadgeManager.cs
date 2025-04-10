@@ -62,7 +62,7 @@ namespace Helios.Game
 
         public GroupBadgeManager()
         {
-            using (var context = new GameStorageContext())
+            using (var context = new StorageContext())
             {
                 GroupBadgeElements = context.GetGroupBadgeElementData();
 

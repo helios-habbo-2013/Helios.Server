@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.IO;
 using YamlDotNet.Serialization;
+using Serilog;
+using System;
 
 namespace Helios.Game
 {
@@ -43,6 +45,9 @@ namespace Helios.Game
         {
             FuserightRanks = new Dictionary<int, List<string>>();
 
+            Log.ForContext<PermissionsManager>().Information("Loading Fuserights");
+
+
             var input = new StringReader(File.ReadAllText("fuserights.yml"));
             var deserializer = new DeserializerBuilder().Build();
 
@@ -70,6 +75,9 @@ namespace Helios.Game
                 // Update the inherited list for the next rank
                 inheritedRights = combinedRights;
             }
+
+            Log.ForContext<PermissionsManager>().Information("Loaded {Count} of Fuserights", FuserightRanks.Count);
+            Log.ForContext<Helios>().Information("");
         }
 
         #endregion
@@ -78,7 +86,7 @@ namespace Helios.Game
 
         public bool HasRight(int rankId, string fuseRight)
         {
-            return FuserightRanks.TryGetValue(rankId, out List<string> value) ? value.Contains(fuseRight) : false;
+            return FuserightRanks.TryGetValue(rankId, out List<string> value) && value.Contains(fuseRight);
         }
 
         public List<string> GetRights(int rankId)

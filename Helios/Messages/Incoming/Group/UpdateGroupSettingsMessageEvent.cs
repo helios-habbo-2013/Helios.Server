@@ -1,6 +1,7 @@
 ﻿using Helios.Game;
 using Helios.Messages.Outgoing;
 using Helios.Network.Streams;
+using Helios.Storage;
 using Helios.Storage.Access;
 using Helios.Storage.Models.Group;
 using System.Linq;
@@ -27,7 +28,7 @@ namespace Helios.Messages.Incoming
             {
                 if (groupType != (int)group.Data.GroupType)
                 {
-                    using (var context = new GameStorageContext())
+                    using (var context = new StorageContext())
                     {
                         var requests = group.Members
                             .Where(x => x.Data.MemberType == GroupMembershipType.PENDING)
@@ -47,7 +48,7 @@ namespace Helios.Messages.Incoming
                 group.Data.AllowMembersDecorate = rightsType == 0;
             }
 
-            using (var context = new GameStorageContext())
+            using (var context = new StorageContext())
             {
                 context.UpdateGroup(group.Data);
             }

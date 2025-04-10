@@ -62,9 +62,7 @@ namespace Helios.Game
         /// </summary>
         public void TryDispose()
         {
-            var avatarList = EntityManager.GetEntities<Avatar>();
-
-            if (avatarList.Any())
+            if (!IsActive)
                 return;
 
             TaskManager.StopTasks();
@@ -91,7 +89,7 @@ namespace Helios.Game
         /// <param name="entity"></param>
         public void Forward(IEntity entity)
         {
-            if (!(entity is Avatar))
+            if (entity is not Avatar)
             {
                 return;
             }

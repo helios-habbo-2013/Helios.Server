@@ -23,7 +23,7 @@ namespace Helios.Messages.Incoming.Catalogue
 
             avatar.Subscription.Data.GiftsRedeemable--;
 
-            using (var context = new GameStorageContext())
+            using (var context = new StorageContext())
             {
                 context.SaveGiftsRedeemable(avatar.Details.Id, avatar.Subscription.Data.GiftsRedeemable);
             }

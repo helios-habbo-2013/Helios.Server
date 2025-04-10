@@ -94,7 +94,7 @@ namespace Helios.Messages.Incoming
             room.Data.WhoCanKick  = (RoomKickSetting)whoKick;
             room.Data.WhoCanMute = (RoomMuteSetting)whoMute;
 
-            using (var context = new GameStorageContext())
+            using (var context = new StorageContext())
             {
                 context.DeleteRoomTags(room.Data.Id);
 

@@ -2,12 +2,22 @@
 
 namespace Helios.Game
 {
-    public abstract class IRoomTask
+    public abstract class RoomTask
     {
         #region Properties
 
+        protected Room Room { get; private set; }
         public System.Timers.Timer Task { get; private set; }
         public abstract int Interval { get; }
+
+        #endregion
+
+        #region Constructors
+
+        public RoomTask(Room room)
+        {
+            this.Room = room;
+        }
 
         #endregion
 

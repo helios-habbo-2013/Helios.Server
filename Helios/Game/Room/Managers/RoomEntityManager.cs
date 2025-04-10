@@ -154,7 +154,7 @@ namespace Helios.Game
 
                 room.Data.UsersNow++;
 
-                using (var context = new GameStorageContext())
+                using (var context = new StorageContext())
                 {
                     context.SetVisitorCount(room.Data.Id, room.Data.UsersNow);
                 }
@@ -211,7 +211,7 @@ namespace Helios.Game
             {
                 room.Data.UsersNow--;
 
-                using (var context = new GameStorageContext())
+                using (var context = new StorageContext())
                 {
                     context.SetVisitorCount(room.Data.Id, room.Data.UsersNow);
                 }

@@ -11,13 +11,13 @@ namespace Helios.Game
 
         public static readonly PluginManager Instance = new PluginManager();
         private List<PluginProxy> plugins;
-        private string pluginDictionary = "plugins";
+        private readonly string pluginDictionary = "plugins";
 
         #endregion
 
         #region Properties
 
-        public IPlugin[] Plugins => plugins.Select(x => x.Plugin).ToArray();
+        public IPlugin[] Plugins => [.. plugins.Select(x => x.Plugin)];
 
         #endregion
 
@@ -57,7 +57,7 @@ namespace Helios.Game
                     if (Path.GetExtension(file) != ".dll")
                         continue;
 
-                    Log.Information($"Loading {Path.GetFileName(file)} as a plugin");
+                    Log.ForContext<PluginManager>().Information($"Loading {Path.GetFileName(file)} as a plugin");
                     plugins.Add(new PluginProxy(file));
                 }
             }

@@ -93,7 +93,7 @@ namespace Helios.Game
                 this.Data.Behaviour = behaviours;
                 //this.Data.Interactor = "one_way_gate";
 
-                using (var context = new GameStorageContext())
+                using (var context = new StorageContext())
                 {
                     context.SaveDefinition(this.Data);
                 }

@@ -1,6 +1,7 @@
 ﻿using Helios.Game;
 using Helios.Messages.Outgoing;
 using Helios.Network.Streams;
+using Helios.Storage;
 using Helios.Storage.Access;
 using System.Text;
 
@@ -55,7 +56,7 @@ namespace Helios.Messages.Incoming
 
             group.Data.Badge = badgeCode;
 
-            using (var context = new GameStorageContext())
+            using (var context = new StorageContext())
             {
                 context.UpdateGroup(group.Data);
             }

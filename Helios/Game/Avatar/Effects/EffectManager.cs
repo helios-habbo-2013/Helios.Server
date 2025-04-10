@@ -31,7 +31,7 @@ namespace Helios.Game
         {
             Effects = new ConcurrentDictionary<int, Effect>();
 
-            using (var context = new GameStorageContext())
+            using (var context = new StorageContext())
             {
                 foreach (var effectData in context.GetUserEffects(avatar.EntityData.Id))
                 {

@@ -87,7 +87,7 @@ namespace Helios.Game
 
         public Messenger(int AvatarId)
         {
-            using (var context = new GameStorageContext())
+            using (var context = new StorageContext())
             {
                 subscription = context.GetSubscription(AvatarId);
                 FriendRequestsEnabled = context.GetAcceptsFriendRequests(AvatarId);
@@ -119,7 +119,7 @@ namespace Helios.Game
         /// </summary>
         private void LoadMessengerData(int AvatarId)
         {
-            using (var context = new GameStorageContext())
+            using (var context = new StorageContext())
             {
                 Friends = context.GetFriends(AvatarId).Select(data => new MessengerUser(data.FriendData)).ToList();
                 Requests = context.GetRequests(AvatarId).Select(data => new MessengerUser(data.FriendData)).ToList();

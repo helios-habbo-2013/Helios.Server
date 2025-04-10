@@ -9,15 +9,13 @@ using Serilog;
 
 namespace Helios.Game
 {
-    public class ItemTickTask : IRoomTask
+    public class ItemTask : RoomTask
     {
         #region Fields
 
         #endregion
 
-        private Room room;
-        private ConcurrentQueue<ITaskObject> tickedItems;
-        private List<ITaskObject> queuedItems;
+        private readonly ConcurrentQueue<DefaultTaskObject> tickedItems;
 
         /// <summary>
         /// Set task interval, which is 500ms
@@ -27,10 +25,9 @@ namespace Helios.Game
         /// <summary>
         /// Constructor for the item task
         /// </summary>
-        public ItemTickTask(Room room)
+        public ItemTask(Room room) : base(room)
         {
-            this.room = room;
-            this.tickedItems = new ConcurrentQueue<ITaskObject>(); 
+            this.tickedItems = new ConcurrentQueue<DefaultTaskObject>(); 
         }
 
         /// <summary>
@@ -40,9 +37,19 @@ namespace Helios.Game
         {
             try
             {
-                queuedItems = new List<ITaskObject>();
-                queuedItems.AddRange(room.ItemManager.Items.Values.Where(x => x.Interactor.TaskObject != null).Select(x => x.Interactor.TaskObject).ToList());
-                queuedItems.AddRange(room.EntityManager.GetEntities<Avatar>().Where(x => x.RoomEntity.TaskObject != null).Select(x => x.RoomEntity.TaskObject).ToList());
+                var queuedItems = new List<DefaultTaskObject>();
+                
+                // Queue all items that has a task object attached to its interactor
+                queuedItems.AddRange([.. Room.ItemManager.Items.Values.Where(x => x.Interactor?.TaskObject != null).Select(x => x.Interactor?.TaskObject)]);
+
+                // Queue all avatars 
+                queuedItems.AddRange([.. Room.EntityManager.GetEntities<Avatar>().Where(x => x.RoomEntity?.TaskObject != null).Select(x => x.RoomEntity?.TaskObject)]);
+
+                // Queue all pets (soon)(tm) 
+                queuedItems.AddRange([.. Room.EntityManager.GetEntities<Pet>().Where(x => x.RoomEntity?.TaskObject != null).Select(x => x.RoomEntity?.TaskObject)]);
+
+                // Queue all bots (soon)(tm) 
+                queuedItems.AddRange([.. Room.EntityManager.GetEntities<Bot>().Where(x => x.RoomEntity?.TaskObject != null).Select(x => x.RoomEntity?.TaskObject)]);
 
                 foreach (var taskObject in queuedItems)
                 {
@@ -67,7 +74,7 @@ namespace Helios.Game
             }
             catch (Exception ex)
             {
-                Log.Error("Item tick task crashed: ", ex);
+                Log.ForContext<ItemTask>().Error(ex, "Item tick task crashed: ");
             }
         }
     }

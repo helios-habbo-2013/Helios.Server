@@ -1,6 +1,7 @@
 ﻿using Helios.Game;
 using Helios.Messages.Outgoing;
 using Helios.Network.Streams;
+using Helios.Storage;
 using Helios.Storage.Access;
 using Helios.Storage.Models.Group;
 using System;
@@ -36,7 +37,7 @@ namespace Helios.Messages.Incoming
             groupMembership.Data.MemberType = GroupMembershipType.MEMBER;
             groupMembership.Data.CreatedAt = DateTime.Now;
 
-            using (var context = new GameStorageContext())
+            using (var context = new StorageContext())
             {
                 context.UpdateMembership(groupMembership.Data);
             }

@@ -52,7 +52,7 @@ namespace Helios.Game
 
             ItemData targetTeleporterData = null;
 
-            using (var context = new GameStorageContext())
+            using (var context = new StorageContext())
             {
                 context.GetItem(pairId);
             }

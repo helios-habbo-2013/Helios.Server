@@ -15,11 +15,11 @@ namespace Helios.Network
 
         private static readonly GameServer m_GameServer = new GameServer();
 
-        private MultithreadEventLoopGroup m_BossGroup;
-        private MultithreadEventLoopGroup m_WorkerGroup;
+        private readonly MultithreadEventLoopGroup m_BossGroup;
+        private readonly MultithreadEventLoopGroup m_WorkerGroup;
 
-        private string m_Ip;
-        private int m_Port;
+        private string _ip;
+        private int _port;
 
         #endregion
 
@@ -41,7 +41,7 @@ namespace Helios.Network
         /// </summary>
         public string IpAddress
         {
-            get { return m_Ip; }
+            get { return _ip; }
         }
 
         /// <summary>
@@ -49,7 +49,7 @@ namespace Helios.Network
         /// </summary>
         public int Port
         {
-            get { return m_Port; }
+            get { return _port; }
         }
 
         #endregion
@@ -71,18 +71,20 @@ namespace Helios.Network
 
         public void CreateServer(string ip, int port)
         {
-            this.m_Ip = ip;
-            this.m_Port = port;
+            this._ip = ip;
+            this._port = port;
         }
 
         /// <summary>
         /// Initialise the game server by given pot
         /// </summary>
         /// <param name="port">the game port</param>
-        public void InitialiseServer()
+        public bool InitialiseServer()
         {
             try
             {
+                Log.ForContext<Helios>().Information("Starting server");
+
                 ServerBootstrap bootstrap = new ServerBootstrap()
                     .Group(m_BossGroup, m_WorkerGroup)
                     .Channel<TcpServerSocketChannel>()
@@ -94,13 +96,32 @@ namespace Helios.Network
                     .ChildOption(ChannelOption.RcvbufAllocator, new FixedRecvByteBufAllocator(1024))
                     .ChildOption(ChannelOption.Allocator, UnpooledByteBufferAllocator.Default);
 
-                bootstrap.BindAsync(IPAddress.Parse(m_Ip), m_Port);
+                var bindTask = bootstrap.BindAsync(IPAddress.Parse(_ip), _port);
+
+                bindTask.ContinueWith(task =>
+                {
+                    if (task.IsCompletedSuccessfully)
+                    {
+                        Log.ForContext<GameServer>().Information($"Server successfully bound on {_ip}:{_port}");
+                    }
+                    else
+                    {
+                        Log.ForContext<GameServer>().Error(task.Exception, "Failed to bind server to port");
+                    }
+                });
+
+                bindTask.Wait(); // Wait here to ensure exception propagation if needed
+
+                return true;
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                Log.Error($"Failed to setup network listener... {e}");
+                Log.ForContext<GameServer>().Error(ex, "Failed to setup network listener");
+
+                return false;
             }
         }
+
 
         #endregion
     }

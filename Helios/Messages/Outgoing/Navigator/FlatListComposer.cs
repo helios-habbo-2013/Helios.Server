@@ -3,14 +3,15 @@ using Helios.Storage.Models.Navigator;
 using Helios.Storage.Models.Room;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace Helios.Messages.Outgoing
 {
     public class FlatListComposer : IMessageComposer
     {
-        private int signifier;
-        private List<Room> roomList;
-        private PublicItemData promotion;
+        private readonly int signifier;
+        private readonly List<Room> roomList;
+        private readonly PublicItemData promotion;
 
         public FlatListComposer(int signifier, List<Room> roomList, PublicItemData promotion)
         {

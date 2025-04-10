@@ -30,7 +30,7 @@ namespace Helios.Game
 
         public void Load()
         {
-            using (var context = new GameStorageContext())
+            using (var context = new StorageContext())
             {
                 Items = new ConcurrentDictionary<int, Item>(context.GetInventoryItems(avatar.Details.Id).Select(x => new Item(x)).ToDictionary(x => x.Id, x => x));
             }

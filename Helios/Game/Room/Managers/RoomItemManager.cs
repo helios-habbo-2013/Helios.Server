@@ -36,7 +36,7 @@ namespace Helios.Game.Managers
         {
             Items = new ConcurrentDictionary<int, Item>();
 
-            using (var context = new GameStorageContext())
+            using (var context = new StorageContext())
             {
                 foreach (var itemData in context.GetRoomItems(room.Data.Id))
                 {

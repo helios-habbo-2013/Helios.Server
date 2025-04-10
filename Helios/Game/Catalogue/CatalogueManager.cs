@@ -34,7 +34,7 @@ namespace Helios.Game
 
         public void Load()
         {
-            using (var context = new GameStorageContext())
+            using (var context = new StorageContext())
             {
                 Pages = context.GetPages().Select(x => new CataloguePage(x)).ToList();
                 Items = context.GetItems().Select(x => new CatalogueItem(x)).ToList();
@@ -82,7 +82,7 @@ namespace Helios.Game
             }
 
             // Bulk create items - ignore teleporters because they were already created
-            using (var context = new GameStorageContext())
+            using (var context = new StorageContext())
             {
                 context.CreateItems(purchaseQueue);
             }
@@ -112,7 +112,7 @@ namespace Helios.Game
         /// </summary>
         private void PurchaseEffect(int AvatarId, CatalogueItem catalogueItem, int amount)
         {
-            using (var context = new GameStorageContext())
+            using (var context = new StorageContext())
             {
                 List<EffectData> purchaseEffectsQueue = new List<EffectData>();
                 var existingEffects = context.GetUserEffects(AvatarId);

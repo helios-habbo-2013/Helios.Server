@@ -26,7 +26,7 @@ namespace Helios.Game
 
         public void Load()
         {
-            using (var context = new GameStorageContext())
+            using (var context = new StorageContext())
             {
                 Subscriptions = context.GetSubscriptionData();
 

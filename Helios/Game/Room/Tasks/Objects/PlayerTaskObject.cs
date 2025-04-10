@@ -1,4 +1,5 @@
 ﻿using Helios.Messages.Outgoing;
+using Helios.Storage;
 using Helios.Storage.Access;
 using Helios.Util;
 using Helios.Util.Extensions;
@@ -9,7 +10,7 @@ using System.Reflection;
 
 namespace Helios.Game
 {
-    public class AvatarTaskObject : ITaskObject
+    public class AvatarTaskObject : DefaultTaskObject
     {
         private class AvatarAttribute
         {
@@ -77,7 +78,7 @@ namespace Helios.Game
 
                     effect.Value.Data.ExpiresAt = null;
 
-                    using (var context = new GameStorageContext())
+                    using (var context = new StorageContext())
                     {
                         if (effect.Value.Data.Quantity == 0)
                         {

@@ -23,7 +23,7 @@ namespace Helios.Network.Codec
 
                 if (header == null)
                 {
-                    Log.Error($"No header found for composer class {composer.GetType().Name}");
+                    Log.ForContext<NetworkEncoder>().Error($"No header found for composer class {composer.GetType().Name}");
                     return;
                 }
 
@@ -62,13 +62,13 @@ namespace Helios.Network.Codec
                 buffer.WriteByte((char)1);
 
                 if (connection != null)
-                    Log.Debug($"SENT {composer.GetType().Name}: " + response.Header + " / " + response.MessageBody);
+                    Log.ForContext<NetworkEncoder>().Debug($"SENT {composer.GetType().Name}: " + response.Header + " / " + response.MessageBody);
 
                 output.Add(buffer);
             }
             catch (Exception ex)
             {
-                Log.Error("Error occurred: ", ex);
+                Log.ForContext<NetworkEncoder>().Error(ex, "Error occurred while encoding packets ");
             }
         }
     }

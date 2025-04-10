@@ -45,7 +45,7 @@ namespace Helios.Messages.Incoming
                     targetAvatar.Messenger.ForceUpdate();
                 }
 
-                using (var context = new GameStorageContext())
+                using (var context = new StorageContext())
                 {
                     context.DeleteRequests(avatar.Details.Id, AvatarId);
                     context.SaveFriend(new MessengerFriendData

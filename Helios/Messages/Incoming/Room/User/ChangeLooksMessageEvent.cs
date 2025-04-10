@@ -26,7 +26,7 @@ namespace Helios.Messages.Incoming
             avatar.Details.Figure = figure;
             avatar.Details.Sex = sex;
 
-            using (var context = new GameStorageContext())
+            using (var context = new StorageContext())
             {
                 context.AvatarData.Update(avatar.Details);
                 context.SaveChanges();

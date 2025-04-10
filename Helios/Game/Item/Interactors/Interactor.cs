@@ -10,7 +10,7 @@ namespace Helios.Game
         #region Properties 
 
         public Item Item { get; }
-        public virtual ITaskObject TaskObject { get; set; }
+        public virtual DefaultTaskObject TaskObject { get; set; }
 
         #endregion
 

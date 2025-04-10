@@ -1,5 +1,6 @@
 ﻿using DotNetty.Common.Utilities;
 using DotNetty.Transport.Channels;
+using Helios.Game;
 using Helios.Messages;
 using Helios.Network.Session;
 using Helios.Network.Streams;
@@ -30,7 +31,7 @@ namespace Helios.Network
 
             if (connection != null)
             {
-                Log.Debug($"Client connected to server: {connection.IpAddress}");
+                Log.ForContext<GameNetworkHandler>().Information($"Client connected to server: {connection.IpAddress}");
                 ctx.Channel.GetAttribute(CONNECTION_KEY).SetIfAbsent(connection);
             }
         }
@@ -49,7 +50,7 @@ namespace Helios.Network
 
             connection.Disconnect();
 
-            Log.Debug($"Client disconnected from server: {connection.IpAddress}");
+            Log.ForContext<GameNetworkHandler>().Information($"Client disconnected from server: {connection.IpAddress}");
         }
 
         /// <summary>
@@ -85,7 +86,7 @@ namespace Helios.Network
         /// <param name="context">the channel context</param>
         /// <param name="exception">the exception</param>
         public override void ExceptionCaught(IChannelHandlerContext context, Exception exception) =>
-            Log.Error(exception.ToString());
+            Log.ForContext<GameChannelInitializer>().Error(exception, "Error in GameNetworkHandler ");
 
         #endregion
     }

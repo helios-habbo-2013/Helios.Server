@@ -6,9 +6,8 @@ using Serilog;
 
 namespace Helios.Game
 {
-    public class StatusTask : IRoomTask
+    public class StatusTask : RoomTask
     {
-        private Room room;
 
         /// <summary>
         /// Set task interval, which is 1000ms for user maintenance
@@ -18,10 +17,7 @@ namespace Helios.Game
         /// <summary>
         /// Constructor for the entity task
         /// </summary>
-        public StatusTask(Room room)
-        {
-            this.room = room;
-        }
+        public StatusTask(Room room) : base(room) { }
 
         /// <summary>
         /// Run method called every 500ms
@@ -31,9 +27,9 @@ namespace Helios.Game
         {
             try
             {
-                foreach (IEntity entity in room.Entities.Values)
+                foreach (IEntity entity in Room.Entities.Values)
                 {
-                    if (entity.RoomEntity.RoomId != room.Data.Id)
+                    if (entity.RoomEntity.RoomId != Room.Data.Id)
                         continue;
 
                     ProcessEntity(entity);
@@ -41,7 +37,7 @@ namespace Helios.Game
             }
             catch (Exception ex)
             {
-                Log.Error(ex.ToString());
+                Log.ForContext<StatusTask>().Error(ex, "MaintenanceTask failed");
             }
         }
 
@@ -56,7 +52,8 @@ namespace Helios.Game
                 if (avatar.RoomUser.TimerManager.SpeechBubbleDate != -1 && DateUtil.GetUnixTimestamp() > avatar.RoomUser.TimerManager.SpeechBubbleDate)
                 {
                     avatar.RoomUser.TimerManager.ResetSpeechBubbleTimer();
-                    avatar.RoomUser.Room.Send(new TypingStatusComposer(avatar.RoomUser.InstanceId, false));
+                    
+                    Room.Send(new TypingStatusComposer(avatar.RoomUser.InstanceId, false));
                 }
             }
         }

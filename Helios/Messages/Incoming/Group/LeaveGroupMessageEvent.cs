@@ -1,6 +1,7 @@
 ﻿using Helios.Game;
 using Helios.Messages.Outgoing;
 using Helios.Network.Streams;
+using Helios.Storage;
 using Helios.Storage.Access;
 using Helios.Storage.Models.Group;
 using System.Collections.Generic;
@@ -27,7 +28,7 @@ namespace Helios.Messages.Incoming
                 x.Data.AvatarId == avatarId
             );
 
-            using (var context = new GameStorageContext())
+            using (var context = new StorageContext())
             {
                 if (groupMembership != null)
                 {

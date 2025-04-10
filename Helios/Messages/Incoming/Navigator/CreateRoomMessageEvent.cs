@@ -49,7 +49,7 @@ namespace Helios.Messages.Incoming
                 Description = string.Empty
             };
 
-            using (var context = new GameStorageContext())
+            using (var context = new StorageContext())
             {
                 context.NewRoom(roomData);
             }

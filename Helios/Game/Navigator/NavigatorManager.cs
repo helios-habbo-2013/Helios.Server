@@ -25,7 +25,7 @@ namespace Helios.Game
 
         public void Load()
         {
-            using (var context = new GameStorageContext())
+            using (var context = new StorageContext())
             {
                 Categories = context.GetCategories();
             }
@@ -40,7 +40,7 @@ namespace Helios.Game
         /// </summary>
         public List<NavigatorCategoryData> GetCategories(int rank)
         {
-            return Categories.Where(x => (rank >= x.MinimumRank)).ToList();
+            return [.. Categories.Where(x => rank >= x.MinimumRank)];
         }
 
         #endregion
@@ -51,15 +51,14 @@ namespace Helios.Game
         /// Get a random popular promotion
         /// </summary>
         /// <returns></returns>
-        public PublicItemData GetPopularPromotion()
+        public static PublicItemData GetPopularPromotion()
         {
-            using (var context = new GameStorageContext())
-            {
-                var publicItemsList = context.GetPublicItems().Where(x => x.Room != null && x.Room.UsersNow > 0).ToList();
+            using var context = new StorageContext();
 
-                if (publicItemsList.Count > 0)
-                    return publicItemsList.PickRandom();
-            }
+            var publicItemsList = context.GetPublicItems().Where(x => x.Room != null && x.Room.UsersNow > 0).ToList();
+
+            if (publicItemsList.Count > 0)
+                return publicItemsList.PickRandom();
 
             return null;
         }

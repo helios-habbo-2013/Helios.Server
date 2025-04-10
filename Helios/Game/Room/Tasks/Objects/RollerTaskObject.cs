@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace Helios.Game
 {
-    public class RollerTaskObject : ITaskObject
+    public class RollerTaskObject : DefaultTaskObject
     {
         #region Properties
 

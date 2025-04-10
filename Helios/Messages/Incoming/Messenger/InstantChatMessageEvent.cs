@@ -33,7 +33,7 @@ namespace Helios.Messages.Incoming
                     IsRead = friend.IsOnline
                 };
 
-                using (var context = new GameStorageContext())
+                using (var context = new StorageContext())
                 {
                     context.SaveMessage(chatMessageData);
                 }

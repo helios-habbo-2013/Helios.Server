@@ -1,6 +1,7 @@
 ﻿using Helios.Game;
 using Helios.Messages.Outgoing;
 using Helios.Network.Streams;
+using Helios.Storage;
 using Helios.Storage.Access;
 using Helios.Storage.Models.Group;
 using System.Collections.Generic;
@@ -34,7 +35,7 @@ namespace Helios.Messages.Incoming
 
             groupMembership.Data.MemberType = GroupMembershipType.ADMIN;
 
-            using (var context = new GameStorageContext())
+            using (var context = new StorageContext())
             {
                 context.UpdateMembership(groupMembership.Data);
             }

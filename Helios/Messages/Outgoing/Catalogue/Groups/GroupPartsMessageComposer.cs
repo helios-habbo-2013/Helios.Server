@@ -15,7 +15,7 @@ namespace Helios.Messages.Outgoing.Catalogue.Groups
 
         public override void Write()
         {
-            _data.Add(GroupManager.Instance.Cost);
+            _data.Add(GroupManager.Cost);
             _data.Add(this.roomList.Count);
 
             foreach (var room in roomList)

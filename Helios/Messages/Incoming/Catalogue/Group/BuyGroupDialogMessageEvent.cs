@@ -12,7 +12,7 @@ namespace Helios.Messages.Incoming.Catalogue
     {
         public void Handle(Avatar avatar, Request request)
         {
-            using (var context = new GameStorageContext())
+            using (var context = new StorageContext())
             {
                 var roomList = context.GetUserRooms(avatar.Details.Id)
                     .Where(x => x.GroupId == null)

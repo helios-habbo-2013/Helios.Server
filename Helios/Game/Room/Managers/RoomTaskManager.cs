@@ -15,7 +15,7 @@ namespace Helios.Game
 
         #region Properties
 
-        public List<IRoomTask> Tasks { get; }
+        public List<RoomTask> Tasks { get; }
 
         #endregion
 
@@ -24,7 +24,7 @@ namespace Helios.Game
         public RoomTaskManager(Room room)
         {
            this.room = room;
-           this.Tasks = new List<IRoomTask>();
+           this.Tasks = new List<RoomTask>();
         }
 
         #endregion
@@ -50,7 +50,7 @@ namespace Helios.Game
         {
             Tasks.Add(new EntityTask(room));
             //Tasks.Add(new StatusTask(room));
-            Tasks.Add(new ItemTickTask(room));
+            Tasks.Add(new ItemTask(room));
         }
 
         /// <summary>

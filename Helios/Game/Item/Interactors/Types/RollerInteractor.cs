@@ -10,7 +10,7 @@
 
         #region Overridden Properties
 
-        public override ITaskObject TaskObject => taskObject;
+        public override DefaultTaskObject TaskObject => taskObject;
 
         #endregion
 

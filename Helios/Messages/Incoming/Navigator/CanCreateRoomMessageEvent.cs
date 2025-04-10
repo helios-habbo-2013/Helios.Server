@@ -15,7 +15,7 @@ namespace Helios.Messages.Incoming
             if (avatar.IsSubscribed)
                 maxRoomsAllowed = ValueManager.Instance.GetInt("max.rooms.allowed.subscribed");
 
-            using (var context = new GameStorageContext())
+            using (var context = new StorageContext())
             {
                 avatar.Send(new CanCreateRoomComposer(
                     maxRoomsAllowed >= context.CountUserRooms(avatar.Details.Id),

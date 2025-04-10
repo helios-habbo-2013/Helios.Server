@@ -20,7 +20,7 @@ namespace Helios.Messages.Incoming
 
             avatar.Send(new MessengerRequestsComposer(avatar.Messenger.Requests));
 
-            using (var context = new GameStorageContext())
+            using (var context = new StorageContext())
             {
                 var unreadMessages = context.GetUneadMessages(avatar.Details.Id);
 

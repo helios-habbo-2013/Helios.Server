@@ -14,7 +14,7 @@ namespace Helios.Messages.Incoming
         {
             int avatarId;
 
-            using (var context = new GameStorageContext())
+            using (var context = new StorageContext())
             {
                 avatarId = context.GetIdByName(request.ReadString());
             }
@@ -48,7 +48,7 @@ namespace Helios.Messages.Incoming
                 AvatarId = avatarId
             };
 
-            using (var context = new GameStorageContext())
+            using (var context = new StorageContext())
             {
                 context.SaveRequest(messengerRequest);
             }

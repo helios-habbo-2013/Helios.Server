@@ -1,6 +1,7 @@
 ﻿using Helios.Messages;
 using Helios.Messages.Outgoing;
 using Helios.Network.Session;
+using Helios.Storage;
 using Helios.Storage.Access;
 using Helios.Storage.Models.Avatar;
 using Helios.Storage.Models.Entity;
@@ -141,14 +142,14 @@ namespace Helios.Game
         /// <returns></returns>
         public bool TryLogin(string ssoTicket)
         {
-            using (var context = new GameStorageContext())
+            using (var context = new StorageContext())
             {
                 context.Login(out avatarData, ssoTicket);
 
                 if (avatarData == null)
                     return false;
 
-                Log.Debug($"Avatar {avatarData.Name} has logged in");
+                Log.ForContext<Avatar>().Debug($"Avatar {avatarData.Name} has logged in");
 
                 context.CreateOrUpdate(out settings, avatarData.Id);
 
@@ -215,7 +216,7 @@ namespace Helios.Game
             Messenger.SendStatus();
             Subscription.CountMemberDays();
 
-            using (var context = new GameStorageContext())
+            using (var context = new StorageContext())
             {
                 avatarData.LastOnline = DateTime.Now;
                 context.Update(avatarData);

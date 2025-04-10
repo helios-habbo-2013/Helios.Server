@@ -72,7 +72,7 @@ namespace Helios.Messages
                     }
 
                     else
-                        Log.Error($"Event {packetType.Name} has no header defined");
+                        Log.ForContext<MessageHandler>().Error($"Event {packetType.Name} has no header defined");
                 }
 
                 if (typeof(IMessageComposer).IsAssignableFrom(packetType)) {
@@ -81,7 +81,7 @@ namespace Helios.Messages
                     if (composerField != null)
                         Composers[packetType.Name] = Convert.ToInt16(composerField.GetValue(null));
                     else
-                        Log.Error($"Composer {packetType.Name} has no header defined");
+                        Log.ForContext<MessageHandler>().Error($"Composer {packetType.Name} has no header defined");
                 }
                 /**/
             }
@@ -92,9 +92,8 @@ namespace Helios.Messages
         /// </summary>
         internal int? GetComposerId(IMessageComposer composer)
         {
-            int header;
 
-            if (Composers.TryGetValue(composer.GetType().Name, out header))
+            if (Composers.TryGetValue(composer.GetType().Name, out int header))
                 return header;
 
             return null;
@@ -109,11 +108,11 @@ namespace Helios.Messages
         {
             try
             {
-                if (Events.ContainsKey(request.HeaderId))
+                if (Events.TryGetValue(request.HeaderId, out List<IMessageEvent> value))
                 {
-                    Log.Debug($"RECEIVED {Events[request.HeaderId][0].GetType().Name}: {request.Header} / {request.MessageBody}");
+                    Log.ForContext<MessageHandler>().Debug($"RECEIVED {value[0].GetType().Name}: {request.Header} / {request.MessageBody}");
 
-                    foreach (IMessageEvent handler in Events[request.HeaderId])
+                    foreach (IMessageEvent handler in value)
                     {
                         if (Events[request.HeaderId].Count > 1)
                         {
@@ -131,12 +130,12 @@ namespace Helios.Messages
                 } 
                 else
                 {
-                    Log.Debug($"Unknown: [{request.HeaderId}] {request.Header} / {request.MessageBody}");
+                    Log.ForContext<MessageHandler>().Debug($"Unknown: [{request.HeaderId}] {request.Header} / {request.MessageBody}");
                 }
             }
             catch (Exception ex)
             {
-                Log.Error("Error occurred: ", ex);
+                Log.ForContext<MessageHandler>().Error(ex, "Error occurred in MessageHander");
             }
         }
 

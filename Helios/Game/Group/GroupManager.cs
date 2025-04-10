@@ -1,4 +1,5 @@
-﻿using Helios.Storage.Access;
+﻿using Helios.Storage;
+using Helios.Storage.Access;
 using Helios.Storage.Models.Group;
 using Helios.Storage.Models.Item;
 using System.Collections.Generic;
@@ -18,7 +19,7 @@ namespace Helios.Game
         #region Properties
 
         public GroupBadgeManager BadgeManager { get; private set; }
-        public int Cost => 10;
+        public static int Cost => 10;
 
         #endregion
 
@@ -35,13 +36,12 @@ namespace Helios.Game
 
         public Group GetGroup(int groupId)
         {
-            using (var context = new GameStorageContext())
-            {
-                var data = GroupDao.GetGroup(context, groupId);
+            using var context = new StorageContext();
 
-                if (data != null)
-                    return new Group(data);
-            }
+            var data = GroupDao.GetGroup(context, groupId);
+
+            if (data != null)
+                return new Group(data);
 
             return null;
         }
@@ -50,24 +50,23 @@ namespace Helios.Game
         {
             var membershipTypeList = new List<GroupMembershipType>();
 
-            if (!membershipTypes.Any())
+            if (membershipTypes.Length == 0)
             {
                 membershipTypeList.Add(GroupMembershipType.MEMBER);
                 membershipTypeList.Add(GroupMembershipType.ADMIN);
             }
 
-            using (var context = new GameStorageContext())
-            {
-                return GroupDao.GetGroupsByMembership(context, avatarId)
-                    .Select(group => new Group(group))
-                    .Where(x => x.Data.OwnerId == avatarId || x.Members.Any(x => x.Data.AvatarId == avatarId && membershipTypes.Any(membershipType => membershipType == x.Data.MemberType)))
-                    .ToList();
-            }
+            using var context = new StorageContext();
+
+            return GroupDao.GetGroupsByMembership(context, avatarId)
+                .Select(group => new Group(group))
+                .Where(x => x.Data.OwnerId == avatarId || x.Members.Any(x => x.Data.AvatarId == avatarId && membershipTypes.Any(membershipType => membershipType == x.Data.MemberType)))
+                .ToList();
         }
 
         public bool HasGroup(int groupId)
         {
-            using (var context = new GameStorageContext())
+            using (var context = new StorageContext())
             {
                 return context.GroupData.Any(x => x.Id == groupId);
             }

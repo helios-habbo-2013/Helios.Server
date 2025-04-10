@@ -20,7 +20,7 @@ namespace Helios.Messages.Incoming
 
             avatar.Send(new RoomMuteSettingsComposer(room.Data.IsMuted));
 
-            using (var context = new GameStorageContext())
+            using (var context = new StorageContext())
             {
                 context.SaveRoom(room.Data);
             }

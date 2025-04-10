@@ -25,7 +25,7 @@ namespace Helios.Game
         public int? AuthenticateRoomId { get; set; }
         public bool WalkingAllowed { get; internal set; }
         public bool IsRolling { get { return RollingData != null; } }
-        public virtual ITaskObject TaskObject { get; set; }
+        public virtual DefaultTaskObject TaskObject { get; set; }
         public int DanceId { get; set; }
         public bool IsDancing => DanceId > 0;
         public bool HasEffect => EffectId > 0;
@@ -191,10 +191,7 @@ namespace Helios.Game
                 }
             }
 
-            if (item != null)
-            {
-                item.Interactor.OnStop(this.Entity);
-            }
+            item?.Interactor.OnStop(this.Entity);
 
             this.NeedsUpdate = true;
         }
@@ -224,8 +221,7 @@ namespace Helios.Game
         /// <param name="key">the key to check for</param>
         public void RemoveStatus(string key)
         {
-            if (Status.ContainsKey(key))
-                this.Status.Remove(key);
+            this.Status.Remove(key);
         }
 
         /// <summary>
@@ -237,30 +233,19 @@ namespace Helios.Game
         {
             RoomTile oldTile = CurrentTile;
 
-            if (oldTile != null)
-            {
-                oldTile.RemoveEntity(Entity);
-            }
+            oldTile?.RemoveEntity(Entity);
 
             if (Next != null)
             {
                 RoomTile nextTile = Next.GetTile(Room);
-
-                if (nextTile != null)
-                {
-                    nextTile.RemoveEntity(Entity);
-                }
+                nextTile?.RemoveEntity(Entity);
             }
 
             Position = targetPosition.Copy();
             RefreshHeight(targetPosition);
 
             RoomTile newTile = CurrentTile;
-
-            if (newTile != null)
-            {
-                newTile.AddEntity(Entity);
-            }
+            newTile?.AddEntity(Entity);
 
             if (instantUpdate && Room != null)
             {

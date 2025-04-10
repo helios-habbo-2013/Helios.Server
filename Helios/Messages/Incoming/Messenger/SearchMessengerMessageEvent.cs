@@ -14,7 +14,7 @@ namespace Helios.Messages.Incoming
     {
         public void Handle(Avatar avatar, Request request)
         {
-            using (var context = new GameStorageContext())
+            using (var context = new StorageContext())
             {
                 List<AvatarData> resultSet = context.SearchMessenger(request.ReadString().FilterInput(), avatar.Details.Id);
 

@@ -28,7 +28,7 @@ namespace Helios.Game
 
         public void Load()
         {
-            using (var context = new GameStorageContext())
+            using (var context = new StorageContext())
             {
                 context.GetSettings(out _clientValues);
 

@@ -22,7 +22,7 @@ namespace Helios.Messages.Incoming
                 return;
             }
 
-            using (var context = new GameStorageContext())
+            using (var context = new StorageContext())
             {
                 var rightsList = context.GetRoomRights(room.Data.Id);
 

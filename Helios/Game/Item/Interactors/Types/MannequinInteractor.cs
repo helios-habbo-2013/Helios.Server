@@ -65,7 +65,7 @@ namespace Helios.Game
             avatar.Details.Figure = newFigure;
             avatar.Details.Sex = mannequinData.Gender.ToLower();
 
-            using (var context = new GameStorageContext())
+            using (var context = new StorageContext())
             {
                 context.Update(avatar.Details);
             }

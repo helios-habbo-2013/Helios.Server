@@ -17,10 +17,8 @@ namespace Helios.Game
 
         #region Constructor
 
-        public UserGroup(string name, int rank)
+        public UserGroup()
         {
-            Name = name;
-            Rank = rank;
             DefaultPermissions = new List<string>();
             InheritsGroups = new List<string>();
             ExcludesPermissions = new List<string>();

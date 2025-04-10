@@ -41,7 +41,7 @@ namespace Helios.Messages.Incoming
 
             avatar.Inventory.RemoveItem(item);
 
-            using (var context = new GameStorageContext())
+            using (var context = new StorageContext())
             {
                 context.SaveRoom(room.Data);
                 context.DeleteItem(item.Data);

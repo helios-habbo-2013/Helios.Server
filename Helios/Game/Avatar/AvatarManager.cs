@@ -100,7 +100,7 @@ namespace Helios.Game
             if (avatar != null)
                 return avatar.Details;
 
-            using (var context = new GameStorageContext())
+            using (var context = new StorageContext())
             {
                 return context.GetAvatarById(AvatarId);
             }
@@ -116,7 +116,7 @@ namespace Helios.Game
             if (avatar != null)
                 return avatar.Details;
 
-            using (var context = new GameStorageContext())
+            using (var context = new StorageContext())
             {
                 return context.GetAvatarById(AvatarId);
             }
@@ -132,7 +132,7 @@ namespace Helios.Game
             if (avatar != null)
                 return avatar.Details.Name;
 
-            using (var context = new GameStorageContext())
+            using (var context = new StorageContext())
             {
                 return context.GetNameById(AvatarId);
             }

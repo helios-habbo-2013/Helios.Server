@@ -103,7 +103,7 @@ namespace Helios.Game
         /// </summary>
         public void Save()
         {
-            using (var context = new GameStorageContext())
+            using (var context = new StorageContext())
             {
                 context.SaveItem(Data);
             }
