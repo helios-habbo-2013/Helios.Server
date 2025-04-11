@@ -227,7 +227,9 @@ namespace Helios.Game
 
                 long timeInSeconds = (long)(DateTime.Now - AuthenticationTime).TotalSeconds;
                 settings.OnlineTime += timeInSeconds;
+
                 context.Update(settings);
+                context.SaveChanges();
             }
         }
 
