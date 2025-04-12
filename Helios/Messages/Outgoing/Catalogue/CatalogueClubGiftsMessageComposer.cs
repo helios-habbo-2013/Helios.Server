@@ -19,44 +19,43 @@ namespace Helios.Messages.Outgoing
         {
             if (subscription != null)
             {
-                _data.Add((int)(subscription.Data.GiftDate - DateTime.Now).TotalDays);
-                _data.Add(subscription.Data.GiftsRedeemable);
+                this.AppendInt32((int)(subscription.Data.GiftDate - DateTime.Now).TotalDays);
+                this.AppendInt32(subscription.Data.GiftsRedeemable);
             }
             else
             {
-                _data.Add(0);
-                _data.Add(0);
+                this.AppendInt32(0);
+                this.AppendInt32(0);
             }
 
-            _data.Add(gifts.Count);
+            this.AppendInt32(gifts.Count);
 
             foreach (var giftData in gifts)
             {
-                PurchaseOKComposer.SerialiseOffer(this, giftData.CatalogueItem);
+                PurchaseOKComposer.SerialiseOffer(this, giftData.CatalogueItem, giftData.Data.DurationRequirement);
             }
 
-            _data.Add(gifts.Count);
+            this.AppendInt32(gifts.Count);
 
             foreach (var giftData in gifts)
             {
-                _data.Add(giftData.CatalogueItem.Data.Id);
-                _data.Add(false); // ?? unused
+                this.AppendInt32(giftData.CatalogueItem.Data.Id);
+                this.AppendBoolean(false); // ?? unused
+                this.AppendInt32(giftData.Data.DurationRequirement); // days until gift allowed with 0 or less being yes you can select
 
                 if (subscription != null)
                 {
                     var secondsForGift = giftData.GetSecondsRequired();
-
-                    _data.Add(giftData.GetDaysUntilGift(subscription.Data.SubscriptionAge)); // days until gift allowed with 0 or less being yes you can select
-                    _data.Add(giftData.IsGiftRedeemable(subscription.Data.SubscriptionAge)); // button to enable or not 
+                    this.AppendBoolean(giftData.IsGiftRedeemable(subscription.Data.SubscriptionAge)); // button to enable or not 
                 }
                 else
                 {
-                    _data.Add(0); // days until gift allowed with 0 or less being yes you can select
-                    _data.Add(false); // button to enable or not 
+                    // _data.Add(0); // days until gift allowed with 0 or less being yes you can select
+                    this.AppendBoolean(false); // button to enable or not 
                 }
             }
         }
 
-        public override int HeaderId => -1;
+        public override int HeaderId => 623;
     }
 }

@@ -126,7 +126,7 @@ namespace Helios.Messages
             {
                 if (Events.TryGetValue(request.HeaderId, out List<IMessageEvent> value))
                 {
-                    Log.ForContext<MessageHandler>().Debug($"RECEIVED {value[0].GetType().Name}: {request.Header} / {request.MessageBody}");
+                    Log.ForContext<MessageHandler>().Debug($"RECEIVED {value[0].GetType().Name}: [{request.Header} / {request.HeaderId}] / {request.MessageBody}");
 
                     foreach (IMessageEvent handler in value)
                     {

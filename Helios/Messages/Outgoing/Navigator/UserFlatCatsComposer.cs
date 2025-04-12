@@ -14,16 +14,18 @@ namespace Helios.Messages.Outgoing
 
         public override void Write()
         {
-            AppendInt32(categories.Count);
+            this.AppendInt32(categories.Count);
 
             foreach (var category in categories)
             {
-                AppendBoolean(true);
-                AppendInt32(category.Id);
-                AppendStringWithBreak(category.Caption);
-            }
+                if (category.Id > 0)
+                {
+                    this.AppendBoolean(true);
+                }
 
-            _data.Add(string.Empty);
+                this.AppendInt32(category.Id);
+                this.AppendStringWithBreak(category.Caption);
+            }
         }
 
         public override int HeaderId => 221;

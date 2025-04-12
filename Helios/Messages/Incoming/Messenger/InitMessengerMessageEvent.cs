@@ -18,7 +18,7 @@ namespace Helios.Messages.Incoming
                 avatar.Messenger.Friends
             ));
 
-            avatar.Send(new MessengerRequestsComposer(avatar.Messenger.Requests));
+            // avatar.Send(new MessengerRequestsComposer(avatar.Messenger.Requests));
 
             using (var context = new StorageContext())
             {

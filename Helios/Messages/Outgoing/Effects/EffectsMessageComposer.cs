@@ -31,6 +31,6 @@ namespace Helios.Messages.Outgoing
             composer.Data.Add(effect.Data.IsActivated ? effect.TimeLeft : -1);
         }
 
-        public int HeaderId => -1;
+        public override int HeaderId => 460;
     }
 }

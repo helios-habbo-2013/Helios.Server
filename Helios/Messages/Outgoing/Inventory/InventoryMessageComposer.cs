@@ -5,35 +5,35 @@ namespace Helios.Messages.Outgoing
 {
     public class InventoryMessageComposer : IMessageComposer
     {
-        private int totalPages;
-        private int page;
+        private string type;
         private List<Item> items;
 
-        public InventoryMessageComposer(int pages, int i, List<Item> items1)
+        public InventoryMessageComposer(string type, List<Item> items1)
         {
-            this.totalPages = pages;
-            this.page = i;
+            this.type = type;
             this.items = items1;
         }
 
         public override void Write()
         {
-            _data.Add(totalPages);
-            _data.Add(page - 1);
-            _data.Add(items.Count);
+            int i = 0;
+            this.AppendInt32(items.Count);
 
             foreach (var item in items)
             {
-                Serialize(this, item);
+                Serialize(this, item, i++);
             }
+
+            this.AppendInt32(items.Count);
         }
 
-        public static void Serialize(IMessageComposer composer, Item item)
+        public static void Serialize(IMessageComposer composer, Item item, int stripSlotId = 0)
         {
-            composer.Data.Add(item.Id);
-            composer.Data.Add(item.Definition.Type.ToUpper());
-            composer.Data.Add(item.Id);
-            composer.Data.Add(item.Definition.Data.SpriteId);
+            composer.AppendInt32(item.Id);
+            composer.AppendInt32(0);
+            composer.AppendStringWithBreak(item.Definition.Type.ToUpper());
+            composer.AppendInt32(item.Id);
+            composer.AppendInt32(item.Definition.Data.SpriteId);
 
             switch (item.Definition.Data.Sprite)
             {
@@ -56,22 +56,19 @@ namespace Helios.Messages.Outgoing
 
             item.Interactor.WriteExtraData(composer, true);
 
-            composer.Data.Add(item.Definition.Data.IsRecyclable);
-            composer.Data.Add(item.Definition.Data.IsTradable);
-            composer.Data.Add(item.Definition.InteractorType == InteractorType.DECORATION ? true : item.Definition.Data.IsStackable);
-            composer.Data.Add(item.Definition.Data.IsSellable);
-
-            composer.Data.Add(-1); // timer
-            composer.Data.Add(false); // hasRentPeriodStarted():Boolean
+            composer.AppendBoolean(item.Definition.Data.IsRecyclable);
+            composer.AppendBoolean(item.Definition.Data.IsTradable);
+            composer.AppendBoolean(item.Definition.Data.IsStackable);
+            composer.AppendBoolean(item.Definition.Data.IsSellable);
             composer.Data.Add(-1); // embed room id
 
             if (!item.Definition.HasBehaviour(ItemBehaviour.WALL_ITEM))
             {
                 composer.Data.Add("");
-                composer.Data.Add(0); // todo: sprite code for wrapping
+                composer.Data.Add(-1); // todo: sprite code for wrapping
             }
         }
 
-        public int HeaderId => -1;
+        public override int HeaderId => 140;
     }
 }

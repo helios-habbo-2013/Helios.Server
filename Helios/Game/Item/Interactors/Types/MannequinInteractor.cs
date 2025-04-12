@@ -76,21 +76,23 @@ namespace Helios.Game
 
         public override void WriteExtraData(IMessageComposer composer, bool inventoryView = false)
         {
-            var data = GetJsonObject<MannequinExtraData>();
-            var values = new Dictionary<string, string>();
+            //var data = GetJsonObject<MannequinExtraData>();
+            //var values = new Dictionary<string, string>();
 
-            values["GENDER"] = data.Gender;
-            values["FIGURE"] = GenerateMannequinFigure(data.Figure);
-            values["OUTFIT_NAME"] = data.OutfitName;
+            //values["GENDER"] = data.Gender;
+            //values["FIGURE"] = GenerateMannequinFigure(data.Figure);
+            //values["OUTFIT_NAME"] = data.OutfitName;
 
-            composer.Data.Add((int)ExtraDataType.StringArray);
-            composer.Data.Add(values.Count);
+            //composer.Data.Add((int)ExtraDataType.StringArray);
+            //composer.Data.Add(values.Count);
 
-            foreach (var kvp in values)
-            {
-                composer.Data.Add(kvp.Key);
-                composer.Data.Add(kvp.Value);
-            }
+            //foreach (var kvp in values)
+            //{
+            //    composer.Data.Add(kvp.Key);
+            //    composer.Data.Add(kvp.Value);
+            //}
+
+            composer.AppendStringWithBreak("");
         }
 
 

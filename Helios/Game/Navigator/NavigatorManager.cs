@@ -49,25 +49,5 @@ namespace Helios.Game
         }
 
         #endregion
-
-        #region Promotion
-
-        /// <summary>
-        /// Get a random popular promotion
-        /// </summary>
-        /// <returns></returns>
-        public static PublicItemData GetPopularPromotion()
-        {
-            using var context = new StorageContext();
-
-            var publicItemsList = context.GetPublicItems().Where(x => x.Room != null && x.Room.UsersNow > 0).ToList();
-
-            if (publicItemsList.Count > 0)
-                return publicItemsList.PickRandom();
-
-            return null;
-        }
-
-        #endregion
     }
 }

@@ -17,6 +17,6 @@
             _data.Add(roomId);
         }
 
-        public int HeaderId => -1;
+        public override int HeaderId => 69;
     }
 }

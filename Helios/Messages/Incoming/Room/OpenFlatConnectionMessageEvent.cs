@@ -17,12 +17,17 @@ namespace Helios.Messages.Incoming
 
             var room = RoomManager.Instance.GetRoom(roomId);
 
-            if (room != null)
+            if (room == null)
             {
-                avatar.Send(new OpenConnectionComposer(roomId, room.Data.CategoryId));
+                return;
             }
+
+            avatar.Send(new OpenFlatMessageComposer());
+            avatar.Send(new RoomUrlComposer(roomId));
+
+            room.EntityManager.EnterRoom(avatar);
         }
 
-        public int HeaderId => -1;
+        public int HeaderId => 391;
     }
 }

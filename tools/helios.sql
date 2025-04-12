@@ -44,198 +44,10 @@ CREATE TABLE IF NOT EXISTS `authentication_ticket` (
   `expires_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Dumping data for table helios.authentication_ticket: ~178 rows (approximately)
+-- Dumping data for table helios.authentication_ticket: ~1 rows (approximately)
 DELETE FROM `authentication_ticket`;
 INSERT INTO `authentication_ticket` (`avatar_id`, `sso_ticket`, `expires_at`) VALUES
-	(1, 'f6960734-6d46-451b-92b6-123dd7b6d424', NULL),
-	(1, '3a9f8210-3fcc-44c2-8336-65e0986b3f27', NULL),
-	(1, '1aa4ff60-d09a-4dfe-9a9b-75f4f9f4f227', NULL),
-	(1, '8f0ed05e-a927-4eec-94ec-67929e6aa86e', NULL),
-	(1, 'ecf3cb8c-9737-494c-a0ca-7f6da4d1347a', NULL),
-	(1, 'd7047062-8561-4e04-a8e6-b024aa8332f9', NULL),
-	(1, 'f0ad5d54-a4c7-49d3-8713-474dd4eb82de', NULL),
-	(1, '1b715435-44c7-4872-808a-82b2bdc3e3b9', NULL),
-	(1, '42e70fdd-200a-4354-a11b-e7c02e3aef20', NULL),
-	(1, '824c3e51-f303-49c5-825e-0531f8000939', NULL),
-	(1, '2cfba263-21ef-4c07-bbdd-a5307c160205', NULL),
-	(1, '3d1d2200-19b4-4026-837f-4a0ab7eaf4bb', NULL),
-	(1, 'c3aa4375-17ea-4df7-93f4-02d6c5ae5ad0', NULL),
-	(1, '80e33b10-e8b4-43e7-9e1d-148468c5255f', NULL),
-	(1, 'c59bbbed-488f-4873-93da-26707c9e85ec', NULL),
-	(1, 'dba44c91-71fa-4d13-a46d-a8730fe07c91', NULL),
-	(1, 'c42747bb-2068-4d58-b57d-9aeba2cba502', NULL),
-	(1, 'b5697b4f-e7fc-4663-b914-a8c34d3429e8', NULL),
-	(1, '084aef6b-2c46-4237-a0fd-896c0e4f6855', NULL),
-	(1, '68987f5e-99d6-4246-be8e-251cc65b3394', NULL),
-	(1, '2203c1f2-b324-4071-b7fa-946a77a53054', NULL),
-	(1, 'efb5cf8a-daa2-4a3e-845c-618e7218bc3f', NULL),
-	(1, '89e10dce-e649-4e40-a7da-9d929cfea515', NULL),
-	(1, '6139ed00-92d5-42f6-a810-e2e45650724f', NULL),
-	(1, '1b0da0dd-2d4b-4019-9137-3ba41287940e', NULL),
-	(1, '4a70939c-bf05-4aaa-aec7-55d8c8051bc2', NULL),
-	(1, '8e2dec31-cb50-44ca-b253-cc2bf293363a', NULL),
-	(1, 'd4929746-5df8-43f2-9c22-d208549da962', NULL),
-	(1, 'e6e970e1-b806-4e1b-a08c-0c7be9d953fe', NULL),
-	(1, '1f2d3bea-4d64-42c2-b90d-df5650373f50', NULL),
-	(1, '82d97f93-72de-4e4e-9c00-51a4f1b887b7', NULL),
-	(1, '68984ab6-9551-4883-b68b-3ae89c6cbd89', NULL),
-	(1, 'f59672cd-701e-48ed-bc9c-7f8c57399845', NULL),
-	(1, '287e05e3-21b7-4dbc-b565-196acd4958d9', NULL),
-	(1, '3ff28496-8090-4037-ad0f-90e046f088a7', NULL),
-	(1, '2c8591e2-88f0-4526-90b8-77dd190603a5', NULL),
-	(1, '1fb94962-2fd1-4bd9-a55f-ee3fe236fb67', NULL),
-	(1, 'da073bc7-c54c-446b-b1bb-12d7a2f9d871', NULL),
-	(1, '82b2bee4-b662-432c-b4f5-13df6d89880f', NULL),
-	(1, '6ac865e8-2d6f-4973-9ee0-043ef16dd4a0', NULL),
-	(1, '1aeda8ec-7282-4af8-aafa-d29b47fbbad3', NULL),
-	(1, 'c7cdea36-0622-44e9-98e8-eab53d7f4990', NULL),
-	(1, 'b08f8de2-1e25-419f-8b61-f38f4f3e091f', NULL),
-	(1, '7237cd3a-b1f4-4e42-a49b-90e8e165b37f', NULL),
-	(1, '7720b243-ba98-4310-9d65-4ba25e2c4b07', NULL),
-	(1, '5cc72734-694d-4b03-b103-a4f63bd2465a', NULL),
-	(1, 'cfb89981-f60e-4d18-9a64-7e17b83d0561', NULL),
-	(1, 'e75eb827-defb-4800-8b50-01e88479b831', NULL),
-	(1, '0cee1801-9638-4e01-a0c5-225222ff5f44', NULL),
-	(1, 'f6210b27-9d81-4ee8-b859-e7a9be49d598', NULL),
-	(1, 'f05c20d9-2131-4c4b-a69a-1a2f1b58db56', NULL),
-	(1, 'd20342fd-44e4-4199-8c29-3bbb734ce581', NULL),
-	(1, '3b92d1bd-f5d8-4dbc-807d-a7af957da0be', NULL),
-	(1, '14052ee6-2fd5-4a6e-ae4b-78e5b91617ab', NULL),
-	(1, '32fa5af0-4f34-4666-b7dc-62f14adc018b', NULL),
-	(1, '56aa920b-de0b-4c30-bb57-ab762e7af549', NULL),
-	(1, 'e859666f-0387-428b-b74c-96abc6e9fa14', NULL),
-	(1, 'c8b7ec50-93b5-403d-a5f7-6d5513502d79', NULL),
-	(1, '27aa187c-a250-4272-8e04-f99740b9ecc8', NULL),
-	(1, 'de2ad2a7-85bc-4bcd-9399-fde109ddb872', NULL),
-	(1, '7b85dea3-7e78-45bb-a9dd-0bb05ec03121', NULL),
-	(1, '92ff8281-7ac3-40d7-a746-f871e45aecb2', NULL),
-	(1, '756e2664-23f6-4afe-9edf-5bba95a23d79', NULL),
-	(1, 'd56c3fa2-7303-419b-851a-a25f8e13cf29', NULL),
-	(1, 'eb09b930-8b5a-419a-8543-2bef2fd8da64', NULL),
-	(1, '3b1b86be-870e-4f17-b969-8fc732d26861', NULL),
-	(1, '12f5e66b-c0ff-4902-a88a-39dc2c498824', NULL),
-	(1, '297ebc85-bd87-4f4b-a5a0-89a10614738b', NULL),
-	(1, '72b8875e-66cf-4eaf-b32f-665a53baf4ad', NULL),
-	(2, '8881f862-5148-42c5-999a-7d2c5154af17', NULL),
-	(2, '64ada1dd-aa0d-4a5c-9c42-ccc904171224', NULL),
-	(2, '902deca0-7e82-41d7-a3c2-98e29c5761ac', NULL),
-	(2, '6716ca6a-4df9-4333-8b5e-d8a116388f07', NULL),
-	(2, 'e1bfbd31-14b8-4613-9823-7c9fe63d7661', NULL),
-	(2, '9e52be7a-bc78-4e28-903f-f4abda509fde', NULL),
-	(2, '64dcdb38-cb29-43c3-a200-3d4e5bb6c8cf', NULL),
-	(1, 'fef50370-08c8-4cea-acbe-4cc5b5b8bef7', NULL),
-	(1, '43d2955e-dad2-4a4f-a848-a9aa5470b125', NULL),
-	(1, 'cd2142b7-500e-443f-9af9-9b38855e9638', NULL),
-	(1, '9eaa7e71-6f47-4eaa-a8b2-35b57d84fc54', NULL),
-	(1, '57efa6d2-05c3-475e-a2e7-bba5c8580abb', NULL),
-	(1, '58464ca9-29c2-4977-b0b3-4b5abd14bd91', NULL),
-	(1, 'f312cc9b-bff9-459f-a255-0ca515adda56', NULL),
-	(1, '1624f6e3-13b9-4a65-a2ad-33d2bb1fc08b', NULL),
-	(1, '32720e1f-1ed9-4e4d-a39e-a7e659474ab3', NULL),
-	(1, '7c0ded5b-4206-471c-ae82-fab395c80bf4', NULL),
-	(1, 'b99e70b4-ca43-41d7-9c4d-388f0f442654', NULL),
-	(1, '51f1cc3e-2e95-437b-85c8-382876058e14', NULL),
-	(1, '37f6eaf3-c691-4745-bb91-a53a57c3f813', NULL),
-	(1, 'a4ca806d-704a-47d8-8098-bb99d895511a', NULL),
-	(1, '4e7eac75-cf15-41d9-86a6-778288c06b4c', NULL),
-	(1, '1c245265-8216-4395-a60d-c6d5021a0d8b', NULL),
-	(1, '569f2f3a-ae60-49ae-8594-2460962f1974', NULL),
-	(1, '021a658b-2554-4488-aed8-db3c33ef6027', NULL),
-	(1, 'f8baae67-a516-4eab-8a62-6f95681d08af', NULL),
-	(1, 'b7b9c8da-b258-4f84-b5e6-8f49930952c5', NULL),
-	(1, 'db47dacb-ea64-4857-9335-597428cb32a2', NULL),
-	(1, 'e31dc77e-5a32-42ea-b3d3-f6aab2dde3de', NULL),
-	(1, '3f8fd6cd-fe28-44dd-a446-ed6eea2bd188', NULL),
-	(1, '963b60de-19db-4d05-8155-5e0594faf3c9', NULL),
-	(1, 'f76f9d2b-0b67-4336-9b2d-5473e350cb2b', NULL),
-	(1, '0da7aae6-d9af-4b21-a8fb-e8e08d5758cd', NULL),
-	(1, 'd1266306-5f4d-4aec-b47a-bc859c4e3359', NULL),
-	(1, '3f4f33ff-c0a3-4e46-9e8e-a4bdb72a1a7f', NULL),
-	(1, '6f57b0a3-a11d-4811-83d9-74381d80577b', NULL),
-	(1, '68d10852-e79c-4950-8113-c3134df3ce0d', NULL),
-	(1, '0304f17e-358b-443d-be96-4e3a01f6cfe0', NULL),
-	(1, 'cbe669ae-932b-4b23-a2ef-14759db844b9', NULL),
-	(1, '8a7c1eaa-991c-44b3-876c-dca93235088e', NULL),
-	(1, '6c3b91ef-7728-422b-b056-c18ec6e2e59a', NULL),
-	(1, '430c3c01-dddc-414f-addd-2ad26b80b338', NULL),
-	(1, '53a4a9aa-6ea0-4c5b-8fe5-4015865355e4', NULL),
-	(1, '85f6baa4-246a-4e64-ab29-208a3d8c5375', NULL),
-	(1, '1f804304-b10d-466b-8a99-53d0bed4cbc0', NULL),
-	(1, '921a9a0e-adff-42ce-b2b5-4f5b58ac85ea', NULL),
-	(1, '8812d52b-80a0-40ed-be9c-38dd8b8136aa', NULL),
-	(1, 'c2105df0-ec0d-4732-ab62-1ea32237aa36', NULL),
-	(1, '1da05e01-ca9e-426b-a48f-6fcb29e3ac0d', NULL),
-	(1, '2a65523a-6edb-4337-bab7-6cecdb88f503', NULL),
-	(1, '827f8913-2c5c-4baf-ac2e-0c8344c2dadb', NULL),
-	(1, '1ab9c374-576c-47cf-a0e1-6025090a6971', NULL),
-	(1, '5acbcda6-90eb-46a4-972f-361ce3c96f48', NULL),
-	(1, '69e73519-f66d-42ae-ab6c-50875b5943ba', NULL),
-	(1, '1a94e501-5e82-4d09-868a-2ad8fccbb68d', NULL),
-	(1, '312db5af-b8db-4d02-8b6d-fc576f4fc772', NULL),
-	(1, '1548a293-7482-47ac-8cd5-37154c8998b4', NULL),
-	(1, '617b50ab-f623-4ec7-80e6-600ad2851156', NULL),
-	(1, '37213eca-d8c4-4626-85c6-11663ff7ca16', NULL),
-	(1, 'deccf8b6-3172-4789-b281-9f358628e780', NULL),
-	(1, 'cd7b313a-3ffd-4497-af03-db29de750e5e', NULL),
-	(1, 'a58dda22-0fbf-4fd6-a283-0471f7573898', NULL),
-	(1, '756dced6-c9bf-4924-a974-aea978633739', NULL),
-	(1, 'bb5ced1d-1ef4-42eb-bebe-d69e484115e6', NULL),
-	(1, 'f2403c5e-75c2-4538-bb4d-6b9dc107d338', NULL),
-	(1, 'a5fad25a-c6fe-4775-b330-30d545504d03', NULL),
-	(1, '31724f85-404a-4ece-bd2e-b73023fdcd29', NULL),
-	(1, 'ce627cf1-387b-4ca0-951c-8ad3e5b91b17', NULL),
-	(1, '155edba6-7c88-4b82-bc04-a66f97824c05', NULL),
-	(1, 'df9f769a-a4e9-4b2a-a49c-e152f0930f1c', NULL),
-	(1, 'da23f7b3-2ef7-4962-ba2f-70cbf7de68e9', NULL),
-	(1, '9c82a6f0-f1cd-40eb-ade7-927c0502feba', NULL),
-	(1, 'afddd29c-9b1b-4fb3-9c71-906ded0e557e', NULL),
-	(1, '3b79a6c0-8ebc-4310-99b7-d6a00e096326', NULL),
-	(1, '549f559e-baa0-460b-8cec-4c0d8fa3bfd5', NULL),
-	(1, '4045d6ca-3769-4532-bed9-5bb99f80fb24', NULL),
-	(1, 'a2e62ade-5820-4051-94b4-ea881cc99223', NULL),
-	(1, 'b8619235-2a42-4eec-bab2-9fc48f47fc50', NULL),
-	(1, '77fcf33a-e21c-43aa-87d6-f129e352c7b7', NULL),
-	(1, '64e09067-d000-4244-847c-ef4eea1e9631', NULL),
-	(1, 'effd7c67-c404-4cd4-b3a3-b27f3dcc27d7', NULL),
-	(1, '553a3eac-7cd8-4115-837e-a87987c9b01e', NULL),
-	(1, 'ddf949ee-4a42-463d-9f14-ad2b4008f58e', NULL),
-	(1, 'fc93d3ea-b9e1-4bee-b817-fbec30eaf8d3', NULL),
-	(1, '69b4bb87-0a18-4948-bac4-230f83921317', NULL),
-	(1, 'e32f48b2-33e2-4eb6-95b8-d5b7d84d35a1', NULL),
-	(1, 'SSO-5489fb73-c01f-43d8-bac5-b5a0365ec48b', NULL),
-	(1, 'SSO-bf5f61b0-e491-4fbd-b06f-0ce4022dd855', NULL),
-	(1, 'SSO-3cc3a8b9-9855-40ed-9d77-3e83b5ef7262', NULL),
-	(1, 'SSO-443680cf-2e8a-407f-930d-71560a85e70e', NULL),
-	(1, 'SSO-73baf0fa-d21b-43fd-85ab-15191fa06959', NULL),
-	(1, 'SSO-1dc8e809-0f57-4497-ba9e-ee22a3d56c94', NULL),
-	(1, 'SSO-0db0d8ac-fc9c-4321-b71d-b7c725e01463', NULL),
-	(1, 'SSO-56ca6bb6-d461-4088-bc93-8f26da393807', NULL),
-	(1, 'SSO-32f876db-c46b-4e5d-901d-b863c31f2836', NULL),
-	(1, 'SSO-69e1334d-d050-4173-afc0-532d200f9c74', NULL),
-	(1, 'SSO-bae8340f-3985-4aad-b447-3b3519b9c623', NULL),
-	(1, 'SSO-3b561681-7f9c-4ff9-845b-0d0f731a24c7', NULL),
-	(1, 'SSO-d3f4dff9-6196-417d-9b9c-3f76596d97d8', NULL),
-	(1, 'SSO-b8923ed4-d0d6-4763-bb1d-ecc44a16131c', NULL),
-	(1, 'SSO-e879cd32-8aa7-4b24-804e-612e817186c2', NULL),
-	(1, 'SSO-8a46bb83-94a1-4487-b3b9-b9559e6127a9', NULL),
-	(1, 'SSO-e581e653-b886-481e-b472-c78a2e24bcc8', NULL),
-	(1, 'SSO-c866b1e0-a05e-4f30-9433-4c76aaa7c7a6', NULL),
-	(1, 'SSO-bc45faf8-fd1d-4443-b996-b8f7011f544d', NULL),
-	(1, 'SSO-b10c808c-8bef-468e-a806-279e10e1ef7a', NULL),
-	(1, 'SSO-5862d4e0-852d-4289-a53c-fcac1ea75683', NULL),
-	(1, 'SSO-1218a228-0827-4fdb-8d14-4da7f83da6c4', NULL),
-	(1, 'SSO-0d56ec7b-4ce3-4d6e-bfc1-010739d69efb', NULL),
-	(1, 'SSO-2bee08e3-e11d-4293-b227-349d8c9c9720', NULL),
-	(1, 'SSO-0fa4d1b8-65d4-40bf-9584-097483ff78b3', NULL),
-	(1, 'SSO-449249b0-4290-46e0-9204-e613b04d0def', NULL),
-	(1, 'SSO-6b7f2ae8-d690-45c0-8509-3a295ce48c27', NULL),
-	(1, 'SSO-396b052a-770b-47e8-89c6-4fd01684dfa9', NULL),
-	(1, 'SSO-3ba51896-0c29-4575-b1a1-ec2090357b39', NULL),
-	(1, 'SSO-49842cd4-2d33-49c8-97fd-cf6ab0e4e7aa', NULL),
-	(1, 'SSO-9e059186-1898-4c8e-b2f8-fc56408d4554', NULL),
-	(1, 'SSO-bda6dd29-ccab-4570-a11d-86a09cfe47dc', NULL),
-	(1, 'SSO-933fb597-05ec-4321-8d89-bc09bf99ad84', NULL),
-	(1, 'SSO-fc922df8-7c83-407e-a3db-95570dd394b6', NULL);
+	(1, 'HeliosLoginTicket', NULL);
 
 -- Dumping structure for table helios.avatar
 CREATE TABLE IF NOT EXISTS `avatar` (
@@ -257,8 +69,8 @@ CREATE TABLE IF NOT EXISTS `avatar` (
 -- Dumping data for table helios.avatar: ~2 rows (approximately)
 DELETE FROM `avatar`;
 INSERT INTO `avatar` (`id`, `user_id`, `username`, `figure`, `sex`, `rank`, `credits`, `motto`, `created_date`, `last_online`, `favourite_group_id`) VALUES
-	(1, 1, 'Alex', 'hd-605-1.lg-700-64.hr-3195-45-45.sh-730-1329.ea-3107-62-62.ch-824-110', 'F', 1, 64477, '', '2024-09-08 14:39:20', '2024-10-08 14:18:16', 1339),
-	(2, 1, 'EvilAlex', 'hr-105-1158.hd-207-1006.ch-3030-1202.lg-280-1289.ha-1001-1', 'M', 1, 656314, '', '2024-09-07 23:01:56', '2024-09-07 23:01:56', NULL);
+	(1, 1, 'Alex', 'hd-605-1.lg-700-64.hr-3195-45-45.sh-730-1329.ea-3107-62-62.ch-824-110', 'F', 7, 64396, '', '2024-09-08 14:39:20', '2025-04-13 18:38:39', 1339),
+	(2, 1, 'EvilAlex', 'hr-105-1158.hd-207-1006.ch-3030-1202.lg-280-1289.ha-1001-1', 'M', 7, 656314, '', '2024-09-07 23:01:56', '2024-09-07 23:01:56', NULL);
 
 -- Dumping structure for table helios.avatar_effects
 CREATE TABLE IF NOT EXISTS `avatar_effects` (
@@ -320,7 +132,7 @@ CREATE TABLE IF NOT EXISTS `avatar_settings` (
 -- Dumping data for table helios.avatar_settings: ~2 rows (approximately)
 DELETE FROM `avatar_settings`;
 INSERT INTO `avatar_settings` (`avatar_id`, `daily_respect_points`, `daily_respect_pet_points`, `respect_points`, `friend_requests_enabled`, `following_enabled`, `online_time`, `name_change_enabled`) VALUES
-	(1, 0, 0, 0, 1, 1, 4499, 0),
+	(1, 0, 0, 0, 1, 1, 6081, 0),
 	(2, 0, 0, 0, 1, 1, 0, 0),
 	(3, 0, 0, 0, 1, 1, 13, 0);
 
@@ -339,8 +151,8 @@ CREATE TABLE IF NOT EXISTS `avatar_subscriptions` (
 -- Dumping data for table helios.avatar_subscriptions: ~2 rows (approximately)
 DELETE FROM `avatar_subscriptions`;
 INSERT INTO `avatar_subscriptions` (`avatar_id`, `subscribed_at`, `expire_at`, `gift_at`, `gifts_redeemable`, `subscription_age`, `subscription_age_last_updated`) VALUES
-	(1, '2024-09-15 20:19:00', '2025-12-15 20:19:00', '2024-10-15 20:19:00', 0, 63879919012, '2025-04-10 21:57:16'),
-	(2, '2024-09-11 20:27:39', '2025-12-11 20:27:39', '2024-10-11 20:27:39', 0, 63862639760, '2024-09-22 22:09:24');
+	(1, '2024-09-15 20:19:00', '2025-12-15 20:19:00', '2025-05-13 14:44:59', 0, 63880166760, '2025-04-13 18:46:50'),
+	(2, '2024-09-11 20:27:39', '2025-12-11 20:27:39', '2025-05-13 14:44:59', 3, 63862639760, '2024-09-22 22:09:24');
 
 -- Dumping structure for table helios.catalogue_discounts
 CREATE TABLE IF NOT EXISTS `catalogue_discounts` (
@@ -376,12 +188,12 @@ CREATE TABLE IF NOT EXISTS `catalogue_items` (
   `allow_bulk_purchase` tinyint(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`),
   KEY `id` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2562 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB AUTO_INCREMENT=2563 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=COMPACT;
 
--- Dumping data for table helios.catalogue_items: ~2,540 rows (approximately)
+-- Dumping data for table helios.catalogue_items: ~2,320 rows (approximately)
 DELETE FROM `catalogue_items`;
 INSERT INTO `catalogue_items` (`id`, `sale_code`, `page_id`, `order_id`, `price_coins`, `price_seasonal`, `seasonal_type`, `hidden`, `amount`, `definition_id`, `item_specialspriteid`, `is_package`, `allow_bulk_purchase`) VALUES
-	(1, 'floor', '3', 1, 2, 0, NULL, 0, 1, 249, '101', 0, 1),
+	(1, 'a2 l', '3', -1, 2, 0, NULL, 0, 1, 249, '', 0, 1),
 	(2, 'CF_50_goldbar', '4', 5, 50, 0, NULL, 0, 1, 212, '', 0, 1),
 	(3, 'CF_20_moneybag', '4', 4, 20, 0, NULL, 0, 1, 211, '', 0, 1),
 	(4, 'CF_10_coin_gold', '4', 3, 10, 0, NULL, 0, 1, 209, '', 0, 1),
@@ -631,37 +443,22 @@ INSERT INTO `catalogue_items` (`id`, `sale_code`, `page_id`, `order_id`, `price_
 	(248, 'prizetrophy5*1', '26', 15, 12, 0, NULL, 0, 1, 141, '', 0, 1),
 	(249, 'prizetrophy*1', '26', 3, 12, 0, NULL, 0, 1, 1605, '', 0, 1),
 	(250, 'prizetrophy6*1', '26', 18, 12, 0, NULL, 0, 1, 142, '', 0, 1),
-	(251, 'wallpaper_single_101', '3', 2, 2, 0, NULL, 0, 1, 250, '101', 0, 1),
-	(252, 'wallpaper_single_102', '3', 3, 2, 0, NULL, 0, 1, 250, '102', 0, 1),
-	(253, 'wallpaper_single_103', '3', 4, 2, 0, NULL, 0, 1, 250, '103', 0, 1),
-	(254, 'wallpaper_single_104', '3', 5, 2, 0, NULL, 0, 1, 250, '104', 0, 1),
-	(255, 'wallpaper_single_105', '3', 6, 2, 0, NULL, 0, 1, 250, '105', 0, 1),
-	(256, 'wallpaper_single_106', '3', 7, 2, 0, NULL, 0, 1, 250, '106', 0, 1),
-	(257, 'wallpaper_single_107', '3', 8, 2, 0, NULL, 0, 1, 250, '107', 0, 1),
-	(258, 'wallpaper_single_108', '3', 9, 2, 0, NULL, 0, 1, 250, '108', 0, 1),
-	(259, 'wallpaper_single_109', '3', 10, 2, 0, NULL, 0, 1, 250, '109', 0, 1),
-	(260, 'wallpaper_single_110', '3', 11, 2, 0, NULL, 0, 1, 250, '110', 0, 1),
-	(261, 'wallpaper_single_111', '3', 12, 3, 0, NULL, 0, 1, 250, '111', 0, 1),
-	(262, 'wallpaper_single_112', '3', 13, 3, 0, NULL, 0, 1, 250, '112', 0, 1),
-	(263, 'wallpaper_single_113', '3', 14, 3, 0, NULL, 0, 1, 250, '113', 0, 1),
-	(264, 'wallpaper_single_114', '3', 15, 3, 0, NULL, 0, 1, 250, '114', 0, 1),
-	(265, 'wallpaper_single_115', '3', 16, 3, 0, NULL, 0, 1, 250, '115', 0, 1),
-	(266, 'wallpaper_single_201', '3', 17, 3, 0, NULL, 0, 1, 250, '201', 0, 1),
-	(267, 'wallpaper_single_202', '3', 18, 3, 0, NULL, 0, 1, 250, '202', 0, 1),
-	(268, 'wallpaper_single_203', '3', 19, 3, 0, NULL, 0, 1, 250, '203', 0, 1),
-	(269, 'wallpaper_single_204', '3', 20, 3, 0, NULL, 0, 1, 250, '204', 0, 1),
-	(270, 'wallpaper_single_205', '3', 21, 3, 0, NULL, 0, 1, 250, '205', 0, 1),
-	(271, 'wallpaper_single_206', '3', 22, 3, 0, NULL, 0, 1, 250, '206', 0, 1),
-	(272, 'wallpaper_single_207', '3', 23, 3, 0, NULL, 0, 1, 250, '207', 0, 1),
-	(273, 'wallpaper_single_208', '3', 24, 3, 0, NULL, 0, 1, 250, '208', 0, 1),
-	(274, 'wallpaper_single_209', '3', 25, 3, 0, NULL, 0, 1, 250, '209', 0, 1),
-	(275, 'wallpaper_single_210', '3', 26, 3, 0, NULL, 0, 1, 250, '210', 0, 1),
-	(276, 'wallpaper_single_211', '3', 27, 3, 0, NULL, 0, 1, 250, '211', 0, 1),
-	(277, 'wallpaper_single_212', '3', 28, 3, 0, NULL, 0, 1, 250, '212', 0, 1),
-	(278, 'wallpaper_single_213', '3', 29, 3, 0, NULL, 0, 1, 250, '213', 0, 1),
-	(279, 'wallpaper_single_214', '3', 30, 3, 0, NULL, 0, 1, 250, '214', 0, 1),
-	(280, 'wallpaper_single_215', '3', 31, 3, 0, NULL, 0, 1, 250, '215', 0, 1),
-	(281, 'wallpaper_single_216', '3', 32, 3, 0, NULL, 0, 1, 250, '216', 0, 1),
+	(251, 'wallpaper 3', '3', 3, 2, 0, NULL, 0, 1, 250, '', 0, 1),
+	(252, 'wallpaper 4', '3', 4, 2, 0, NULL, 0, 1, 250, '', 0, 1),
+	(253, 'wallpaper 5', '3', 5, 2, 0, NULL, 0, 1, 250, '', 0, 1),
+	(254, 'wallpaper 6', '3', 6, 2, 0, NULL, 0, 1, 250, '', 0, 1),
+	(255, 'wallpaper 7', '3', 7, 2, 0, NULL, 0, 1, 250, '', 0, 1),
+	(256, 'wallpaper 8', '3', 8, 2, 0, NULL, 0, 1, 250, '', 0, 1),
+	(257, 'wallpaper 9', '3', 9, 2, 0, NULL, 0, 1, 250, '', 0, 1),
+	(258, 'wallpaper 10', '3', 10, 2, 0, NULL, 0, 1, 250, '', 0, 1),
+	(259, 'wallpaper 11', '3', 11, 2, 0, NULL, 0, 1, 250, '', 0, 1),
+	(260, 'wallpaper 12', '3', 12, 2, 0, NULL, 0, 1, 250, '', 0, 1),
+	(261, 'wallpaper 14', '3', 14, 3, 0, NULL, 0, 1, 250, '', 0, 1),
+	(262, 'wallpaper 15', '3', 15, 3, 0, NULL, 0, 1, 250, '', 0, 1),
+	(263, 'wallpaper 16', '3', 16, 3, 0, NULL, 0, 1, 250, '', 0, 1),
+	(264, 'wallpaper 17', '3', 17, 3, 0, NULL, 0, 1, 250, '', 0, 1),
+	(265, 'wallpaper 18', '3', 18, 3, 0, NULL, 0, 1, 250, '', 0, 1),
+	(266, 'wallpaper 31', '3', 31, 3, 0, NULL, 0, 1, 250, '', 0, 1),
 	(282, 'poster_7', '24', 1, 3, 0, NULL, 0, 1, 251, '7', 0, 1),
 	(283, 'poster_18', '24', 2, 3, 0, NULL, 0, 1, 251, '18', 0, 1),
 	(284, 'poster_17', '24', 3, 3, 0, NULL, 0, 1, 251, '17', 0, 1),
@@ -1019,19 +816,18 @@ INSERT INTO `catalogue_items` (`id`, `sale_code`, `page_id`, `order_id`, `price_
 	(640, 'arabian_wndw', '46', 1, 4, 0, NULL, 0, 1, 758, '', 0, 1),
 	(641, 'arabian_wall', '46', 1, 3, 0, NULL, 0, 1, 759, '', 0, 1),
 	(642, 'arabian_tile', '46', 1, 3, 0, NULL, 0, 1, 760, '', 0, 1),
-	(643, 'landscape_single_1.1', '3', 1, 2, 0, NULL, 0, 1, 519, '1.1', 0, 1),
-	(644, 'landscape_single_1.10', '3', 1, 2, 0, NULL, 0, 1, 519, '1.10', 0, 1),
-	(645, 'landscape_single_1.11', '3', 1, 2, 0, NULL, 0, 1, 519, '1.11', 0, 1),
-	(646, 'landscape_single_1.2', '3', 1, 2, 0, NULL, 0, 1, 519, '1.2', 0, 1),
-	(647, 'landscape_single_1.3', '3', 1, 2, 0, NULL, 0, 1, 519, '1.3', 0, 1),
-	(648, 'landscape_single_1.4', '3', 1, 2, 0, NULL, 0, 1, 519, '1.4', 0, 1),
-	(649, 'landscape_single_1.5', '3', 1, 2, 0, NULL, 0, 1, 519, '1.5', 0, 1),
-	(650, 'landscape_single_1.6', '3', 1, 2, 0, NULL, 0, 1, 519, '1.6', 0, 1),
-	(651, 'landscape_single_1.7', '3', 1, 2, 0, NULL, 0, 1, 519, '1.7', 0, 1),
-	(652, 'landscape_single_1.8', '3', 1, 2, 0, NULL, 0, 1, 519, '1.8', 0, 1),
-	(653, 'landscape_single_1.9', '3', 1, 2, 0, NULL, 0, 1, 519, '1.9', 0, 1),
-	(654, 'landscape_single_2.1', '3', 1, 2, 0, NULL, 0, 1, 519, '2.1', 0, 1),
-	(655, 'landscape_single_2.3', '3', 1, 2, 0, NULL, 0, 1, 519, '2.3', 0, 1),
+	(643, 'landscape 1', '3', 32, 2, 0, NULL, 0, 1, 519, '', 0, 1),
+	(644, 'landscape 2', '3', 33, 2, 0, NULL, 0, 1, 519, '', 0, 1),
+	(645, 'landscape 3', '3', 34, 2, 0, NULL, 0, 1, 519, '', 0, 1),
+	(646, 'landscape 4', '3', 35, 2, 0, NULL, 0, 1, 519, '', 0, 1),
+	(647, 'landscape 5', '3', 36, 2, 0, NULL, 0, 1, 519, '', 0, 1),
+	(648, 'landscape 6', '3', 37, 2, 0, NULL, 0, 1, 519, '', 0, 1),
+	(649, 'landscape 7', '3', 38, 2, 0, NULL, 0, 1, 519, '', 0, 1),
+	(650, 'landscape 8', '3', 39, 2, 0, NULL, 0, 1, 519, '', 0, 1),
+	(651, 'landscape 9', '3', 40, 2, 0, NULL, 0, 1, 519, '', 0, 1),
+	(652, 'landscape 10', '3', 41, 2, 0, NULL, 0, 1, 519, '', 0, 1),
+	(653, 'landscape 11', '3', 42, 2, 0, NULL, 0, 1, 519, '', 0, 1),
+	(654, 'landscape 12', '3', 43, 2, 0, NULL, 0, 1, 519, '', 0, 1),
 	(658, 'noob_window_double', '53', 0, 3, 0, NULL, 1, 1, 761, '', 0, 1),
 	(659, 'window_70s_narrow', '53', 0, 3, 0, NULL, 0, 1, 762, '', 0, 1),
 	(660, 'window_70s_wide', '53', 0, 3, 0, NULL, 0, 1, 763, '', 0, 1),
@@ -2697,230 +2493,26 @@ INSERT INTO `catalogue_items` (`id`, `sale_code`, `page_id`, `order_id`, `price_
 	(2335, 'avatar_effect139', '60', 1, 0, 89, 'PEANUTS', 0, 1, 2379, '139', 0, 1),
 	(2336, 'avatar_effect140', '60', 1, 0, 89, 'PEANUTS', 0, 1, 2380, '140', 0, 1),
 	(2337, 'room_ad_plus_badge', '93', 0, 0, 30, 'PEANUTS', 0, 1, 2381, '', 0, 1),
-	(2338, 'wallpaper_single_217', '3', 32, 3, 0, NULL, 0, 1, 250, '217', 0, 1),
-	(2339, 'wallpaper_single_218', '3', 32, 3, 0, NULL, 0, 1, 250, '218', 0, 1),
-	(2340, 'wallpaper_single_301', '3', 32, 3, 0, NULL, 0, 1, 250, '301', 0, 1),
-	(2341, 'wallpaper_single_302', '3', 32, 3, 0, NULL, 0, 1, 250, '302', 0, 1),
-	(2342, 'wallpaper_single_303', '3', 32, 3, 0, NULL, 0, 1, 250, '303', 0, 1),
-	(2343, 'wallpaper_single_304', '3', 32, 3, 0, NULL, 0, 1, 250, '304', 0, 1),
-	(2344, 'wallpaper_single_305', '3', 32, 3, 0, NULL, 0, 1, 250, '305', 0, 1),
-	(2345, 'wallpaper_single_306', '3', 32, 3, 0, NULL, 0, 1, 250, '306', 0, 1),
-	(2346, 'wallpaper_single_307', '3', 32, 3, 0, NULL, 0, 1, 250, '307', 0, 1),
-	(2347, 'wallpaper_single_401', '3', 32, 3, 0, NULL, 0, 1, 250, '401', 0, 1),
-	(2348, 'wallpaper_single_402', '3', 32, 3, 0, NULL, 0, 1, 250, '402', 0, 1),
-	(2349, 'wallpaper_single_403', '3', 32, 3, 0, NULL, 0, 1, 250, '403', 0, 1),
-	(2350, 'wallpaper_single_404', '3', 32, 3, 0, NULL, 0, 1, 250, '404', 0, 1),
-	(2351, 'wallpaper_single_405', '3', 32, 3, 0, NULL, 0, 1, 250, '405', 0, 1),
-	(2352, 'wallpaper_single_406', '3', 32, 3, 0, NULL, 0, 1, 250, '406', 0, 1),
-	(2353, 'wallpaper_single_407', '3', 32, 3, 0, NULL, 0, 1, 250, '407', 0, 1),
-	(2354, 'wallpaper_single_408', '3', 32, 3, 0, NULL, 0, 1, 250, '408', 0, 1),
-	(2355, 'wallpaper_single_501', '3', 32, 3, 0, NULL, 0, 1, 250, '501', 0, 1),
-	(2356, 'wallpaper_single_502', '3', 32, 3, 0, NULL, 0, 1, 250, '502', 0, 1),
-	(2357, 'wallpaper_single_503', '3', 32, 3, 0, NULL, 0, 1, 250, '503', 0, 1),
-	(2358, 'wallpaper_single_504', '3', 32, 3, 0, NULL, 0, 1, 250, '504', 0, 1),
-	(2359, 'wallpaper_single_505', '3', 32, 3, 0, NULL, 0, 1, 250, '505', 0, 1),
-	(2360, 'wallpaper_single_506', '3', 32, 3, 0, NULL, 0, 1, 250, '506', 0, 1),
-	(2361, 'wallpaper_single_507', '3', 32, 3, 0, NULL, 0, 1, 250, '507', 0, 1),
-	(2362, 'wallpaper_single_508', '3', 32, 3, 0, NULL, 0, 1, 250, '508', 0, 1),
-	(2363, 'wallpaper_single_601', '3', 32, 3, 0, NULL, 0, 1, 250, '601', 0, 1),
-	(2364, 'wallpaper_single_602', '3', 32, 3, 0, NULL, 0, 1, 250, '602', 0, 1),
-	(2365, 'wallpaper_single_603', '3', 32, 3, 0, NULL, 0, 1, 250, '603', 0, 1),
-	(2366, 'wallpaper_single_604', '3', 32, 3, 0, NULL, 0, 1, 250, '604', 0, 1),
-	(2367, 'wallpaper_single_605', '3', 32, 3, 0, NULL, 0, 1, 250, '605', 0, 1),
-	(2368, 'wallpaper_single_606', '3', 32, 3, 0, NULL, 0, 1, 250, '606', 0, 1),
-	(2369, 'wallpaper_single_607', '3', 32, 3, 0, NULL, 0, 1, 250, '607', 0, 1),
-	(2370, 'wallpaper_single_608', '3', 32, 3, 0, NULL, 0, 1, 250, '608', 0, 1),
-	(2371, 'wallpaper_single_609', '3', 32, 3, 0, NULL, 0, 1, 250, '609', 0, 1),
-	(2372, 'wallpaper_single_610', '3', 32, 3, 0, NULL, 0, 1, 250, '610', 0, 1),
-	(2373, 'wallpaper_single_701', '3', 32, 3, 0, NULL, 0, 1, 250, '701', 0, 1),
-	(2374, 'wallpaper_single_702', '3', 32, 3, 0, NULL, 0, 1, 250, '702', 0, 1),
-	(2375, 'wallpaper_single_703', '3', 32, 3, 0, NULL, 0, 1, 250, '703', 0, 1),
-	(2376, 'wallpaper_single_704', '3', 32, 3, 0, NULL, 0, 1, 250, '704', 0, 1),
-	(2377, 'wallpaper_single_705', '3', 32, 3, 0, NULL, 0, 1, 250, '705', 0, 1),
-	(2378, 'wallpaper_single_706', '3', 32, 3, 0, NULL, 0, 1, 250, '706', 0, 1),
-	(2379, 'wallpaper_single_707', '3', 32, 3, 0, NULL, 0, 1, 250, '707', 0, 1),
-	(2380, 'wallpaper_single_708', '3', 32, 3, 0, NULL, 0, 1, 250, '708', 0, 1),
-	(2381, 'wallpaper_single_709', '3', 32, 3, 0, NULL, 0, 1, 250, '709', 0, 1),
-	(2382, 'wallpaper_single_710', '3', 32, 3, 0, NULL, 0, 1, 250, '710', 0, 1),
-	(2383, 'wallpaper_single_801', '3', 32, 3, 0, NULL, 0, 1, 250, '801', 0, 1),
-	(2384, 'wallpaper_single_802', '3', 32, 3, 0, NULL, 0, 1, 250, '802', 0, 1),
-	(2385, 'wallpaper_single_803', '3', 32, 3, 0, NULL, 0, 1, 250, '803', 0, 1),
-	(2386, 'wallpaper_single_804', '3', 32, 3, 0, NULL, 0, 1, 250, '804', 0, 1),
-	(2387, 'wallpaper_single_805', '3', 32, 3, 0, NULL, 0, 1, 250, '805', 0, 1),
-	(2388, 'wallpaper_single_806', '3', 32, 3, 0, NULL, 0, 1, 250, '806', 0, 1),
-	(2389, 'wallpaper_single_807', '3', 32, 3, 0, NULL, 0, 1, 250, '807', 0, 1),
-	(2390, 'wallpaper_single_808', '3', 32, 3, 0, NULL, 0, 1, 250, '808', 0, 1),
-	(2391, 'wallpaper_single_809', '3', 32, 3, 0, NULL, 0, 1, 250, '809', 0, 1),
-	(2392, 'wallpaper_single_810', '3', 32, 3, 0, NULL, 0, 1, 250, '810', 0, 1),
-	(2393, 'wallpaper_single_901', '3', 32, 3, 0, NULL, 0, 1, 250, '901', 0, 1),
-	(2394, 'wallpaper_single_902', '3', 32, 3, 0, NULL, 0, 1, 250, '902', 0, 1),
-	(2395, 'wallpaper_single_903', '3', 32, 3, 0, NULL, 0, 1, 250, '903', 0, 1),
-	(2396, 'wallpaper_single_904', '3', 32, 3, 0, NULL, 0, 1, 250, '904', 0, 1),
-	(2397, 'wallpaper_single_905', '3', 32, 3, 0, NULL, 0, 1, 250, '905', 0, 1),
-	(2398, 'wallpaper_single_906', '3', 32, 3, 0, NULL, 0, 1, 250, '906', 0, 1),
-	(2399, 'wallpaper_single_907', '3', 32, 3, 0, NULL, 0, 1, 250, '907', 0, 1),
-	(2400, 'wallpaper_single_908', '3', 32, 3, 0, NULL, 0, 1, 250, '908', 0, 1),
-	(2401, 'wallpaper_single_1001', '3', 32, 3, 0, NULL, 0, 1, 250, '1001', 0, 1),
-	(2402, 'wallpaper_single_1002', '3', 32, 3, 0, NULL, 0, 1, 250, '1002', 0, 1),
-	(2403, 'wallpaper_single_1003', '3', 32, 3, 0, NULL, 0, 1, 250, '1003', 0, 1),
-	(2404, 'wallpaper_single_1004', '3', 32, 3, 0, NULL, 0, 1, 250, '1004', 0, 1),
-	(2405, 'wallpaper_single_1005', '3', 32, 3, 0, NULL, 0, 1, 250, '1005', 0, 1),
-	(2406, 'wallpaper_single_1006', '3', 32, 3, 0, NULL, 0, 1, 250, '1006', 0, 1),
-	(2407, 'wallpaper_single_1007', '3', 32, 3, 0, NULL, 0, 1, 250, '1007', 0, 1),
-	(2408, 'wallpaper_single_1101', '3', 32, 3, 0, NULL, 0, 1, 250, '1101', 0, 1),
-	(2409, 'wallpaper_single_1201', '3', 32, 3, 0, NULL, 0, 1, 250, '1201', 0, 1),
-	(2410, 'wallpaper_single_1301', '3', 32, 3, 0, NULL, 0, 1, 250, '1301', 0, 1),
-	(2411, 'wallpaper_single_1401', '3', 32, 3, 0, NULL, 0, 1, 250, '1401', 0, 1),
-	(2412, 'wallpaper_single_1501', '3', 32, 3, 0, NULL, 0, 1, 250, '1501', 0, 1),
-	(2413, 'wallpaper_single_1601', '3', 32, 3, 0, NULL, 0, 1, 250, '1601', 0, 1),
-	(2414, 'wallpaper_single_1701', '3', 32, 3, 0, NULL, 0, 1, 250, '1701', 0, 1),
-	(2415, 'wallpaper_single_1801', '3', 32, 3, 0, NULL, 0, 1, 250, '1801', 0, 1),
-	(2416, 'wallpaper_single_1901', '3', 32, 3, 0, NULL, 0, 1, 250, '1901', 0, 1),
-	(2417, 'wallpaper_single_1902', '3', 32, 3, 0, NULL, 0, 1, 250, '1902', 0, 1),
-	(2418, 'wallpaper_single_2001', '3', 32, 3, 0, NULL, 0, 1, 250, '2001', 0, 1),
-	(2419, 'wallpaper_single_2002', '3', 32, 3, 0, NULL, 0, 1, 250, '2002', 0, 1),
-	(2420, 'wallpaper_single_2003', '3', 32, 3, 0, NULL, 0, 1, 250, '2003', 0, 1),
-	(2421, 'wallpaper_single_2101', '3', 32, 3, 0, NULL, 0, 1, 250, '2101', 0, 1),
-	(2422, 'wallpaper_single_2102', '3', 32, 3, 0, NULL, 0, 1, 250, '2102', 0, 1),
-	(2423, 'wallpaper_single_2103', '3', 32, 3, 0, NULL, 0, 1, 250, '2103', 0, 1),
-	(2424, 'wallpaper_single_2201', '3', 32, 3, 0, NULL, 0, 1, 250, '2201', 0, 1),
-	(2425, 'wallpaper_single_2202', '3', 32, 3, 0, NULL, 0, 1, 250, '2202', 0, 1),
-	(2426, 'wallpaper_single_2203', '3', 32, 3, 0, NULL, 0, 1, 250, '2203', 0, 1),
-	(2427, 'wallpaper_single_2204', '3', 32, 3, 0, NULL, 0, 1, 250, '2204', 0, 1),
-	(2428, 'wallpaper_single_2205', '3', 32, 3, 0, NULL, 0, 1, 250, '2205', 0, 1),
-	(2429, 'wallpaper_single_2206', '3', 32, 3, 0, NULL, 0, 1, 250, '2206', 0, 1),
-	(2430, 'wallpaper_single_2207', '3', 32, 3, 0, NULL, 1, 1, 250, '2207', 0, 1),
-	(2431, 'wallpaper_single_2301', '3', 32, 3, 0, NULL, 0, 1, 250, '2301', 0, 1),
-	(2432, 'wallpaper_single_2302', '3', 32, 3, 0, NULL, 0, 1, 250, '2302', 0, 1),
-	(2433, 'wallpaper_single_2303', '3', 32, 3, 0, NULL, 0, 1, 250, '2303', 0, 1),
-	(2434, 'wallpaper_single_2304', '3', 32, 3, 0, NULL, 0, 1, 250, '2304', 0, 1),
-	(2435, 'wallpaper_single_2401', '3', 32, 3, 0, NULL, 0, 1, 250, '2401', 0, 1),
-	(2436, 'wallpaper_single_2402', '3', 32, 3, 0, NULL, 0, 1, 250, '2402', 0, 1),
-	(2437, 'wallpaper_single_2403', '3', 32, 3, 0, NULL, 0, 1, 250, '2403', 0, 1),
-	(2438, 'wallpaper_single_2501', '3', 32, 3, 0, NULL, 0, 1, 250, '2501', 0, 1),
-	(2439, 'wallpaper_single_2502', '3', 32, 3, 0, NULL, 0, 1, 250, '2502', 0, 1),
-	(2440, 'wallpaper_single_2503', '3', 32, 3, 0, NULL, 0, 1, 250, '2503', 0, 1),
-	(2441, 'wallpaper_single_2504', '3', 32, 3, 0, NULL, 0, 1, 250, '2504', 0, 1),
-	(2442, 'wallpaper_single_2601', '3', 32, 3, 0, NULL, 0, 1, 250, '2601', 0, 1),
-	(2443, 'wallpaper_single_2602', '3', 32, 3, 0, NULL, 0, 1, 250, '2602', 0, 1),
-	(2444, 'wallpaper_single_2603', '3', 32, 3, 0, NULL, 0, 1, 250, '2603', 0, 1),
-	(2445, 'wallpaper_single_2604', '3', 32, 3, 0, NULL, 0, 1, 250, '2604', 0, 1),
-	(2446, 'wallpaper_single_2701', '3', 32, 3, 0, NULL, 0, 1, 250, '2701', 0, 1),
-	(2447, 'wallpaper_single_2702', '3', 32, 3, 0, NULL, 0, 1, 250, '2702', 0, 1),
-	(2448, 'wallpaper_single_2703', '3', 32, 3, 0, NULL, 0, 1, 250, '2703', 0, 1),
-	(2449, 'wallpaper_single_2704', '3', 32, 3, 0, NULL, 0, 1, 250, '2704', 0, 1),
-	(2450, 'wallpaper_single_2801', '3', 32, 3, 0, NULL, 0, 1, 250, '2801', 0, 1),
-	(2451, 'wallpaper_single_2802', '3', 32, 3, 0, NULL, 0, 1, 250, '2802', 0, 1),
-	(2452, 'wallpaper_single_2803', '3', 32, 3, 0, NULL, 0, 1, 250, '2803', 0, 1),
-	(2453, 'wallpaper_single_2804', '3', 32, 3, 0, NULL, 0, 1, 250, '2804', 0, 1),
-	(2454, 'wallpaper_single_2901', '3', 32, 3, 0, NULL, 0, 1, 250, '2901', 0, 1),
-	(2455, 'wallpaper_single_2902', '3', 32, 3, 0, NULL, 0, 1, 250, '2902', 0, 1),
-	(2456, 'wallpaper_single_2903', '3', 32, 3, 0, NULL, 0, 1, 250, '2903', 0, 1),
-	(2457, 'wallpaper_single_2904', '3', 32, 3, 0, NULL, 0, 1, 250, '2904', 0, 1),
-	(2458, 'wallpaper_single_3001', '3', 32, 3, 0, NULL, 0, 1, 250, '3001', 0, 1),
-	(2459, 'wallpaper_single_3002', '3', 32, 3, 0, NULL, 0, 1, 250, '3002', 0, 1),
-	(2460, 'wallpaper_single_3003', '3', 32, 3, 0, NULL, 0, 1, 250, '3003', 0, 1),
-	(2461, 'wallpaper_single_3004', '3', 32, 3, 0, NULL, 0, 1, 250, '3004', 0, 1),
-	(2462, 'wallpaper_single_3101', '3', 32, 3, 0, NULL, 0, 1, 250, '3101', 0, 1),
-	(2463, 'wallpaper_single_3102', '3', 32, 3, 0, NULL, 0, 1, 250, '3102', 0, 1),
-	(2464, 'wallpaper_single_3103', '3', 32, 3, 0, NULL, 0, 1, 250, '3103', 0, 1),
-	(2465, 'wallpaper_single_3104', '3', 32, 3, 0, NULL, 0, 1, 250, '3104', 0, 1),
-	(2466, 'wallpaper_single_3105', '3', 32, 3, 0, NULL, 0, 1, 250, '3105', 0, 1),
-	(2467, 'wallpaper_single_3106', '3', 32, 3, 0, NULL, 0, 1, 250, '3106', 0, 1),
-	(2468, 'landscape_single_7.7', '3', 1, 2, 0, NULL, 0, 1, 519, '7.7', 0, 1),
-	(2469, 'landscape_single_7.6', '3', 1, 2, 0, NULL, 0, 1, 519, '7.6', 0, 1),
-	(2470, 'landscape_single_7.5', '3', 1, 2, 0, NULL, 0, 1, 519, '7.5', 0, 1),
-	(2471, 'landscape_single_7.4', '3', 1, 2, 0, NULL, 0, 1, 519, '7.4', 0, 1),
-	(2472, 'landscape_single_7.3', '3', 1, 2, 0, NULL, 0, 1, 519, '7.3', 0, 1),
-	(2473, 'landscape_single_7.12', '3', 1, 2, 0, NULL, 0, 1, 519, '7.12', 0, 1),
-	(2474, 'landscape_single_7.1', '3', 1, 2, 0, NULL, 0, 1, 519, '7.1', 0, 1),
-	(2475, 'landscape_single_6.7', '3', 1, 2, 0, NULL, 0, 1, 519, '6.7', 0, 1),
-	(2476, 'landscape_single_6.6', '3', 1, 2, 0, NULL, 0, 1, 519, '6.6', 0, 1),
-	(2477, 'landscape_single_6.5', '3', 1, 2, 0, NULL, 0, 1, 519, '6.5', 0, 1),
-	(2478, 'landscape_single_6.4', '3', 1, 2, 0, NULL, 0, 1, 519, '6.4', 0, 1),
-	(2479, 'landscape_single_6.3', '3', 1, 2, 0, NULL, 0, 1, 519, '6.3', 0, 1),
-	(2480, 'landscape_single_6.1', '3', 1, 2, 0, NULL, 0, 1, 519, '6.1', 0, 1),
-	(2481, 'landscape_single_5.7', '3', 1, 2, 0, NULL, 0, 1, 519, '5.7', 0, 1),
-	(2482, 'landscape_single_5.6', '3', 1, 2, 0, NULL, 0, 1, 519, '5.6', 0, 1),
-	(2483, 'landscape_single_5.5', '3', 1, 2, 0, NULL, 0, 1, 519, '5.5', 0, 1),
-	(2484, 'landscape_single_5.4', '3', 1, 2, 0, NULL, 0, 1, 519, '5.4', 0, 1),
-	(2485, 'landscape_single_5.3', '3', 1, 2, 0, NULL, 0, 1, 519, '5.3', 0, 1),
-	(2486, 'landscape_single_5.1', '3', 1, 2, 0, NULL, 0, 1, 519, '5.1', 0, 1),
-	(2487, 'landscape_single_4.7', '3', 1, 2, 0, NULL, 0, 1, 519, '4.7', 0, 1),
-	(2488, 'landscape_single_4.6', '3', 1, 2, 0, NULL, 0, 1, 519, '4.6', 0, 1),
-	(2489, 'landscape_single_4.5', '3', 1, 2, 0, NULL, 0, 1, 519, '4.5', 0, 1),
-	(2490, 'landscape_single_4.4', '3', 1, 2, 0, NULL, 0, 1, 519, '4.4', 0, 1),
-	(2491, 'landscape_single_4.3', '3', 1, 2, 0, NULL, 0, 1, 519, '4.3', 0, 1),
-	(2492, 'landscape_single_4.1', '3', 1, 2, 0, NULL, 0, 1, 519, '4.1', 0, 1),
-	(2493, 'landscape_single_3.7', '3', 1, 2, 0, NULL, 0, 1, 519, '3.7', 0, 1),
-	(2494, 'landscape_single_3.6', '3', 1, 2, 0, NULL, 0, 1, 519, '3.6', 0, 1),
-	(2495, 'landscape_single_3.5', '3', 1, 2, 0, NULL, 0, 1, 519, '3.5', 0, 1),
-	(2496, 'landscape_single_3.4', '3', 1, 2, 0, NULL, 0, 1, 519, '3.4', 0, 1),
-	(2497, 'landscape_single_3.3', '3', 1, 2, 0, NULL, 0, 1, 519, '3.3', 0, 1),
-	(2498, 'landscape_single_3.1', '3', 1, 2, 0, NULL, 0, 1, 519, '3.1', 0, 1),
-	(2499, 'landscape_single_2.7', '3', 1, 2, 0, NULL, 0, 1, 519, '2.7', 0, 1),
-	(2500, 'landscape_single_2.6', '3', 1, 2, 0, NULL, 0, 1, 519, '2.6', 0, 1),
-	(2501, 'landscape_single_2.5', '3', 1, 2, 0, NULL, 0, 1, 519, '2.5', 0, 1),
-	(2502, 'landscape_single_2.4', '3', 1, 2, 0, NULL, 0, 1, 519, '2.4', 0, 1),
-	(2503, 'floor', '3', 1, 2, 0, NULL, 0, 1, 249, '102', 0, 1),
-	(2504, 'floor', '3', 1, 2, 0, NULL, 0, 1, 249, '102', 0, 1),
-	(2505, 'floor', '3', 1, 2, 0, NULL, 0, 1, 249, '104', 0, 1),
-	(2506, 'floor', '3', 1, 2, 0, NULL, 0, 1, 249, '105', 0, 1),
-	(2507, 'floor', '3', 1, 2, 0, NULL, 0, 1, 249, '106', 0, 1),
-	(2508, 'floor', '3', 1, 2, 0, NULL, 0, 1, 249, '107', 0, 1),
-	(2509, 'floor', '3', 1, 2, 0, NULL, 0, 1, 249, '108', 0, 1),
-	(2510, 'floor', '3', 1, 2, 0, NULL, 0, 1, 249, '109', 0, 1),
-	(2511, 'floor', '3', 1, 2, 0, NULL, 0, 1, 249, '110', 0, 1),
-	(2512, 'floor', '3', 1, 2, 0, NULL, 0, 1, 249, '111', 0, 1),
-	(2513, 'floor', '3', 1, 2, 0, NULL, 0, 1, 249, '201', 0, 1),
-	(2514, 'floor', '3', 1, 2, 0, NULL, 0, 1, 249, '201', 0, 1),
-	(2515, 'floor', '3', 1, 2, 0, NULL, 0, 1, 249, '202', 0, 1),
-	(2516, 'floor', '3', 1, 2, 0, NULL, 0, 1, 249, '202', 0, 1),
-	(2517, 'floor', '3', 1, 2, 0, NULL, 0, 1, 249, '202', 0, 1),
-	(2518, 'floor', '3', 1, 2, 0, NULL, 0, 1, 249, '202', 0, 1),
-	(2519, 'floor', '3', 1, 2, 0, NULL, 0, 1, 249, '204', 0, 1),
-	(2520, 'floor', '3', 1, 2, 0, NULL, 0, 1, 249, '204', 0, 1),
-	(2521, 'floor', '3', 1, 2, 0, NULL, 0, 1, 249, '205', 0, 1),
-	(2522, 'floor', '3', 1, 2, 0, NULL, 0, 1, 249, '205', 0, 1),
-	(2523, 'floor', '3', 1, 2, 0, NULL, 0, 1, 249, '206', 0, 1),
-	(2524, 'floor', '3', 1, 2, 0, NULL, 0, 1, 249, '206', 0, 1),
-	(2525, 'floor', '3', 1, 2, 0, NULL, 0, 1, 249, '207', 0, 1),
-	(2526, 'floor', '3', 1, 2, 0, NULL, 0, 1, 249, '207', 0, 1),
-	(2527, 'floor', '3', 1, 2, 0, NULL, 0, 1, 249, '208', 0, 1),
-	(2528, 'floor', '3', 1, 2, 0, NULL, 0, 1, 249, '209', 0, 1),
-	(2529, 'floor', '3', 1, 2, 0, NULL, 0, 1, 249, '210', 0, 1),
-	(2530, 'floor', '3', 1, 2, 0, NULL, 0, 1, 249, '211', 0, 1),
-	(2531, 'floor', '3', 1, 2, 0, NULL, 0, 1, 249, '401', 0, 1),
-	(2532, 'floor', '3', 1, 2, 0, NULL, 0, 1, 249, '402', 0, 1),
-	(2533, 'floor', '3', 1, 2, 0, NULL, 0, 1, 249, '402', 0, 1),
-	(2534, 'floor', '3', 1, 2, 0, NULL, 0, 1, 249, '404', 0, 1),
-	(2535, 'floor', '3', 1, 2, 0, NULL, 0, 1, 249, '405', 0, 1),
-	(2536, 'floor', '3', 1, 2, 0, NULL, 0, 1, 249, '406', 0, 1),
-	(2537, 'floor', '3', 1, 2, 0, NULL, 0, 1, 249, '407', 0, 1),
-	(2538, 'floor', '3', 1, 2, 0, NULL, 0, 1, 249, '408', 0, 1),
-	(2539, 'floor', '3', 1, 2, 0, NULL, 0, 1, 249, '409', 0, 1),
-	(2540, 'floor', '3', 1, 2, 0, NULL, 0, 1, 249, '410', 0, 1),
-	(2541, 'floor', '3', 1, 2, 0, NULL, 0, 1, 249, '501', 0, 1),
-	(2542, 'floor', '3', 1, 2, 0, NULL, 0, 1, 249, '502', 0, 1),
-	(2543, 'floor', '3', 1, 2, 0, NULL, 0, 1, 249, '502', 0, 1),
-	(2544, 'floor', '3', 1, 2, 0, NULL, 0, 1, 249, '504', 0, 1),
-	(2545, 'floor', '3', 1, 2, 0, NULL, 0, 1, 249, '505', 0, 1),
-	(2546, 'floor', '3', 1, 2, 0, NULL, 0, 1, 249, '506', 0, 1),
-	(2547, 'floor', '3', 1, 2, 0, NULL, 0, 1, 249, '507', 0, 1),
-	(2548, 'floor', '3', 1, 2, 0, NULL, 0, 1, 249, '601', 0, 1),
-	(2549, 'floor', '3', 1, 2, 0, NULL, 0, 1, 249, '602', 0, 1),
-	(2550, 'floor', '3', 1, 2, 0, NULL, 0, 1, 249, '602', 0, 1),
-	(2551, 'floor', '3', 1, 2, 0, NULL, 0, 1, 249, '604', 0, 1),
-	(2552, 'floor', '3', 1, 2, 0, NULL, 0, 1, 249, '605', 0, 1),
-	(2553, 'floor', '3', 1, 2, 0, NULL, 0, 1, 249, '606', 0, 1),
-	(2554, 'floor', '3', 1, 2, 0, NULL, 0, 1, 249, '607', 0, 1),
-	(2555, 'floor', '3', 1, 2, 0, NULL, 0, 1, 249, '608', 0, 1),
-	(2556, 'floor', '3', 1, 2, 0, NULL, 0, 1, 249, '609', 0, 1),
-	(2557, 'floor', '3', 1, 2, 0, NULL, 0, 1, 249, '610', 0, 1),
+	(2406, 'wallpaper 1', '3', 1, 3, 0, NULL, 0, 1, 250, '', 0, 1),
+	(2407, 'wallpaper 2', '3', 2, 3, 0, NULL, 0, 1, 250, '', 0, 1),
+	(2408, 'wallpaper 13', '3', 13, 3, 0, NULL, 0, 1, 250, '', 0, 1),
+	(2409, 'wallpaper 19', '3', 19, 3, 0, NULL, 0, 1, 250, '', 0, 1),
+	(2410, 'wallpaper 20', '3', 20, 3, 0, NULL, 0, 1, 250, '', 0, 1),
+	(2411, 'wallpaper 21', '3', 21, 3, 0, NULL, 0, 1, 250, '', 0, 1),
+	(2412, 'wallpaper 22', '3', 22, 3, 0, NULL, 0, 1, 250, '', 0, 1),
+	(2413, 'wallpaper 23', '3', 23, 3, 0, NULL, 0, 1, 250, '', 0, 1),
+	(2414, 'wallpaper 24', '3', 24, 3, 0, NULL, 0, 1, 250, '', 0, 1),
+	(2415, 'wallpaper 25', '3', 25, 3, 0, NULL, 0, 1, 250, '', 0, 1),
+	(2416, 'wallpaper 26', '3', 26, 3, 0, NULL, 0, 1, 250, '', 0, 1),
+	(2417, 'wallpaper 27', '3', 27, 3, 0, NULL, 0, 1, 250, '', 0, 1),
+	(2418, 'wallpaper 28', '3', 28, 3, 0, NULL, 0, 1, 250, '', 0, 1),
+	(2419, 'wallpaper 29', '3', 29, 3, 0, NULL, 0, 1, 250, '', 0, 1),
+	(2420, 'wallpaper 30', '3', 30, 3, 0, NULL, 0, 1, 250, '', 0, 1),
 	(2558, 'boutique_mannequin1', '19', 1, 2, 0, NULL, 0, 1, 2383, '', 0, 1),
 	(2559, 'note_tag', '19', 1, 2, 0, NULL, 0, 1, 2382, '0', 0, 1),
 	(2560, 'gld_sofa1', '141', 0, 3, 0, NULL, 0, 1, 2384, '', 0, 0),
-	(2561, 'gld_gate', '141', 0, 3, 0, NULL, 0, 1, 2385, '', 0, 0);
+	(2561, 'gld_gate', '141', 0, 3, 0, NULL, 0, 1, 2385, '', 0, 0),
+	(2562, 'a2 t', '3', 0, 2, 0, NULL, 0, 1, 249, '', 0, 1);
 
 -- Dumping structure for table helios.catalogue_packages
 CREATE TABLE IF NOT EXISTS `catalogue_packages` (
@@ -2993,7 +2585,7 @@ DELETE FROM `catalogue_pages`;
 INSERT INTO `catalogue_pages` (`id`, `parent_id`, `order_id`, `min_rank`, `is_navigatable`, `is_enabled`, `is_club_only`, `caption`, `page_link`, `icon_image`, `icon_colour`, `layout`, `images`, `texts`) VALUES
 	(1, -1, 0, 1, 1, 1, 0, 'Frontpage', 'frontpage', 1, 0, 'frontpage3', '["catalog_frontpage_headline2_en","topstory_ecotron_03"]', '["Helios Development","Enjoy the catalogue for the Helios server","","How do I get Credits easily?","1. Always ask permission from the bill payer first.\\r\\n2. Send HABBO in a UK SMS to 78881. You\'\'ll get an SMS back with a voucher code and will be charged ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â£3 plus your standard UK SMS rate, normally 10p.\\r\\n3. Enter the code below to redeem 35 Credits. For Habbo Credit options or to redeem a Wallie Voucher Card, simply click \\"Get Credits >>\\" below.","Redeem a Habbo Voucher code here:","","#FAF8CC","#FAF8CC","Click here for more information..."]'),
 	(2, -1, 1000, 1, 0, 1, 0, 'Classic Furni', 'classic_furni', 2, 2, '', '[]', '[]'),
-	(3, 2, 1001, 1, 1, 1, 0, 'Spaces', 'spaces', 55, 1, 'spaces_new', '["catalog_spaces_headline1"]', '["Floors, wallpapers, landscapes - get a groovy combination to your room. Use our virtual room preview below to test out the combinations before you buy. Select the design and color you like and click Buy."]'),
+	(3, 2, 1001, 1, 1, 1, 0, 'Spaces', 'spaces', 55, 1, 'spaces', '["catalog_spaces_headline1","",""]', '["Floors, wallpapers, landscapes - get a groovy combination to your room. Use our virtual room preview below to test out the combinations before you buy. Select the design and color you like and click Buy.",""]'),
 	(4, -1, 8000, 1, 1, 1, 0, 'Exchange', 'exchange', 6, 3, 'default_3x3', '["catalog_bank_headline1","catalog_bank_teaser","catalog_special_txtbg1"]', '["The Habbo Exchange is where you can convert your Habbo Credits into a tradable currency. You can use this tradable currency to exchange Habbo Credits for Furni!","Click on the item you want for more information","Gold! Glorious Gold!"]'),
 	(5, 2, 1019, 1, 1, 1, 0, 'Rollers', 'rollers', 96, 0, 'default_3x3', '["catalog_roller_headline1","","catalog_special_txtbg1"]', '["Move your imagination, while you move your Habbo!  Perfect for mazes, games, for keeping your queue moving or making your pet go round in circles for hours.  Available in multi-packs - the more you buy the cheaper the Roller! Pink Rollers out now!","Click on a Roller to see more information!","You can fit 30 Rollers in a user flat!"]'),
 	(6, 2, 1004, 1, 1, 1, 0, 'Teleporters', 'teleporters', 58, 0, 'default_3x3', '["catalog_doors_headline1","catalog_teleports_teaser2_en","catalog_special_txtbg1"]', '["Beam your user from one room to another with one of our cunningly disguised, space age teleports. Now you can link any two rooms together! Teleports are sold in pairs, so if you trade for them, check you\'re getting a linked pair.","Click on the item you want for more information","New Door Teleport!"]'),
@@ -3039,16 +2631,16 @@ INSERT INTO `catalogue_pages` (`id`, `parent_id`, `order_id`, `min_rank`, `is_na
 	(53, 2, 1002, 1, 1, 1, 0, 'Windows', 'windows', 63, 0, 'default_3x3', '["ctlg_windows_headline1_en","ctlg_windows_teaser1_en","catalog_special_txtbg2"]', '["Let some sunshine in! Our windows come in many styles to give a unique look to your room. Who said your room can\'t have a view?","Click on the item you want for more information","Ooh, new view!"]'),
 	(54, -1, 9000, 1, 0, 1, 0, 'Pets Shop', 'pets_shop', 8, 2, '', '[]', '[]'),
 	(55, 54, 0, 1, 1, 1, 0, 'Pets Info', 'pets_info', 42, 0, 'pets2', '["catalog_pet_headline1","ctlg_pet_note"]', '["Pets are inhabitants of Habbo Hotel too, so each pet owner needs to know a bit about them. Look after your pet by looking through our key points below.","A few things you should know:","- You can only put it down in one of your rooms.\\r\\n- There can be 3 pets in each room.\\r\\n- The basket is your pet\'s home. If you pick it up, the pet will go back in your hand.\\r\\n- Every time you visit this page, you will go back to a different selection of pets.\\r\\n- Your pet will sleep more when it gets old\\r\\n- You cannot trade your pet"]'),
-	(56, -1, 4000, 1, 0, 1, 0, 'Duckets Shop', 'duckets_shop', 178, 8, '', '[]', '[]'),
+	(56, -1, 4000, 1, 0, 1, 0, 'Pixel Shop', 'pixel_shop', 44, 5, '', '[]', '[]'),
 	(57, 56, 0, 1, 1, 1, 0, 'Hello Furni', 'hello_furni', 35, 0, 'pixelrent', '["catalog_hello_header1_en","catalog_hello_teaser1_en"]', '["Hello Furni is available with Pixels and is perfect if you are decorating your room for the very first time. The Furni is yours to keep and therefore cannot be traded.","Click on the item you want for more information"," "]'),
 	(58, -1, 7000, 1, 0, 1, 0, 'Ecotron', 'ecotron', 7, 3, '', '[]', '[]'),
-	(59, 138, 0, 1, 1, 1, 0, 'Country', 'country', 21, 0, 'default_3x3_larger', '["catalog_country_header1_en","catalog_country_teaser1_en","catalog_special_txtbg2"]', '["Let\'s leave the busy city streets and head over to the wide abyss of golden wheat, emerald fields and home grown, organic vegetables. Everything you need to create a farm!","Click on the item you want for more information","Who\'d be a crow, eh?"]'),
+	(59, 138, 0, 1, 1, 1, 0, 'Country', 'country', 21, 0, 'default_3x3', '["catalog_country_header1_en","catalog_country_teaser1_en","catalog_special_txtbg2"]', '["Let\'s leave the busy city streets and head over to the wide abyss of golden wheat, emerald fields and home grown, organic vegetables. Everything you need to create a farm!","Click on the item you want for more information","Who\'d be a crow, eh?"]'),
 	(60, 56, 0, 1, 1, 1, 0, 'Special Effects', 'special_effects', 61, 0, 'pixeleffects', '["catalog_pixeleffects_headline1_en","catalog_pxl_teaser1_en"]', '["Tune your character with cool effects that fit the occasion. Do you want to fly away with the red carpet or be in the spotlight? Now is your chance!\\r\\n\\r\\nThe effects can be activated in your badge dialog under effects tab.",""," "]'),
 	(61, 56, 0, 1, 1, 1, 0, 'Automobile', 'automobile', 16, 0, 'cars', '["catalog_automobile_header1_en","catalog_automobile_teaser1_en"]', '["Every Habbo needs a car effect! Not only do they bring a bit of the outside inside, they also enhance the air quality! And what better gift for a friend than a beautiful traffic sign or elegant pile of tires...","Click on the item you want for more information."," "]'),
 	(62, -1, 16000, 6, 0, 1, 0, 'Admin Shop', 'admin_shop', 1, 6, '', '[]', '[]'),
-	(63, -1, 5000, 1, 1, 1, 0, 'HC Club', 'hc_club', 172, 0, 'vip_buy', '["catalog_header_hc","hc_catalog_teaser"]', '[]'),
+	(63, -1, 5000, 1, 1, 1, 0, 'HC Club', 'hc_club', 172, 0, 'club_buy', '["hc2_clubtitle"]', '[]'),
 	(64, 63, 5001, 1, 1, 1, 1, 'Club Specials', 'club_specials', 172, 0, 'default_3x3', '["catalog_club_headline1","catalog_hc_teaser","catalog_special_txtbg1"]', '["NEW Habbo Club Furni range. Allow these elegant delights to make your room sophisticated and humble. They look great placed with your monthly gifts!","Click on the item you want for more information","For Habbo Club members only!"]'),
-	(65, 63, 5000, 1, 1, 1, 1, 'Club Gifts', 'club_gifts', 172, 0, 'club_gifts', '["catalog_header_hc","hc_catalog_teaser"]', '[]'),
+	(65, 63, 5000, 1, 1, 1, 1, 'Club Gifts', 'club_gifts', 172, 0, 'club_gifts', '["hc2_clubtitle"]', '["Check out the HC and VIP gifts. When in HC, choose from a selection of HC gifts. When in VIP you get to choose your gift from the limited VIP edition."]'),
 	(66, 138, 0, 1, 1, 1, 0, 'Glass', 'glass', 29, 0, 'default_3x3', '["catalog_glass_headline1","catalog_glass_teaser1"]', '["You can really open up a space with this stylish glass furniture, just don\'t walk into it!","Click on the item you want for more information",""]'),
 	(67, 137, 2006, 1, 1, 1, 0, 'Greek', 'greek', 31, 0, 'default_3x3', '["catalog_greek_header1","catalog_greek_teaser1"]', '["Be transported back to ancient Greece with a couple of thousand pounds and British Airways. Until then, build your own panthenon with our realist Greek range!","Click on the item you want for more information",""]'),
 	(68, 138, 0, 1, 1, 1, 0, 'Romantique', 'romantique', 50, 0, 'default_3x3', '["catalog_romantique_headline1","catalog_romantique_teaser1"]', '["The Romantique range features Grand Pianos, old antique lamps and tables. It is the ideal range for setting a warm and loving mood in your room. Spruce up your room and invite that special someone over. Now featuring the extra special COLOUR edition.","Click on the item you want for more information",""]'),
@@ -3120,9 +2712,7 @@ INSERT INTO `catalogue_pages` (`id`, `parent_id`, `order_id`, `min_rank`, `is_na
 	(135, 63, 5002, 1, 1, 1, 1, 'VIP Shop', 'vip_shop', 137, 0, 'default_3x3', '["ctlg_buy_vip_header","vippremium2",""]', '["NEW VIP Furni range. Allow these elegant delights to make your room sophisticated and humble. They look great placed with your monthly gifts!","Click on the item you want for more information",""]'),
 	(136, 138, 0, 1, 1, 1, 0, 'Easter', 'easter', 25, 3, 'default_3x3', '["catalog_easter_headline1","catalog_easter_teaser1","catalog_special_txtbg2"]', '["\'Egg\'cellent furni - Bouncing bunnies, fluffy chicks, choccy eggs... Yep, it\'s Easter!\\rCelebrate with something \'eggs\'tra special from our Easter range. But hurry - it\'s not here for long this year!","Click on the item you want for more information","\'Egg\'-Tastic!"]'),
 	(137, -1, 2000, 1, 0, 1, 0, 'Furni By Line', 'furni_by_line', 121, 2, '', '[]', '[]'),
-	(138, -1, 3000, 1, 0, 1, 0, 'Furni By Theme', 'furni_by_theme', 64, 2, '', '[]', '[]'),
-	(140, -1, 900, 1, 1, 1, 0, 'Habbo Groups', 'habbo_groups', 61, 0, 'guild_frontpage', '["catalog_groups_en","catalog_groupsteaser_en"]', '["Habbo Groups are a great way to stay in touch with your friends and share your interests with others. Each Group has a homeroom that can be decorated by other Group members, members can also purchase exclusive Group Furni that can be customised with your Group colours!", " * Get together with people you get together with!\\n * Co-op room decorating for group members\\n * Show off your group badge!\\n * Get some neat Furni in your group\'s colors", "What\'s so great about habbo retros"]'),
-	(141, 140, 1, 1, 1, 1, 0, 'Group Furni', 'group_furni', 28, 0, 'guild_custom_furni', '["catalog_groups_en"]', '["Show off your Group spirit with the new customisable Furni. Select your Group and then get your furni in your Groups colours.", "Select a Furni or Group"]');
+	(138, -1, 3000, 1, 0, 1, 0, 'Furni By Theme', 'furni_by_theme', 64, 2, '', '[]', '[]');
 
 -- Dumping structure for table helios.catalogue_subscriptions
 CREATE TABLE IF NOT EXISTS `catalogue_subscriptions` (
@@ -3309,24 +2899,19 @@ INSERT INTO `effects` (`effect_id`, `duration`, `is_costume`) VALUES
 -- Dumping structure for event helios.event_club_gifts
 DELIMITER //
 CREATE EVENT `event_club_gifts` ON SCHEDULE EVERY 1 MINUTE STARTS '2020-05-03 19:17:59' ON COMPLETION NOT PRESERVE ENABLE DO BEGIN
-	SET @gift_interval = (SELECT `value` FROM `server_settings` WHERE `setting` = 'club.gift.interval');
-	SET @gift_interval_type = (SELECT `value` FROM `server_settings` WHERE `setting` = 'club.gift.interval.type');
-	
-	IF (@gift_interval_type = 'MONTH') THEN
-		UPDATE user_subscriptions 
-		SET 
-			gifts_redeemable = gifts_redeemable + 1,
-			gift_at = DATE_ADD(CURRENT_TIMESTAMP(), INTERVAL @gift_interval MONTH)
-		WHERE CURRENT_TIMESTAMP() > gift_at;
-	END IF;
-	
-	IF (@gift_interval_type = 'DAY') THEN
-		UPDATE user_subscriptions 
-		SET 
-			gifts_redeemable = gifts_redeemable + 1,
-			gift_at = DATE_ADD(CURRENT_TIMESTAMP(), INTERVAL @gift_interval DAY)
-		WHERE CURRENT_TIMESTAMP() > gift_at;
-	END IF;
+	UPDATE avatar_subscriptions 
+	SET 
+	    gifts_redeemable = gifts_redeemable + 1,
+	    gift_at = CASE
+	        WHEN (SELECT `value` FROM `server_settings` WHERE `setting` = 'club.gift.interval.type') = 'MONTH'
+	            THEN DATE_ADD(CURRENT_TIMESTAMP(), INTERVAL 
+	                (SELECT `value` FROM `server_settings` WHERE `setting` = 'club.gift.interval') MONTH)
+	        WHEN (SELECT `value` FROM `server_settings` WHERE `setting` = 'club.gift.interval.type') = 'DAY'
+	            THEN DATE_ADD(CURRENT_TIMESTAMP(), INTERVAL 
+	                (SELECT `value` FROM `server_settings` WHERE `setting` = 'club.gift.interval') DAY)
+	        ELSE gift_at
+	    END
+	WHERE CURRENT_TIMESTAMP() > gift_at;
 END//
 DELIMITER ;
 
@@ -3888,9 +3473,9 @@ CREATE TABLE IF NOT EXISTS `item` (
   `room_id` int(11) DEFAULT NULL,
   `group_id` int(11) DEFAULT NULL,
   `definition_id` int(11) NOT NULL,
-  `x` varchar(255) NOT NULL DEFAULT '0',
-  `y` varchar(255) NOT NULL DEFAULT '0',
-  `z` varchar(255) NOT NULL DEFAULT '0',
+  `x` int(11) NOT NULL DEFAULT 0,
+  `y` int(11) NOT NULL DEFAULT 0,
+  `z` double NOT NULL DEFAULT 0,
   `wall_position` varchar(255) NOT NULL DEFAULT '',
   `rotation` int(11) NOT NULL DEFAULT 0,
   `custom_data` longtext NOT NULL DEFAULT '',
@@ -3902,10 +3487,11 @@ CREATE TABLE IF NOT EXISTS `item` (
   KEY `user_id` (`avatar_id`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Dumping data for table helios.item: ~1 rows (approximately)
+-- Dumping data for table helios.item: ~2 rows (approximately)
 DELETE FROM `item`;
 INSERT INTO `item` (`id`, `order_id`, `avatar_id`, `room_id`, `group_id`, `definition_id`, `x`, `y`, `z`, `wall_position`, `rotation`, `custom_data`, `expire_time`, `created_at`, `updated_at`) VALUES
-	('7ff326f1-4ed8-43f5-83ff-40806711d6d1', 0, 1, 63, 1, 2385, '4', '8', '1', '', 2, '{"State":"1","Badge":"b0121s07777s089115s089113s031131","Colour1":"005cac","Colour2":"3c91bc"}', -1, '2024-10-08 18:41:34', '2024-10-28 19:35:39');
+	('5ee9374b-eb32-4f29-a0f0-2fff29cc5e23', 0, 1, NULL, NULL, 249, 0, 0, 0, '', 0, '101', -1, '2025-04-13 17:48:21', '2025-04-13 17:48:21'),
+	('ab59fcc2-3443-496c-ac87-40742013177b', 0, 1, NULL, NULL, 250, 0, 0, 0, '', 0, '101', -1, '2025-04-13 17:48:25', '2025-04-13 17:48:25');
 
 -- Dumping structure for table helios.item_definitions
 CREATE TABLE IF NOT EXISTS `item_definitions` (
@@ -4182,8 +3768,8 @@ INSERT INTO `item_definitions` (`id`, `sprite`, `name`, `description`, `sprite_i
 	(246, 'hc_wall_lamp', '1', '-1', 4003, 0, 0, 0, 2, 'requires_rights_for_interaction,wall_item', 'default', 1, 1, 1, 1, '', -1, ''),
 	(247, 'industrialfan', '0', '-1', 4004, 0, 0, 0, 2, 'requires_rights_for_interaction,wall_item', 'default', 1, 1, 1, 1, '', -1, ''),
 	(248, 'torch', '0', '-1', 4005, 0, 0, 0, 2, 'requires_rights_for_interaction,wall_item', 'default', 1, 1, 1, 1, '', -1, ''),
-	(249, 'floor', '1', '-1', 3002, 0, 0, 0, 2, 'requires_rights_for_interaction,wall_item', 'decoration', 0, 0, 1, 0, '', -1, ''),
-	(250, 'wallpaper', '1', '-1', 3001, 0, 0, 0, 0, 'requires_rights_for_interaction,wall_item', 'decoration', 0, 0, 1, 0, '', -1, ''),
+	(249, 'floor', '1', '-1', 3002, 0, 0, 0, 2, 'requires_rights_for_interaction,wall_item', 'decoration', 0, 0, 0, 0, '', -1, ''),
+	(250, 'wallpaper', '1', '-1', 3001, 0, 0, 0, 0, 'requires_rights_for_interaction,wall_item', 'decoration', 0, 0, 0, 0, '', -1, ''),
 	(251, 'poster', '1', '-1', 4001, 0, 0, 0, 0, 'requires_rights_for_interaction,wall_item', 'default', 1, 1, 1, 1, '', -1, ''),
 	(252, 'table_norja_med', 'Beige Coffee Table', 'For larger gatherings.', 20, 2, 2, 1, 2, 'is_stackable,requires_rights_for_interaction,solid', 'default', 1, 1, 1, 1, '', -1, '0,2,4,6'),
 	(253, 'doormat_plain*4', 'Doormat', 'Available in a variety of colors', 90, 1, 1, 0.2, 2, 'is_stackable,is_walkable,requires_rights_for_interaction', 'default', 1, 1, 1, 1, '', -1, '0,2,4,6'),
@@ -4407,7 +3993,7 @@ INSERT INTO `item_definitions` (`id`, `sprite`, `name`, `description`, `sprite_i
 	(516, 'table_plasto_round*9', 'Round Dining Table', 'Hip plastic furniture', 117, 2, 2, 1, 2, 'is_stackable,requires_rights_for_interaction,solid', 'default', 1, 1, 1, 1, '', -1, '0,2,4,6'),
 	(517, 'table_plasto_square*9', 'Occasional Table', 'Hip plastic furniture', 118, 1, 1, 1, 2, 'is_stackable,requires_rights_for_interaction,solid', 'default', 1, 1, 1, 1, '', -1, '0,2,4,6'),
 	(518, 'chair_plasto*3', 'Chair', 'Hip plastic furniture', 81, 1, 1, 1, 1, '', 'chair', 1, 1, 1, 1, '', -1, '0,2,4,6'),
-	(519, 'landscape', '1', '-1', 4055, 1, 1, 0, 0, 'requires_rights_for_interaction,wall_item', 'decoration', 0, 0, 1, 0, '', -1, ''),
+	(519, 'landscape', '1', '-1', 4055, 1, 1, 0, 0, 'requires_rights_for_interaction,wall_item', 'decoration', 0, 0, 0, 0, '', -1, ''),
 	(520, 'chair_plasty*1', 'Plastic Pod Chair', 'Hip plastic furniture', 121, 1, 1, 1, 1, '', 'chair', 1, 1, 1, 1, '', -1, '0,2,4,6'),
 	(523, 'chair_plasty*2', 'Plastic Pod Chair', 'Hip plastic furniture', 124, 1, 1, 1, 1, '', 'chair', 1, 1, 1, 1, '', -1, '0,2,4,6'),
 	(524, 'chair_plasty*3', 'Plastic Pod Chair', 'Hip plastic furniture', 125, 1, 1, 1, 1, '', 'chair', 1, 1, 1, 1, '', -1, '0,2,4,6'),
@@ -6149,7 +5735,7 @@ CREATE TABLE IF NOT EXISTS `navigator_official_rooms` (
   PRIMARY KEY (`banner_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=64 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Dumping data for table helios.navigator_official_rooms: ~41 rows (approximately)
+-- Dumping data for table helios.navigator_official_rooms: ~40 rows (approximately)
 DELETE FROM `navigator_official_rooms`;
 INSERT INTO `navigator_official_rooms` (`banner_id`, `parent_id`, `order_id`, `banner_type`, `room_id`, `image_type`, `label`, `description`, `description_entry`, `image_url`, `thumbnail_layout`) VALUES
 	(1, 0, 2, 'CATEGORY', 0, 'EXTERNAL', 'Classic Rooms', 'Strut your funky stuff', 0, '', 0),
@@ -6259,7 +5845,6 @@ CREATE TABLE IF NOT EXISTS `room` (
   `visitors_max` int(11) NOT NULL DEFAULT 25,
   `status` enum('OPEN','CLOSED','PASSWORD') NOT NULL DEFAULT 'OPEN',
   `password` text NOT NULL DEFAULT '',
-  `model` varchar(30) NOT NULL DEFAULT '',
   `model_id` int(11) DEFAULT 0,
   `ccts` text NOT NULL DEFAULT '',
   `wallpaper` varchar(50) NOT NULL DEFAULT '0',
@@ -6273,7 +5858,7 @@ CREATE TABLE IF NOT EXISTS `room` (
   `wall_thickness` int(11) NOT NULL DEFAULT 0,
   `floor_thickness` int(11) NOT NULL DEFAULT 0,
   `is_owner_hidden` tinyint(1) NOT NULL DEFAULT 0,
-  `trade_setting` int(11) NOT NULL DEFAULT 0,
+  `trade_setting` tinyint(4) NOT NULL DEFAULT 0,
   `is_muted` tinyint(1) NOT NULL DEFAULT 0,
   `who_can_mute` enum('NONE','USERS_WITH_RIGHTS') NOT NULL DEFAULT 'USERS_WITH_RIGHTS',
   `who_can_kick` enum('NONE','USERS_WITH_RIGHTS','ALL_USERS') NOT NULL DEFAULT 'USERS_WITH_RIGHTS',
@@ -6281,71 +5866,71 @@ CREATE TABLE IF NOT EXISTS `room` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=64 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Dumping data for table helios.room: ~64 rows (approximately)
+-- Dumping data for table helios.room: ~62 rows (approximately)
 DELETE FROM `room`;
-INSERT INTO `room` (`id`, `owner_id`, `name`, `description`, `category_id`, `group_id`, `visitors_now`, `visitors_max`, `status`, `password`, `model`, `model_id`, `ccts`, `wallpaper`, `floor`, `landscape`, `rating`, `allow_pets`, `allow_pets_eat`, `allow_walkthrough`, `hidewall`, `wall_thickness`, `floor_thickness`, `is_owner_hidden`, `trade_setting`, `is_muted`, `who_can_mute`, `who_can_kick`, `who_can_ban`) VALUES
-	(1, 0, 'Welcome Lounge', 'welcome_lounge', 3, NULL, 0, 40, 'OPEN', '', 'newbie_lobby', 19, 'hh_room_nlobby', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(2, 0, 'Theatredome', 'theatredrome', 5, NULL, 0, 100, 'OPEN', '', 'theater', 20, 'hh_room_theater', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(3, 0, 'Library', 'library', 5, NULL, 0, 30, 'OPEN', '', 'library', 21, 'hh_room_library', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(4, 0, 'TV Studio', 'tv_studio', 5, NULL, 0, 20, 'OPEN', '', 'tv_studio', 65, 'hh_room_tv_studio_general', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(5, 0, 'Cinema', 'habbo_cinema', 5, NULL, 0, 50, 'OPEN', '', 'cinema_a', 53, 'hh_room_cinema', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(6, 0, 'Power Gym', 'sport', 5, NULL, 0, 35, 'OPEN', '', 'sport', 54, 'hh_room_sport', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(7, 0, 'Olympic Stadium', 'ballroom', 5, NULL, 0, 50, 'OPEN', '', 'ballroom', 31, 'hh_room_ballroom', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(8, 0, 'Habbo Kitchen', 'hotel_kitchen', 6, NULL, 0, 20, 'OPEN', '', 'cr_kitchen', 66, 'hh_room_kitchen', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(9, 0, 'The Dirty Duck Pub', 'the_dirty_duck_pub', 6, NULL, 0, 40, 'OPEN', '', 'pub_a', 25, 'hh_room_pub', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(10, 0, 'Cafe Ole', 'cafe_ole', 6, NULL, 0, 35, 'OPEN', '', 'cafe_ole', 33, 'hh_room_cafe', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(11, 0, 'Eric\'s Eaterie', 'eric\'s_eaterie', 6, NULL, 0, 35, 'OPEN', '', 'cr_cafe', 48, 'hh_room_erics', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(12, 0, 'Space Cafe', 'space_cafe', 6, NULL, 0, 35, 'OPEN', '', 'space_cafe', 39, 'hh_room_space_cafe', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(13, 0, 'Rooftop Terrace', 'rooftop', 7, NULL, 0, 30, 'OPEN', '', 'rooftop', 44, 'hh_room_rooftop', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(14, 0, 'Rooftop Cafe', 'rooftop', 7, NULL, 0, 20, 'OPEN', '', 'rooftop_2', 45, 'hh_room_rooftop', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(15, 0, 'Palazzo Pizza', 'pizza', 6, NULL, 0, 40, 'OPEN', '', 'pizza', 62, 'hh_room_pizza', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(16, 0, 'Habburgers', 'habburger\'s', 6, NULL, 0, 40, 'OPEN', '', 'habburger', 61, 'hh_room_habburger', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(17, 0, 'Grandfathers Lounge', 'dusty_lounge', 8, NULL, 0, 45, 'OPEN', '', 'dusty_lounge', 42, 'hh_room_dustylounge', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(18, 0, 'Oriental Tearoom', 'tearoom', 7, NULL, 0, 40, 'OPEN', '', 'tearoom', 46, 'hh_room_tearoom', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(19, 0, 'Oldskool Lounge', 'old_skool', 7, NULL, 0, 45, 'OPEN', '', 'old_skool0', 55, 'hh_room_old_skool', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(20, 0, 'Oldskool Dancefloor', 'old_skool', 7, NULL, 0, 45, 'OPEN', '', 'old_skool1', 56, 'hh_room_old_skool', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(21, 0, 'The Chromide Club', 'the_chromide_club', 7, NULL, 0, 45, 'OPEN', '', 'malja_bar_a', 57, 'hh_room_disco', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(22, 0, 'The Chromide Club II', 'the_chromide_club', 7, NULL, 0, 50, 'OPEN', '', 'malja_bar_b', 58, 'hh_room_disco', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(23, 0, 'Club Massiva', 'club_massiva', 7, NULL, 0, 45, 'OPEN', '', 'bar_a', 59, 'hh_room_bar', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(24, 0, 'Club Massiva II', 'club_massiva2', 7, NULL, 0, 70, 'OPEN', '', 'bar_b', 60, 'hh_room_bar', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(25, 0, 'Sunset Cafe', 'sunset_cafe', 6, NULL, 0, 35, 'OPEN', '', 'sunset_cafe', 23, 'hh_room_sunsetcafe', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(26, 0, 'Safety Spa', 'cafe_gold', 7, NULL, 0, 50, 'OPEN', '', 'cafe_gold0', 32, 'hh_room_gold', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(27, 0, 'Zen Garden', 'chill', 9, NULL, 0, 30, 'OPEN', '', 'chill', 41, 'hh_room_chill', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(28, 0, 'Club Mammoth', 'club_mammoth', 8, NULL, 0, 45, 'OPEN', '', 'club_mammoth', 67, 'hh_room_clubmammoth', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(29, 0, 'Floating Garden', 'floatinggarden', 9, NULL, 0, 80, 'OPEN', '', 'floatinggarden', 22, 'hh_room_floatinggarden', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(30, 0, 'Picnic Fields', 'picnic', 9, NULL, 0, 55, 'OPEN', '', 'picnic', 27, 'hh_room_picnic', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(31, 0, 'Sun Terrace', 'sun_terrace', 9, NULL, 0, 50, 'OPEN', '', 'sun_terrace', 38, 'hh_room_sun_terrace', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(32, 0, 'Peaceful Park', 'gate_park', 9, NULL, 0, 50, 'OPEN', '', 'gate_park', 36, 'hh_room_gate_park', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(33, 0, 'Peaceful Park - B', 'gate_park', 9, NULL, 0, 50, 'OPEN', '', 'gate_park_2', 37, 'hh_room_gate_park', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(34, 0, 'The Park', 'park', 3, NULL, 0, 45, 'OPEN', '', 'park_a', 28, 'hh_room_park,hh_room_park_general', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(35, 0, 'The Infobus', 'park', 3, NULL, 0, 20, 'OPEN', '', 'park_b', 29, 'hh_room_park,hh_people_pool', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(36, 0, 'Habbo Lido', 'habbo_lido', 3, NULL, 0, 60, 'OPEN', '', 'pool_a', 24, 'hh_room_pool,hh_people_pool', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(37, 0, 'Lido B', 'habbo_lido_ii', 3, NULL, 0, 60, 'OPEN', '', 'pool_b', 30, 'hh_room_pool,hh_people_pool', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(39, 0, 'Main Lobby', 'main_lobby', 11, NULL, 0, 100, 'OPEN', '', 'lobby_a', 49, 'hh_room_lobby', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(40, 0, 'Basement Lobby', 'basement_lobby', 11, NULL, 0, 50, 'OPEN', '', 'floorlobby_a', 52, 'hh_room_floorlobbies', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(41, 0, 'Median Lobby', 'median_lobby', 11, NULL, 0, 50, 'OPEN', '', 'floorlobby_b', 51, 'hh_room_floorlobbies', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(42, 0, 'Skylight Lobby', 'skylight_lobby', 11, NULL, 0, 50, 'OPEN', '', 'floorlobby_c', 50, 'hh_room_floorlobbies', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(43, 0, 'Ice Cafe', 'ice_cafe', 6, NULL, 0, 25, 'OPEN', '', 'ice_cafe', 33, 'hh_room_icecafe', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(44, 0, 'Net Cafe', 'netcafe', 6, NULL, 0, 25, 'OPEN', '', 'netcafe', 69, 'hh_room_netcafe', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(45, 0, 'Beauty Salon', 'beauty_salon_loreal', 5, NULL, 0, 25, 'OPEN', '', 'beauty_salon0', 40, 'hh_room_beauty_salon_general', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(46, 0, 'The Den', 'the_den', 5, NULL, 0, 100, 'OPEN', '', 'cr_staff', 43, 'hh_room_den', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(47, 0, 'Lower Hallways', 'hallway', 12, NULL, 0, 25, 'OPEN', '', 'hallway2', 72, 'hh_room_hallway', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 1, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(48, 0, 'Lower Hallways I', 'hallway', 12, NULL, 0, 25, 'OPEN', '', 'hallway0', 70, 'hh_room_hallway', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 1, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(49, 0, 'Lower Hallways II', 'hallway', 12, NULL, 0, 25, 'OPEN', '', 'hallway1', 73, 'hh_room_hallway', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 1, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(50, 0, 'Lower Hallways III', 'hallway', 12, NULL, 0, 25, 'OPEN', '', 'hallway3', 74, 'hh_room_hallway', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 1, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(51, 0, 'Lower Hallways IV', 'hallway', 12, NULL, 0, 25, 'OPEN', '', 'hallway5', 76, 'hh_room_hallway', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 1, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(52, 0, 'Lower Hallways V', 'hallway', 12, NULL, 0, 25, 'OPEN', '', 'hallway4', 75, 'hh_room_hallway', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 1, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(53, 0, 'Upper Hallways', 'hallway_ii', 12, NULL, 0, 25, 'OPEN', '', 'hallway9', 71, 'hh_room_hallway', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 1, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(54, 0, 'Upper Hallways I', 'hallway_ii', 12, NULL, 0, 25, 'OPEN', '', 'hallway8', 77, 'hh_room_hallway', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 1, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(55, 0, 'Upper Hallways II', 'hallway_ii', 12, NULL, 0, 25, 'OPEN', '', 'hallway7', 78, 'hh_room_hallway', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 1, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(56, 0, 'Upper Hallways III', 'hallway_ii', 12, NULL, 0, 25, 'OPEN', '', 'hallway6', 79, 'hh_room_hallway', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 1, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(57, 0, 'Upper Hallways IV', 'hallway_ii', 12, NULL, 0, 25, 'OPEN', '', 'hallway10', 80, 'hh_room_hallway', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 1, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(58, 0, 'Upper Hallways V', 'hallway_ii', 12, NULL, 0, 25, 'OPEN', '', 'hallway11', 81, 'hh_room_hallway', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 1, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(59, 0, 'Star Lounge', 'star_lounge', 7, NULL, 0, 35, 'OPEN', '', 'star_lounge', 82, 'hh_room_starlounge', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 1, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(60, 0, 'Club Orient', 'orient', 8, NULL, 0, 35, 'OPEN', '', 'orient', 83, 'hh_room_orient', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 1, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(61, 0, 'Imperial Palace', 'emperors', 5, NULL, 0, 30, 'OPEN', '', 'emperors', 90, 'hh_room_emperors', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(62, 0, 'Beauty Salon II', 'beauty_salon_loreal', 5, NULL, 0, 25, 'OPEN', '', 'beauty_salon1', 91, 'hh_room_beauty_salon_general', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(63, 1, 'test', '', 14, 1, 0, 25, 'OPEN', '', '', 7, '', '0', '0', '0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS');
+INSERT INTO `room` (`id`, `owner_id`, `name`, `description`, `category_id`, `group_id`, `visitors_now`, `visitors_max`, `status`, `password`, `model_id`, `ccts`, `wallpaper`, `floor`, `landscape`, `rating`, `allow_pets`, `allow_pets_eat`, `allow_walkthrough`, `hidewall`, `wall_thickness`, `floor_thickness`, `is_owner_hidden`, `trade_setting`, `is_muted`, `who_can_mute`, `who_can_kick`, `who_can_ban`) VALUES
+	(1, 0, 'Welcome Lounge', 'welcome_lounge', 3, NULL, 0, 40, 'OPEN', '', 19, 'hh_room_nlobby', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
+	(2, 0, 'Theatredome', 'theatredrome', 5, NULL, 0, 100, 'OPEN', '', 20, 'hh_room_theater', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
+	(3, 0, 'Library', 'library', 5, NULL, 0, 30, 'OPEN', '', 21, 'hh_room_library', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
+	(4, 0, 'TV Studio', 'tv_studio', 5, NULL, 0, 20, 'OPEN', '', 65, 'hh_room_tv_studio_general', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
+	(5, 0, 'Cinema', 'habbo_cinema', 5, NULL, 0, 50, 'OPEN', '', 53, 'hh_room_cinema', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
+	(6, 0, 'Power Gym', 'sport', 5, NULL, 0, 35, 'OPEN', '', 54, 'hh_room_sport', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
+	(7, 0, 'Olympic Stadium', 'ballroom', 5, NULL, 0, 50, 'OPEN', '', 31, 'hh_room_ballroom', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
+	(8, 0, 'Habbo Kitchen', 'hotel_kitchen', 6, NULL, 0, 20, 'OPEN', '', 66, 'hh_room_kitchen', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
+	(9, 0, 'The Dirty Duck Pub', 'the_dirty_duck_pub', 6, NULL, 0, 40, 'OPEN', '', 25, 'hh_room_pub', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
+	(10, 0, 'Cafe Ole', 'cafe_ole', 6, NULL, 0, 35, 'OPEN', '', 33, 'hh_room_cafe', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
+	(11, 0, 'Eric\'s Eaterie', 'eric\'s_eaterie', 6, NULL, 0, 35, 'OPEN', '', 48, 'hh_room_erics', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
+	(12, 0, 'Space Cafe', 'space_cafe', 6, NULL, 0, 35, 'OPEN', '', 39, 'hh_room_space_cafe', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
+	(13, 0, 'Rooftop Terrace', 'rooftop', 7, NULL, 0, 30, 'OPEN', '', 44, 'hh_room_rooftop', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
+	(14, 0, 'Rooftop Cafe', 'rooftop', 7, NULL, 0, 20, 'OPEN', '', 45, 'hh_room_rooftop', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
+	(15, 0, 'Palazzo Pizza', 'pizza', 6, NULL, 0, 40, 'OPEN', '', 62, 'hh_room_pizza', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
+	(16, 0, 'Habburgers', 'habburger\'s', 6, NULL, 0, 40, 'OPEN', '', 61, 'hh_room_habburger', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
+	(17, 0, 'Grandfathers Lounge', 'dusty_lounge', 8, NULL, 0, 45, 'OPEN', '', 42, 'hh_room_dustylounge', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
+	(18, 0, 'Oriental Tearoom', 'tearoom', 7, NULL, 0, 40, 'OPEN', '', 46, 'hh_room_tearoom', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
+	(19, 0, 'Oldskool Lounge', 'old_skool', 7, NULL, 0, 45, 'OPEN', '', 55, 'hh_room_old_skool', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
+	(20, 0, 'Oldskool Dancefloor', 'old_skool', 7, NULL, 0, 45, 'OPEN', '', 56, 'hh_room_old_skool', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
+	(21, 0, 'The Chromide Club', 'the_chromide_club', 7, NULL, 0, 45, 'OPEN', '', 57, 'hh_room_disco', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
+	(22, 0, 'The Chromide Club II', 'the_chromide_club', 7, NULL, 0, 50, 'OPEN', '', 58, 'hh_room_disco', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
+	(23, 0, 'Club Massiva', 'club_massiva', 7, NULL, 0, 45, 'OPEN', '', 59, 'hh_room_bar', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
+	(24, 0, 'Club Massiva II', 'club_massiva2', 7, NULL, 0, 70, 'OPEN', '', 60, 'hh_room_bar', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
+	(25, 0, 'Sunset Cafe', 'sunset_cafe', 6, NULL, 0, 35, 'OPEN', '', 23, 'hh_room_sunsetcafe', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
+	(26, 0, 'Safety Spa', 'cafe_gold', 7, NULL, 0, 50, 'OPEN', '', 32, 'hh_room_gold', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
+	(27, 0, 'Zen Garden', 'chill', 9, NULL, 0, 30, 'OPEN', '', 41, 'hh_room_chill', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
+	(28, 0, 'Club Mammoth', 'club_mammoth', 8, NULL, 0, 45, 'OPEN', '', 67, 'hh_room_clubmammoth', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
+	(29, 0, 'Floating Garden', 'floatinggarden', 9, NULL, 0, 80, 'OPEN', '', 22, 'hh_room_floatinggarden', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
+	(30, 0, 'Picnic Fields', 'picnic', 9, NULL, 0, 55, 'OPEN', '', 27, 'hh_room_picnic', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
+	(31, 0, 'Sun Terrace', 'sun_terrace', 9, NULL, 0, 50, 'OPEN', '', 38, 'hh_room_sun_terrace', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
+	(32, 0, 'Peaceful Park', 'gate_park', 9, NULL, 0, 50, 'OPEN', '', 36, 'hh_room_gate_park', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
+	(33, 0, 'Peaceful Park - B', 'gate_park', 9, NULL, 0, 50, 'OPEN', '', 37, 'hh_room_gate_park', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
+	(34, 0, 'The Park', 'park', 3, NULL, 0, 45, 'OPEN', '', 28, 'hh_room_park,hh_room_park_general', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
+	(35, 0, 'The Infobus', 'park', 3, NULL, 0, 20, 'OPEN', '', 29, 'hh_room_park,hh_people_pool', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
+	(36, 0, 'Habbo Lido', 'habbo_lido', 3, NULL, 0, 60, 'OPEN', '', 24, 'hh_room_pool,hh_people_pool', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
+	(37, 0, 'Lido B', 'habbo_lido_ii', 3, NULL, 0, 60, 'OPEN', '', 30, 'hh_room_pool,hh_people_pool', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
+	(39, 0, 'Main Lobby', 'main_lobby', 11, NULL, 0, 100, 'OPEN', '', 49, 'hh_room_lobby', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
+	(40, 0, 'Basement Lobby', 'basement_lobby', 11, NULL, 0, 50, 'OPEN', '', 52, 'hh_room_floorlobbies', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
+	(41, 0, 'Median Lobby', 'median_lobby', 11, NULL, 0, 50, 'OPEN', '', 51, 'hh_room_floorlobbies', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
+	(42, 0, 'Skylight Lobby', 'skylight_lobby', 11, NULL, 0, 50, 'OPEN', '', 50, 'hh_room_floorlobbies', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
+	(43, 0, 'Ice Cafe', 'ice_cafe', 6, NULL, 0, 25, 'OPEN', '', 33, 'hh_room_icecafe', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
+	(44, 0, 'Net Cafe', 'netcafe', 6, NULL, 0, 25, 'OPEN', '', 69, 'hh_room_netcafe', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
+	(45, 0, 'Beauty Salon', 'beauty_salon_loreal', 5, NULL, 0, 25, 'OPEN', '', 40, 'hh_room_beauty_salon_general', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
+	(46, 0, 'The Den', 'the_den', 5, NULL, 0, 100, 'OPEN', '', 43, 'hh_room_den', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
+	(47, 0, 'Lower Hallways', 'hallway', 12, NULL, 0, 25, 'OPEN', '', 72, 'hh_room_hallway', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 1, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
+	(48, 0, 'Lower Hallways I', 'hallway', 12, NULL, 0, 25, 'OPEN', '', 70, 'hh_room_hallway', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 1, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
+	(49, 0, 'Lower Hallways II', 'hallway', 12, NULL, 0, 25, 'OPEN', '', 73, 'hh_room_hallway', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 1, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
+	(50, 0, 'Lower Hallways III', 'hallway', 12, NULL, 0, 25, 'OPEN', '', 74, 'hh_room_hallway', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 1, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
+	(51, 0, 'Lower Hallways IV', 'hallway', 12, NULL, 0, 25, 'OPEN', '', 76, 'hh_room_hallway', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 1, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
+	(52, 0, 'Lower Hallways V', 'hallway', 12, NULL, 0, 25, 'OPEN', '', 75, 'hh_room_hallway', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 1, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
+	(53, 0, 'Upper Hallways', 'hallway_ii', 12, NULL, 0, 25, 'OPEN', '', 71, 'hh_room_hallway', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 1, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
+	(54, 0, 'Upper Hallways I', 'hallway_ii', 12, NULL, 0, 25, 'OPEN', '', 77, 'hh_room_hallway', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 1, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
+	(55, 0, 'Upper Hallways II', 'hallway_ii', 12, NULL, 0, 25, 'OPEN', '', 78, 'hh_room_hallway', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 1, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
+	(56, 0, 'Upper Hallways III', 'hallway_ii', 12, NULL, 0, 25, 'OPEN', '', 79, 'hh_room_hallway', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 1, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
+	(57, 0, 'Upper Hallways IV', 'hallway_ii', 12, NULL, 0, 25, 'OPEN', '', 80, 'hh_room_hallway', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 1, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
+	(58, 0, 'Upper Hallways V', 'hallway_ii', 12, NULL, 0, 25, 'OPEN', '', 81, 'hh_room_hallway', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 1, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
+	(59, 0, 'Star Lounge', 'star_lounge', 7, NULL, 0, 35, 'OPEN', '', 82, 'hh_room_starlounge', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 1, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
+	(60, 0, 'Club Orient', 'orient', 8, NULL, 0, 35, 'OPEN', '', 83, 'hh_room_orient', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 1, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
+	(61, 0, 'Imperial Palace', 'emperors', 5, NULL, 0, 30, 'OPEN', '', 90, 'hh_room_emperors', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
+	(62, 0, 'Beauty Salon II', 'beauty_salon_loreal', 5, NULL, 0, 25, 'OPEN', '', 91, 'hh_room_beauty_salon_general', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
+	(63, 1, 'test', '', 14, 1, 0, 25, 'OPEN', '', 1, '', '0', '0', '0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS');
 
 -- Dumping structure for table helios.room_category
 CREATE TABLE IF NOT EXISTS `room_category` (
@@ -6356,24 +5941,23 @@ CREATE TABLE IF NOT EXISTS `room_category` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Dumping data for table helios.room_category: ~15 rows (approximately)
+-- Dumping data for table helios.room_category: ~14 rows (approximately)
 DELETE FROM `room_category`;
 INSERT INTO `room_category` (`id`, `caption`, `enabled`, `min_rank`) VALUES
 	(1, 'Staff Rooms', 1, 4),
 	(2, 'Competition Category', 1, 1),
-	(3, 'unused competition category', 1, 1),
-	(4, 'Themed & RPG Rooms', 1, 1),
-	(5, 'Restaurant, Bar & Night Club Rooms', 1, 1),
-	(6, 'Club & Group Rooms', 1, 1),
-	(7, 'Chat, Chill & Discussion Rooms', 1, 1),
-	(8, 'Maze & Theme Park Rooms', 1, 1),
-	(9, 'Trading & Shopping Rooms', 1, 1),
-	(10, 'Gaming & Race Rooms', 1, 1),
-	(11, 'Hair Salons & Modelling Rooms', 1, 1),
-	(12, 'Help Centre, Guide & Service Rooms', 1, 1),
-	(13, 'School, Daycare & Adoption Rooms', 1, 1),
-	(14, 'All Other Rooms', 1, 1),
-	(15, 'No Category', 1, 1);
+	(3, 'Themed & RPG Rooms', 1, 1),
+	(4, 'Restaurant, Bar & Night Club Rooms', 1, 1),
+	(5, 'Club & Group Rooms', 1, 1),
+	(6, 'Chat, Chill & Discussion Rooms', 1, 1),
+	(7, 'Maze & Theme Park Rooms', 1, 1),
+	(8, 'Trading & Shopping Rooms', 1, 1),
+	(9, 'Gaming & Race Rooms', 1, 1),
+	(10, 'Hair Salons & Modelling Rooms', 1, 1),
+	(11, 'Help Centre, Guide & Service Rooms', 1, 1),
+	(12, 'School, Daycare & Adoption Rooms', 1, 1),
+	(13, 'All Other Rooms', 1, 1),
+	(14, 'No Category', 1, 1);
 
 -- Dumping structure for table helios.room_models
 CREATE TABLE IF NOT EXISTS `room_models` (
@@ -6514,7 +6098,7 @@ INSERT INTO `server_settings` (`setting`, `value`) VALUES
 	('max.rooms.allowed.subscribed', '200'),
 	('timer.speech.bubble', '15'),
 	('site.name', 'Habbo'),
-	('site.static.content.url', 'https://localhost/');
+	('site.static.content.url', 'https://sandbox.h4bbo.net/');
 
 -- Dumping structure for table helios.site_articles
 CREATE TABLE IF NOT EXISTS `site_articles` (
@@ -6592,9 +6176,9 @@ CREATE TABLE IF NOT EXISTS `tags` (
 -- Dumping data for table helios.tags: ~3 rows (approximately)
 DELETE FROM `tags`;
 INSERT INTO `tags` (`avatar_id`, `room_id`, `group_id`, `text`) VALUES
-	(63, 63, 0, '123'),
-	(63, 63, 0, 'test'),
-	(67, 67, 0, '657');
+	(0, 63, 0, '123'),
+	(0, 63, 0, 'test'),
+	(0, 63, 0, 'xddd');
 
 -- Dumping structure for table helios.user
 CREATE TABLE IF NOT EXISTS `user` (
@@ -6608,33 +6192,11 @@ CREATE TABLE IF NOT EXISTS `user` (
   UNIQUE KEY `id` (`id`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC;
 
--- Dumping data for table helios.user: ~0 rows (approximately)
+-- Dumping data for table helios.user: ~2 rows (approximately)
 DELETE FROM `user`;
 INSERT INTO `user` (`id`, `email`, `password`, `birthday`, `direct_mail`, `join_date`, `last_online`) VALUES
-	(1, 'alexaccount@gmail.com', '123', '7.8.1992', 0, '2024-09-02 19:43:48', '2024-10-08 14:18:16'),
+	(1, 'alexaccount@gmail.com', '123', '7.8.1992', 0, '2024-09-02 19:43:48', '2025-04-13 18:38:39'),
 	(2, 'were@cc.com', 'xX!elgps123', '5.3.1998', 0, '2024-11-17 20:27:50', '2024-11-17 20:27:50');
-
--- Dumping structure for table helios.user_effects
-CREATE TABLE IF NOT EXISTS `user_effects` (
-  `user_id` int(11) NOT NULL,
-  `effect_id` int(11) NOT NULL,
-  `expires_at` datetime DEFAULT NULL,
-  `quantity` int(11) NOT NULL DEFAULT 1,
-  `is_activated` tinyint(1) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- Dumping data for table helios.user_effects: ~0 rows (approximately)
-DELETE FROM `user_effects`;
-
--- Dumping structure for table helios.user_seasonal_currencies
-CREATE TABLE IF NOT EXISTS `user_seasonal_currencies` (
-  `user_id` int(11) NOT NULL,
-  `seasonal_type` enum('PUMPKINS','PEANUTS','STARS','CLOUDS','DIAMONDS','LOYALTY_POINTS','DEFAULT') NOT NULL,
-  `balance` int(11) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- Dumping data for table helios.user_seasonal_currencies: ~0 rows (approximately)
-DELETE FROM `user_seasonal_currencies`;
 
 -- Dumping structure for table helios.user_sessions
 CREATE TABLE IF NOT EXISTS `user_sessions` (
@@ -6650,36 +6212,6 @@ INSERT INTO `user_sessions` (`session_id`, `user_id`, `expiry_date`) VALUES
 	('ecfd958a-5a77-4ec9-8c3c-466d10f4481f', 1, '2025-05-05 10:49:35'),
 	('ca29e142-d64c-4180-8431-734af18166d8', 1, '2025-05-05 19:52:51'),
 	('befb6509-8cf7-451d-bdb9-caebe4a6a47b', 1, '2025-05-05 10:49:44');
-
--- Dumping structure for table helios.user_settings
-CREATE TABLE IF NOT EXISTS `user_settings` (
-  `user_id` int(11) NOT NULL,
-  `daily_respect_points` int(11) NOT NULL DEFAULT 0,
-  `daily_respect_pet_points` int(11) NOT NULL DEFAULT 0,
-  `respect_points` int(11) NOT NULL DEFAULT 0,
-  `friend_requests_enabled` tinyint(1) NOT NULL DEFAULT 1,
-  `following_enabled` tinyint(1) NOT NULL DEFAULT 1,
-  `online_time` bigint(11) NOT NULL DEFAULT 0,
-  PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- Dumping data for table helios.user_settings: ~0 rows (approximately)
-DELETE FROM `user_settings`;
-
--- Dumping structure for table helios.user_subscriptions
-CREATE TABLE IF NOT EXISTS `user_subscriptions` (
-  `user_id` int(11) NOT NULL,
-  `subscribed_at` datetime NOT NULL,
-  `expire_at` datetime NOT NULL,
-  `gift_at` datetime NOT NULL,
-  `gifts_redeemable` int(11) NOT NULL DEFAULT 0,
-  `subscription_age` bigint(11) NOT NULL DEFAULT 0,
-  `subscription_age_last_updated` datetime NOT NULL DEFAULT current_timestamp(),
-  PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- Dumping data for table helios.user_subscriptions: ~0 rows (approximately)
-DELETE FROM `user_subscriptions`;
 
 -- Dumping structure for table helios.wordfilter
 CREATE TABLE IF NOT EXISTS `wordfilter` (

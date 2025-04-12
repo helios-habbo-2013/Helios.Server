@@ -64,10 +64,10 @@ namespace Helios.Game
 
             avatar.Send(new RoomReadyComposer(room.Model.Data.Model, room.Data.Id));
 
-            if (room.Data.Wallpaper != "0")
+            if (room.Data.Wallpaper != "0.0")
                 avatar.Send(new RoomPropertyComposer("wallpaper", Convert.ToString(room.Data.Wallpaper)));
 
-            if (room.Data.Floor != "0")
+            if (room.Data.Floor != "0.0")
                 avatar.Send(new RoomPropertyComposer("floor", Convert.ToString(room.Data.Floor)));
 
             avatar.Send(new RoomPropertyComposer("landscape", Convert.ToString(room.Data.Landscape)));
@@ -78,20 +78,23 @@ namespace Helios.Game
 
                 if (room.RightsManager.IsOwner(avatar.Details.Id))
                 {
-                    accessLevel = 4;
-
+                    avatar.Send(new YouAreControllerComposer());
                     avatar.Send(new YouAreOwnerMessageEvent());
                     entity.RoomEntity.AddStatus("flatctrl", "useradmin");
                 }
                 else if (room.RightsManager.HasRights(avatar.Details.Id))
                 {
-                    accessLevel = 1;
+                    avatar.Send(new YouAreControllerComposer());
+                }
+                else
+                {
+                    avatar.Send(new YouAreNotControllerComposer());
+                }
 
-                    entity.RoomEntity.AddStatus("flatctrl", "1");
-                }  
-                
-                avatar.Send(new YouAreControllerComposer(accessLevel));
             }
+
+            avatar.Send(new RoomScoreComposer(room.Data.Rating));
+            avatar.Send(new RoomEventComposer());
         }
 
         /// <summary>

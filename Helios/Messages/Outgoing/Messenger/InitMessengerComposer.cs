@@ -26,11 +26,11 @@ namespace Helios.Messages.Outgoing
         public override void Write()
         {
             // See https://habbo.fandom.com/wiki/Benefits_of_VIP
-            _data.Add(maxNormalFriends); // HC            _SafeStr_10476():int
-            _data.Add(0);
-            _data.Add(maxHCFriends); // HC limit         _SafeStr_10477():int
-            _data.Add(maxVIPFriends); // VIP limit        _local_2._SafeStr_10478
-            _data.Add(categories.Count);
+            this.AppendInt32(maxNormalFriends); // HC            _SafeStr_10476():int
+            this.AppendInt32(200);
+            this.AppendInt32(maxHCFriends); // HC limit         _SafeStr_10477():int
+            this.AppendInt32(maxVIPFriends); // VIP limit        _local_2._SafeStr_10478
+            this.AppendInt32(categories.Count);
 
             int i = 1;
             foreach (var category in categories)
@@ -40,16 +40,16 @@ namespace Helios.Messages.Outgoing
                 i++;
             }
 
-            _data.Add(friends.Count);
+            this.AppendInt32(friends.Count);
             foreach (var friend in friends)
             {
-                _data.Add(friend.AvatarData.Id);
+                this.AppendInt32(friend.AvatarData.Id);
                 _data.Add(friend.AvatarData.Name);
-                _data.Add(1);
+                this.AppendInt32(1);
                 _data.Add(friend.IsOnline);
                 _data.Add(friend.IsOnline ? friend.InRoom : false);
                 _data.Add(friend.AvatarData.Figure);
-                _data.Add(0); // category id
+                this.AppendInt32(0); // category id
                 _data.Add(friend.AvatarData.Motto); // motto
                 _data.Add(friend.AvatarData.LastOnline.ToString("MM-dd-yyyy HH:mm:ss")); // unknown??
                 _data.Add(friend.AvatarData.RealName); // real name

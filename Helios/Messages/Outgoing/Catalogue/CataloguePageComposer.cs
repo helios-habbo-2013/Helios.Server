@@ -13,29 +13,30 @@ namespace Helios.Messages.Outgoing
 
         public override void Write()
         {
-            _data.Add(page.Data.Id);
-            _data.Add(page.Data.Layout);
-
-            _data.Add(page.Images.Count);
+            this.AppendInt32(page.Data.Id);
+            this.AppendStringWithBreak(page.Data.Layout);
+            this.AppendInt32(page.Images.Count);
 
             foreach (var image in page.Images)
-                _data.Add(image);
+            {
+                this.AppendStringWithBreak(image);
+            }
 
-            _data.Add(page.Texts.Count);
+            this.AppendInt32(page.Texts.Count);
 
             foreach (var text in page.Texts)
-                _data.Add(text);
+            {
+                this.AppendStringWithBreak(text);
+            }
 
-            _data.Add(page.Items.Count);
+            this.AppendInt32(page.Items.Count);
 
             foreach (CatalogueItem item in page.Items)
             {
                 PurchaseOKComposer.SerialiseOffer(this, item);
             }
 
-            _data.Add(-1);
-            _data.Add(false);
-
+            this.AppendInt32(-1);
            /*
             foreach (CatalogueItem item in page.Items)
             {
@@ -70,7 +71,7 @@ namespace Helios.Messages.Outgoing
             */
         }
 
-        public override int HeaderId => -1;
+        public override int HeaderId => 127;
     }
 }
  

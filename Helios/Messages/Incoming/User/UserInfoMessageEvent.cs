@@ -11,6 +11,7 @@ namespace Helios.Messages.Incoming
             if (!avatar.Authenticated)
                 return;
 
+            avatar.Send(new AvailableBadgesComposer());
             avatar.Send(new UserInfoComposer(avatar));
         }
 

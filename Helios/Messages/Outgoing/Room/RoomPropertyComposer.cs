@@ -13,10 +13,10 @@
 
         public override void Write()
         {
-            _data.Add(key);
-            _data.Add(value);
+            this.AppendStringWithBreak(key);
+            this.AppendStringWithBreak(value);
         }
 
-        public override int HeaderId => -1;
+        public override int HeaderId => 46;
     }
 }

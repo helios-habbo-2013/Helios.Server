@@ -30,8 +30,10 @@ namespace Helios.Game
             builder.Append((char)9);
             builder.Append(trophyData.Message.FilterInput(false));
 
-            composer.Data.Add((int)ExtraDataType.Legacy);
-            composer.Data.Add(builder.ToString());
+            //composer.Data.Add((int)ExtraDataType.Legacy);
+            //composer.Data.Add(builder.ToString());
+
+            composer.AppendStringWithBreak(builder.ToString());
         }
     }
 }

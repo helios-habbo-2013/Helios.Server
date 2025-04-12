@@ -26,9 +26,11 @@ namespace Helios.Game
         public override void WriteExtraData(IMessageComposer composer, bool inventoryView = false)
         {
             var data = GetJsonObject<TeleporterExtraData>();
-
+            /*
             composer.Data.Add((int)ExtraDataType.Legacy);
-            composer.Data.Add(data.State ?? "0");
+            composer.Data.Add(data.State ?? "0");*/
+
+            composer.AppendStringWithBreak(data.State ?? "0");
         }
 
         public override void OnInteract(IEntity entity, int requestData)

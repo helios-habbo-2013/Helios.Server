@@ -13,19 +13,19 @@ namespace Helios.Messages.Outgoing
 
         public override void Write()
         {
-            _data.Add(item.Data.SaleCode);
-            _data.Add(item.Packages.Count);
+            this.AppendStringWithBreak(item.Data.SaleCode);
+            this.AppendInt32(item.Packages.Count);
 
             foreach (CataloguePackage package in item.Packages)
             {
-                _data.Add(package.Definition.Type);
-                _data.Add(package.Definition.Data.SpriteId);
-                _data.Add(package.Data.SpecialSpriteId);
-                _data.Add(package.Data.Amount);
-                _data.Add(false);
+                this.AppendStringWithBreak(package.Definition.Type);
+                this.AppendInt32(package.Definition.Data.SpriteId);
+                this.AppendStringWithBreak(package.Data.SpecialSpriteId);
+                this.AppendInt32(package.Data.Amount);
+                this.AppendBoolean(false);
             }
         }
 
-        public override int HeaderId => -1;
+        public override int HeaderId => 624;
     }
 }

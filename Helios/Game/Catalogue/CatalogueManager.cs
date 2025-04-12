@@ -180,7 +180,7 @@ namespace Helios.Game
         /// <summary>
         /// Generate item data for purchasing item
         /// </summary>
-        private List<ItemData> GenerateItemData(int avatarId, CataloguePackage cataloguePackage, string userInputMessage, long datePurchase)
+        private List<ItemData> GenerateItemData(int avatarId, CataloguePackage cataloguePackage, string customData, long datePurchase)
         {
             var definition = cataloguePackage.Definition;
 
@@ -199,7 +199,7 @@ namespace Helios.Game
                 case InteractorType.GUILD:
                 case InteractorType.GUILD_GATE:
                     {
-                        if (int.TryParse(userInputMessage, out int groupId))
+                        if (int.TryParse(customData, out int groupId))
                         {
                             var groupList = GroupManager.Instance.GetGroupsByMembership(avatarId, GroupMembershipType.ADMIN, GroupMembershipType.MEMBER);
 
@@ -224,7 +224,7 @@ namespace Helios.Game
                         serializeable = new TrophyExtraData
                         {
                             AvatarId = avatarId,
-                            Message = userInputMessage,
+                            Message = customData,
                             Date = datePurchase
                         };
                     }
@@ -249,10 +249,12 @@ namespace Helios.Game
                     break;
             }
 
-            var extraData = string.Empty;
+            string extraData = string.Empty;
 
             if (serializeable != null)
                 extraData = JsonConvert.SerializeObject(serializeable);
+            else
+                extraData = customData;
 
             if (!string.IsNullOrEmpty(cataloguePackage.Data.SpecialSpriteId))
                 extraData = cataloguePackage.Data.SpecialSpriteId;

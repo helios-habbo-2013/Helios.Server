@@ -1,0 +1,1 @@
+UPDATE navigator_official_rooms SET parent_id = 0

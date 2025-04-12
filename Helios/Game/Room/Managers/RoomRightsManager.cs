@@ -100,7 +100,7 @@ namespace Helios.Game
                 playerEntity.RoomUser.AddStatus("flatctrl", "1");
                 playerEntity.RoomUser.NeedsUpdate = true;
 
-                playerEntity.Send(new YouAreControllerComposer(1));
+                playerEntity.Send(new YouAreControllerComposer());
             }
         }
 
@@ -127,7 +127,7 @@ namespace Helios.Game
                 playerEntity.RoomUser.AddStatus("flatctrl", "0");
                 playerEntity.RoomUser.NeedsUpdate = true;
 
-                playerEntity.Send(new YouAreControllerComposer(0));
+                playerEntity.Send(new YouAreControllerComposer());
             }
         }
 

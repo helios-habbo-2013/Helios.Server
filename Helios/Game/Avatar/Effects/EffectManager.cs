@@ -40,7 +40,7 @@ namespace Helios.Game
                 }
             }
 
-            avatar.Send(new EffectsMessageComposer(new List<Effect>(Effects.Values)));
+            // avatar.Send(new EffectsMessageComposer(new List<Effect>(Effects.Values)));
         }
 
         /// <summary>

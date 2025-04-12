@@ -30,6 +30,6 @@ namespace Helios.Messages.Outgoing
                 _data.Add((int)seasonalCurrencyType.Value);
         }
 
-        public int HeaderId => -1;
+        public override int HeaderId => 68;
     }
 }

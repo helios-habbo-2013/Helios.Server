@@ -16,10 +16,10 @@ namespace Helios.Messages.Incoming
                     context.GetPopularFlats()
                 );
 
-                avatar.Send(new FlatListComposer(2, roomList, NavigatorManager.GetPopularPromotion()));
+                avatar.Send(new FlatListComposer(0, 2, "", roomList));
             }
         }
 
-        public int HeaderId => -1;
+        public int HeaderId => 430;
     }
 }

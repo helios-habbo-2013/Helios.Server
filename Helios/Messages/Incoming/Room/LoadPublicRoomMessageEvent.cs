@@ -17,7 +17,7 @@ namespace Helios.Messages.Incoming
             if (!room.Data.IsPublicRoom)
                 return;
 
-            avatar.Send(new OpenConnectionComposer(room.Data.Id, room.Data.CategoryId));
+            avatar.Send(new OpenFlatMessageComposer());
 
             room.EntityManager.EnterRoom(avatar);
         }

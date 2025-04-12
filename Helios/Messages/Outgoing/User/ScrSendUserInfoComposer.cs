@@ -17,7 +17,7 @@ namespace Helios.Messages.Outgoing
         {
             _data.Add("habbo_club");
             _data.Add(subscription != null ? subscription.DaysLeft : 0);
-            _data.Add(true);
+            _data.Add(false);
             _data.Add(subscription != null ? subscription.MonthsLeft : 0);
         }
 

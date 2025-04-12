@@ -184,13 +184,14 @@ namespace Helios.Game
             Authenticated = true;
             AuthenticationTime = DateTime.Now;
 
-            Send(new AvailabilityStatusComposer());
             Send(new UserRightsMessageComposer(FuserightManager.Instance.GetRights(avatarData.Rank)));
             Send(new AuthenticationOKComposer());
             Send(new NavigatorSettingsComposer(0));
-            Send(new ModMessageComposer("Thank you for helping us test the new Helios. Please submit feedback to the Oldskooler forum:", "https://forum.oldskooler.org/threads/prjhelios-c-r49-entity-framework.27/"));
-
+            Send(new EffectsMessageComposer([.. EffectManager.Effects.Values]));
+            Send(new FavouriteRoomsComposer());
             // Send(new AvailabilityStatusComposer());
+            // Send(new InfoFeedEnableComposer());
+            // Send(new ModMessageComposer("Thank you for helping us test the new Helios. Please submit feedback to the Oldskooler forum:", "https://forum.oldskooler.org/threads/prjhelios-c-r49-entity-framework.27/"));
 
             return true;
         }

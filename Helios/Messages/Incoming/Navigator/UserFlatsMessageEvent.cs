@@ -16,7 +16,7 @@ namespace Helios.Messages.Incoming
                     RoomManager.Instance.ReplaceQueryRooms(context.GetUserRooms(avatar.Details.Id))
                 );
 
-                avatar.Send(new FlatListComposer(2, roomList, null));
+                avatar.Send(new FlatListComposer(0, 2, "", roomList));
             }
         }
 

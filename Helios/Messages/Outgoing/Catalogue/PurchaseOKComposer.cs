@@ -5,10 +5,12 @@ namespace Helios.Messages.Outgoing
     public class PurchaseOKComposer : IMessageComposer
     {
         private CatalogueItem item;
+        private readonly int durationRequirement;
 
-        public PurchaseOKComposer(CatalogueItem offer)
+        public PurchaseOKComposer(CatalogueItem offer, int durationRequirement = -1)
         {
             this.item = offer;
+            this.durationRequirement = durationRequirement;
         }
 
         public override void Write()
@@ -16,29 +18,24 @@ namespace Helios.Messages.Outgoing
             SerialiseOffer(this, item);
         }
 
-        internal static void SerialiseOffer(IMessageComposer composer, CatalogueItem item)//, bool spriteAsSaleCode = false)
+        internal static void SerialiseOffer(IMessageComposer composer, CatalogueItem item, int durationRequirement = -1)//, bool spriteAsSaleCode = false)
         {
-            composer.Data.Add(item.Data.Id);
-            composer.Data.Add(item.Data.SaleCode);//composer.Data.Add(spriteAsSaleCode ? ItemManager.Instance.GetDefinition(item.Packages[0].Data.DefinitionId).Data.Sprite : item.Data.SaleCode);
-            composer.Data.Add(item.Data.PriceCoins);
-            composer.Data.Add(item.Data.PriceSeasonal);
-            composer.Data.Add((int)item.Data.SeasonalType);
-            composer.Data.Add(false);
-            composer.Data.Add(item.Packages.Count);
+            composer.AppendInt32(item.Data.Id);
+            composer.AppendStringWithBreak(item.Data.SaleCode);//composer.Data.Add(spriteAsSaleCode ? ItemManager.Instance.GetDefinition(item.Packages[0].Data.DefinitionId).Data.Sprite : item.Data.SaleCode);
+            composer.AppendInt32(item.Data.PriceCoins);
+            composer.AppendInt32(item.Data.PriceSeasonal);
+            composer.AppendInt32(item.Packages.Count);
 
             foreach (CataloguePackage package in item.Packages)
             {
-                composer.Data.Add(package.Definition.Type);
-                composer.Data.Add(package.Definition.Data.SpriteId);
-                composer.Data.Add(package.Data.SpecialSpriteId); // extra data
-                composer.Data.Add(package.Data.Amount);
-                composer.Data.Add(false);
+                composer.AppendStringWithBreak(package.Definition.Type);
+                composer.AppendInt32(package.Definition.Data.SpriteId);
+                composer.AppendStringWithBreak(package.Data.SpecialSpriteId); // extra data
+                composer.AppendInt32(package.Data.Amount);
+                composer.AppendInt32(durationRequirement);
             }
-
-            composer.Data.Add(0);
-            composer.Data.Add(item.AllowBulkPurchase);
         }
 
-        public int HeaderId => -1;
+        public override int HeaderId => 67;
     }
 }

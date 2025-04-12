@@ -121,23 +121,25 @@ namespace Helios.Game
 
         public override void WriteExtraData(IMessageComposer composer, bool inventoryView = false)
         {
-            var stringValues = new List<string>();
+            //var stringValues = new List<string>();
 
-            var guildFurniData = GetJsonObject<GuildExtraData>();
+            //var guildFurniData = GetJsonObject<GuildExtraData>();
 
-            if (Item.Data.GroupId != null)
-            {
-                stringValues.Add(guildFurniData.State);
-                stringValues.Add(Item.Data.GroupId.ToString());
-                stringValues.Add(guildFurniData.Badge);
-                stringValues.Add(guildFurniData.Colour1);
-                stringValues.Add(guildFurniData.Colour2);
-            }
-            
-            composer.Data.Add((int)ExtraDataType.StringArray);
-            composer.Data.Add(stringValues.Count);
+            //if (Item.Data.GroupId != null)
+            //{
+            //    stringValues.Add(guildFurniData.State);
+            //    stringValues.Add(Item.Data.GroupId.ToString());
+            //    stringValues.Add(guildFurniData.Badge);
+            //    stringValues.Add(guildFurniData.Colour1);
+            //    stringValues.Add(guildFurniData.Colour2);
+            //}
 
-            stringValues.ForEach(x => composer.Data.Add(x));
+            //composer.Data.Add((int)ExtraDataType.StringArray);
+            //composer.Data.Add(stringValues.Count);
+
+            //stringValues.ForEach(x => composer.Data.Add(x));
+
+            composer.AppendStringWithBreak("");
         }
     }
 }

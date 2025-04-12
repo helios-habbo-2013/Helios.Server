@@ -52,7 +52,7 @@ namespace Helios.Game
         public int GetDaysUntilGift(long subscriptionAge)
         {
             int secondsForGift = GetSecondsRequired();
-            int daysUntilGift = (int)(subscriptionAge > secondsForGift ? -1 : TimeSpan.FromSeconds(secondsForGift - subscriptionAge).TotalDays);
+            int daysUntilGift = (int)(subscriptionAge > secondsForGift ? 0 : TimeSpan.FromSeconds(secondsForGift - subscriptionAge).TotalDays);
             return daysUntilGift;
         }
 

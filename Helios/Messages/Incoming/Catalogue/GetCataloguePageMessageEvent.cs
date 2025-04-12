@@ -14,12 +14,14 @@ namespace Helios.Messages.Outgoing
 
             avatar.Send(new CataloguePageComposer(cataloguePage));
 
+            /*
             CatalogueManager.Instance.TryGetBestDiscount(cataloguePage.Data.Id, out var discount);
 
             if (discount != null)
                 avatar.Send(new CatalogueItemDiscountComposer(discount));
+            */
         }
 
-        public int HeaderId => -1;
+        public int HeaderId => 102;
     }
 }

@@ -13,23 +13,23 @@ namespace Helios.Messages.Outgoing
 
         public override void Write()
         {
-            _data.Add(avatar.Details.Id.ToString());
-            _data.Add(avatar.Details.Name);
-            _data.Add(avatar.Details.Figure);
-            _data.Add(avatar.Details.Sex.ToUpper());
-            _data.Add(avatar.Details.Motto);
-            _data.Add(avatar.Details.RealName);
-            _data.Add(false);
-            _data.Add("");
-            _data.Add(0);
-            _data.Add(0);
-            _data.Add(avatar.Settings.Respect);
-            _data.Add(avatar.Settings.DailyRespectPoints);
-            _data.Add(avatar.Settings.DailyPetRespectPoints);
-            /*_data.Add(true);
-            _data.Add(avatar.Details.PreviousLastOnline.ToString("MM-dd-yyyy HH:mm:ss"));
-            _data.Add(true);
-            _data.Add(false);*/
+            this.AppendStringWithBreak(avatar.Details.Id.ToString());
+            this.AppendStringWithBreak(avatar.Details.Name);
+            this.AppendStringWithBreak(avatar.Details.Figure);
+            this.AppendStringWithBreak(avatar.Details.Sex.ToUpper());
+            this.AppendStringWithBreak(avatar.Details.Motto);
+            this.AppendStringWithBreak(avatar.Details.RealName);
+            this.AppendInt32(0);
+            this.AppendStringWithBreak("");
+            this.AppendInt32(0);
+            this.AppendInt32(0);
+            this.AppendInt32(avatar.Settings.Respect);
+            this.AppendInt32(avatar.Settings.DailyRespectPoints);
+            this.AppendInt32(avatar.Settings.DailyPetRespectPoints);
+            /*this.AppendStringWithBreak(true);
+            this.AppendStringWithBreak(avatar.Details.PreviousLastOnline.ToString("MM-dd-yyyy HH:mm:ss"));
+            this.AppendStringWithBreak(true);
+            this.AppendStringWithBreak(false);*/
         }
 
         public override int HeaderId => 5;

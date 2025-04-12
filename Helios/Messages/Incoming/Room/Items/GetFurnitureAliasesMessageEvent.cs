@@ -11,6 +11,6 @@ namespace Helios.Messages.Incoming
             avatar.Send(new FurnitureAliasesComposer());
         }
 
-        public int HeaderId => -1;
+        public int HeaderId => 215;
     }
 }

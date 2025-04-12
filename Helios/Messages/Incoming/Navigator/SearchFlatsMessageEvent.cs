@@ -16,10 +16,10 @@ namespace Helios.Messages.Incoming
                     RoomManager.Instance.ReplaceQueryRooms(context.SearchRooms(request.ReadString()))
                 );
 
-                avatar.Send(new FlatListComposer(2, roomList, null));
+                avatar.Send(new FlatListComposer(1, 9, "", roomList));
             }
         }
 
-        public int HeaderId => -1;
+        public int HeaderId => 437;
     }
 }

@@ -19,11 +19,11 @@ namespace Helios.Messages.Outgoing
         public override void Write()
         {
             _data.Add(true);
-            _data.Add(0);
-            _data.Add(0);
-            _data.Add(-1);
-            _data.Add("root");
-            _data.Add("");
+            this.AppendInt32(0);
+            this.AppendInt32(0);
+            this.AppendInt32(-1);
+            this.AppendStringWithBreak("root");
+            this.AppendBoolean(false);
             _data.Add(parentPages.Count);
 
             foreach (var childTab in parentPages)
@@ -38,7 +38,7 @@ namespace Helios.Messages.Outgoing
         private void RecursiveIndexNode(CataloguePage parentTab)
         {
             var childTabs = CatalogueManager.Instance.GetPages(parentTab.Data.Id, rank, hasClub);
-            _data.Add(childTabs.Count);
+            this.AppendInt32(childTabs.Count);
 
             foreach (var childTab in childTabs)
             {
@@ -49,14 +49,14 @@ namespace Helios.Messages.Outgoing
 
         private void AppendIndexNode(CataloguePage childTab)
         {
-            _data.Add(true);
-            _data.Add(childTab.Data.IconColour);
-            _data.Add(childTab.Data.IconImage);
-            _data.Add(childTab.Data.Id);
-            _data.Add(childTab.Data.PageLink);
-            _data.Add(childTab.Data.Caption);
+            this.AppendBoolean(true);
+            this.AppendInt32(childTab.Data.IconColour);
+            this.AppendInt32(childTab.Data.IconImage);
+            this.AppendInt32(childTab.Data.Id);
+            this.AppendStringWithBreak(childTab.Data.Caption);
+            this.AppendBoolean(false);
         }
 
-        public int HeaderId => -1;
+        public override int HeaderId => 126;
     }
 }

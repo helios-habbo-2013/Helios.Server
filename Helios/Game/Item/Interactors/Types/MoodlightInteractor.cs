@@ -57,8 +57,10 @@ namespace Helios.Game
             builder.Append(",");
             builder.Append(preset.ColorIntensity);
 
-            composer.Data.Add((int)ExtraDataType.Legacy);
-            composer.Data.Add(builder.ToString());
+            //composer.Data.Add((int)ExtraDataType.Legacy);
+            //composer.Data.Add(builder.ToString());
+
+            composer.AppendStringWithBreak(builder.ToString());
         }
     }
 }

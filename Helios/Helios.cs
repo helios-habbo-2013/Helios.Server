@@ -149,6 +149,10 @@ namespace Helios
 
                 PluginManager.Instance.Load();
                 GroupManager.Instance.Load();
+
+                using var ctx = new StorageContext();
+                ctx.ResetVisitorCounts();
+
             }
             catch (Exception ex)
             {

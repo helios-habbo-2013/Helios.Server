@@ -11,6 +11,6 @@ namespace Helios.Messages.Incoming
             avatar.Send(new CataloguePagesComposer(avatar.Details.Rank, avatar.IsSubscribed));
         }
 
-        public int HeaderId => -1;
+        public int HeaderId => 101;
     }
 }

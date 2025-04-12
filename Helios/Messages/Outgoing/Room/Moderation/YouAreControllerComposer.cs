@@ -2,16 +2,9 @@
 {
     class YouAreControllerComposer : IMessageComposer
     {
-        private int rightsLevel;
 
-        public YouAreControllerComposer(int rightsLevel)
-        {
-            this.rightsLevel = rightsLevel;
-        }
+        public override void Write() { }
 
-        public override void Write()
-        {
-            _data.Add(rightsLevel);
-        }
+        public override int HeaderId => 42;
     }
 }

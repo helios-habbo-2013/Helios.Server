@@ -36,7 +36,7 @@ namespace Helios.Messages.Outgoing
             _data.Add(roomData.UsersMax);
             _data.Add(roomData.Description);
             _data.Add(0);
-            _data.Add(roomData.TradeSetting); // can category trade?
+            _data.Add(roomData.TradeSetting == 1); // can category trade?
             _data.Add(roomData.Rating);
             _data.Add(0);
             _data.Add(roomData.Category.Id);

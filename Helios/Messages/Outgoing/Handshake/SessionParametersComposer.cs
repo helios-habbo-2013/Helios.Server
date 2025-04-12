@@ -32,16 +32,15 @@ namespace Helios.Messages.Outgoing
         {
             var parameters = new Dictionary<SessionParamType, string>();
 
-            parameters[SessionParamType.RegisterCoppa] = "0";
             parameters[SessionParamType.VoucherEnabled] = "1"; // GameConfiguration.Instance.GetBoolean("vouchers.enabled") ? "1" : "0";
+            parameters[SessionParamType.RegisterRequireParentEmail] = "0";
             parameters[SessionParamType.RegisterSendParentEmail] = "0";
-            parameters[SessionParamType.RegisterRequireParentEmail] = "1";
             parameters[SessionParamType.AllowDirectMail] = "0";
-            parameters[SessionParamType.DateFormat] = "dd-MM-yyyy";
+            parameters[SessionParamType.DateFormat] = "yyyy-MM-dd";
             parameters[SessionParamType.PartnerIntegrationEnabled] = "0";
             parameters[SessionParamType.AllowProfileEditing] = "0"; // GameConfiguration.Instance.GetBoolean("profile.editing") ? "1" : "0";
-            parameters[SessionParamType.TrackingHeader] = "hotel-co.uk";
-            parameters[SessionParamType.TutorialEnabled] = "0"; //IsTutorialEnabled(avatar) ? "1" : "0";
+            parameters[SessionParamType.TrackingHeader] = "";
+            parameters[SessionParamType.TutorialEnabled] = "1"; //IsTutorialEnabled(avatar) ? "1" : "0";
 
             _data.Add(parameters.Count);
 
