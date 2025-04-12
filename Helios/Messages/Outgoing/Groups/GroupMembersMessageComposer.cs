@@ -90,5 +90,7 @@ namespace Helios.Messages.Outgoing
             _data.Add(this.requestType);
             _data.Add(this.searchQuery);
         }
+
+        public int HeaderId => -1;
     }
 }

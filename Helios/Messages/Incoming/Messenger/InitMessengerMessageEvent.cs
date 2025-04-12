@@ -33,5 +33,7 @@ namespace Helios.Messages.Incoming
                 }
             }
         }
+
+        public int HeaderId => 12;
     }
 }

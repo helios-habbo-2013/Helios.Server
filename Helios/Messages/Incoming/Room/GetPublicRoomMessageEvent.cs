@@ -15,5 +15,7 @@ namespace Helios.Messages.Incoming
 
             avatar.Send(new PublicRoomCastsComposer(room.Data.Id, room.Data.CCTs));
         }
+
+        public int HeaderId => -1;
     }
 }

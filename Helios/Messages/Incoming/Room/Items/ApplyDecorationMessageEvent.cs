@@ -47,5 +47,7 @@ namespace Helios.Messages.Incoming
                 context.DeleteItem(item.Data);
             }
         }
+
+        public int HeaderId => -1;
     }
 }

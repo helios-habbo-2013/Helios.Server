@@ -1,5 +1,6 @@
 ﻿using Helios.Messages;
 using Helios.Messages.Outgoing;
+using Helios.Messages.Outgoing.User.Alerts;
 using Helios.Network.Session;
 using Helios.Storage;
 using Helios.Storage.Access;
@@ -187,6 +188,8 @@ namespace Helios.Game
             Send(new UserRightsMessageComposer(FuserightManager.Instance.GetRights(avatarData.Rank)));
             Send(new AuthenticationOKComposer());
             Send(new NavigatorSettingsComposer(0));
+            Send(new ModMessageComposer("Thank you for helping us test the new Helios. Please submit feedback to the Oldskooler forum:", "https://forum.oldskooler.org/threads/prjhelios-c-r49-entity-framework.27/"));
+
             // Send(new AvailabilityStatusComposer());
 
             return true;

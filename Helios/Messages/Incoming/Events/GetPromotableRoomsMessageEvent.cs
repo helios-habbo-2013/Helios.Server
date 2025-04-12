@@ -16,5 +16,7 @@ namespace Helios.Messages.Incoming
                 avatar.Send(new PromotableRoomsMessageComposer(roomList));
             }
         }
+
+        public int HeaderId => -1;
     }
 }

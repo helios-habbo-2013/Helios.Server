@@ -1,11 +1,5 @@
 ﻿namespace Helios.Messages.Outgoing
 {
-    public enum ItemPlaceError
-    {
-        NoRights = 1,
-        NoPlacementAllowed = 11
-    }
-
     class ItemPlaceErrorComposer : IMessageComposer
     {
         private ItemPlaceError itemPlaceError;
@@ -19,5 +13,13 @@
         {
             _data.Add((int)itemPlaceError);
         }
+
+        public int HeaderId => -1;
+    }
+    
+    public enum ItemPlaceError
+    {
+        NoRights = 1,
+        NoPlacementAllowed = 11
     }
 }

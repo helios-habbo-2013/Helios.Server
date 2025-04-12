@@ -13,5 +13,7 @@
         {
             _data.Add(this.roomId);
         }
+
+        public int HeaderId => -1;
     }
 }

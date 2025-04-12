@@ -28,5 +28,7 @@ namespace Helios.Messages.Incoming
             moodlight.Update();
             moodlight.Save();
         }
+
+        public int HeaderId => -1;
     }
 }

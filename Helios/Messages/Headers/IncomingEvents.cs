@@ -1,4 +1,4 @@
-﻿namespace Helios.Messages.Headers
+﻿/*namespace Helios.Messages.Headers
 {
     public class IncomingEvents
     {
@@ -13,7 +13,7 @@
         public static readonly short SearchMessengerMessageEvent = 41; // -- R49
         public static readonly short BuddyRequestMessageEvent = 39; // -- R49
         public static readonly short AcceptRequestsMessageEvent = 37; // -- R49
-        public static readonly short DeclineRequestMessageEvent = -38; // -- R49
+        public static readonly short DeclineRequestMessageEvent = 38; // -- R49
         public static readonly short RemoveFriendMessageEvent = 40; // -- R49
         public static readonly short InstantChatMessageEvent = 33; // -- R49
         public static readonly short PublicItemsMessageEvent = 380; // -- R49
@@ -96,8 +96,6 @@
         public static readonly short RevokeGroupAdminMessageEvent = -735;
         public static readonly short GroupFurnitureWidgetMessageEvent = -3979;
         public static readonly short GroupFurnitureCatalogMessageEvent = -388;
-
-        /*[2024-09-22 21:06:56,618] DEBUG  Avatar Alex - Unknown: 3127 / [0][0][0][1][0][0][0][2]
-[2024-09-22 21:07:03,626] DEBUG  Avatar Alex - Unknown: 3918 / [0][0][0][1][0][0][0][2]*/
     }
 }
+*/

@@ -29,5 +29,7 @@ namespace Helios.Messages.Incoming.Catalogue
                 GroupManager.Instance.BadgeManager.Colour3
             ));
         }
+
+        public int HeaderId => -1;
     }
 }

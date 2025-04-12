@@ -6,5 +6,7 @@
         {
             _data.Add(0);
         }
+
+        public int HeaderId => -1;
     }
 }

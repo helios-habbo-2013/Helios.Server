@@ -15,5 +15,7 @@ namespace Helios.Messages.Incoming.Catalogue
                 avatar.Details.Id,
                 groupList));
         }
+
+        public int HeaderId => -1;
     }
 }

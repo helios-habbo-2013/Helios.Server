@@ -7,5 +7,7 @@
             _data.Add(true);
             _data.Add(false);
         }
+
+        public override int HeaderId => 517;
     }
 }

@@ -61,5 +61,7 @@ namespace Helios.Messages.Incoming
                 Rotation = rotation
             });
         }
+
+        public int HeaderId => -1;
     }
 }

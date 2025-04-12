@@ -25,5 +25,7 @@ namespace Helios.Messages.Incoming
                 context.SaveRoom(room.Data);
             }
         }
+
+        public int HeaderId => -1;
     }
 }

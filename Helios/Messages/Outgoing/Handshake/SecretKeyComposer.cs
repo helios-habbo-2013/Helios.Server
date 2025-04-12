@@ -13,5 +13,7 @@
         {
             _data.Add(this.publicKey);
         }
+
+        public override int HeaderId => 1;
     }
 }

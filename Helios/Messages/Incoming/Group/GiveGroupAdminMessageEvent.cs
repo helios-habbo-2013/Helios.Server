@@ -55,5 +55,7 @@ namespace Helios.Messages.Incoming
                 (string) avatar.LocalStorage["groupMemberSearch_searchQuery"],
                 group.IsAdmin(avatar.Details.Id)));
         }
+
+        public int HeaderId => -1;
     }
 }

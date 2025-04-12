@@ -63,5 +63,7 @@ namespace Helios.Messages.Incoming
 
             avatar.Inventory.RemoveItem(item);
         }
+
+        public int HeaderId => -1;
     }
 }

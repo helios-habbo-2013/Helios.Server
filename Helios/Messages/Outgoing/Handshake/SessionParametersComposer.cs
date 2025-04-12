@@ -71,5 +71,7 @@ namespace Helios.Messages.Outgoing
         {
             return true;//GameConfiguration.Instance.GetBoolean("tutorial.enabled");
         }
+
+        public override int HeaderId => 257;
     }
 }

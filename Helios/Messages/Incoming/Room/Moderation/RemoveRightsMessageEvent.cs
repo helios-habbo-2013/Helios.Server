@@ -26,5 +26,7 @@ namespace Helios.Messages.Incoming
                 avatar.Send(new RemoveRightsMessageComposer(room.Data.Id, playerId));
             }
         }
+
+        public int HeaderId => -1;
     }
 }

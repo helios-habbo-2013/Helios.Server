@@ -15,5 +15,7 @@ namespace Helios.Messages.Incoming
                 avatar.Send(new PublicItemsComposer(context.GetPublicItems()));
             }
         }
+
+        public int HeaderId => 380;
     }
 }

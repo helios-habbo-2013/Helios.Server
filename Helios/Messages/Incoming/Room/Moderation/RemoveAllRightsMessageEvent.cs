@@ -31,5 +31,7 @@ namespace Helios.Messages.Incoming
                 context.ClearRoomRights(room.Data.Id);
             }
         }
+
+        public int HeaderId => -1;
     }
 }

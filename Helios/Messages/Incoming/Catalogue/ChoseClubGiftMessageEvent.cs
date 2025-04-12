@@ -30,5 +30,7 @@ namespace Helios.Messages.Incoming.Catalogue
 
             CatalogueManager.Instance.Purchase(avatar.Details.Id, subscriptionGift.CatalogueItem.Data.Id, 1, string.Empty, DateUtil.GetUnixTimestamp(), isClubGift: true);
         }
+
+        public int HeaderId => -1;
     }
 }

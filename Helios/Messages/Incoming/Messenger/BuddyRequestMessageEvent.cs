@@ -58,5 +58,7 @@ namespace Helios.Messages.Incoming
             if (targetAvatar != null)
                 targetAvatar.Send(new MessengerRequestComposer(avatar.Details));
         }
+
+        public int HeaderId => 39;
     }
 }

@@ -46,5 +46,7 @@ namespace Helios.Messages.Outgoing
                 _data.Add(rollingEntity.DisplayHeight.ToClientValue());
             }
         }
+
+        public int HeaderId => -1;
     }
 }

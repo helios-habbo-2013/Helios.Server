@@ -12,5 +12,7 @@ namespace Helios.Messages.Incoming
         {
             avatar.Send(new MessengerRequestsComposer(avatar.Messenger.Requests));
         }
+
+        public int HeaderId => 233;
     }
 }

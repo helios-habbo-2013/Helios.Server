@@ -22,5 +22,6 @@ namespace Helios.Messages.Incoming
             avatar.Send(new GroupInfoMessageComposer(groupData, avatar.Details, groupData.Data.RoomData, flag));
         }
 
+        public int HeaderId => -1;
     }
 }

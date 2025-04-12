@@ -42,5 +42,7 @@ namespace Helios.Messages.Outgoing.Catalogue.Groups
             _data.Add(0);
             _data.Add(0);
         }
+
+        public int HeaderId => -1;
     }
 }

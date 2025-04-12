@@ -44,7 +44,8 @@ namespace Helios.Messages.Outoing
             //m_Data.Add(room.Data.IsHidingWall ? 1 : 0);
             //m_Data.Add(room.Data.WallThickness);
             //m_Data.Add(room.Data.FloorThickness);
-
         }
+
+        public int HeaderId => -1;
     }
 }

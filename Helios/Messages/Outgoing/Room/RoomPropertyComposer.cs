@@ -16,5 +16,7 @@
             _data.Add(key);
             _data.Add(value);
         }
+
+        public override int HeaderId => -1;
     }
 }

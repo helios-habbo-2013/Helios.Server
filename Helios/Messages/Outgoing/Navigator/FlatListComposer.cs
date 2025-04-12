@@ -99,5 +99,7 @@ namespace Helios.Messages.Outgoing
             this._SafeStr_14034 = k._SafeStr_10829();
             */
         }
+
+        public override int HeaderId => 451;
     }
 }

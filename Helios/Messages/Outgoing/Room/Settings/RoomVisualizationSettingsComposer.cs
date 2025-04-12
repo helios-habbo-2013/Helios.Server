@@ -19,5 +19,7 @@
             _data.Add(wallThickness);
             _data.Add(floorThickness);
         }
+
+        public int HeaderId => -1;
     }
 }

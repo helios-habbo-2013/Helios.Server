@@ -59,5 +59,7 @@ namespace Helios.Messages.Outgoing
                 //_data.Add((short)0); // relationship status
             }
         }
+
+        public override int HeaderId => 12;
     }
 }

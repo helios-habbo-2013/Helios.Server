@@ -18,6 +18,8 @@
             _data.Add(AvatarId);
             _data.Add(message);
         }
+
+        public override int HeaderId => 132;
     }
 
     public enum InstantChatError

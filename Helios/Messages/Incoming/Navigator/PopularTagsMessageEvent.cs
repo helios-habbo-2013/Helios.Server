@@ -15,5 +15,7 @@ namespace Helios.Messages.Incoming
                 avatar.Send(new PopularTagsComposer(context.GetPopularTags()));
             }
         }
+
+        public int HeaderId => -1;
     }
 }

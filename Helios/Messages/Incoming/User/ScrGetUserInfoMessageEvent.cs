@@ -10,5 +10,7 @@ namespace Helios.Messages.Incoming
         {
             avatar.Send(new ScrSendUserInfoComposer(avatar.Subscription.Data));
         }
+
+        public int HeaderId => 26;
     }
 }

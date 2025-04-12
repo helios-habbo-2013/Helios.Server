@@ -41,5 +41,7 @@ namespace Helios.Messages.Incoming
             item.Update();
             item.Save();
         }
+
+        public int HeaderId => -1;
     }
 }

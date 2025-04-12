@@ -26,5 +26,7 @@ namespace Helios.Messages.Outgoing
                 i++;
             }
         }
+
+        public int HeaderId => -1;
     }
 }

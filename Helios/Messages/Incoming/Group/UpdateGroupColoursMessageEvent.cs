@@ -37,5 +37,7 @@ namespace Helios.Messages.Incoming
                 room.Send(new RoomInfoComposer(room.Data));
             }
         }
+
+        public int HeaderId => -1;
     }
 }

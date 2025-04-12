@@ -19,7 +19,7 @@ namespace Helios.Network.Codec
 
             try
             {
-                int? header = MessageHandler.Instance.GetComposerId(composer);
+                int? header = composer.HeaderId;
 
                 if (header == null)
                 {

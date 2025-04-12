@@ -51,5 +51,7 @@ namespace Helios.Messages.Incoming
                 avatar.Send(new InstantChatErrorComposer(InstantChatError.SendingFailed, AvatarId));
             }
         }
+
+        public int HeaderId => 33;
     }
 }

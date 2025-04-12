@@ -40,7 +40,7 @@ namespace Helios.Messages.Incoming
                     }
                 }
 
-                group.Data.GroupType = (GroupType) groupType;
+                group.Data.GroupType = (GroupType)groupType;
             }
 
             if (rightsType >= 0 && rightsType <= 2)
@@ -60,5 +60,7 @@ namespace Helios.Messages.Incoming
                 room.Send(new RoomInfoComposer(room.Data));
             }
         }
+
+        public int HeaderId => -1;
     }
 }

@@ -15,5 +15,7 @@ namespace Helios.Messages.Outgoing
         {
             _data.Add(Convert.ToString(instanceId));
         }
+
+        public int HeaderId => -1;
     }
 }

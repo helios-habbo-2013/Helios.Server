@@ -20,5 +20,7 @@ namespace Helios.Messages.Incoming
                 avatar.Send(new InventoryMessageComposer(pages, i, inventoryItems.GetPage(i, itemsPerPage)));
             }
         }
+
+        public int HeaderId => -1;
     }
 }

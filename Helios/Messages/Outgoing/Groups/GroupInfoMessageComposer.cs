@@ -43,5 +43,7 @@ namespace Helios.Messages.Outgoing
             _data.Add(group.Data.AllowMembersDecorate); // TODO: Can members decorate
             _data.Add((group.GetMemberType(avatarData.Id) == GroupMembershipType.ADMIN || group.Data.OwnerId == avatarData.Id) ? group.Members.Count(x => x.Data.MemberType == GroupMembershipType.PENDING) : 0); // TODO: See memebrship request count if owner or admin
         }
+
+        public override int HeaderId => -1;
     }
 }

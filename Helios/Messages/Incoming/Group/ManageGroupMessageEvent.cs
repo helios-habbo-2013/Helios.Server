@@ -28,5 +28,6 @@ namespace Helios.Messages.Incoming
             avatar.Send(new ManageGroupMessageComposer(group));
         }
 
+        public int HeaderId => -1;
     }
 }

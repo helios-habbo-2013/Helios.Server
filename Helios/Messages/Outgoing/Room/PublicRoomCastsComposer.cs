@@ -17,5 +17,7 @@
             _data.Add(ccts);
             _data.Add(roomId);
         }
+
+        public int HeaderId => -1;
     }
 }

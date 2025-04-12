@@ -65,5 +65,7 @@ namespace Helios.Messages.Incoming
 
             messenger.ForceUpdate();
         }
+
+        public int HeaderId => 37;
     }
 }

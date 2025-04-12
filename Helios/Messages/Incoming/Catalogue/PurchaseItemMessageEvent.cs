@@ -95,5 +95,7 @@ namespace Helios.Messages.Incoming
 
             CatalogueManager.Instance.Purchase(avatar.Details.Id, catalogueItem.Data.Id, amount, extraData, DateUtil.GetUnixTimestamp());
         }
+
+        public int HeaderId => -1;
     }
 }

@@ -71,5 +71,7 @@ namespace Helios.Messages.Outgoing
                 composer.Data.Add(0); // todo: sprite code for wrapping
             }
         }
+
+        public int HeaderId => -1;
     }
 }

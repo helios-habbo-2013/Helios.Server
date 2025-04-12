@@ -16,5 +16,7 @@
             _data.Add(isPublicRoom);
             _data.Add(roomId);
         }
+
+        public int HeaderId => -1;
     }
 }

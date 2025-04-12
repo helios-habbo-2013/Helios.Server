@@ -65,5 +65,7 @@ namespace Helios.Messages.Incoming
                     group.IsAdmin(avatar.Details.Id)));
             }
         }
+
+        public int HeaderId => -1;
     }
 }

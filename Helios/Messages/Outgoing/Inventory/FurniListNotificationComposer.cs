@@ -63,6 +63,8 @@ namespace Helios.Messages.Outgoing
             }
 
         }
+
+        public int HeaderId => -1;
     }
     
     public enum FurniListNotificationType

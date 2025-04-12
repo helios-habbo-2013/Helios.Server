@@ -10,5 +10,7 @@ namespace Helios.Messages.Incoming
         {
             avatar.Send(new UserFlatCatsComposer(NavigatorManager.Instance.GetCategories(avatar.Details.Rank)));
         }
+
+        public int HeaderId => 151;
     }
 }

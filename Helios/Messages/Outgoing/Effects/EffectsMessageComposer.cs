@@ -30,5 +30,7 @@ namespace Helios.Messages.Outgoing
             composer.Data.Add(effect.Data.IsActivated ? effect.Data.Quantity - 1 : effect.Data.Quantity);
             composer.Data.Add(effect.Data.IsActivated ? effect.TimeLeft : -1);
         }
+
+        public int HeaderId => -1;
     }
 }

@@ -19,5 +19,7 @@ namespace Helios.Messages.Incoming
             avatar.RoomUser.DanceId = danceId;
             avatar.RoomUser.Room.Send(new DanceMessageComposer(avatar.RoomEntity.InstanceId, danceId));
         }
+
+        public int HeaderId => -1;
     }
 }

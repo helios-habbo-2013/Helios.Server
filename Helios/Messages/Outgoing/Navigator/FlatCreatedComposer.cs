@@ -16,5 +16,7 @@
             _data.Add(roomId);
             _data.Add(roomName);
         }
+
+        public int HeaderId => -1;
     }
 }

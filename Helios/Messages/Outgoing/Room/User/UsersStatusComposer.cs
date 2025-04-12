@@ -43,6 +43,9 @@ namespace Helios.Messages.Outgoing
 
                 _data.Add(statusString);
             }
+
         }
+
+        public int HeaderId => -1;
     }
 }

@@ -26,5 +26,7 @@ namespace Helios.Messages.Incoming
 
             avatar.Send(new MoodlightConfigComposer(moodlightData));
         }
+
+        public int HeaderId => -1;
     }
 }

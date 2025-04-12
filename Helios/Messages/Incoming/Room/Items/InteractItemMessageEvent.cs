@@ -30,5 +30,7 @@ namespace Helios.Messages.Incoming
 
             item.Interactor.OnInteract(avatar, request.ReadInt());
         }
+
+        public int HeaderId => -1;
     }
 }

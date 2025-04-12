@@ -13,5 +13,7 @@ namespace Helios.Messages.Incoming
 
             avatar.Send(new UserInfoComposer(avatar));
         }
+
+        public int HeaderId => 7;
     }
 }

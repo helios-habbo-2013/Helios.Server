@@ -27,5 +27,7 @@ namespace Helios.Messages.Incoming
 
             avatar.Send(new StickieComposer(item.Id, stickieData));
         }
+
+        public int HeaderId => -1;
     }
 }

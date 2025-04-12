@@ -24,5 +24,7 @@
             _data.Add(0);
             _data.Add(-1);
         }
+
+        public int HeaderId => -1;
     }
 }

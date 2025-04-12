@@ -15,5 +15,7 @@ namespace Helios.Messages.Outgoing
         {
             InventoryMessageComposer.Serialize(this, item);
         }
+
+        public int HeaderId => -1;
     }
 }

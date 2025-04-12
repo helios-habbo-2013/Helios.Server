@@ -32,7 +32,7 @@ namespace Helios.Messages.Outgoing
             {
                 _data.Add((int)messengerUpdate.UpdateType);
 
-                switch(messengerUpdate.UpdateType)
+                switch (messengerUpdate.UpdateType)
                 {
                     case MessengerUpdateType.RemoveFriend:
                         {
@@ -61,5 +61,7 @@ namespace Helios.Messages.Outgoing
                 }
             }
         }
+
+        public override int HeaderId => 12;
     }
 }

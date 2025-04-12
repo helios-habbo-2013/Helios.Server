@@ -19,5 +19,7 @@ namespace Helios.Messages.Outgoing
             if (discount != null)
                 avatar.Send(new CatalogueItemDiscountComposer(discount));
         }
+
+        public int HeaderId => -1;
     }
 }

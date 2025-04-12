@@ -1,10 +1,12 @@
 ﻿using Helios.Game;
-using Helios.Messages.Headers;
+using Helios.Messages.Incoming;
+using Helios.Messages.Outgoing;
 using Helios.Network.Streams;
 using Serilog;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Sockets;
 using System.Reflection;
 
 namespace Helios.Messages
@@ -20,7 +22,7 @@ namespace Helios.Messages
         #region Properties
 
         private Dictionary<int, List<IMessageEvent>> Events { get; }
-        private Dictionary<string, int> Composers { get; }
+        private List<string> Composers { get; }
 
 
         #endregion
@@ -30,7 +32,7 @@ namespace Helios.Messages
         public MessageHandler()
         {
             Events = new Dictionary<int, List<IMessageEvent>>();
-            Composers = new Dictionary<string, int>();
+            Composers = new List<string>();
         }
 
         public void Load()
@@ -51,6 +53,29 @@ namespace Helios.Messages
         /// </summary>
         public void ResolveMessages()
         {
+            var interfaceType = typeof(IMessageEvent);
+
+            // Assuming the IMessageEvent classes are in the same assembly as Program
+            var types = Assembly.GetExecutingAssembly()
+                .GetTypes()
+                .Where(t => interfaceType.IsAssignableFrom(t) && t.IsClass && !t.IsAbstract);
+            foreach (var type in types)
+            {
+                var instance = Activator.CreateInstance(type);
+                var headerIdValue = (int)type
+                    .GetProperty("HeaderId", BindingFlags.Instance | BindingFlags.Public)
+                    .GetValue(instance);
+
+                if (!Events.ContainsKey(headerIdValue))
+                    Events.Add(headerIdValue, new List<IMessageEvent>());
+
+                Events[headerIdValue].Add((IMessageEvent)Activator.CreateInstance(type));
+
+                // Console.WriteLine($"{type.Name} => {headerIdValue}");
+            }
+
+
+            /*
             Type incomingEventType = typeof(IncomingEvents);
             Type outgoingEventType = typeof(OutgoingEvents);
 
@@ -87,20 +112,7 @@ namespace Helios.Messages
                     else
                         Log.ForContext<MessageHandler>().Error($"Composer {packetType.Name} has no header defined");
                 }
-                /**/
-            }
-        }
-
-        /// <summary>
-        /// Get composer id for type
-        /// </summary>
-        internal int? GetComposerId(IMessageComposer composer)
-        {
-
-            if (Composers.TryGetValue(composer.GetType().Name, out int header))
-                return header;
-
-            return null;
+            }*/
         }
 
         /// <summary>

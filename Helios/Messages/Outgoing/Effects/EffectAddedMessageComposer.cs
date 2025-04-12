@@ -15,5 +15,7 @@ namespace Helios.Messages.Outgoing
         {
             EffectsMessageComposer.Compose(effect, this);
         }
+
+        public int HeaderId => -1;
     }
 }

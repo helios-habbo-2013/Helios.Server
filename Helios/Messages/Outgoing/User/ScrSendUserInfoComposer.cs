@@ -21,6 +21,7 @@ namespace Helios.Messages.Outgoing
             _data.Add(subscription != null ? subscription.MonthsLeft : 0);
         }
 
+        public override int HeaderId => 7;
 
         /*
         _data.Add("habbo_club"); // Which product/widget to assign the value

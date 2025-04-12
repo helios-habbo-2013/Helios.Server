@@ -17,5 +17,7 @@ namespace Helios.Messages.Incoming
 
             avatar.RoomEntity.UseEffect(effectId);
         }
+
+        public int HeaderId => -1;
     }
 }

@@ -13,5 +13,7 @@
         {
             _data.Add(heightmap);
         }
+
+        public int HeaderId => -1;
     }
 }

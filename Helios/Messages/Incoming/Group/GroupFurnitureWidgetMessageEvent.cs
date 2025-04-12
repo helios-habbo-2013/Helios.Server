@@ -30,5 +30,7 @@ namespace Helios.Messages.Incoming
 
             avatar.Send(new GroupFurnitureWidgetMessageComposer(item.Id, group.Data.Id, group.Data.Name, group.Data.RoomId, group.Members.Any(x => x.Data.AvatarId == avatar.Details.Id)));
         }
+
+        public int HeaderId => -1;
     }
 }

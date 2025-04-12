@@ -17,5 +17,7 @@
             _data.Add(effectId);
             _data.Add(0);
         }
+
+        public int HeaderId => -1;
     }
 }

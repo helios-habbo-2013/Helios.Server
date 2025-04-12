@@ -27,5 +27,7 @@ namespace Helios.Messages.Incoming
                 avatar.Send(new SearchMessengerComposer(friends, users));
             }
         }
+
+        public int HeaderId => 14;
     }
 }

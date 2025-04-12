@@ -18,5 +18,7 @@ namespace Helios.Messages.Incoming
             if (!avatar.TryLogin(ssoTicket))
                 avatar.Connection.Disconnect();
         }
+
+        public int HeaderId => 415;
     }
 }

@@ -16,5 +16,7 @@
             _data.Add(message);
             _data.Add(0);
         }
+
+        public override int HeaderId => 134;
     }
 }

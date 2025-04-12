@@ -13,5 +13,7 @@
         {
             _data.Add(muteFlag);
         }
+
+        public int HeaderId => -1;
     }
 }

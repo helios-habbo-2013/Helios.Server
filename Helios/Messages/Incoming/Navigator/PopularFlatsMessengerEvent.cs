@@ -19,5 +19,7 @@ namespace Helios.Messages.Incoming
                 avatar.Send(new FlatListComposer(2, roomList, NavigatorManager.GetPopularPromotion()));
             }
         }
+
+        public int HeaderId => -1;
     }
 }

@@ -56,5 +56,7 @@ namespace Helios.Messages.Incoming
 
             avatar.Send(new FlatCreatedComposer(roomData.Id, roomData.Name));
         }
+
+        public int HeaderId => -1;
     }
 }

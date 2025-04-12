@@ -25,5 +25,7 @@ namespace Helios.Messages.Outgoing
             _data.Add(this.avatarId);
             _data.Add(this.avatarName);
         }
+
+        public override int HeaderId => -1;
     }
 }

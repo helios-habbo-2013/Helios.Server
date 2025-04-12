@@ -69,6 +69,8 @@ namespace Helios.Messages.Outgoing
             m_Data.Add(false);
             */
         }
+
+        public override int HeaderId => -1;
     }
 }
  

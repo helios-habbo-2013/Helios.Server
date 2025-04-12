@@ -12,5 +12,7 @@ namespace Helios.Messages.Incoming
         {
             avatar.Messenger.ForceUpdate();
         }
+
+        public int HeaderId => 15;
     }
 }

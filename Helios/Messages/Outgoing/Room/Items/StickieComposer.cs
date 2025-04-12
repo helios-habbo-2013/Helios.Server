@@ -18,5 +18,7 @@ namespace Helios.Messages.Outgoing
             _data.Add(itemId.ToString());
             _data.Add($"{stickieData.Colour} {stickieData.Message}");
         }
+
+        public int HeaderId => -1;
     }
 }

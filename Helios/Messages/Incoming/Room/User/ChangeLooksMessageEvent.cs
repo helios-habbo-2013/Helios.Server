@@ -35,5 +35,7 @@ namespace Helios.Messages.Incoming
             avatar.Send(new UserChangeMessageComposer(-1, avatar.Details.Figure, avatar.Details.Sex, avatar.Details.Motto, avatar.Details.AchievementPoints));
             room.Send(new UserChangeMessageComposer(avatar.RoomEntity.InstanceId, avatar.Details.Figure, avatar.Details.Sex, avatar.Details.Motto, avatar.Details.AchievementPoints));
         }
+
+        public int HeaderId => -1;
     }
 }

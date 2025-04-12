@@ -1,4 +1,4 @@
-﻿namespace Helios.Messages.Headers
+﻿/*namespace Helios.Messages.Headers
 {
     public class OutgoingEvents
     {
@@ -25,6 +25,8 @@
         public static readonly short UserFlatCatsComposer = 221; // -- R49
         public static readonly short CanCreateRoomComposer = -3710;
         public static readonly short ScrSendUserInfoComposer = 7; // -- R49
+        public static readonly short ModMessageComposer = 161; // -- R49
+        public static readonly short HabboBroadcastComposer = 139; // -- R49
         public static readonly short RoomReadyComposer = -206;
         public static readonly short OpenConnectionComposer = -400;
         public static readonly short FurnitureAliasesComposer = -1456;
@@ -102,3 +104,4 @@
         public static readonly short GroupFurnitureWidgetMessageComposer = -3682;
     }
 }
+*/

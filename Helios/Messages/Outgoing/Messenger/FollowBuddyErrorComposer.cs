@@ -13,6 +13,8 @@
         {
             _data.Add((int)followBuddyError);
         }
+
+        public override int HeaderId => -1;
     }
 
     public enum FollowBuddyError

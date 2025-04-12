@@ -22,5 +22,7 @@ namespace Helios.Messages.Outgoing
                 _data.Add(tag.Quantity);
             }
         }
+
+        public int HeaderId => -1;
     }
 }

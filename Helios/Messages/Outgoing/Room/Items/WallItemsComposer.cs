@@ -45,5 +45,7 @@ namespace Helios.Messages.Outgoing
             composer.Data.Add(-1);
             composer.Data.Add(item.Definition.Data.MaxStatus > 1 ? 1 : 0);
         }
+
+        public int HeaderId => -1;
     }
 }

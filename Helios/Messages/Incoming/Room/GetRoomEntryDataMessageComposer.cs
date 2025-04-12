@@ -43,5 +43,7 @@ namespace Helios.Messages.Incoming
             if (avatar.RoomEntity.EffectId > 0)
                 avatar.RoomEntity.UseEffect(avatar.RoomEntity.EffectId);
         }
+
+        public int HeaderId => -1;
     }
 }

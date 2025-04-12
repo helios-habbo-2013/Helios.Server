@@ -10,5 +10,7 @@ namespace Helios.Messages.Incoming
             avatar.Currency.UpdateCredits();
             avatar.Currency.UpdateCurrencies();
         }
+
+        public int HeaderId => 8;
     }
 }

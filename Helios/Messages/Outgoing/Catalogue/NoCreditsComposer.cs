@@ -29,5 +29,7 @@ namespace Helios.Messages.Outgoing
             if (seasonalCurrencyType != null)
                 _data.Add((int)seasonalCurrencyType.Value);
         }
+
+        public int HeaderId => -1;
     }
 }

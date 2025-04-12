@@ -16,5 +16,7 @@ namespace Helios.Messages.Outgoing
             _data.Add(effect.Id);
             _data.Add(effect.Duration);
         }
+
+        public int HeaderId => -1;
     }
 }

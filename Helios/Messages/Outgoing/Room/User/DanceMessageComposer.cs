@@ -16,5 +16,7 @@
             _data.Add(instanceId);
             _data.Add(danceId);
         }
+
+        public int HeaderId => -1;
     }
 }

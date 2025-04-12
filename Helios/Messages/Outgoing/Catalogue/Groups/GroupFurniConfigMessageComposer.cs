@@ -30,5 +30,7 @@ namespace Helios.Messages.Outgoing
                 _data.Add(false); // Whether group is favourite
             }
         }
+
+        public virtual int HeaderId => 0;
     }
 }

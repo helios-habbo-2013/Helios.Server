@@ -33,5 +33,7 @@ namespace Helios.Messages.Incoming
             Room room = friend.Avatar.RoomUser.Room;
             avatar.Send(new RoomForwardComposer(room.Data.Id, room.Data.IsPublicRoom));
         }
+
+        public int HeaderId => -1;
     }
 }

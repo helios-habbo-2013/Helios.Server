@@ -13,5 +13,7 @@ namespace Helios.Messages.Incoming.Catalogue
 
             avatar.Send(new CatalogueClubGiftsMessageComposer(avatar.IsSubscribed ? avatar.Subscription : null, SubscriptionManager.Instance.Gifts));
         }
+
+        public int HeaderId => -1;
     }
 }

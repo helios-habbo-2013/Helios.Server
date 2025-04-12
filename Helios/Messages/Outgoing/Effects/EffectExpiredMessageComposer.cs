@@ -13,5 +13,7 @@
         {
             _data.Add(effectId);
         }
+
+        public override int HeaderId => -1;
     }
 }

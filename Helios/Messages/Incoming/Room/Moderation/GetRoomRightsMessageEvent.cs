@@ -29,5 +29,7 @@ namespace Helios.Messages.Incoming
                 avatar.Send(new RightsListMessageComposer(room.Data.Id, rightsList));
             }
         }
+
+        public int HeaderId => -1;
     }
 }

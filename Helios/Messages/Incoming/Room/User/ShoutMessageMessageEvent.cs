@@ -23,7 +23,8 @@ namespace Helios.Messages.Incoming
             }*/
 
             avatar.RoomUser.Talk(ChatMessageType.SHOUT, message, colourId);
-
         }
+
+        public int HeaderId => -1;
     }
 }

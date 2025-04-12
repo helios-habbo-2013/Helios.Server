@@ -28,5 +28,7 @@ namespace Helios.Messages.Outgoing
                 _data.Add(roomData.Id);
             }
         }
+
+        public int HeaderId => -1;
     }
 }

@@ -15,5 +15,7 @@ namespace Helios.Messages.Outgoing
             _data.Add((int)messageRequestError); // error code if enum error specified wasn't found by client
             _data.Add((int)messageRequestError);
         }
+
+        public override int HeaderId => 260;
     }
 }

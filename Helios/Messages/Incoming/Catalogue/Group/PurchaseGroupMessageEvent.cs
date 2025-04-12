@@ -126,5 +126,7 @@ namespace Helios.Messages.Incoming.Catalogue
                 avatar.Send(new GroupRoomMessageComposer(roomId, groupData.Id));
             }
         }
+
+        public int HeaderId => -1;
     }
 }

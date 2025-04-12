@@ -50,5 +50,7 @@ namespace Helios.Messages.Incoming
                 searchQuery,
                 group.IsAdmin(avatar.Details.Id)));
         }
+
+        public int HeaderId => -1;
     }
 }

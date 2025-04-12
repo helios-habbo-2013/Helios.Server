@@ -56,5 +56,7 @@ namespace Helios.Messages.Outgoing
                 }
             }
         }
+
+        public override int HeaderId => -1;
     }
 }

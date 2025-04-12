@@ -39,5 +39,7 @@ namespace Helios.Messages.Outgoing
             _data.Add(user.AvatarData.Figure);
             _data.Add(user.AvatarData.LastOnline.ToString("MM-dd-yyyy HH:mm:ss"));
         }
+
+        public override int HeaderId => 435;
     }
 }

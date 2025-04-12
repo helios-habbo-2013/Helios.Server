@@ -25,5 +25,7 @@ namespace Helios.Messages.Incoming
             string wallPosition = request.ReadString();
             room.FurnitureManager.MoveItem(item, wallPosition: wallPosition);
         }
+
+        public int HeaderId => -1;
     }
 }

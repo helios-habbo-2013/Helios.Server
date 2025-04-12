@@ -16,5 +16,7 @@ namespace Helios.Messages.Outgoing
         {
             _data.Add(this.homeRoomId);
         }
+
+        public override int HeaderId => 455;
     }
 }

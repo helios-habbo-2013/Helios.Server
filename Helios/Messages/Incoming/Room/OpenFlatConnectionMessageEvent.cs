@@ -22,5 +22,7 @@ namespace Helios.Messages.Incoming
                 avatar.Send(new OpenConnectionComposer(roomId, room.Data.CategoryId));
             }
         }
+
+        public int HeaderId => -1;
     }
 }

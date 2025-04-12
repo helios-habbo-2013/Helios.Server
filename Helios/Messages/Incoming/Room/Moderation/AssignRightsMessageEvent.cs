@@ -22,5 +22,7 @@ namespace Helios.Messages.Incoming
 
             avatar.Send(new GiveRoomRightsMessageComposer(room.Data.Id, playerId, AvatarManager.Instance.GetDataById(playerId).Name));
         }
+
+        public int HeaderId => -1;
     }
 }

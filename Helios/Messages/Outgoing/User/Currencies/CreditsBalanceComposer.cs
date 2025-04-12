@@ -13,5 +13,7 @@
         {
             _data.Add($"{credits}.0");
         }
+
+        public override int HeaderId => 6;
     }
 }

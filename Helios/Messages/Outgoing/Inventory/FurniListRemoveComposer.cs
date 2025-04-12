@@ -13,5 +13,7 @@
         {
             _data.Add(itemId);
         }
+
+        public override int HeaderId => -1;
     }
 }

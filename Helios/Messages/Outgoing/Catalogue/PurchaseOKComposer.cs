@@ -38,5 +38,7 @@ namespace Helios.Messages.Outgoing
             composer.Data.Add(0);
             composer.Data.Add(item.AllowBulkPurchase);
         }
+
+        public int HeaderId => -1;
     }
 }

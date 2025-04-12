@@ -10,5 +10,7 @@ namespace Helios.Messages.Incoming
         {
             avatar.Send(new ChangeNameStatusComposer());
         }
+
+        public int HeaderId => -1;
     }
 }

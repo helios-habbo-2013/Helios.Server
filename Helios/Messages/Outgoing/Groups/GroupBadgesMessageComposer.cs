@@ -20,5 +20,7 @@ namespace Helios.Messages.Outgoing
             _data.Add(this.groupId);
             _data.Add(this.badge);
         }
+
+        public int HeaderId => -1;
     }
 }

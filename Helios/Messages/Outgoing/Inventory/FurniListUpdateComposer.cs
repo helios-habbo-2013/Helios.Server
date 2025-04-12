@@ -6,5 +6,7 @@
         {
 
         }
+
+        public int HeaderId => -1;
     }
 }

@@ -34,5 +34,7 @@ namespace Helios.Messages.Incoming
                 owner.Send(new FurniListAddComposer(item));
             }
         }
+
+        public int HeaderId => -1;
     }
 }

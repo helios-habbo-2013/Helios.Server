@@ -6,5 +6,7 @@
         {
 
         }
+
+        public override int HeaderId => -1;
     }
 }

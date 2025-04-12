@@ -25,5 +25,7 @@
             _data.Add(motto);
             _data.Add(achievementPoints);
         }
+
+        public int HeaderId => -1;
     }
 }

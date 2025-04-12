@@ -16,5 +16,7 @@
             _data.Add(instanceId);
             _data.Add(isTyping ? 1 : 0);
         }
+
+        public int HeaderId => -1;
     }
 }

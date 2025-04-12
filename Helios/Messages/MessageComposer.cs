@@ -7,6 +7,8 @@ namespace Helios.Messages
     {
         protected List<object> _data;
         protected bool _composed;
+        
+        public virtual int HeaderId { get; }
 
         /// <summary>
         /// Get the data appended

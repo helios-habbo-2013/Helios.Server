@@ -15,5 +15,7 @@
             this._data.Add("test123");
             this._data.Add("test1337");
         }
+
+        public override int HeaderId => -1;
     }
 }

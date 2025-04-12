@@ -38,5 +38,7 @@ namespace Helios.Messages.Outgoing
             item.Update();
             item.Save();
         }
+
+        public int HeaderId => -1;
     }
 }

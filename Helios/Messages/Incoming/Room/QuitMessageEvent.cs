@@ -15,5 +15,7 @@ namespace Helios.Messages.Incoming
 
             avatar.RoomUser.Room.EntityManager.LeaveRoom(avatar, true);
         }
+
+        public int HeaderId => -1;
     }
 }

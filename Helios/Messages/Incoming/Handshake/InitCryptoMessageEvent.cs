@@ -14,7 +14,9 @@ namespace Helios.Messages.Incoming
                 return;
             }
 
-            avatar.Send(new SessionParametersComposer(avatar));
+            avatar.Send(new InitCryptoComposer("0000"));
         }
+
+        public virtual int HeaderId => 206;
     }
 }

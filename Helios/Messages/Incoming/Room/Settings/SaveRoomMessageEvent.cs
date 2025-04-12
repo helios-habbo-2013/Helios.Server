@@ -116,5 +116,7 @@ namespace Helios.Messages.Incoming
             room.Send(new RoomInfoComposer(room.Data, true, false));
             room.Send(new RoomVisualizationSettingsComposer(room.Data.FloorThickness, room.Data.WallThickness, room.Data.IsHidingWall));
         }
+
+        public int HeaderId => -1;
     }
 }

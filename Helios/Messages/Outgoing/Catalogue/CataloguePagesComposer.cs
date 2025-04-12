@@ -56,5 +56,7 @@ namespace Helios.Messages.Outgoing
             _data.Add(childTab.Data.PageLink);
             _data.Add(childTab.Data.Caption);
         }
+
+        public int HeaderId => -1;
     }
 }

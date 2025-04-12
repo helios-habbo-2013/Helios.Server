@@ -16,5 +16,7 @@
             _data.Add(hasReachedLimit ? 0 : 1);
             _data.Add(maxRooms);
         }
+
+        public override int HeaderId => -1;
     }
 }

@@ -16,5 +16,7 @@ namespace Helios.Messages.Outgoing
             _data.Add(item.Id.ToString());
             _data.Add(item.Data.OwnerId);
         }
+
+        public override int HeaderId => -1;
     }
 }

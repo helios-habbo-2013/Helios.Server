@@ -25,5 +25,7 @@
             _data.Add(this.roomId);
             _data.Add(this.isMember);
         }
+
+        public override int HeaderId => -1;
     }
 }

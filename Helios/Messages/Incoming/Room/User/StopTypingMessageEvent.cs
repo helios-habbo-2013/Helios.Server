@@ -14,5 +14,7 @@ namespace Helios.Messages.Incoming
             avatar.RoomUser.TimerManager.ResetSpeechBubbleTimer();
             avatar.Send(new TypingStatusComposer(avatar.RoomUser.InstanceId, false));
         }
+
+        public int HeaderId => -1;
     }
 }
