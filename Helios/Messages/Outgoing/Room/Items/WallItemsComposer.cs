@@ -42,10 +42,8 @@ namespace Helios.Messages.Outgoing
             composer.Data.Add(item.Definition.Data.SpriteId);
             composer.Data.Add(item.Data.WallPosition);
             composer.Data.Add((string) item.Data.ExtraData);
-            composer.Data.Add(-1);
-            composer.Data.Add(item.Definition.Data.MaxStatus > 1 ? 1 : 0);
         }
 
-        public int HeaderId => -1;
+        public override int HeaderId => 45;
     }
 }

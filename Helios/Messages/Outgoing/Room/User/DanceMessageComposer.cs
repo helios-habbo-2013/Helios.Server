@@ -17,6 +17,6 @@
             _data.Add(danceId);
         }
 
-        public int HeaderId => -1;
+        public override int HeaderId => 480;
     }
 }

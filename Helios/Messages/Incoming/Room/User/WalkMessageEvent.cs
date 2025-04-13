@@ -16,6 +16,6 @@ namespace Helios.Messages.Incoming
             avatar.RoomUser.Move(x, y);
         }
 
-        public int HeaderId => -1;
+        public int HeaderId => 75;
     }
 }

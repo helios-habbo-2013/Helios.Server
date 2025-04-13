@@ -14,7 +14,7 @@ namespace Helios.Network
         {
             buffer.MarkReaderIndex();
 
-            if (buffer.ReadableBytes < 6) 
+            if (buffer.ReadableBytes < 4) 
             {
                 // If the incoming data is less than 6 bytes, it's junk.
                 return;

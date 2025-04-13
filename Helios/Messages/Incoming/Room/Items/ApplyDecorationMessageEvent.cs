@@ -48,6 +48,6 @@ namespace Helios.Messages.Incoming
             }
         }
 
-        public int HeaderId => -1;
+        public int HeaderId => 66;
     }
 }

@@ -1,24 +1,25 @@
 ﻿using Helios.Game;
 using Helios.Storage.Models.Room;
+using static Helios.Game.FuserightManager;
 
 namespace Helios.Messages.Outgoing
 {
     class RoomInfoComposer : IMessageComposer
     {
-        public RoomData roomData;
+        public RoomData room;
         private bool isLoading;
         private bool checkEntry;
 
         public RoomInfoComposer(RoomData roomData)
         {
-            this.roomData = roomData;
+            this.room = roomData;
             this.isLoading = true;
             this.checkEntry = true;
         }
 
         public RoomInfoComposer(RoomData roomData, bool isLoading, bool checkEntry)
         {
-            this.roomData = roomData;
+            this.room = roomData;
             this.isLoading = isLoading;
             this.checkEntry = checkEntry;
         }
@@ -26,70 +27,34 @@ namespace Helios.Messages.Outgoing
         public override void Write()
         {
             _data.Add(isLoading);
-            _data.Add(roomData.Id);
-            _data.Add(roomData.Name);
-            _data.Add(!roomData.IsOwnerHidden); 
-            _data.Add(roomData.OwnerId);
-            _data.Add(roomData.OwnerData == null ? string.Empty : roomData.OwnerData.Name);
-            _data.Add((int)roomData.Status);
-            _data.Add(roomData.UsersNow);
-            _data.Add(roomData.UsersMax);
-            _data.Add(roomData.Description);
-            _data.Add(0);
-            _data.Add(roomData.TradeSetting == 1); // can category trade?
-            _data.Add(roomData.Rating);
-            _data.Add(0);
-            _data.Add(roomData.Category.Id);
-            _data.Add(roomData.GroupData != null ? roomData.GroupData.Id : 0);
+            _data.Add(room.Id);
+            this.AppendBoolean(this.checkEntry);
 
-            if (roomData.GroupData != null)
-            {
-                _data.Add(roomData.GroupData.Name);
-                _data.Add(roomData.GroupData.Badge);
-            }
-            else
-            {
+            this.AppendStringWithBreak(room.Name);
+            this.AppendStringWithBreak(room.OwnerData == null ? string.Empty : room.OwnerData.Name);
+            this.AppendInt32((int)room.Status);
+            this.AppendInt32(room.UsersNow);
+            this.AppendInt32(room.UsersMax);
+            this.AppendStringWithBreak(room.Description);
+            this.AppendBoolean(true);
+            this.AppendBoolean(room.TradeSetting == 1);
+            this.AppendInt32(room.Rating);
+            this.AppendInt32(room.Category.Id);
+            this.AppendStringWithBreak("");
+            this.AppendInt32(room.Tags.Count);
 
-                _data.Add("");
-                _data.Add("");
+            foreach (var tag in room.Tags)
+            {
+                this.AppendStringWithBreak(tag.Text);
             }
 
-            _data.Add("");
+            this.AppendInt32(0);
+            this.AppendInt32(0);
+            this.AppendInt32(0);
 
-            _data.Add(roomData.Tags.Count);
-
-            foreach (var tag in roomData.Tags)
-            {
-                _data.Add(tag.Text);
-            }
-
-
-            _data.Add(0);
-            _data.Add(0);
-            _data.Add(0);
-            _data.Add(true);
-            _data.Add(true);
-            _data.Add(0);
-            _data.Add(0);
-
-            /*
-            this._SafeStr_10153 = k.readBoolean(); == CHECK ENTRY
-            this._SafeStr_10154 = k.readBoolean();
-            this._SafeStr_10155 = k.readBoolean();
-            var _local_2:Boolean = k.readBoolean();
-            */
-
-            _data.Add(checkEntry);
-            _data.Add(false); // ??
-            _data.Add(false); // ??
-            _data.Add(roomData.IsMuted); // ??
-
-            _data.Add(0); // ??
-            _data.Add(0); // ??
-            _data.Add(0); // ??
-            _data.Add(true); // whether you can mute room
+            this.AppendBoolean(false);
         }
 
-        public int HeaderId => -1;
+        public override int HeaderId => 454;
     }
 }
