@@ -58,7 +58,7 @@ namespace Helios.Game
                 if (avatar.RoomUser.TimerManager.SpeechBubbleDate != -1 && DateUtil.GetUnixTimestamp() > avatar.RoomUser.TimerManager.SpeechBubbleDate)
                 {
                     avatar.RoomUser.TimerManager.ResetSpeechBubbleTimer();
-                    avatar.RoomUser.Room.Send(new TypingStatusComposer(avatar.RoomUser.InstanceId, false));
+                    avatar.RoomUser.Room.Send(new UserTypingMessageComposer(avatar.RoomUser.InstanceId, false));
                 }
             }
         }
@@ -91,7 +91,7 @@ namespace Helios.Game
                         }
                     }
 
-                    avatar.Send(new EffectExpiredMessageComposer(effect.Value.Id));
+                    avatar.Send(new AvatarEffectExpiredMessageComposer(effect.Value.Id));
 
                     if (avatar.RoomEntity.EffectId == effect.Value.Id)
                         avatar.RoomEntity.UseEffect(0);

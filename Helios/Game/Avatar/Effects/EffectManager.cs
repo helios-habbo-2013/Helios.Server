@@ -50,7 +50,7 @@ namespace Helios.Game
         {
             var effect = new Effect(effectData);
 
-            avatar.Send(new EffectAddedMessageComposer(effect));
+            avatar.Send(new AvatarEffectAddedMessageComposer(effect));
             Effects.TryAdd(effect.Id, effect);
         }
 

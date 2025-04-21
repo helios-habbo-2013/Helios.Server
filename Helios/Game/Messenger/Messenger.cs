@@ -165,7 +165,7 @@ namespace Helios.Game
             List<MessengerUpdate> messengerUpdates = Queue.Dequeue();
 
             if (messengerUpdates.Count > 0)
-                Avatar.Send(new UpdateMessengerComposer(Categories, messengerUpdates));
+                Avatar.Send(new FriendListUpdateComposer(Categories, messengerUpdates));
         }
 
         /// <summary>

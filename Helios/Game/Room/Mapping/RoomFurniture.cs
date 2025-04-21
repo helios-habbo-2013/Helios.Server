@@ -32,7 +32,7 @@ namespace Helios.Game
             if (item.Definition.HasBehaviour(ItemBehaviour.WALL_ITEM))
             {
                 item.Data.WallPosition = wallPosition;
-                room.Send(new WallItemComposer(item));
+                room.Send(new ItemAddMessageComposer(item));
             }
             else
             {
@@ -51,7 +51,7 @@ namespace Helios.Game
 
                 HandleItemAdjusted(item, false);
 
-                room.Send(new FloorItemComposer(item));
+                room.Send(new ObjectAddMessageComposer(item));
                 room.Mapping.AddItem(item);
                 item.UpdateEntities();
             }
@@ -70,7 +70,7 @@ namespace Helios.Game
             if (item.Definition.HasBehaviour(ItemBehaviour.WALL_ITEM))
             {
                 item.Data.WallPosition = wallPosition;
-                room.Send(new UpdateWallItemComposer(item));
+                // room.Send(new UpdateWallItemComposer(item));
             }
             else
             {
@@ -103,7 +103,7 @@ namespace Helios.Game
                 room.Mapping.AddItem(item);
 
                 item.UpdateEntities(oldTile.Position);
-                room.Send(new UpdateFloorItemComposer(item));
+                room.Send(new ObjectDataUpdateMessageComposer(item));
             }
 
 
@@ -181,12 +181,12 @@ namespace Helios.Game
 
             if (item.Definition.HasBehaviour(ItemBehaviour.WALL_ITEM))
             {
-                room.Send(new RemoveWallItemComposer(item));
+                // room.Send(new RemoveWallItemComposer(item));
                 item.Data.WallPosition = string.Empty;
             }
             else
             {
-                room.Send(new RemoveFloorItemComposer(item));
+                // room.Send(new RemoveFloorItemComposer(item));
                 item.UpdateEntities();
 
                 item.Data.X = item.Position.X;

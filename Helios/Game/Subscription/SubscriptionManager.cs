@@ -85,7 +85,7 @@ namespace Helios.Game
             // Continue standard purchase
             if (priceCoins > avatar.Details.Credits)
             {
-                avatar.Send(new NoCreditsComposer(true, false));
+                avatar.Send(new NotEnoughBalanceMessageComposer(true, false));
                 return;
             }
 
@@ -93,7 +93,7 @@ namespace Helios.Game
             {
                 if (priceSeasonal > avatar.Currency.GetBalance(currencyType))
                 {
-                    avatar.Send(new NoCreditsComposer(false, true, currencyType));
+                    avatar.Send(new NotEnoughBalanceMessageComposer(false, true, currencyType));
                     return;
                 }
 

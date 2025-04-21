@@ -45,7 +45,7 @@ namespace Helios.Game
                 }
 
                 if (entityUpdates.Count > 0)
-                    Room.Send(new UsersStatusComposer(entityUpdates));
+                    Room.Send(new UserUpdateMessageComposer(entityUpdates));
             }
             catch (Exception ex)
             {

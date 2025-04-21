@@ -156,9 +156,9 @@ namespace Helios.Game
                 return;
 
             if (Definition.HasBehaviour(ItemBehaviour.WALL_ITEM))
-                Room.Send(new UpdateWallItemComposer(this));
+                Room.Send(new ItemUpdateMessageComposer(this));
             else
-                Room.Send(new UpdateFloorItemComposer(this));
+                Room.Send(new ObjectDataUpdateMessageComposer(this));
         }
 
         /// <summary>

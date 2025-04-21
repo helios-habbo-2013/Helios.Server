@@ -1,6 +1,5 @@
 ﻿using Helios.Messages;
 using Helios.Messages.Outgoing;
-using Helios.Messages.Outgoing.User.Alerts;
 using Helios.Network.Session;
 using Helios.Storage;
 using Helios.Storage.Access;
@@ -9,7 +8,6 @@ using Helios.Storage.Models.Entity;
 using Serilog;
 using System;
 using System.Collections.Generic;
-using System.Reflection;
 
 namespace Helios.Game
 {
@@ -185,10 +183,11 @@ namespace Helios.Game
             AuthenticationTime = DateTime.Now;
 
             Send(new UserRightsMessageComposer(FuserightManager.Instance.GetRights(avatarData.Rank)));
-            Send(new AuthenticationOKComposer());
+            Send(new AuthenticationOKMessageComposer());
             Send(new NavigatorSettingsComposer(0));
-            Send(new EffectsMessageComposer([.. EffectManager.Effects.Values]));
-            Send(new FavouriteRoomsComposer());
+            // Send(new EffectsMessageComposer([.. EffectManager.Effects.Values]));
+            // Send(new FavouriteRoomsComposer());
+
             // Send(new AvailabilityStatusComposer());
             // Send(new InfoFeedEnableComposer());
             // Send(new ModMessageComposer("Thank you for helping us test the new Helios. Please submit feedback to the Oldskooler forum:", "https://forum.oldskooler.org/threads/prjhelios-c-r49-entity-framework.27/"));

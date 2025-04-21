@@ -79,7 +79,7 @@ namespace Helios.Game
         /// </summary>
         public void UpdateCredits()
         {
-            avatar.Send(new CreditsBalanceComposer(avatar.Details.Credits));
+            avatar.Send(new CreditBalanceComposer(avatar.Details.Credits));
         }
 
         /// <summary>
@@ -87,7 +87,7 @@ namespace Helios.Game
         /// </summary>
         public void UpdateCurrencies()
         {
-            avatar.Send(new ActivityPointsNotificationComposer(this.GetBalance(SeasonalCurrencyType.DEFAULT), ActivityPointsNotificationComposer.ActivityPointAlertType.NO_SOUND));
+            avatar.Send(new HabboActivityPointNotificationMessageComposer(this.GetBalance(SeasonalCurrencyType.DEFAULT), HabboActivityPointNotificationMessageComposer.ActivityPointAlertType.NO_SOUND));
             //avatar.Send(new ActivityPointsComposer(Currencies));
         }
 

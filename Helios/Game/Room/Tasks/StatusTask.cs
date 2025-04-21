@@ -53,7 +53,7 @@ namespace Helios.Game
                 {
                     avatar.RoomUser.TimerManager.ResetSpeechBubbleTimer();
                     
-                    Room.Send(new TypingStatusComposer(avatar.RoomUser.InstanceId, false));
+                    Room.Send(new UserTypingMessageComposer(avatar.RoomUser.InstanceId, false));
                 }
             }
         }

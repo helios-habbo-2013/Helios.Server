@@ -134,7 +134,7 @@ namespace Helios.Game
 
             if (rollingItems.Count > 0 || rollingEntity != null)
             {
-                this.Item.Room.Send(new SlideObjectBundleComposer(_rollerEntry.Roller, rollingItems, rollingEntity));
+                this.Item.Room.Send(new SlideObjectBundleMessageComposer(_rollerEntry.Roller, rollingItems, rollingEntity));
 
                 //var itemsRolling = new Dictionary<Item, Tuple<Item, Position>>();
                 //var itemsRolling = new List<RollingData>();

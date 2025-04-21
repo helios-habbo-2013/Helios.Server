@@ -62,15 +62,15 @@ namespace Helios.Game
             if (!(entity is Avatar avatar))
                 return;
 
-            avatar.Send(new RoomReadyComposer(room.Model.Data.Model, room.Data.Id));
+            avatar.Send(new RoomReadyMessageComposer(room.Model.Data.Model, room.Data.Id));
 
             if (room.Data.Wallpaper != "0.0")
-                avatar.Send(new RoomPropertyComposer("wallpaper", Convert.ToString(room.Data.Wallpaper)));
+                avatar.Send(new RoomPropertyMessageComposer("wallpaper", Convert.ToString(room.Data.Wallpaper)));
 
             if (room.Data.Floor != "0.0")
-                avatar.Send(new RoomPropertyComposer("floor", Convert.ToString(room.Data.Floor)));
+                avatar.Send(new RoomPropertyMessageComposer("floor", Convert.ToString(room.Data.Floor)));
 
-            avatar.Send(new RoomPropertyComposer("landscape", Convert.ToString(room.Data.Landscape)));
+            avatar.Send(new RoomPropertyMessageComposer("landscape", Convert.ToString(room.Data.Landscape)));
             
             if (!room.Data.IsPublicRoom)
             {
@@ -78,22 +78,22 @@ namespace Helios.Game
 
                 if (room.RightsManager.IsOwner(avatar.Details.Id))
                 {
-                    avatar.Send(new YouAreControllerComposer());
-                    avatar.Send(new YouAreOwnerMessageEvent());
+                    avatar.Send(new YouAreControllerMessageComposer());
+                    avatar.Send(new YouAreOwnerMessageComposer());
                     entity.RoomEntity.AddStatus("flatctrl", "useradmin");
                 }
                 else if (room.RightsManager.HasRights(avatar.Details.Id))
                 {
-                    avatar.Send(new YouAreControllerComposer());
+                    avatar.Send(new YouAreControllerMessageComposer());
                 }
                 else
                 {
-                    avatar.Send(new YouAreNotControllerComposer());
+                    avatar.Send(new YouAreNotControllerMessageComposer());
                 }
 
             }
 
-            avatar.Send(new RoomScoreComposer(room.Data.Rating));
+            avatar.Send(new RoomRatingComposer(room.Data.Rating));
             avatar.Send(new RoomEventComposer());
         }
 
@@ -165,7 +165,7 @@ namespace Helios.Game
             else
             {
                 // For 'Avatar' to show, see GetRoomEntryDataMessageComposer.cs line 21
-                room.Send(new UsersComposer(List.Create(entity)));
+                room.Send(new UsersMessageComposer(List.Create(entity)));
             }
         }
 
@@ -189,7 +189,7 @@ namespace Helios.Game
         public void LeaveRoom(IEntity entity, bool hotelView = false)
         {
             room.Entities.Remove(entity.RoomEntity.InstanceId);
-            room.Send(new UserRemoveComposer(entity.RoomEntity.InstanceId));
+            room.Send(new UserRemoveMessageComposer(entity.RoomEntity.InstanceId));
 
             // Remove entity from their current position
             var currentTile = entity.RoomEntity.Position.GetTile(room);
@@ -220,7 +220,7 @@ namespace Helios.Game
                 }
 
                 if (hotelView)
-                    avatar.Send(new CloseConnectionComposer());
+                    avatar.Send(new CloseConnectionMessageComposer());
                 
                 avatar.Messenger.SendStatus();
             }

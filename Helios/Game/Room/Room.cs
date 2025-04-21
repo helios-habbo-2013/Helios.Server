@@ -96,7 +96,7 @@ namespace Helios.Game
 
             var avatar = (Avatar)entity;
             
-            avatar.Send(new RoomForwardComposer(Data.Id, Data.IsPublicRoom));
+            avatar.Send(new RoomForwardMessageComposer(Data.Id, Data.IsPublicRoom));
         }
 
         #endregion

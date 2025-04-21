@@ -250,7 +250,7 @@ namespace Helios.Game
             if (instantUpdate && Room != null)
             {
                 InteractItem();
-                Room.Send(new UsersStatusComposer(List.Create(Entity)));
+                Room.Send(new UserUpdateMessageComposer(List.Create(Entity)));
             }
         }
 
@@ -285,7 +285,7 @@ namespace Helios.Game
                     Room.Send(new DanceMessageComposer(InstanceId, 0));
 
 
-                Room.Send(new EffectMessageComposer(InstanceId, effectId));
+                Room.Send(new AvatarEffectMessageComposer(InstanceId, effectId));
             }
         }
 

@@ -104,11 +104,11 @@ namespace Helios.Game
                 avatar.Inventory.AddItem(item);
 
             if (isClubGift)
-                avatar.Send(new ClubGiftReceivedComposer(catalogueItem));
+                avatar.Send(new ClubGiftSelectedComposer(catalogueItem));
             else
-                avatar.Send(new PurchaseOKComposer(catalogueItem));
+                avatar.Send(new PurchaseOKMessageComposer(catalogueItem));
 
-            avatar.Send(new FurniListNotificationComposer(items));
+            avatar.Send(new UnseenItemsComposer(items));
             avatar.Send(new FurniListUpdateComposer());
         }
 
@@ -143,7 +143,7 @@ namespace Helios.Game
                 if (avatar == null)
                     return;
 
-                avatar.Send(new PurchaseOKComposer(catalogueItem));
+                avatar.Send(new PurchaseOKMessageComposer(catalogueItem));
                 purchaseEffectsQueue.ForEach(avatar.EffectManager.AddEffect);
             }
         }
