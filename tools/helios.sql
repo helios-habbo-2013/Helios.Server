@@ -15,6 +15,7 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 -- Dumping structure for table helios.article_categories
+DROP TABLE IF EXISTS `article_categories`;
 CREATE TABLE IF NOT EXISTS `article_categories` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `label` varchar(50) NOT NULL,
@@ -38,18 +39,28 @@ INSERT INTO `article_categories` (`id`, `label`, `category_index`) VALUES
 	(11, 'Other', 'other');
 
 -- Dumping structure for table helios.authentication_ticket
+DROP TABLE IF EXISTS `authentication_ticket`;
 CREATE TABLE IF NOT EXISTS `authentication_ticket` (
   `avatar_id` int(11) NOT NULL,
   `sso_ticket` varchar(250) NOT NULL DEFAULT '',
   `expires_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Dumping data for table helios.authentication_ticket: ~1 rows (approximately)
+-- Dumping data for table helios.authentication_ticket: ~8 rows (approximately)
 DELETE FROM `authentication_ticket`;
 INSERT INTO `authentication_ticket` (`avatar_id`, `sso_ticket`, `expires_at`) VALUES
-	(1, 'HeliosLoginTicket', NULL);
+	(1, 'HeliosLoginTicket', NULL),
+	(1, 'SSO-dfe44d54-4f6b-469c-9318-6b8d8c28288d', NULL),
+	(1, 'SSO-ffd4e633-a7cb-4fe4-af1a-a1eece7ab39e', NULL),
+	(1, 'SSO-19a483fe-1cd0-4643-8fc2-c81561656852', NULL),
+	(1, 'SSO-eb446fc6-068a-48ec-a860-0a22cab26923', NULL),
+	(1, 'SSO-e1b6e59c-cf06-47c6-b261-99e987dad85f', NULL),
+	(5, 'SSO-fafe9d8a-1d38-4cc8-b2f2-01a9342bb81c', NULL),
+	(5, 'SSO-6a04b991-adea-4285-a70f-c89e85e4fd85', NULL),
+	(5, 'SSO-99bf090d-6385-4d76-9894-6f2407f3a3ab', NULL);
 
 -- Dumping structure for table helios.avatar
+DROP TABLE IF EXISTS `avatar`;
 CREATE TABLE IF NOT EXISTS `avatar` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
@@ -64,15 +75,37 @@ CREATE TABLE IF NOT EXISTS `avatar` (
   `favourite_group_id` int(11) DEFAULT NULL,
   UNIQUE KEY `id` (`id`),
   KEY `user_id` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Dumping data for table helios.avatar: ~2 rows (approximately)
+-- Dumping data for table helios.avatar: ~3 rows (approximately)
 DELETE FROM `avatar`;
 INSERT INTO `avatar` (`id`, `user_id`, `username`, `figure`, `sex`, `rank`, `credits`, `motto`, `created_date`, `last_online`, `favourite_group_id`) VALUES
-	(1, 1, 'Alex', 'hd-605-1.lg-700-64.hr-3195-45-45.sh-730-1329.ea-3107-62-62.ch-824-110', 'F', 7, 64396, '', '2024-09-08 14:39:20', '2025-04-13 18:38:39', 1339),
-	(2, 1, 'EvilAlex', 'hr-105-1158.hd-207-1006.ch-3030-1202.lg-280-1289.ha-1001-1', 'M', 7, 656314, '', '2024-09-07 23:01:56', '2024-09-07 23:01:56', NULL);
+	(1, 1, 'Alex', 'hd-180-1.hr-100-61.ch-210-66.lg-270-82.sh-290-80', 'F', 7, 64374, '', '2024-09-08 14:39:20', '2025-04-21 22:17:29', 1339),
+	(2, 2, 'EvilAlex', 'lg-270-82.sh-290-91.hr-100-.ch-225-66.hd-195-1', 'M', 1, 656314, '', '2024-09-07 23:01:56', '2024-09-07 23:01:56', NULL),
+	(3, 1, 'Poolake', 'hr-110-1028.hd-190-1017.ch-255-1249.lg-285-64.sh-908-1221', 'M', 6, 0, '', '2024-02-23 09:32:36', '2025-04-23 09:32:36', NULL);
+
+-- Dumping structure for table helios.avatar_badges
+DROP TABLE IF EXISTS `avatar_badges`;
+CREATE TABLE IF NOT EXISTS `avatar_badges` (
+  `avatar_id` int(11) NOT NULL,
+  `badge_code` text NOT NULL,
+  `slot_id` tinyint(4) NOT NULL DEFAULT 0,
+  `visible` tinyint(4) NOT NULL DEFAULT 0,
+  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
+  `modified_at` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- Dumping data for table helios.avatar_badges: ~5 rows (approximately)
+DELETE FROM `avatar_badges`;
+INSERT INTO `avatar_badges` (`avatar_id`, `badge_code`, `slot_id`, `visible`, `created_at`, `modified_at`) VALUES
+	(1, 'ADM', 0, 1, '2025-04-27 14:14:03', '2025-04-27 14:14:03'),
+	(1, 'VIP', 0, 1, '2025-04-27 14:14:03', '2025-04-27 14:14:03'),
+	(3, 'ADM', 0, 1, '2025-04-27 14:14:03', '2025-04-27 14:14:21'),
+	(3, 'Z63', 0, 1, '2025-04-27 14:14:03', '2025-04-27 14:14:03'),
+	(1, 'EXH', 0, 1, '2025-04-27 14:14:03', '2025-04-27 14:14:03');
 
 -- Dumping structure for table helios.avatar_effects
+DROP TABLE IF EXISTS `avatar_effects`;
 CREATE TABLE IF NOT EXISTS `avatar_effects` (
   `avatar_id` int(11) NOT NULL,
   `effect_id` int(11) NOT NULL,
@@ -85,6 +118,7 @@ CREATE TABLE IF NOT EXISTS `avatar_effects` (
 DELETE FROM `avatar_effects`;
 
 -- Dumping structure for table helios.avatar_seasonal_currencies
+DROP TABLE IF EXISTS `avatar_seasonal_currencies`;
 CREATE TABLE IF NOT EXISTS `avatar_seasonal_currencies` (
   `avatar_id` int(11) NOT NULL,
   `seasonal_type` enum('PUMPKINS','PEANUTS','STARS','CLOUDS','DIAMONDS','LOYALTY_POINTS','DEFAULT') NOT NULL,
@@ -117,6 +151,7 @@ INSERT INTO `avatar_seasonal_currencies` (`avatar_id`, `seasonal_type`, `balance
 	(2, 'DIAMONDS', 0);
 
 -- Dumping structure for table helios.avatar_settings
+DROP TABLE IF EXISTS `avatar_settings`;
 CREATE TABLE IF NOT EXISTS `avatar_settings` (
   `avatar_id` int(11) NOT NULL,
   `daily_respect_points` int(11) NOT NULL DEFAULT 0,
@@ -129,14 +164,15 @@ CREATE TABLE IF NOT EXISTS `avatar_settings` (
   PRIMARY KEY (`avatar_id`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Dumping data for table helios.avatar_settings: ~2 rows (approximately)
+-- Dumping data for table helios.avatar_settings: ~3 rows (approximately)
 DELETE FROM `avatar_settings`;
 INSERT INTO `avatar_settings` (`avatar_id`, `daily_respect_points`, `daily_respect_pet_points`, `respect_points`, `friend_requests_enabled`, `following_enabled`, `online_time`, `name_change_enabled`) VALUES
-	(1, 0, 0, 0, 1, 1, 6081, 0),
+	(1, 0, 0, 0, 1, 1, 7069, 0),
 	(2, 0, 0, 0, 1, 1, 0, 0),
 	(3, 0, 0, 0, 1, 1, 13, 0);
 
 -- Dumping structure for table helios.avatar_subscriptions
+DROP TABLE IF EXISTS `avatar_subscriptions`;
 CREATE TABLE IF NOT EXISTS `avatar_subscriptions` (
   `avatar_id` int(11) NOT NULL,
   `subscribed_at` datetime NOT NULL,
@@ -148,13 +184,11 @@ CREATE TABLE IF NOT EXISTS `avatar_subscriptions` (
   PRIMARY KEY (`avatar_id`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Dumping data for table helios.avatar_subscriptions: ~2 rows (approximately)
+-- Dumping data for table helios.avatar_subscriptions: ~0 rows (approximately)
 DELETE FROM `avatar_subscriptions`;
-INSERT INTO `avatar_subscriptions` (`avatar_id`, `subscribed_at`, `expire_at`, `gift_at`, `gifts_redeemable`, `subscription_age`, `subscription_age_last_updated`) VALUES
-	(1, '2024-09-15 20:19:00', '2025-12-15 20:19:00', '2025-05-13 14:44:59', 0, 63880166760, '2025-04-13 18:46:50'),
-	(2, '2024-09-11 20:27:39', '2025-12-11 20:27:39', '2025-05-13 14:44:59', 3, 63862639760, '2024-09-22 22:09:24');
 
 -- Dumping structure for table helios.catalogue_discounts
+DROP TABLE IF EXISTS `catalogue_discounts`;
 CREATE TABLE IF NOT EXISTS `catalogue_discounts` (
   `page_id` int(11) NOT NULL,
   `purchase_limit` int(11) NOT NULL DEFAULT 100,
@@ -172,6 +206,7 @@ INSERT INTO `catalogue_discounts` (`page_id`, `purchase_limit`, `item_count_requ
 	(16, 100, 5, 2, 1, '2020-07-20 19:54:58');
 
 -- Dumping structure for table helios.catalogue_items
+DROP TABLE IF EXISTS `catalogue_items`;
 CREATE TABLE IF NOT EXISTS `catalogue_items` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `sale_code` varchar(255) DEFAULT NULL,
@@ -2515,6 +2550,7 @@ INSERT INTO `catalogue_items` (`id`, `sale_code`, `page_id`, `order_id`, `price_
 	(2562, 'a2 t', '3', 0, 2, 0, NULL, 0, 1, 249, '', 0, 1);
 
 -- Dumping structure for table helios.catalogue_packages
+DROP TABLE IF EXISTS `catalogue_packages`;
 CREATE TABLE IF NOT EXISTS `catalogue_packages` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `salecode` varchar(255) DEFAULT NULL,
@@ -2561,6 +2597,7 @@ INSERT INTO `catalogue_packages` (`id`, `salecode`, `definition_id`, `special_sp
 	(35, 'garden_wall_deal5', 2248, '', 5);
 
 -- Dumping structure for table helios.catalogue_pages
+DROP TABLE IF EXISTS `catalogue_pages`;
 CREATE TABLE IF NOT EXISTS `catalogue_pages` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `parent_id` int(11) NOT NULL DEFAULT -1,
@@ -2715,6 +2752,7 @@ INSERT INTO `catalogue_pages` (`id`, `parent_id`, `order_id`, `min_rank`, `is_na
 	(138, -1, 3000, 1, 0, 1, 0, 'Furni By Theme', 'furni_by_theme', 64, 2, '', '[]', '[]');
 
 -- Dumping structure for table helios.catalogue_subscriptions
+DROP TABLE IF EXISTS `catalogue_subscriptions`;
 CREATE TABLE IF NOT EXISTS `catalogue_subscriptions` (
   `id` int(11) NOT NULL,
   `page_id` int(11) NOT NULL DEFAULT 5,
@@ -2732,7 +2770,24 @@ INSERT INTO `catalogue_subscriptions` (`id`, `page_id`, `price_coins`, `price_se
 	(2, 63, 30, 0, NULL, 3),
 	(3, 63, 60, 0, NULL, 6);
 
+-- Dumping structure for table helios.cms_housekeeping_notes
+DROP TABLE IF EXISTS `cms_housekeeping_notes`;
+CREATE TABLE IF NOT EXISTS `cms_housekeeping_notes` (
+  `id` uuid NOT NULL DEFAULT uuid(),
+  `avatar_id` int(11) NOT NULL,
+  `created_date` datetime NOT NULL DEFAULT current_timestamp(),
+  `title` text NOT NULL,
+  `content` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- Dumping data for table helios.cms_housekeeping_notes: ~2 rows (approximately)
+DELETE FROM `cms_housekeeping_notes`;
+INSERT INTO `cms_housekeeping_notes` (`id`, `avatar_id`, `created_date`, `title`, `content`) VALUES
+	('eecd7153-2315-11f0-9690-f057a69a0ad7', 1, '2022-04-27 13:05:06', 'yay', 'notes work!'),
+	('eecd7762-2315-11f0-9690-f057a69a0ad7', 3, '2023-01-20 09:05:08', 'post a news article', 'do ur fkn work and post a news article u lazy bum!!');
+
 -- Dumping structure for table helios.cms_pages
+DROP TABLE IF EXISTS `cms_pages`;
 CREATE TABLE IF NOT EXISTS `cms_pages` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `parent_id` int(11) NOT NULL,
@@ -2745,13 +2800,13 @@ CREATE TABLE IF NOT EXISTS `cms_pages` (
   `requires_login` tinyint(4) NOT NULL DEFAULT 0,
   `requires_logout` tinyint(4) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- Dumping data for table helios.cms_pages: ~7 rows (approximately)
 DELETE FROM `cms_pages`;
 INSERT INTO `cms_pages` (`id`, `parent_id`, `order_id`, `label`, `page`, `link`, `colour`, `minimum_rank`, `requires_login`, `requires_logout`) VALUES
 	(1, -1, 1, NULL, 'me', '/me', 'BLUE', 1, 1, 0),
-	(2, -1, 1, 'Register now!', '', '/register', 'GREEN', 1, 0, 1),
+	(2, -1, 1, 'Register now!', '', '/register', 'GREEN', 0, 0, 1),
 	(3, -1, 1, 'Community', 'community', '/community', 'BLUE', 1, 0, 0),
 	(5, 1, 1, 'Home', 'me', '/me', 'BLUE', 1, 1, 0),
 	(6, 1, 2, 'My Page', 'my_page', '/home/{name}', 'BLUE', 1, 1, 0),
@@ -2759,30 +2814,38 @@ INSERT INTO `cms_pages` (`id`, `parent_id`, `order_id`, `label`, `page`, `link`,
 	(8, 3, 1, 'Community', 'community', '/community', 'BLUE', 1, 0, 0);
 
 -- Dumping structure for table helios.cms_pages_habblets
+DROP TABLE IF EXISTS `cms_pages_habblets`;
 CREATE TABLE IF NOT EXISTS `cms_pages_habblets` (
   `page` varchar(250) NOT NULL,
   `order_id` int(11) NOT NULL DEFAULT 0,
   `widget` text NOT NULL,
   `column` text NOT NULL,
+  `visible` tinyint(4) NOT NULL DEFAULT 1,
   UNIQUE KEY `page_order_id_widget_column` (`page`,`order_id`,`widget`,`column`) USING HASH
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
--- Dumping data for table helios.cms_pages_habblets: ~11 rows (approximately)
+-- Dumping data for table helios.cms_pages_habblets: ~16 rows (approximately)
 DELETE FROM `cms_pages_habblets`;
-INSERT INTO `cms_pages_habblets` (`page`, `order_id`, `widget`, `column`) VALUES
-	('me', 1, 'PersonalInfo', 'column1'),
-	('me', 2, 'MyCharacters', 'column1'),
-	('me', 1, 'TopStories', 'column2'),
-	('error', 1, 'PageNotFound', 'column1'),
-	('error', 1, 'WhatWereYouLookingFor', 'column2'),
-	('community', 1, 'TopStories', 'column2'),
-	('community', 3, 'RandomHabbos', 'column1'),
-	('community', 1, 'Rooms', 'column1'),
-	('community', 2, 'Groups', 'column1'),
-	('community', 2, 'CommunityTags', 'column2'),
-	('me', 2, 'HotelPicks', 'column2');
+INSERT INTO `cms_pages_habblets` (`page`, `order_id`, `widget`, `column`, `visible`) VALUES
+	('me', 1, 'PersonalInfo', 'column1', 1),
+	('me', 2, 'MyCharacters', 'column1', 1),
+	('me', 1, 'TopStories', 'column2', 1),
+	('error', 1, 'PageNotFound', 'column1', 1),
+	('error', 1, 'WhatWereYouLookingFor', 'column2', 1),
+	('community', 1, 'TopStories', 'column2', 1),
+	('community', 3, 'RandomHabbos', 'column1', 1),
+	('community', 1, 'Rooms', 'column1', 0),
+	('community', 2, 'Groups', 'column1', 0),
+	('community', 2, 'CommunityTags', 'column2', 0),
+	('me', 2, 'HotelPicks', 'column2', 0),
+	('me', 4, 'Minimail', 'column1', 0),
+	('me', 2, 'Events', 'column2', 0),
+	('me', 5, 'InviteFriends', 'column1', 0),
+	('me', 3, 'Advertisement1', 'column2', 1),
+	('me', 3, 'HotCampaigns', 'column1', 0);
 
 -- Dumping structure for table helios.effects
+DROP TABLE IF EXISTS `effects`;
 CREATE TABLE IF NOT EXISTS `effects` (
   `effect_id` int(11) NOT NULL,
   `duration` int(11) NOT NULL,
@@ -2897,6 +2960,7 @@ INSERT INTO `effects` (`effect_id`, `duration`, `is_costume`) VALUES
 	(140, 3600, 0);
 
 -- Dumping structure for event helios.event_club_gifts
+DROP EVENT IF EXISTS `event_club_gifts`;
 DELIMITER //
 CREATE EVENT `event_club_gifts` ON SCHEDULE EVERY 1 MINUTE STARTS '2020-05-03 19:17:59' ON COMPLETION NOT PRESERVE ENABLE DO BEGIN
 	UPDATE avatar_subscriptions 
@@ -2916,6 +2980,7 @@ END//
 DELIMITER ;
 
 -- Dumping structure for event helios.event_respect_points
+DROP EVENT IF EXISTS `event_respect_points`;
 DELIMITER //
 CREATE EVENT `event_respect_points` ON SCHEDULE EVERY 1 MINUTE STARTS '2020-05-03 14:29:37' ON COMPLETION PRESERVE ENABLE DO BEGIN
 	UPDATE user_settings SET daily_respect_points = 3, daily_respect_pet_points = 3;
@@ -2923,6 +2988,7 @@ END//
 DELIMITER ;
 
 -- Dumping structure for event helios.event_ticket_expire
+DROP EVENT IF EXISTS `event_ticket_expire`;
 DELIMITER //
 CREATE EVENT `event_ticket_expire` ON SCHEDULE EVERY 1 MINUTE STARTS '2020-05-03 14:26:20' ON COMPLETION PRESERVE ENABLE DO BEGIN
 	DELETE FROM authentication_ticket WHERE expires_at IS NOT NULL AND CURRENT_TIMESTAMP() > expires_at;
@@ -2930,6 +2996,7 @@ END//
 DELIMITER ;
 
 -- Dumping structure for table helios.group
+DROP TABLE IF EXISTS `group`;
 CREATE TABLE IF NOT EXISTS `group` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `name` varchar(45) NOT NULL,
@@ -2953,12 +3020,13 @@ CREATE TABLE IF NOT EXISTS `group` (
   UNIQUE KEY `alias` (`alias`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Dumping data for table helios.group: ~1 rows (approximately)
+-- Dumping data for table helios.group: ~0 rows (approximately)
 DELETE FROM `group`;
 INSERT INTO `group` (`id`, `name`, `description`, `owner_id`, `room_id`, `badge`, `colour1`, `colour2`, `recommended`, `background`, `views`, `topics`, `group_type`, `forum_type`, `forum_permission_type`, `allow_members_decorate`, `alias`, `created_at`) VALUES
 	(1, 'Nerd Group', 'NERDZ', 1, 63, 'b0121s07777s089115s089113s031131', 47, 26, 0, 'bg_colour_08', 0, 0, 'OPEN', 0, 0, 0, NULL, '2024-09-14 19:24:31');
 
 -- Dumping structure for table helios.group_badge_elements
+DROP TABLE IF EXISTS `group_badge_elements`;
 CREATE TABLE IF NOT EXISTS `group_badge_elements` (
   `id` int(255) NOT NULL,
   `first_value` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
@@ -3452,6 +3520,7 @@ INSERT INTO `group_badge_elements` (`id`, `first_value`, `second_value`, `type`,
 	(108, '242424', '', 'colour3', 1);
 
 -- Dumping structure for table helios.group_memberships
+DROP TABLE IF EXISTS `group_memberships`;
 CREATE TABLE IF NOT EXISTS `group_memberships` (
   `avatar_id` int(10) NOT NULL,
   `group_id` int(10) NOT NULL,
@@ -3466,6 +3535,7 @@ CREATE TABLE IF NOT EXISTS `group_memberships` (
 DELETE FROM `group_memberships`;
 
 -- Dumping structure for table helios.item
+DROP TABLE IF EXISTS `item`;
 CREATE TABLE IF NOT EXISTS `item` (
   `id` char(36) NOT NULL DEFAULT '0',
   `order_id` int(11) NOT NULL DEFAULT -1,
@@ -3487,13 +3557,19 @@ CREATE TABLE IF NOT EXISTS `item` (
   KEY `user_id` (`avatar_id`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Dumping data for table helios.item: ~2 rows (approximately)
+-- Dumping data for table helios.item: ~7 rows (approximately)
 DELETE FROM `item`;
 INSERT INTO `item` (`id`, `order_id`, `avatar_id`, `room_id`, `group_id`, `definition_id`, `x`, `y`, `z`, `wall_position`, `rotation`, `custom_data`, `expire_time`, `created_at`, `updated_at`) VALUES
+	('0472eaf5-e098-407e-9212-e51cb70d59fa', 0, 1, NULL, NULL, 102, 0, 0, 0, '', 0, '{"LinkedItem":"bd57a3d8-e555-467c-9704-51b5c5dcf8cc","State":null}', -1, '2025-04-21 22:17:16', '2025-04-21 22:17:16'),
+	('17ad2661-5819-4e19-9be5-23051d54e294', 0, 1, NULL, NULL, 202, 0, 0, 0, '', 0, '', -1, '2025-04-21 22:15:52', '2025-04-21 22:15:52'),
 	('5ee9374b-eb32-4f29-a0f0-2fff29cc5e23', 0, 1, NULL, NULL, 249, 0, 0, 0, '', 0, '101', -1, '2025-04-13 17:48:21', '2025-04-13 17:48:21'),
-	('ab59fcc2-3443-496c-ac87-40742013177b', 0, 1, NULL, NULL, 250, 0, 0, 0, '', 0, '101', -1, '2025-04-13 17:48:25', '2025-04-13 17:48:25');
+	('6c1e7c67-707f-40d5-86d7-657b7843e8b4', 0, 1, NULL, NULL, 185, 0, 0, 0, '', 0, '', -1, '2025-04-21 22:16:05', '2025-04-21 22:16:05'),
+	('79ec190f-2e16-4fc7-b843-a65ce7ccb8c9', 0, 1, NULL, NULL, 812, 0, 0, 0, '', 0, '', -1, '2025-04-21 22:14:08', '2025-04-21 22:14:08'),
+	('ab59fcc2-3443-496c-ac87-40742013177b', 0, 1, NULL, NULL, 250, 0, 0, 0, '', 0, '101', -1, '2025-04-13 17:48:25', '2025-04-13 17:48:25'),
+	('bd57a3d8-e555-467c-9704-51b5c5dcf8cc', 0, 1, NULL, NULL, 102, 0, 0, 0, '', 0, '{"LinkedItem":"0472eaf5-e098-407e-9212-e51cb70d59fa","State":null}', -1, '2025-04-21 22:17:16', '2025-04-21 22:17:16');
 
 -- Dumping structure for table helios.item_definitions
+DROP TABLE IF EXISTS `item_definitions`;
 CREATE TABLE IF NOT EXISTS `item_definitions` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `sprite` varchar(50) DEFAULT NULL,
@@ -5672,6 +5748,7 @@ INSERT INTO `item_definitions` (`id`, `sprite`, `name`, `description`, `sprite_i
 	(2385, 'gld_gate', '', '', 4389, 1, 1, 0, 2, 'solid', 'guild_gate', 1, 1, 1, 1, '', -1, '0,2,4,6');
 
 -- Dumping structure for table helios.messenger_category
+DROP TABLE IF EXISTS `messenger_category`;
 CREATE TABLE IF NOT EXISTS `messenger_category` (
   `avatar_id` int(11) NOT NULL,
   `label` varchar(100) NOT NULL DEFAULT '',
@@ -5683,6 +5760,7 @@ CREATE TABLE IF NOT EXISTS `messenger_category` (
 DELETE FROM `messenger_category`;
 
 -- Dumping structure for table helios.messenger_chat_history
+DROP TABLE IF EXISTS `messenger_chat_history`;
 CREATE TABLE IF NOT EXISTS `messenger_chat_history` (
   `avatar_id` int(11) NOT NULL,
   `friend_id` int(11) NOT NULL,
@@ -5697,6 +5775,7 @@ INSERT INTO `messenger_chat_history` (`avatar_id`, `friend_id`, `message`, `has_
 	(1, 3, 'hello!', 1, '2023-04-20 22:55:01');
 
 -- Dumping structure for table helios.messenger_friend
+DROP TABLE IF EXISTS `messenger_friend`;
 CREATE TABLE IF NOT EXISTS `messenger_friend` (
   `avatar_id` int(11) NOT NULL,
   `friend_id` int(11) NOT NULL
@@ -5711,6 +5790,7 @@ INSERT INTO `messenger_friend` (`avatar_id`, `friend_id`) VALUES
 	(2, 1);
 
 -- Dumping structure for table helios.messenger_request
+DROP TABLE IF EXISTS `messenger_request`;
 CREATE TABLE IF NOT EXISTS `messenger_request` (
   `avatar_id` int(11) NOT NULL,
   `friend_id` int(11) NOT NULL
@@ -5720,6 +5800,7 @@ CREATE TABLE IF NOT EXISTS `messenger_request` (
 DELETE FROM `messenger_request`;
 
 -- Dumping structure for table helios.navigator_official_rooms
+DROP TABLE IF EXISTS `navigator_official_rooms`;
 CREATE TABLE IF NOT EXISTS `navigator_official_rooms` (
   `banner_id` int(11) NOT NULL AUTO_INCREMENT,
   `parent_id` int(11) NOT NULL DEFAULT 1,
@@ -5780,6 +5861,7 @@ INSERT INTO `navigator_official_rooms` (`banner_id`, `parent_id`, `order_id`, `b
 	(61, 1, 0, 'PUBLIC_FLAT', 61, 'EXTERNAL', 'Imperial Palace', 'Even the smallest of light... shines in the darkness', 0, 'officialrooms_defaults/hh_room_emperors.png', 1);
 
 -- Dumping structure for table helios.navigator_styles
+DROP TABLE IF EXISTS `navigator_styles`;
 CREATE TABLE IF NOT EXISTS `navigator_styles` (
   `room_id` int(11) NOT NULL,
   `description` text NOT NULL DEFAULT '',
@@ -5834,6 +5916,7 @@ INSERT INTO `navigator_styles` (`room_id`, `description`, `thumbnail_url`, `thum
 	(68, 'Even the smallest of light... shines in the darkness', 'officialrooms_defaults/hh_room_emperors.png', 1);
 
 -- Dumping structure for table helios.room
+DROP TABLE IF EXISTS `room`;
 CREATE TABLE IF NOT EXISTS `room` (
   `id` int(100) NOT NULL AUTO_INCREMENT,
   `owner_id` int(11) NOT NULL,
@@ -5847,8 +5930,8 @@ CREATE TABLE IF NOT EXISTS `room` (
   `password` text NOT NULL DEFAULT '',
   `model_id` int(11) DEFAULT 0,
   `ccts` text NOT NULL DEFAULT '',
-  `wallpaper` varchar(50) NOT NULL DEFAULT '0',
-  `floor` varchar(50) NOT NULL DEFAULT '0',
+  `wallpaper` varchar(50) NOT NULL DEFAULT '0.0',
+  `floor` varchar(50) NOT NULL DEFAULT '0.0',
   `landscape` varchar(50) NOT NULL DEFAULT '0',
   `rating` int(11) NOT NULL DEFAULT 0,
   `allow_pets` tinyint(1) NOT NULL DEFAULT 1,
@@ -5930,20 +6013,22 @@ INSERT INTO `room` (`id`, `owner_id`, `name`, `description`, `category_id`, `gro
 	(60, 0, 'Club Orient', 'orient', 8, NULL, 0, 35, 'OPEN', '', 83, 'hh_room_orient', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 1, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
 	(61, 0, 'Imperial Palace', 'emperors', 5, NULL, 0, 30, 'OPEN', '', 90, 'hh_room_emperors', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
 	(62, 0, 'Beauty Salon II', 'beauty_salon_loreal', 5, NULL, 0, 25, 'OPEN', '', 91, 'hh_room_beauty_salon_general', '0', '0', '0.0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS'),
-	(63, 1, 'test', '', 14, 1, 0, 25, 'OPEN', '', 1, '', '0', '0', '0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS');
+	(63, 1, 'test', '', 0, 1, 0, 25, 'OPEN', '', 1, '', '301', '301', '0', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS', 'USERS_WITH_RIGHTS');
 
 -- Dumping structure for table helios.room_category
+DROP TABLE IF EXISTS `room_category`;
 CREATE TABLE IF NOT EXISTS `room_category` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `caption` varchar(100) NOT NULL,
   `enabled` tinyint(1) NOT NULL DEFAULT 1,
   `min_rank` int(11) NOT NULL DEFAULT 1,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Dumping data for table helios.room_category: ~14 rows (approximately)
 DELETE FROM `room_category`;
 INSERT INTO `room_category` (`id`, `caption`, `enabled`, `min_rank`) VALUES
+	(0, 'No Category', 1, 1),
 	(1, 'Staff Rooms', 1, 4),
 	(2, 'Competition Category', 1, 1),
 	(3, 'Themed & RPG Rooms', 1, 1),
@@ -5956,10 +6041,10 @@ INSERT INTO `room_category` (`id`, `caption`, `enabled`, `min_rank`) VALUES
 	(10, 'Hair Salons & Modelling Rooms', 1, 1),
 	(11, 'Help Centre, Guide & Service Rooms', 1, 1),
 	(12, 'School, Daycare & Adoption Rooms', 1, 1),
-	(13, 'All Other Rooms', 1, 1),
-	(14, 'No Category', 1, 1);
+	(13, 'All Other Rooms', 1, 1);
 
 -- Dumping structure for table helios.room_models
+DROP TABLE IF EXISTS `room_models`;
 CREATE TABLE IF NOT EXISTS `room_models` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `model` varchar(255) NOT NULL,
@@ -6070,6 +6155,7 @@ INSERT INTO `room_models` (`id`, `model`, `door_x`, `door_y`, `door_z`, `door_di
 	(91, 'beauty_salon1', 14, 3, 0, 1, 'xxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxx0xxxxxxxxx|xxxxxxx000000000000000xx|xxxxxx0000000000000000xx|xxxxx000000000000xxxxxxx|xxxx000000000000000000xx|xxx0000000000000000000xx|xxx0000000000000000000xx|xxx0000000000000000000xx|xxxxxxxxxxxxxxxx000000xx|xx0000000000000x000000xx|000000000000000x000000xx|000000000000000x000000xx|000000000000000x000000xx|00x000000000000x000000xx|00xxxxxxxxxxxxxx000000xx|00xxxxxxxxxxxxxx000000xx|00x0000000000000000000xx|00x0000000000000000000xx|00x0000000000000000000xx|0000000000000000000000xx|x000000000000000000000xx|xxx0000000000000000000xx', 'none', 0);
 
 -- Dumping structure for table helios.room_rights
+DROP TABLE IF EXISTS `room_rights`;
 CREATE TABLE IF NOT EXISTS `room_rights` (
   `avatar_id` int(11) NOT NULL,
   `room_id` int(11) NOT NULL
@@ -6079,6 +6165,7 @@ CREATE TABLE IF NOT EXISTS `room_rights` (
 DELETE FROM `room_rights`;
 
 -- Dumping structure for table helios.server_settings
+DROP TABLE IF EXISTS `server_settings`;
 CREATE TABLE IF NOT EXISTS `server_settings` (
   `setting` text NOT NULL,
   `value` text NOT NULL
@@ -6098,9 +6185,10 @@ INSERT INTO `server_settings` (`setting`, `value`) VALUES
 	('max.rooms.allowed.subscribed', '200'),
 	('timer.speech.bubble', '15'),
 	('site.name', 'Habbo'),
-	('site.static.content.url', 'https://sandbox.h4bbo.net/');
+	('site.static.content.url', 'https://images.h4bbo.net/');
 
 -- Dumping structure for table helios.site_articles
+DROP TABLE IF EXISTS `site_articles`;
 CREATE TABLE IF NOT EXISTS `site_articles` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(64) DEFAULT 'Undefined Title',
@@ -6122,6 +6210,7 @@ CREATE TABLE IF NOT EXISTS `site_articles` (
 DELETE FROM `site_articles`;
 
 -- Dumping structure for table helios.site_articles_categories
+DROP TABLE IF EXISTS `site_articles_categories`;
 CREATE TABLE IF NOT EXISTS `site_articles_categories` (
   `article_id` int(11) NOT NULL,
   `category_id` int(11) NOT NULL,
@@ -6132,6 +6221,7 @@ CREATE TABLE IF NOT EXISTS `site_articles_categories` (
 DELETE FROM `site_articles_categories`;
 
 -- Dumping structure for table helios.subscription_gifts
+DROP TABLE IF EXISTS `subscription_gifts`;
 CREATE TABLE IF NOT EXISTS `subscription_gifts` (
   `sale_code` varchar(255) NOT NULL,
   `duration_requirement` int(11) NOT NULL DEFAULT 1
@@ -6164,6 +6254,7 @@ INSERT INTO `subscription_gifts` (`sale_code`, `duration_requirement`) VALUES
 	('hc_crpt', 5);
 
 -- Dumping structure for table helios.tags
+DROP TABLE IF EXISTS `tags`;
 CREATE TABLE IF NOT EXISTS `tags` (
   `avatar_id` int(11) NOT NULL DEFAULT 0,
   `room_id` int(11) NOT NULL DEFAULT 0,
@@ -6181,6 +6272,7 @@ INSERT INTO `tags` (`avatar_id`, `room_id`, `group_id`, `text`) VALUES
 	(0, 63, 0, 'xddd');
 
 -- Dumping structure for table helios.user
+DROP TABLE IF EXISTS `user`;
 CREATE TABLE IF NOT EXISTS `user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `email` varchar(2500) NOT NULL,
@@ -6195,10 +6287,11 @@ CREATE TABLE IF NOT EXISTS `user` (
 -- Dumping data for table helios.user: ~2 rows (approximately)
 DELETE FROM `user`;
 INSERT INTO `user` (`id`, `email`, `password`, `birthday`, `direct_mail`, `join_date`, `last_online`) VALUES
-	(1, 'alexaccount@gmail.com', '123', '7.8.1992', 0, '2024-09-02 19:43:48', '2025-04-13 18:38:39'),
+	(1, 'alexaccount@gmail.com', '123', '7.8.1992', 0, '2024-09-02 19:43:48', '2025-04-21 22:17:29'),
 	(2, 'were@cc.com', 'xX!elgps123', '5.3.1998', 0, '2024-11-17 20:27:50', '2024-11-17 20:27:50');
 
 -- Dumping structure for table helios.user_sessions
+DROP TABLE IF EXISTS `user_sessions`;
 CREATE TABLE IF NOT EXISTS `user_sessions` (
   `session_id` uuid NOT NULL,
   `user_id` int(11) NOT NULL,
@@ -6206,14 +6299,13 @@ CREATE TABLE IF NOT EXISTS `user_sessions` (
   PRIMARY KEY (`session_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Dumping data for table helios.user_sessions: ~2 rows (approximately)
+-- Dumping data for table helios.user_sessions: ~0 rows (approximately)
 DELETE FROM `user_sessions`;
 INSERT INTO `user_sessions` (`session_id`, `user_id`, `expiry_date`) VALUES
-	('ecfd958a-5a77-4ec9-8c3c-466d10f4481f', 1, '2025-05-05 10:49:35'),
-	('ca29e142-d64c-4180-8431-734af18166d8', 1, '2025-05-05 19:52:51'),
-	('befb6509-8cf7-451d-bdb9-caebe4a6a47b', 1, '2025-05-05 10:49:44');
+	('5e3110fb-ac85-47a2-b33f-ad2601f12859', 1, '2025-05-26 20:21:07');
 
 -- Dumping structure for table helios.wordfilter
+DROP TABLE IF EXISTS `wordfilter`;
 CREATE TABLE IF NOT EXISTS `wordfilter` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `word` varchar(100) NOT NULL,
